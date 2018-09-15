@@ -26,7 +26,7 @@ public class MySQLClienteDAO implements clienteDAO{
     public MySQLClienteDAO(Connection con) {
         this.con = con;
      }
-     
+  //prueba   
     @Override
     public void insertar(cliente a) {
         PreparedStatement stat=null;
