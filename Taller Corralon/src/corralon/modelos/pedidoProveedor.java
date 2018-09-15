@@ -1,0 +1,69 @@
+
+package corralon.modelos;
+
+import java.sql.Date;
+
+
+public class pedidoProveedor {
+    private int codigoPedidoProveedor;
+    private int cuitProveedor;
+    private Date fechaPedidoProveedor;
+    private float totalPedidoProveedor;
+    private boolean estadoPedidoProveedor;
+
+    public pedidoProveedor(int codigoPedidoProveedor, int cuitProveedor, Date fechaPedidoProveedor, float totalPedidoProveedor, boolean estadoPedidoProveedor) {
+        this.codigoPedidoProveedor = codigoPedidoProveedor;
+        this.cuitProveedor = cuitProveedor;
+        this.fechaPedidoProveedor = fechaPedidoProveedor;
+        this.totalPedidoProveedor = totalPedidoProveedor;
+        this.estadoPedidoProveedor = estadoPedidoProveedor;
+    }
+
+    public int getCodigoPedidoProveedor() {
+        return codigoPedidoProveedor;
+    }
+
+    public int getCuitProveedor() {
+        return cuitProveedor;
+    }
+
+    public Date getFechaPedidoProveedor() {
+        return fechaPedidoProveedor;
+    }
+
+    public float getTotalPedidoProveedor() {
+        return totalPedidoProveedor;
+    }
+
+    public boolean isEstadoPedidoProveedor() {
+        return estadoPedidoProveedor;
+    }
+
+    public void setCodigoPedidoProveedor(int codigoPedidoProveedor) {
+        this.codigoPedidoProveedor = codigoPedidoProveedor;
+    }
+
+    public void setCuitProveedor(int cuitProveedor) {
+        this.cuitProveedor = cuitProveedor;
+    }
+
+    public void setFechaPedidoProveedor(Date fechaPedidoProveedor) {
+        this.fechaPedidoProveedor = fechaPedidoProveedor;
+    }
+
+    public void setTotalPedidoProveedor(float totalPedidoProveedor) {
+        this.totalPedidoProveedor = totalPedidoProveedor;
+    }
+
+    public void setEstadoPedidoProveedor(boolean estadoPedidoProveedor) {
+        this.estadoPedidoProveedor = estadoPedidoProveedor;
+    }
+
+    @Override
+    public String toString() {
+        return "pedidoProveedor{" + "codigoPedidoProveedor=" + codigoPedidoProveedor + ", cuitProveedor=" + cuitProveedor + ", fechaPedidoProveedor=" + fechaPedidoProveedor + ", totalPedidoProveedor=" + totalPedidoProveedor + ", estadoPedidoProveedor=" + estadoPedidoProveedor + '}';
+    }
+    
+    
+        
+}
