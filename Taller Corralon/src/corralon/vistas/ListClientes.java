@@ -19,7 +19,7 @@ public class ListClientes extends javax.swing.JPanel {
         this.model=new clienteTableModel(manager.getclienteDao());
         this.model.updateModel();
         this.Tabla.setModel(model);
-    }
+    }//comentario
     
     
     @SuppressWarnings("unchecked")
