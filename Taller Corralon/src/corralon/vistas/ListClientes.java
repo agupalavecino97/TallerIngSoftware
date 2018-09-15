@@ -4,7 +4,6 @@ package corralon.vistas;
 import corralon.DAO.DAOManager;
 import corralon.DAO.mysql.MySQLDAOManager;
 import java.sql.SQLException;
-import javax.swing.table.DefaultTableModel;
 
 
 public class ListClientes extends javax.swing.JPanel {

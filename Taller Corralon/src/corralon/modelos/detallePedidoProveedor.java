@@ -1,4 +1,3 @@
-
 package corralon.modelos;
 
 public class detallePedidoProveedor {

@@ -112,7 +112,6 @@ public class MySQLClienteDAO implements clienteDAO{
              }
     }
 
-   //final String INSERT = "INSERT INTO cliente(cuitCliente, razonSocial, direccionCliente, telefonoCliente, estadoClie) VALUES(?,?,?,?,?)";
 
     private cliente convertir(ResultSet rs)throws SQLException {
           int cuit=rs.getInt("cuitCliente");
@@ -191,6 +190,7 @@ public class MySQLClienteDAO implements clienteDAO{
  
  
 /*
+    Esto es para probar 
  public static void main(String[]args) throws SQLException{
     String driver = "com.mysql.jdbc.Driver";
     String database = "taller";
