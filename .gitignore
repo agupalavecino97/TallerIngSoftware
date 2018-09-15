@@ -1,2 +1,8 @@
 
 Taller Corralon/nbproject/private/
+
+*.properties
+
+*.class
+
+Taller Corralon/build/
