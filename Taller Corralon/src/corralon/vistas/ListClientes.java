@@ -99,12 +99,12 @@ public class ListClientes extends javax.swing.JPanel {
         add(jScrollPane3, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String[]args) throws SQLException{        
-        DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
-        java.awt.EventQueue.invokeLater(() -> {
-            new ListClientes(manager).setVisible(true); 
-        });
-    } 
+//    public static void main(String[]args) throws SQLException{        
+//        DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
+//        java.awt.EventQueue.invokeLater(() -> {
+//            new ListClientes(manager).setVisible(true); 
+//        });
+//    } 
     
     
     
