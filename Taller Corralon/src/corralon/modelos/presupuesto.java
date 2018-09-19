@@ -1,10 +1,8 @@
 
 package corralon.modelos;
+
 import java.sql.Date;
-/**
- *
- * @author Agustin
- */
+
 public class presupuesto {
     
     private int codigoPedidoClie;
@@ -40,6 +38,10 @@ public class presupuesto {
     public void setFechaPresupuesto(Date fechaPresupuesto) {
         this.fechaPresupuesto = fechaPresupuesto;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "presupuesto{" + "codigoPedidoClie=" + codigoPedidoClie + ", dniCliente=" + dniCliente + ", fechaPresupuesto=" + fechaPresupuesto + '}';
+    }
+   
 }
