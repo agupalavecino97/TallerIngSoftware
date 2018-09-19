@@ -1,10 +1,6 @@
 
 package corralon.modelos;
 
-/**
- *
- * @author Agustin
- */
 public class pedidoMaterial {
     
     private int codigoPedidoClie;
