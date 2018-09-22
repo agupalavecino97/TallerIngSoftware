@@ -52,19 +52,19 @@ public class MySQLMaterialDAO implements materialDAO{
                 throw new SQLException("NO se puede asignar el id");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally{
                 if (rs != null)
                         try {
                             rs.close();
                     } catch (SQLException ex) {
-                        Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
                     }   
                 if (stat != null)
                     try {
                         stat.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
              }
     }
@@ -88,13 +88,13 @@ public class MySQLMaterialDAO implements materialDAO{
                 System.out.println("Quizas no se guardo correctamente gg");
             } 
         } catch (SQLException ex) {
-            Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally{
                 if (stat != null)
                     try {
                         stat.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
              }    
     }
@@ -109,13 +109,13 @@ public class MySQLMaterialDAO implements materialDAO{
                 System.out.println("Quizas no se guardo correctamente gg");
             } 
         } catch (SQLException ex) {
-            Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally{
                 if (stat != null)
                     try {
                         stat.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
              }
     }
@@ -145,19 +145,19 @@ public class MySQLMaterialDAO implements materialDAO{
                 material.add(convertir(rs));
         }  
         } catch (SQLException ex) {
-            Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally{
                 if (rs != null)
                     try {
                         rs.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
                 } 
                 if (stat != null)
                     try {
                         stat.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
                 } 
              }
     return material;
@@ -178,19 +178,19 @@ public class MySQLMaterialDAO implements materialDAO{
                 System.out.println("NO se encontro ese registro");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally{
                 if (rs != null)
                     try {
                         rs.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
                 } 
                 if (stat != null)
                     try {
                         stat.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
                 } 
              }
     return a;
@@ -213,9 +213,13 @@ public class MySQLMaterialDAO implements materialDAO{
      stock a=new stock("cal","descripcion de la cal",500,10,10000,true);
      dao.insertar(a);
      List<stock> materiales=dao.obtenerTodos(); 
-     for(stock c :materiales){
-         System.out.println(c.toString());
-     }     
+        /* por las dudas backupeo esta parte
+        for(stock c :materiales){
+        System.out.println(c.toString());
+        }     */
+        materiales.forEach((c) -> {
+            System.out.println(c.toString());
+        });     
  }    
  
 }
