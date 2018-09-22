@@ -3,13 +3,19 @@ package corralon.modelos;
 
 public class cliente {
     
-    private int cuitCliente;
+    private Long cuitCliente;
     private String razonSocial;
     private String direccionCliente;
     private int telefonoCliente;
     private boolean estadoClie;
+    
+    public cliente(){
+        this.direccionCliente="";
+        this.direccionCliente="";
+        this.telefonoCliente=0;  
+    }
 
-    public cliente(int cuitCliente,String razonSocial, String direccionCliente, int telefonoCliente, boolean estadoClie) {
+    public cliente(Long cuitCliente,String razonSocial, String direccionCliente, int telefonoCliente, boolean estadoClie) {
         this.cuitCliente=cuitCliente;
         this.razonSocial = razonSocial;
         this.direccionCliente = direccionCliente;
@@ -17,7 +23,7 @@ public class cliente {
         this.estadoClie = estadoClie;
     }
 
-    public int getCuitCliente() {
+    public Long getCuitCliente() {
         return cuitCliente;
     }
 
@@ -37,7 +43,7 @@ public class cliente {
         return estadoClie;
     }
 
-    public void setCuitCliente(int cuitCliente) {
+    public void setCuitCliente(Long cuitCliente) {
         this.cuitCliente = cuitCliente;
     }
 

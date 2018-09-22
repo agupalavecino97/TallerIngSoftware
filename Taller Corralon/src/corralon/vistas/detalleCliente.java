@@ -1,6 +1,7 @@
 
 package corralon.vistas;
 import corralon.modelos.cliente;
+import java.text.ParseException;
 
 public class detalleCliente extends javax.swing.JPanel {
 
@@ -24,25 +25,43 @@ public class detalleCliente extends javax.swing.JPanel {
         cuit.setEditable(editable);
         nombre.setEditable(editable);
         direccion.setEditable(editable);
-       
+        telefono.setEditable(editable);
+
     }
     
     public void loadData(){
         if(cliente!=null){
+           cuit.setValue(cliente.getCuitCliente());
            nombre.setText(cliente.getRazonSocial());
-           direccion.setText(cliente.getDireccionCliente());   
+           direccion.setText(cliente.getDireccionCliente());
+           telefono.setValue(cliente.getTelefonoCliente());
         }
         else{
+            cuit.setValue(null);
             nombre.setText("");
             direccion.setText("");
-        }            
+            telefono.setValue(null);
+        }
+        cuit.requestFocus();
+       // nombre.requestFocus();
     }
     
+    public void saveData() throws ParseException{
+        if(cliente==null){
+            cliente=new cliente();
+        }
+            cliente.setCuitCliente((Long)cuit.getValue());
+            cliente.setRazonSocial(nombre.getText());
+            cliente.setDireccionCliente(direccion.getText());
+            telefono.commitEdit(); 
+            cliente.setTelefonoCliente((int) telefono.getValue());          
+    }
             
     
     
     public detalleCliente() {
         initComponents();
+        //cuit.enable(false);
     }
 
     
@@ -50,24 +69,28 @@ public class detalleCliente extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        cuit = new javax.swing.JTextField();
         nombre = new javax.swing.JTextField();
         direccion = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        telefono = new javax.swing.JFormattedTextField();
+        da = new javax.swing.JLabel();
+        cuit = new javax.swing.JFormattedTextField();
 
-        jLabel1.setText("CUIT:");
+        jLabel2.setText("Razon Social:");
 
-        jLabel2.setText("Razon Social");
+        jLabel3.setText("Direccion:");
 
-        jLabel3.setText("Direccion");
+        jLabel4.setText("Telefono:");
 
-        cuit.setText("jTextField1");
+        da.setText("CUIT:");
 
-        nombre.setText("jTextField2");
-
-        direccion.setText("jTextField3");
+        cuit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cuitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -76,42 +99,60 @@ public class detalleCliente extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1))
-                .addGap(76, 76, 76)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cuit, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                    .addComponent(nombre)
-                    .addComponent(direccion))
-                .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(28, 28, 28)
+                        .addComponent(telefono))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(27, 27, 27)
+                        .addComponent(direccion, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(da))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                            .addComponent(cuit))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(da)
                     .addComponent(cuit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuitActionPerformed
+    
+    }//GEN-LAST:event_cuitActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField cuit;
+    private javax.swing.JFormattedTextField cuit;
+    private javax.swing.JLabel da;
     private javax.swing.JTextField direccion;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField nombre;
+    private javax.swing.JFormattedTextField telefono;
     // End of variables declaration//GEN-END:variables
 }

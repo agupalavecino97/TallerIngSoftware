@@ -2,9 +2,7 @@
 package corralon.DAO.mysql;
 import corralon.DAO.clienteDAO;
 import corralon.modelos.cliente;
-import corralon.modelos.conexion;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,7 +31,7 @@ public class MySQLClienteDAO implements clienteDAO{
         ResultSet rs=null;
         try{
             stat=con.prepareStatement(INSERT);
-            stat.setInt(1,a.getCuitCliente());
+            stat.setLong(1,a.getCuitCliente());
             stat.setString(2,a.getRazonSocial());
             stat.setString(3,a.getDireccionCliente());
             stat.setInt(4,a.getTelefonoCliente());
@@ -114,7 +112,7 @@ public class MySQLClienteDAO implements clienteDAO{
 
 
     private cliente convertir(ResultSet rs)throws SQLException {
-          int cuit=rs.getInt("cuitCliente");
+          Long cuit=rs.getLong("cuitCliente");
           String nombre=rs.getString("razonSocial");
           String direccion=rs.getString("direccionCliente");
           int telefono=rs.getInt("telefonoCliente");
@@ -155,7 +153,6 @@ public class MySQLClienteDAO implements clienteDAO{
     }
 
     @Override
-    
     public cliente obtener(Long id){
         PreparedStatement stat=null;
         ResultSet rs=null;
@@ -210,6 +207,9 @@ public class MySQLClienteDAO implements clienteDAO{
      }     
  }    
  */
+
+     
+   
  }   
   
 
