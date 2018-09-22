@@ -2,13 +2,13 @@
 package corralon.modelos;
 
 public class proveedor {
-    private int cuitProveedor;
+    private Long cuitProveedor;
     private String nombreProveedor;
     private String direccionProveedor;
     private int telefonoProveedor;
     private boolean estadoProveedor;
 
-    public proveedor(int cuitProveedor, String nombreProveedor, String direccionProveedor, int telefonoProveedor, boolean estadoProveedor) {
+    public proveedor(Long cuitProveedor, String nombreProveedor, String direccionProveedor, int telefonoProveedor, boolean estadoProveedor) {
         this.cuitProveedor = cuitProveedor;
         this.nombreProveedor = nombreProveedor;
         this.direccionProveedor = direccionProveedor;
@@ -16,7 +16,7 @@ public class proveedor {
         this.estadoProveedor = estadoProveedor;
     }
 
-    public int getCuitProveedor() {
+    public Long getCuitProveedor() {
         return cuitProveedor;
     }
 
@@ -36,7 +36,7 @@ public class proveedor {
         return estadoProveedor;
     }
 
-    public void setCuitProveedor(int cuitProveedor) {
+    public void setCuitProveedor(Long cuitProveedor) {
         this.cuitProveedor = cuitProveedor;
     }
 
