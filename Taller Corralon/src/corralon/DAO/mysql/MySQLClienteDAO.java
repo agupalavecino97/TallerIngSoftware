@@ -64,30 +64,30 @@ public class MySQLClienteDAO implements clienteDAO{
              }
     }
 
-    @Override
-    public void modificar(cliente a) {
-            PreparedStatement stat=null;
-        try{
-            stat=con.prepareStatement(UPDATE);      
-            stat.setString(1,a.getRazonSocial());
-            stat.setString(2,a.getDireccionCliente());
-            stat.setInt(3,a.getTelefonoCliente());
-            stat.setBoolean(4,a.isEstadoClie());
-            stat.setLong(5,a.getCuitCliente());
-            if(stat.executeUpdate()==0){
-                System.out.println("Quizas no se guardo correctamente gg");
-            } 
-        } catch (SQLException ex) {
-            Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
-            } finally{
-                if (stat != null)
-                    try {
-                        stat.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
-                }
-             }
-    }
+        @Override
+        public void modificar(cliente a) {
+                PreparedStatement stat=null;
+            try{
+                stat=con.prepareStatement(UPDATE);      
+                stat.setString(1,a.getRazonSocial());
+                stat.setString(2,a.getDireccionCliente());
+                stat.setInt(3,a.getTelefonoCliente());
+                stat.setBoolean(4,a.isEstadoClie());
+                stat.setLong(5,a.getCuitCliente());
+                if(stat.executeUpdate()==0){
+                    System.out.println("Quizas no se guardo correctamente gg");
+                } 
+            } catch (SQLException ex) {
+                Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                } finally{
+                    if (stat != null)
+                        try {
+                            stat.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                 }
+        }
     
   @Override
     public void eliminar(cliente a) {
