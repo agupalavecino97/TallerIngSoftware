@@ -2,6 +2,7 @@ package corralon.DAO.mysql;
 
 import corralon.DAO.DAOManager;
 import corralon.DAO.clienteDAO;
+import corralon.DAO.materialDAO;
 import corralon.modelos.cliente;
 import java.sql.DriverManager;
 import java.sql.Connection;
@@ -12,6 +13,7 @@ import java.util.List;
 public class MySQLDAOManager implements DAOManager{
     
     private clienteDAO clientes=null;
+    private materialDAO materiales=null;
     private final Connection con;
     
     public MySQLDAOManager(String host, String database, String user, String password) throws SQLException {
@@ -38,6 +40,14 @@ public class MySQLDAOManager implements DAOManager{
 //        List<cliente> clientes=man.getclienteDao().obtenerTodos();
 //        System.out.println("Clientes"+clientes);
 //    }
+
+    @Override
+    public materialDAO getmaterialDao() {
+        if(materiales==null){
+                        materiales=new MySQLMaterialDAO(con); 
+                    }
+                    return materiales;
+    }
     
     
     

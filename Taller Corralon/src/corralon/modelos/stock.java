@@ -3,7 +3,7 @@ package corralon.modelos;
 
 
 public class stock {
-    private int codigoMaterial;    
+    private Long codigoMaterial=null;    
     private String nombreMaterial;
     private String descripcionMaterial;
     private int cantidadExistente;
@@ -11,8 +11,19 @@ public class stock {
     private int stockMaximo;
     private boolean estadoMaterial;
 
-    public stock(int codigoMaterial, String nombreMaterial, String descripcionMaterial, int cantidadExistente, int stockMinimo, int stockMaximo, boolean estadoMaterial) {
-        this.codigoMaterial = codigoMaterial;
+  
+     public stock() {
+        
+        this.nombreMaterial = null;
+        this.descripcionMaterial = null;
+        this.cantidadExistente = 0;
+        this.stockMinimo = 0;
+        this.stockMaximo = 0;
+        this.estadoMaterial = false;
+    }
+
+    public stock( String nombreMaterial, String descripcionMaterial, int cantidadExistente, int stockMinimo, int stockMaximo, boolean estadoMaterial) {
+        
         this.nombreMaterial = nombreMaterial;
         this.descripcionMaterial = descripcionMaterial;
         this.cantidadExistente = cantidadExistente;
@@ -21,7 +32,7 @@ public class stock {
         this.estadoMaterial = estadoMaterial;
     }
 
-    public int getCodigoMaterial() {
+    public Long getCodigoMaterial() {
         return codigoMaterial;
     }
 
@@ -49,7 +60,7 @@ public class stock {
         return estadoMaterial;
     }
 
-    public void setCodigoMaterial(int codigoMaterial) {
+    public void setCodigoMaterial(Long codigoMaterial) {
         this.codigoMaterial = codigoMaterial;
     }
 
