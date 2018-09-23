@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 package corralon.DAO.mysql;
 import corralon.DAO.proveedorDAO;
@@ -184,6 +185,51 @@ public class MySQLProveedorDAO {
                 } 
              }
     return a;
+=======
+package corralon.DAO.mysql;
+
+import corralon.DAO.proveedorDAO;
+import corralon.modelos.proveedor;
+import java.sql.Connection;
+import java.util.List;
+
+
+public class MySQLProveedorDAO implements proveedorDAO{
+    private final Connection con;
+    final String INSERT="INSERT INTO proveedor(cuitProveedor, nombreProv, direccionProv, telefonoProv, estadoProv) VALUES(?,?,?,?,?)";
+    final String UPDATE="UPDATE proveedor SET cuitProveedor=?, nombreProv=?, direccionProv=?, telefonoProv=?, estadoProv=? WHERE cuitProveedor=?";
+    final String DELETE="DELETE FROM proveedor WHERE cuitProveedor=?";
+    final String GETALL="SELECT cuitProveedor, nombreProv, direccionProv, telefonoProv, estadoProv FROM proveedor";
+    final String GETONE="SELECT cuitProveedor, nombreProv, direccionProv, telefonoProv, estadoProv FROM proveedro WHERE cuitProveedor=?";
+    
+    public MySQLProveedorDAO(Connection con)
+    {
+        this.con=con;
+    }
+    @Override
+    public void insertar(proveedor a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void modificar(proveedor a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eliminar(proveedor a) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<proveedor> obtenerTodos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public proveedor obtener(Long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+>>>>>>> Stashed changes
     }
     
 }

@@ -2,7 +2,11 @@ package corralon.DAO.mysql;
 
 import corralon.DAO.DAOManager;
 import corralon.DAO.clienteDAO;
+<<<<<<< Updated upstream
 import corralon.DAO.materialDAO;
+=======
+import corralon.DAO.proveedorDAO;
+>>>>>>> Stashed changes
 import corralon.modelos.cliente;
 import java.sql.DriverManager;
 import java.sql.Connection;
@@ -13,7 +17,11 @@ import java.util.List;
 public class MySQLDAOManager implements DAOManager{
     
     private clienteDAO clientes=null;
+<<<<<<< Updated upstream
     private materialDAO materiales=null;
+=======
+    private proveedorDAO proveedor=null;
+>>>>>>> Stashed changes
     private final Connection con;
     
     public MySQLDAOManager(String host, String database, String user, String password) throws SQLException {
@@ -27,6 +35,14 @@ public class MySQLDAOManager implements DAOManager{
                 clientes=new MySQLClienteDAO(con); 
             }
             return clientes;
+    }
+    
+    @Override
+    public proveedorDAO getproveedorDao(){
+            if(proveedor==null){
+                proveedor = new MySQLProveedorDAO(con);
+            }
+            return proveedor;
     }
     
     //lo mismo hay que hacer para todas las clases
