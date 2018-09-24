@@ -17,11 +17,11 @@ import java.util.logging.Logger;
 public class MySQLMaterialDAO implements materialDAO{
     
     final String INSERT="INSERT INTO stock(codMat, nombreMat,precio, descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat) VALUES (?,?,?,?,?,?,?,?)";
-    final String DELETE="DELETE FROM stock WHERE codMaterial=?";
+    final String DELETE="DELETE FROM stock WHERE IDMaterial=?";
     //final String DELETE="UPDATE stcok set estado=false WHERE codigoMaterial=?";
     final String UPDATE="UPDATE stock SET codMat=?,nombreMat=?, precio=?, descripcionMat=?, cantExistente=?, stockMinimo=?, stockMax=?, estadoMat=?";
-    final String GETALL="SELECT codMaterial, nombreMat,precio,descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat FROM stock";
-    final String GETONE="SELECT codMaterial nombreMat,precio, descripcionMat, cantdExistente, stockMinimo, stockMax, estadoMat FROM stock WHERE codMaterial=?";
+    final String GETALL="SELECT codMat,nombreMat,precio,descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat FROM stock";
+    final String GETONE="SELECT codMat,nombreMat,precio, descripcionMat, cantdExistente, stockMinimo, stockMax, estadoMat FROM stock WHERE IDMaterial=?";
 
     private final Connection con;
     
@@ -104,7 +104,7 @@ public class MySQLMaterialDAO implements materialDAO{
               PreparedStatement stat=null;
         try{
             stat=con.prepareStatement(DELETE);  
-            stat.setInt(1,a.getCodMaterial());
+            stat.setLong(1,a.getIdMaterial());
             if(stat.executeUpdate()==0){
                 System.out.println("Quizas no se guardo correctamente gg");
             } 
@@ -142,11 +142,9 @@ public class MySQLMaterialDAO implements materialDAO{
         try{
             stat=con.prepareStatement(GETALL);  
             rs=stat.executeQuery();
-            System.out.println(rs);
             while(rs.next()){
                 material.add(convertir(rs));
             }  
-            System.out.println(rs);
         } catch (SQLException ex) {
             Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally{
@@ -211,7 +209,11 @@ public class MySQLMaterialDAO implements materialDAO{
     Connection con=null;
     con=DriverManager.getConnection(url,"root","root");
     MySQLMaterialDAO dao =new MySQLMaterialDAO(con);
-    stock a=new stock(4578,"calerczxer", (float) 10.0,"descripcion de la cal",500,10,10000,true);     dao.eliminar(a);
+    
+    //stock a=new stock(4578,"calerczxer", (float) 10.0,"descripcion de la cal",500,10,10000,true);  
+    //dao.eliminar(a);
+
+    
      List<stock> materiales=dao.obtenerTodos();        
     for(stock c :materiales){
         System.out.println(c.toString());
