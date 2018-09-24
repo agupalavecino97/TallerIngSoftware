@@ -2,26 +2,21 @@ package corralon.DAO.mysql;
 
 import corralon.DAO.DAOManager;
 import corralon.DAO.clienteDAO;
-<<<<<<< Updated upstream
 import corralon.DAO.materialDAO;
-=======
 import corralon.DAO.proveedorDAO;
->>>>>>> Stashed changes
-import corralon.modelos.cliente;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 
 
 public class MySQLDAOManager implements DAOManager{
     
     private clienteDAO clientes=null;
-<<<<<<< Updated upstream
+
     private materialDAO materiales=null;
-=======
+
     private proveedorDAO proveedor=null;
->>>>>>> Stashed changes
+
     private final Connection con;
     
     public MySQLDAOManager(String host, String database, String user, String password) throws SQLException {

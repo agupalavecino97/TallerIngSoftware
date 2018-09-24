@@ -1,9 +1,11 @@
-<<<<<<< Updated upstream
-
 package corralon.DAO.mysql;
+
+
 import corralon.DAO.proveedorDAO;
 import corralon.modelos.proveedor;
+import corralon.modelos.stock;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,11 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-/**
- *
- * @author ORELLANO
- */
-public class MySQLProveedorDAO {
+
+
+public class MySQLProveedorDAO implements proveedorDAO{
     
     
     final String INSERT = "INSERT INTO proveedor(cuitProveedor, nombreProv, direccionProv, telefonoProv, estadoProv) VALUES(?,?,?,?,?)";
@@ -28,9 +28,7 @@ public class MySQLProveedorDAO {
     public MySQLProveedorDAO(Connection con) {
         this.con = con;
      }
-    
-    
-    
+        
 
     public void insertar(proveedor a) {
         PreparedStatement stat=null;
@@ -184,52 +182,6 @@ public class MySQLProveedorDAO {
                     Logger.getLogger(MySQLProveedorDAO.class.getName()).log(Level.SEVERE, null, ex);
                 } 
              }
-    return a;
-=======
-package corralon.DAO.mysql;
-
-import corralon.DAO.proveedorDAO;
-import corralon.modelos.proveedor;
-import java.sql.Connection;
-import java.util.List;
-
-
-public class MySQLProveedorDAO implements proveedorDAO{
-    private final Connection con;
-    final String INSERT="INSERT INTO proveedor(cuitProveedor, nombreProv, direccionProv, telefonoProv, estadoProv) VALUES(?,?,?,?,?)";
-    final String UPDATE="UPDATE proveedor SET cuitProveedor=?, nombreProv=?, direccionProv=?, telefonoProv=?, estadoProv=? WHERE cuitProveedor=?";
-    final String DELETE="DELETE FROM proveedor WHERE cuitProveedor=?";
-    final String GETALL="SELECT cuitProveedor, nombreProv, direccionProv, telefonoProv, estadoProv FROM proveedor";
-    final String GETONE="SELECT cuitProveedor, nombreProv, direccionProv, telefonoProv, estadoProv FROM proveedro WHERE cuitProveedor=?";
-    
-    public MySQLProveedorDAO(Connection con)
-    {
-        this.con=con;
+    return a;  
     }
-    @Override
-    public void insertar(proveedor a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void modificar(proveedor a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void eliminar(proveedor a) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<proveedor> obtenerTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public proveedor obtener(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
->>>>>>> Stashed changes
-    }
-    
 }

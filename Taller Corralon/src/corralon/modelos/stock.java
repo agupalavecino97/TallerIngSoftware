@@ -3,28 +3,20 @@ package corralon.modelos;
 
 
 public class stock {
-    private Long codigoMaterial=null;    
+    private Long idMaterial=null;
+    private int codMaterial;    
     private String nombreMaterial;
+    private float precio;
     private String descripcionMaterial;
     private int cantidadExistente;
     private int stockMinimo;
     private int stockMaximo;
     private boolean estadoMaterial;
 
-  
-     public stock() {
-        
-        this.nombreMaterial = null;
-        this.descripcionMaterial = null;
-        this.cantidadExistente = 0;
-        this.stockMinimo = 0;
-        this.stockMaximo = 0;
-        this.estadoMaterial = false;
-    }
-
-    public stock( String nombreMaterial, String descripcionMaterial, int cantidadExistente, int stockMinimo, int stockMaximo, boolean estadoMaterial) {
-        
+    public stock(int codMaterial, String nombreMaterial, float precio, String descripcionMaterial, int cantidadExistente, int stockMinimo, int stockMaximo, boolean estadoMaterial) {
+        this.codMaterial = codMaterial;
         this.nombreMaterial = nombreMaterial;
+        this.precio = precio;
         this.descripcionMaterial = descripcionMaterial;
         this.cantidadExistente = cantidadExistente;
         this.stockMinimo = stockMinimo;
@@ -32,12 +24,22 @@ public class stock {
         this.estadoMaterial = estadoMaterial;
     }
 
-    public Long getCodigoMaterial() {
-        return codigoMaterial;
+    
+
+    public Long getIdMaterial() {
+        return idMaterial;
+    }
+
+    public int getCodMaterial() {
+        return codMaterial;
     }
 
     public String getNombreMaterial() {
         return nombreMaterial;
+    }
+
+    public float getPrecio() {
+        return precio;
     }
 
     public String getDescripcionMaterial() {
@@ -60,12 +62,20 @@ public class stock {
         return estadoMaterial;
     }
 
-    public void setCodigoMaterial(Long codigoMaterial) {
-        this.codigoMaterial = codigoMaterial;
+    public void setIdMaterial(Long idMaterial) {
+        this.idMaterial = idMaterial;
+    }
+
+    public void setCodMaterial(int codMaterial) {
+        this.codMaterial = codMaterial;
     }
 
     public void setNombreMaterial(String nombreMaterial) {
         this.nombreMaterial = nombreMaterial;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
 
     public void setDescripcionMaterial(String descripcionMaterial) {
@@ -90,8 +100,8 @@ public class stock {
 
     @Override
     public String toString() {
-        return "stock{" + "codigoMaterial=" + codigoMaterial + ", nombreMaterial=" + nombreMaterial + ", descripcionMaterial=" + descripcionMaterial + ", cantidadExistente=" + cantidadExistente + ", stockMinimo=" + stockMinimo + ", stockMaximo=" + stockMaximo + ", estadoMaterial=" + estadoMaterial + '}';
+        return "stock{" + "idMaterial=" + idMaterial + ", codMaterial=" + codMaterial + ", nombreMaterial=" + nombreMaterial + ", precio=" + precio + ", descripcionMaterial=" + descripcionMaterial + ", cantidadExistente=" + cantidadExistente + ", stockMinimo=" + stockMinimo + ", stockMaximo=" + stockMaximo + ", estadoMaterial=" + estadoMaterial + '}';
     }
-    
+
     
 }
