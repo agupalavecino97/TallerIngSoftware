@@ -173,7 +173,7 @@ public class MySQLMaterialDAO implements materialDAO{
         stock a=null;
         try{
             stat=con.prepareStatement(GETONE);  
-            stat.setInt(1,id);
+            stat.setInt(1,id.intValue());
             rs=stat.executeQuery();
             if(rs.next()){
                 a=convertir(rs);
