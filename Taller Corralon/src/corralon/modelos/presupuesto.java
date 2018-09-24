@@ -5,21 +5,21 @@ import java.sql.Date;
 
 public class presupuesto {
     
-    private int codigoPedidoClie;
+    private Long codigoPedidoClie;
     private int dniCliente;
     private Date fechaPresupuesto;
 
-    public presupuesto(int codigoPedidoClie, int dniCliente, Date fechaPresupuesto) {
+    public presupuesto(Long codigoPedidoClie, int dniCliente, Date fechaPresupuesto) {
         this.codigoPedidoClie = codigoPedidoClie;
         this.dniCliente = dniCliente;
         this.fechaPresupuesto = fechaPresupuesto;
     }
 
-    public int getCodigoPedidoClie() {
+    public Long getCodigoPedidoClie() {
         return codigoPedidoClie;
     }
 
-    public void setCodigoPedidoClie(int codigoPedidoClie) {
+    public void setCodigoPedidoClie(Long codigoPedidoClie) {
         this.codigoPedidoClie = codigoPedidoClie;
     }
 

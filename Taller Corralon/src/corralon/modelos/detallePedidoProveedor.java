@@ -1,14 +1,14 @@
 package corralon.modelos;
 
 public class detallePedidoProveedor {
-    private int codigoPedidoProveedor;
+    private Long codigoPedidoProveedor;
     private int codigoMaterial;    
     private int cantidadSolicitada;
     private float precioActual;
     private float subtotalPedidoProveedor;
 
 
-    public detallePedidoProveedor(int codigoPedidoProveedor, int codigoMaterial, int cantidadSolicitada, float precioActual, float subtotalPedidoProveedor) {
+    public detallePedidoProveedor(Long codigoPedidoProveedor, int codigoMaterial, int cantidadSolicitada, float precioActual, float subtotalPedidoProveedor) {
         this.codigoPedidoProveedor = codigoPedidoProveedor;
         this.codigoMaterial = codigoMaterial;
         this.cantidadSolicitada = cantidadSolicitada;
@@ -16,7 +16,7 @@ public class detallePedidoProveedor {
         this.subtotalPedidoProveedor = subtotalPedidoProveedor;
     }
 
-    public int getCodigoPedidoProveedor() {
+    public Long getCodigoPedidoProveedor() {
         return codigoPedidoProveedor;
     }
 
@@ -36,7 +36,7 @@ public class detallePedidoProveedor {
         return subtotalPedidoProveedor;
     }
 
-    public void setCodigoPedidoProveedor(int codigoPedidoProveedor) {
+    public void setCodigoPedidoProveedor(Long codigoPedidoProveedor) {
         this.codigoPedidoProveedor = codigoPedidoProveedor;
     }
 

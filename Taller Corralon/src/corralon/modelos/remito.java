@@ -2,19 +2,19 @@
 package corralon.modelos;
 
 public class remito {
-    private int cuitProveedor;
+    private Long cuitProveedor;
     private int codigoPedidoProveedor;
     private float subtotalRemito;
     private float totalRemito;
 
-    public remito(int cuitProveedor, int codigoPedidoProveedor, float subtotalRemito, float totalRemito) {
+    public remito(Long cuitProveedor, int codigoPedidoProveedor, float subtotalRemito, float totalRemito) {
         this.cuitProveedor = cuitProveedor;
         this.codigoPedidoProveedor = codigoPedidoProveedor;
         this.subtotalRemito = subtotalRemito;
         this.totalRemito = totalRemito;
     }
 
-    public int getCuitProveedor() {
+    public Long getCuitProveedor() {
         return cuitProveedor;
     }
 
@@ -30,7 +30,7 @@ public class remito {
         return totalRemito;
     }
 
-    public void setCuitProveedor(int cuitProveedor) {
+    public void setCuitProveedor(Long cuitProveedor) {
         this.cuitProveedor = cuitProveedor;
     }
 

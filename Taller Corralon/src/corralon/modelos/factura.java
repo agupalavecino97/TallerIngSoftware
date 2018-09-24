@@ -4,23 +4,23 @@ import java.sql.Date;
 
 public class factura {
  
-    private int codigoFactura;
+    private Long codigoFactura;
     private Date fechaFactura;
     private int codigoPedidoClie;
     private int estadoFactura;
 
-    public factura(int codigoFactura, Date fechaFactura, int codigoPedidoClie, int estadoFactura) {
+    public factura(Long codigoFactura, Date fechaFactura, int codigoPedidoClie, int estadoFactura) {
         this.codigoFactura = codigoFactura;
         this.fechaFactura = fechaFactura;
         this.codigoPedidoClie = codigoPedidoClie;
         this.estadoFactura = estadoFactura;
     }
 
-    public int getCodigoFactura() {
+    public Long getCodigoFactura() {
         return codigoFactura;
     }
 
-    public void setCodigoFactura(int codigoFactura) {
+    public void setCodigoFactura(Long codigoFactura) {
         this.codigoFactura = codigoFactura;
     }
 

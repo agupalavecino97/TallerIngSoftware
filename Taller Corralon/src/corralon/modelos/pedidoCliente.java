@@ -5,23 +5,23 @@ import java.sql.Date;
 
 public class pedidoCliente {
     
-    private int codigoPedidoClie;
+    private Long codigoPedidoClie;
     private int dniCliente;
     private Date fechaPedidoClie;
     private float totalPedidoClie;
 
-    public pedidoCliente(int codigoPedidoClie, int dniCliente, Date fechaPedidoClie, float totalPedidoClie) {
+    public pedidoCliente(Long codigoPedidoClie, int dniCliente, Date fechaPedidoClie, float totalPedidoClie) {
         this.codigoPedidoClie = codigoPedidoClie;
         this.dniCliente = dniCliente;
         this.fechaPedidoClie = fechaPedidoClie;
         this.totalPedidoClie = totalPedidoClie;
     }
 
-    public int getCodigoPedidoClie() {
+    public Long getCodigoPedidoClie() {
         return codigoPedidoClie;
     }
 
-    public void setCodigoPedidoClie(int codigoPedidoClie) {
+    public void setCodigoPedidoClie(Long codigoPedidoClie) {
         this.codigoPedidoClie = codigoPedidoClie;
     }
 

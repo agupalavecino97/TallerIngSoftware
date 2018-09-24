@@ -4,19 +4,19 @@ import java.sql.Date;
 
 
 public class catalogo{
-    private int cuitProveedor;
+    private Long cuitProveedor;
     private int codProductoCatalogo;
     private float precioUnitario;
     private Date fechaVigencia;   
 
-    public catalogo(int cuitProveedor, int codProductoCatalogo, float precioUnitario, Date fechaVigencia) {
+    public catalogo(Long cuitProveedor, int codProductoCatalogo, float precioUnitario, Date fechaVigencia) {
         this.cuitProveedor = cuitProveedor;
         this.codProductoCatalogo = codProductoCatalogo;
         this.precioUnitario = precioUnitario;
         this.fechaVigencia = fechaVigencia;
     }
 
-    public int getCuitProveedor() {
+    public Long getCuitProveedor() {
         return cuitProveedor;
     }
 
@@ -32,7 +32,7 @@ public class catalogo{
         return fechaVigencia;
     }
 
-    public void setCuitProveedor(int cuitProveedor) {
+    public void setCuitProveedor(Long cuitProveedor) {
         this.cuitProveedor = cuitProveedor;
     }
 

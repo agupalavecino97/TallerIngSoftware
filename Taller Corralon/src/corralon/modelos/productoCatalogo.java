@@ -2,19 +2,19 @@
 package corralon.modelos;
 
 class productoCatalogo{
-      private int codProductoCatalogo;
+      private Long codProductoCatalogo;
       private String nombreProcudcoCatalogo;
       private String descripcionPorductoCatalogo;
       private String tipoProductoCatalogo;
 
-    public productoCatalogo(int codProductoCatalogo, String nombreProcudcoCatalogo, String descripcionPorductoCatalogo, String tipoProductoCatalogo) {
+    public productoCatalogo(Long codProductoCatalogo, String nombreProcudcoCatalogo, String descripcionPorductoCatalogo, String tipoProductoCatalogo) {
         this.codProductoCatalogo = codProductoCatalogo;
         this.nombreProcudcoCatalogo = nombreProcudcoCatalogo;
         this.descripcionPorductoCatalogo = descripcionPorductoCatalogo;
         this.tipoProductoCatalogo = tipoProductoCatalogo;
     }
 
-    public int getCodProductoCatalogo() {
+    public Long getCodProductoCatalogo() {
         return codProductoCatalogo;
     }
 
@@ -30,7 +30,7 @@ class productoCatalogo{
         return tipoProductoCatalogo;
     }
 
-    public void setCodProductoCatalogo(int codProductoCatalogo) {
+    public void setCodProductoCatalogo(Long codProductoCatalogo) {
         this.codProductoCatalogo = codProductoCatalogo;
     }
 

@@ -3,23 +3,23 @@ package corralon.modelos;
 
 public class pedidoMaterial {
     
-    private int codigoPedidoClie;
+    private Long codigoPedidoClie;
     private int codigoPedidoMaterial;
     private int cantidadMaterial;
     private float subTotalMat;
 
-    public pedidoMaterial(int codigoPedidoClie, int codigoPedidoMaterial, int cantidadMaterial, float subTotalMat) {
+    public pedidoMaterial(Long codigoPedidoClie, int codigoPedidoMaterial, int cantidadMaterial, float subTotalMat) {
         this.codigoPedidoClie = codigoPedidoClie;
         this.codigoPedidoMaterial = codigoPedidoMaterial;
         this.cantidadMaterial = cantidadMaterial;
         this.subTotalMat = subTotalMat;
     }
 
-    public int getCodigoPedidoClie() {
+    public Long getCodigoPedidoClie() {
         return codigoPedidoClie;
     }
 
-    public void setCodigoPedidoClie(int codigoPedidoClie) {
+    public void setCodigoPedidoClie(Long codigoPedidoClie) {
         this.codigoPedidoClie = codigoPedidoClie;
     }
 
