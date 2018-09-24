@@ -1,5 +1,5 @@
 
-package corralon.vistas;
+package corralon.vistas.clientes;
 
 import corralon.DAO.DAOManager;
 import corralon.DAO.mysql.MySQLDAOManager;
@@ -43,7 +43,7 @@ public class ListaClientes extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        detalleCliente1 = new corralon.vistas.detalleCliente();
+        detalleCliente1 = new corralon.vistas.clientes.detalleCliente();
         jPanel1 = new javax.swing.JPanel();
         toolbar = new javax.swing.JToolBar();
         añadir = new javax.swing.JButton();
@@ -54,7 +54,7 @@ public class ListaClientes extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
-        detalle = new corralon.vistas.detalleCliente();
+        detalle = new corralon.vistas.clientes.detalleCliente();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -272,8 +272,8 @@ public class ListaClientes extends javax.swing.JFrame {
     private javax.swing.JTable Tabla;
     private javax.swing.JButton añadir;
     private javax.swing.JButton cancelar;
-    private corralon.vistas.detalleCliente detalle;
-    private corralon.vistas.detalleCliente detalleCliente1;
+    private corralon.vistas.clientes.detalleCliente detalle;
+    private corralon.vistas.clientes.detalleCliente detalleCliente1;
     private javax.swing.JButton eliminar;
     private javax.swing.JButton guardar;
     private javax.swing.JMenu jMenu1;

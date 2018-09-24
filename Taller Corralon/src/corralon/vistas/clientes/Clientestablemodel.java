@@ -1,5 +1,5 @@
 
-package corralon.vistas;
+package corralon.vistas.clientes;
 
 import corralon.DAO.clienteDAO;
 import corralon.modelos.cliente;

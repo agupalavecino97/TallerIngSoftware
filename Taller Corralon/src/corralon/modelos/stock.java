@@ -24,8 +24,7 @@ public class stock {
         this.stockMaximo = stockMaximo;
         this.estadoMaterial = estadoMaterial;
     }
-
-    public stock(int codMaterial, String nombreMaterial, float precio, String descripcionMaterial, int cantidadExistente, int stockMinimo, int stockMaximo, boolean estadoMaterial) {
+    public stock( int codMaterial, String nombreMaterial, float precio, String descripcionMaterial, int cantidadExistente, int stockMinimo, int stockMaximo, boolean estadoMaterial) {
         this.codMaterial = codMaterial;
         this.nombreMaterial = nombreMaterial;
         this.precio = precio;
@@ -35,6 +34,18 @@ public class stock {
         this.stockMaximo = stockMaximo;
         this.estadoMaterial = estadoMaterial;
     }
+
+    public stock() {
+        this.nombreMaterial = "";
+        this.precio = 0;
+        this.descripcionMaterial = "";
+        this.cantidadExistente = 0;
+        this.stockMinimo = 0;
+        this.stockMaximo = 0;    
+    }
+
+    
+    
 
    
     

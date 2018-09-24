@@ -21,7 +21,7 @@ public class MySQLMaterialDAO implements materialDAO{
     //final String DELETE="UPDATE stcok set estado=false WHERE codigoMaterial=?";
     final String UPDATE="UPDATE stock SET codMat=?,nombreMat=?, precio=?, descripcionMat=?, cantExistente=?, stockMinimo=?, stockMax=?, estadoMat=?";
     final String GETALL="SELECT codMat,nombreMat,precio,descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat FROM stock";
-    final String GETONE="SELECT codMat,nombreMat,precio, descripcionMat, cantdExistente, stockMinimo, stockMax, estadoMat FROM stock WHERE IDMaterial=?";
+    final String GETONE="SELECT codMat,nombreMat,precio, descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat FROM stock WHERE IDMaterial=?";
 
     private final Connection con;
     
@@ -200,28 +200,65 @@ public class MySQLMaterialDAO implements materialDAO{
 
 
 
- public static void main(String[]args) throws SQLException{
-    String driver = "com.mysql.jdbc.Driver";
-    String database = "taller";
-    String hostname = "localhost";
-    String port = "3306";
-    String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database + "?useSSL=false";
-    Connection con=null;
-    con=DriverManager.getConnection(url,"root","root");
-    MySQLMaterialDAO dao =new MySQLMaterialDAO(con);
-    
-    //stock a=new stock(4578,"calerczxer", (float) 10.0,"descripcion de la cal",500,10,10000,true);  
-    //dao.eliminar(a);
+// public static void main(String[]args) throws SQLException{
+//    String driver = "com.mysql.jdbc.Driver";
+//    String database = "taller";
+//    String hostname = "localhost";
+//    String port = "3306";
+//    String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database + "?useSSL=false";
+//    Connection con=null;
+//    con=DriverManager.getConnection(url,"root","root");
+//    MySQLMaterialDAO dao =new MySQLMaterialDAO(con);
+//    
+//    //stock a=new stock(4578,"calerczxer", (float) 10.0,"descripcion de la cal",500,10,10000,true);  
+//    //dao.eliminar(a);
+//
+//    
+//     List<stock> materiales=dao.obtenerTodos();        
+//    for(stock c :materiales){
+//        System.out.println(c.toString());
+//    }     
+////        materiales.forEach((c) -> {
+////            System.out.println(c.toString());
+////        });     
+// } 
 
     
-     List<stock> materiales=dao.obtenerTodos();        
-    for(stock c :materiales){
-        System.out.println(c.toString());
-    }     
-//        materiales.forEach((c) -> {
-//            System.out.println(c.toString());
-//        });     
- } 
+final String GETONEwhitCODE="SELECT codMat,nombreMat,precio, descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat FROM stock WHERE codMat=?";
+
+    
+    @Override
+    public stock obtenerconcodigo(int id) {
+        PreparedStatement stat=null;
+        ResultSet rs=null;
+        stock a=null;
+        try{
+            stat=con.prepareStatement(GETONEwhitCODE);  
+            stat.setInt(1,id);
+            rs=stat.executeQuery();
+            if(rs.next()){
+                a=convertir(rs);
+        }else{
+                System.out.println("NO se encontro ese registro");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally{
+                if (rs != null)
+                    try {
+                        rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+                } 
+                if (stat != null)
+                    try {
+                        stat.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+                } 
+             }
+    return a;    
+    }
 
 
 }

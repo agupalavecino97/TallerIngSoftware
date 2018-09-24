@@ -1,5 +1,5 @@
 
-package corralon.vistas;
+package corralon.vistas.clientes;
 import corralon.modelos.cliente;
 import java.text.ParseException;
 
