@@ -3,7 +3,7 @@ package corralon.modelos;
 
 
 public class stock {
-    private Long idMaterial=null;
+    private Long idMaterial;
     private int codMaterial;    
     private String nombreMaterial;
     private float precio;
@@ -12,6 +12,18 @@ public class stock {
     private int stockMinimo;
     private int stockMaximo;
     private boolean estadoMaterial;
+
+    public stock(Long idMaterial, int codMaterial, String nombreMaterial, float precio, String descripcionMaterial, int cantidadExistente, int stockMinimo, int stockMaximo, boolean estadoMaterial) {
+        this.idMaterial = idMaterial;
+        this.codMaterial = codMaterial;
+        this.nombreMaterial = nombreMaterial;
+        this.precio = precio;
+        this.descripcionMaterial = descripcionMaterial;
+        this.cantidadExistente = cantidadExistente;
+        this.stockMinimo = stockMinimo;
+        this.stockMaximo = stockMaximo;
+        this.estadoMaterial = estadoMaterial;
+    }
 
     public stock(int codMaterial, String nombreMaterial, float precio, String descripcionMaterial, int cantidadExistente, int stockMinimo, int stockMaximo, boolean estadoMaterial) {
         this.codMaterial = codMaterial;
@@ -24,6 +36,7 @@ public class stock {
         this.estadoMaterial = estadoMaterial;
     }
 
+   
     
 
     public Long getIdMaterial() {
@@ -100,7 +113,7 @@ public class stock {
 
     @Override
     public String toString() {
-        return "stock{" + "idMaterial=" + idMaterial + ", codMaterial=" + codMaterial + ", nombreMaterial=" + nombreMaterial + ", precio=" + precio + ", descripcionMaterial=" + descripcionMaterial + ", cantidadExistente=" + cantidadExistente + ", stockMinimo=" + stockMinimo + ", stockMaximo=" + stockMaximo + ", estadoMaterial=" + estadoMaterial + '}';
+        return "stock{" + "codMaterial=" + codMaterial + ", nombreMaterial=" + nombreMaterial + ", precio=" + precio + ", descripcionMaterial=" + descripcionMaterial + ", cantidadExistente=" + cantidadExistente + ", stockMinimo=" + stockMinimo + ", stockMaximo=" + stockMaximo + '}';
     }
 
     
