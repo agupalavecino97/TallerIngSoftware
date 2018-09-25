@@ -3,8 +3,7 @@ package corralon.modelos;
 
 
 public class stock {
-    private Long idMaterial;
-    private int codMaterial;    
+    private Long codMaterial;    
     private String nombreMaterial;
     private float precio;
     private String descripcionMaterial;
@@ -13,8 +12,7 @@ public class stock {
     private int stockMaximo;
     private boolean estadoMaterial;
 
-    public stock(Long idMaterial, int codMaterial, String nombreMaterial, float precio, String descripcionMaterial, int cantidadExistente, int stockMinimo, int stockMaximo, boolean estadoMaterial) {
-        this.idMaterial = idMaterial;
+    public stock(Long codMaterial, String nombreMaterial, float precio, String descripcionMaterial, int cantidadExistente, int stockMinimo, int stockMaximo, boolean estadoMaterial) {     
         this.codMaterial = codMaterial;
         this.nombreMaterial = nombreMaterial;
         this.precio = precio;
@@ -24,18 +22,9 @@ public class stock {
         this.stockMaximo = stockMaximo;
         this.estadoMaterial = estadoMaterial;
     }
-    public stock( int codMaterial, String nombreMaterial, float precio, String descripcionMaterial, int cantidadExistente, int stockMinimo, int stockMaximo, boolean estadoMaterial) {
-        this.codMaterial = codMaterial;
-        this.nombreMaterial = nombreMaterial;
-        this.precio = precio;
-        this.descripcionMaterial = descripcionMaterial;
-        this.cantidadExistente = cantidadExistente;
-        this.stockMinimo = stockMinimo;
-        this.stockMaximo = stockMaximo;
-        this.estadoMaterial = estadoMaterial;
-    }
-
+    
     public stock() {
+        this.codMaterial=null;
         this.nombreMaterial = "";
         this.precio = 0;
         this.descripcionMaterial = "";
@@ -44,20 +33,10 @@ public class stock {
         this.stockMaximo = 0;    
     }
 
-    
-    
-
-   
-    
-
-    public Long getIdMaterial() {
-        return idMaterial;
-    }
-
-    public int getCodMaterial() {
+    public Long getCodMaterial() {
         return codMaterial;
     }
-
+  
     public String getNombreMaterial() {
         return nombreMaterial;
     }
@@ -86,11 +65,7 @@ public class stock {
         return estadoMaterial;
     }
 
-    public void setIdMaterial(Long idMaterial) {
-        this.idMaterial = idMaterial;
-    }
-
-    public void setCodMaterial(int codMaterial) {
+    public void setCodMaterial(Long codMaterial) {
         this.codMaterial = codMaterial;
     }
 

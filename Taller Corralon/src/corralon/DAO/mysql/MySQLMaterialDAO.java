@@ -16,12 +16,12 @@ import java.util.logging.Logger;
 
 public class MySQLMaterialDAO implements materialDAO{
     
-    final String INSERT="INSERT INTO stock(codMat, nombreMat,precio, descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat) VALUES (?,?,?,?,?,?,?,?)";
-    final String DELETE="DELETE FROM stock WHERE IDMaterial=?";
+    final String INSERT="INSERT INTO stock(codMaterial, nombreMat,precio, descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat) VALUES (?,?,?,?,?,?,?,?)";
+    final String DELETE="DELETE FROM stock WHERE codMaterial=?";
     //final String DELETE="UPDATE stcok set estado=false WHERE codigoMaterial=?";
-    final String UPDATE="UPDATE stock SET codMat=?,nombreMat=?, precio=?, descripcionMat=?, cantExistente=?, stockMinimo=?, stockMax=?, estadoMat=?";
-    final String GETALL="SELECT codMat,nombreMat,precio,descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat FROM stock";
-    final String GETONE="SELECT codMat,nombreMat,precio, descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat FROM stock WHERE IDMaterial=?";
+    final String UPDATE="UPDATE stock SET codMaterial=?,nombreMat=?, precio=?, descripcionMat=?, cantExistente=?, stockMinimo=?, stockMax=?, estadoMat=?";
+    final String GETALL="SELECT codMaterial,nombreMat,precio,descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat FROM stock";
+    final String GETONE="SELECT codMaterial,nombreMat,precio, descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat FROM stock WHERE codMaterial=?";
 
     private final Connection con;
     
@@ -35,7 +35,7 @@ public class MySQLMaterialDAO implements materialDAO{
         ResultSet rs=null;
         try{
             stat=con.prepareStatement(INSERT);
-            stat.setInt(1,a.getCodMaterial());
+            stat.setLong(1,a.getCodMaterial());
             stat.setString(2,a.getNombreMaterial());
             stat.setFloat(3,a.getPrecio());
             stat.setString(4,a.getDescripcionMaterial());
@@ -76,7 +76,7 @@ public class MySQLMaterialDAO implements materialDAO{
                 PreparedStatement stat=null;
         try{
             stat=con.prepareStatement(UPDATE); 
-            stat.setInt(1,a.getCodMaterial());
+            stat.setLong(1,a.getCodMaterial());
             stat.setString(2,a.getNombreMaterial());
             stat.setFloat(3,a.getPrecio());
             stat.setString(4,a.getDescripcionMaterial());
@@ -104,7 +104,7 @@ public class MySQLMaterialDAO implements materialDAO{
               PreparedStatement stat=null;
         try{
             stat=con.prepareStatement(DELETE);  
-            stat.setLong(1,a.getIdMaterial());
+            stat.setLong(1,a.getCodMaterial());
             if(stat.executeUpdate()==0){
                 System.out.println("Quizas no se guardo correctamente gg");
             } 
@@ -121,7 +121,7 @@ public class MySQLMaterialDAO implements materialDAO{
     }
 
     private stock convertir(ResultSet rs)throws SQLException {
-          int codigo=rs.getInt("codMat");
+          Long codigo=rs.getLong("codMat");
           String nombre=rs.getString("nombreMat");
           float precio=rs.getFloat("precio");
           String descripcion=rs.getString("descripcionMat");
@@ -171,7 +171,7 @@ public class MySQLMaterialDAO implements materialDAO{
         stock a=null;
         try{
             stat=con.prepareStatement(GETONE);  
-            stat.setInt(1,id.intValue());
+            stat.setLong(1,id);
             rs=stat.executeQuery();
             if(rs.next()){
                 a=convertir(rs);
@@ -223,43 +223,7 @@ public class MySQLMaterialDAO implements materialDAO{
 ////        });     
 // } 
 
-    
-final String GETONEwhitCODE="SELECT codMat,nombreMat,precio, descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat FROM stock WHERE codMat=?";
-
-    
-    @Override
-    public stock obtenerconcodigo(int id) {
-        PreparedStatement stat=null;
-        ResultSet rs=null;
-        stock a=null;
-        try{
-            stat=con.prepareStatement(GETONEwhitCODE);  
-            stat.setInt(1,id);
-            rs=stat.executeQuery();
-            if(rs.next()){
-                a=convertir(rs);
-        }else{
-                System.out.println("NO se encontro ese registro");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
-            } finally{
-                if (rs != null)
-                    try {
-                        rs.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
-                } 
-                if (stat != null)
-                    try {
-                        stat.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
-                } 
-             }
-    return a;    
-    }
-
-
+   
+   
 }
  
