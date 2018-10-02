@@ -198,7 +198,7 @@ public class MySQLClienteDAO implements clienteDAO{
     con=DriverManager.getConnection(url,"root","root");
     MySQLClienteDAO dao=new MySQLClienteDAO(con);
     
-   
+    
      cliente a=new cliente(45,"pepo","dirpepo", 456,true);
      dao.eliminar(a);
      List<cliente> clientes=dao.obtenerTodos(); 

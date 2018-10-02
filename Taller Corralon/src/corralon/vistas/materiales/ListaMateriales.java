@@ -5,7 +5,10 @@ import corralon.DAO.DAOManager;
 import corralon.DAO.mysql.MySQLDAOManager;
 import corralon.modelos.stock;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class ListaMateriales extends javax.swing.JFrame {
@@ -168,15 +171,28 @@ public class ListaMateriales extends javax.swing.JFrame {
     }//GEN-LAST:event_añadirActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        detalleMateriales1.saveData();
+       
+        
+      try {
+          detalleMateriales1.saveData();
+      } catch (ParseException ex) {
+          Logger.getLogger(ListaMateriales.class.getName()).log(Level.SEVERE, null, ex);
+      }
         stock material=detalleMateriales1.getMaterial();
-        stock control=manager.getmaterialDao().obtener(material.getCodMaterial());
-        if(control==null){
-            manager.getmaterialDao().insertar(material);          
-        }
-        else{
-            manager.getmaterialDao().modificar(material);
-        }
+        Long a=Long.parseLong(String.valueOf(3));
+        Long b=Long.parseLong(String.valueOf(2));
+        Long c=Long.parseLong(String.valueOf(2));
+        Long d=Long.parseLong(String.valueOf(2));
+        Long e=Long.parseLong(String.valueOf(2));
+        stock g=new stock(a,"nombremodificado",b,"deascr",c,d,e,true);
+        manager.getmaterialDao().insertar(material);
+//        stock control=manager.getmaterialDao().obtener(material.getCodMaterial());
+//        if(control==null){
+//            manager.getmaterialDao().insertar(material);          
+//        }
+//        else{
+//            manager.getmaterialDao().modificar(material);
+//        }
         //para que se limpie todo
        detalleMateriales1.setMaterial(null);
        detalleMateriales1.setEditable(false);

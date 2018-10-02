@@ -2,6 +2,7 @@
 package corralon.vistas.materiales;
 
 import corralon.modelos.stock;
+import java.text.ParseException;
 
 
 public class detalleMateriales extends javax.swing.JPanel {
@@ -54,7 +55,7 @@ public class detalleMateriales extends javax.swing.JPanel {
         }        
     }
      
-    public void saveData(){
+    public void saveData()throws ParseException{
        if(material==null) {
            material=new stock();        
        }

@@ -11,6 +11,8 @@ public class stock {
     private Long stockMinimo;
     private Long stockMaximo;
     private boolean estadoMaterial;
+    
+    
 
     public stock(Long codMaterial, String nombreMaterial, Long precio, String descripcionMaterial, Long cantidadExistente, Long stockMinimo, Long stockMaximo, boolean estadoMaterial) {     
         this.codMaterial = codMaterial;

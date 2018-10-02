@@ -194,6 +194,7 @@ public class MySQLMaterialDAO implements materialDAO{
                     Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
                 } 
              }
+           System.out.println(a);
     return a;    
     }
     
@@ -207,14 +208,20 @@ public class MySQLMaterialDAO implements materialDAO{
 //    Connection con=null;
 //    con=DriverManager.getConnection(url,"root","root");
 //    MySQLMaterialDAO dao =new MySQLMaterialDAO(con);
-//    
-//    //stock a=new stock(4578,"calerczxer", (float) 10.0,"descripcion de la cal",500,10,10000,true);  
-//    //dao.eliminar(a);
-//    
-//     List<stock> materiales=dao.obtenerTodos();        
-//    for(stock c :materiales){
-//        System.out.println(c.toString());
-//    }     
+//    //Long l = Long.parseLong(String.valueOf(1));
+//     Long a=Long.parseLong(String.valueOf(2));
+//     Long b=Long.parseLong(String.valueOf(2));
+//     Long c=Long.parseLong(String.valueOf(2));
+//     Long d=Long.parseLong(String.valueOf(2));
+//     Long e=Long.parseLong(String.valueOf(2));
+//     stock g=new stock(a,"nombremodificado",b,"deascr",c,d,e,true);
+//     //dao.insertar(g); 
+//     dao.modificar(g);
+////      
+////     List<stock> materiales=dao.obtenerTodos();        
+////    for(stock c :materiales){
+////        System.out.println(c.toString());
+////    }     
 ////        materiales.forEach((c) -> {
 ////            System.out.println(c.toString());
 ////        });     
