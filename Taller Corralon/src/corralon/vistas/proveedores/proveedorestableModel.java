@@ -19,6 +19,7 @@ public class proveedorestableModel extends AbstractTableModel{
             datos=proveedor.obtenerTodos();
     }
     
+    @Override
     public String getColumnName(int i) {
         switch(i){
             case 0:return "cuitCliente";
