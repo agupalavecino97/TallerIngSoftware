@@ -130,9 +130,9 @@ public class ListaMateriales extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(detalleMateriales1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -140,12 +140,11 @@ public class ListaMateriales extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(detalleMateriales1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 88, Short.MAX_VALUE)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(detalleMateriales1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -155,10 +154,8 @@ public class ListaMateriales extends javax.swing.JFrame {
 
     
     private stock getMaterialSeleccionado(){
-        int id=(int) tabla.getValueAt(tabla.getSelectedRow(),0);   
-        //este metodo obtenerconcodigo permite obtener todo el objeto partir de el codigo de producto y no del id interno de la bd
-        //posiblemente este mal implementado pero al no contar con el id interno en la tabla no se puede usar el metodo obtener()
-        return manager.getmaterialDao().obtenerconcodigo(id);
+        Long id=(Long) tabla.getValueAt(tabla.getSelectedRow(),0);   
+        return manager.getmaterialDao().obtener(id);
     } 
     
     
@@ -173,7 +170,7 @@ public class ListaMateriales extends javax.swing.JFrame {
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
         detalleMateriales1.saveData();
         stock material=detalleMateriales1.getMaterial();
-        stock control=manager.getmaterialDao().obtener(material.getIdMaterial());
+        stock control=manager.getmaterialDao().obtener(material.getCodMaterial());
         if(control==null){
             manager.getmaterialDao().insertar(material);          
         }

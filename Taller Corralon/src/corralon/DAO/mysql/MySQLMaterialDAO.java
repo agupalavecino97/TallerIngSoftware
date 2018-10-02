@@ -121,7 +121,7 @@ public class MySQLMaterialDAO implements materialDAO{
     }
 
     private stock convertir(ResultSet rs)throws SQLException {
-          Long codigo=rs.getLong("codMat");
+          Long codigo=rs.getLong("codMaterial");
           String nombre=rs.getString("nombreMat");
           float precio=rs.getFloat("precio");
           String descripcion=rs.getString("descripcionMat");
@@ -198,8 +198,6 @@ public class MySQLMaterialDAO implements materialDAO{
     }
     
 
-
-
 // public static void main(String[]args) throws SQLException{
 //    String driver = "com.mysql.jdbc.Driver";
 //    String database = "taller";
@@ -212,7 +210,6 @@ public class MySQLMaterialDAO implements materialDAO{
 //    
 //    //stock a=new stock(4578,"calerczxer", (float) 10.0,"descripcion de la cal",500,10,10000,true);  
 //    //dao.eliminar(a);
-//
 //    
 //     List<stock> materiales=dao.obtenerTodos();        
 //    for(stock c :materiales){
@@ -223,7 +220,6 @@ public class MySQLMaterialDAO implements materialDAO{
 ////        });     
 // } 
 
-   
    
 }
  

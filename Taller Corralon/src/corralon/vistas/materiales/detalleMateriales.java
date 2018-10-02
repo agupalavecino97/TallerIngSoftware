@@ -59,9 +59,10 @@ public class detalleMateriales extends javax.swing.JPanel {
            material=new stock();        
        }
        //material.setIdMaterial((Long)id.getValu);
-       material.setCodMaterial((int)codigo.getValue());
+       material.setCodMaterial((Long)codigo.getValue());
        material.setNombreMaterial(nombre.getText());
-       material.setPrecio((float)precio.getValue());
+       
+       material.setPrecio((float) precio.getValue());
        material.setCantidadExistente((int)cantidad.getValue());
        material.setStockMaximo((int)stockmax.getValue());
        material.setStockMinimo((int)stockmin.getValue());
@@ -143,7 +144,7 @@ public class detalleMateriales extends javax.swing.JPanel {
                             .addComponent(jLabel3))
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(codigo, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                            .addComponent(codigo, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
                             .addComponent(nombre)
                             .addComponent(precio)))
                     .addGroup(layout.createSequentialGroup()
