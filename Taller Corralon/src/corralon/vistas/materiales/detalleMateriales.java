@@ -61,8 +61,8 @@ public class detalleMateriales extends javax.swing.JPanel {
        //material.setIdMaterial((Long)id.getValu);
        material.setCodMaterial((Long)codigo.getValue());
        material.setNombreMaterial(nombre.getText());
-       
        material.setPrecio((float) precio.getValue());
+       material.setDescripcionMaterial(descripcion.getText());
        material.setCantidadExistente((int)cantidad.getValue());
        material.setStockMaximo((int)stockmax.getValue());
        material.setStockMinimo((int)stockmin.getValue());
