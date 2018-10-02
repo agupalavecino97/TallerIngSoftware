@@ -3,7 +3,7 @@ package corralon.vistas.clientes;
 import corralon.modelos.cliente;
 import java.text.ParseException;
 
-public class detalleCliente extends javax.swing.JPanel {
+public class DetalleClientes extends javax.swing.JPanel {
 
     private cliente cliente;
     private boolean editable;
@@ -59,7 +59,7 @@ public class detalleCliente extends javax.swing.JPanel {
             
     
     
-    public detalleCliente() {
+    public DetalleClientes() {
         initComponents();
         //cuit.enable(false);
     }

@@ -37,7 +37,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="corralon.vistas.clientes.detalleProveedores" name="detalleCliente1">
+    <Component class="corralon.vistas.clientes.DetalleClientes" name="detalleCliente1">
     </Component>
   </NonVisualComponents>
   <Properties>
@@ -239,7 +239,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="corralon.vistas.clientes.detalleProveedores" name="detalle">
+        <Component class="corralon.vistas.clientes.DetalleClientes" name="detalle">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
               <BorderConstraints direction="After"/>

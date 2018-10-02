@@ -22,7 +22,7 @@ public class proveedorestableModel extends AbstractTableModel{
     @Override
     public String getColumnName(int i) {
         switch(i){
-            case 0:return "cuitCliente";
+            case 0:return "cuitProveedor";
             case 1:return "razonSocial";
             case 2:return "Direccion";
             case 3:return "Telefono";

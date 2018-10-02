@@ -10,12 +10,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class ListaProveedores extends javax.swing.JFrame {
+public class ListaClientes extends javax.swing.JFrame {
 
     private DAOManager manager;
     private Clientestablemodel model;
     
-     public ListaProveedores(DAOManager manager){
+     public ListaClientes(DAOManager manager){
         initComponents();
         this.manager=manager;
         this.model=new Clientestablemodel(manager.getclienteDao());
@@ -43,7 +43,7 @@ public class ListaProveedores extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        detalleCliente1 = new corralon.vistas.clientes.detalleProveedores();
+        detalleCliente1 = new corralon.vistas.clientes.DetalleClientes();
         jPanel1 = new javax.swing.JPanel();
         toolbar = new javax.swing.JToolBar();
         añadir = new javax.swing.JButton();
@@ -54,7 +54,7 @@ public class ListaProveedores extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
-        detalle = new corralon.vistas.clientes.detalleProveedores();
+        detalle = new corralon.vistas.clientes.DetalleClientes();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -218,7 +218,7 @@ public class ListaProveedores extends javax.swing.JFrame {
         try {
             detalle.saveData();
         } catch (ParseException ex) {
-            Logger.getLogger(ListaProveedores.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ListaClientes.class.getName()).log(Level.SEVERE, null, ex);
         }
         cliente c=detalle.getCliente();
         cliente control=manager.getclienteDao().obtener(c.getCuitCliente()); //para controlar si el cliente existe ya comparando el cuit con los existentes en la base de datos, si existte se actualizan los datos si no se inserta un nuevo cliente
@@ -242,7 +242,7 @@ public class ListaProveedores extends javax.swing.JFrame {
 //
 //        DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
 //        java.awt.EventQueue.invokeLater(()-> {        
-//                new ListaProveedores(manager).setVisible(true);
+//                new ListaClientes(manager).setVisible(true);
 //        });
 //    }
 
@@ -250,8 +250,8 @@ public class ListaProveedores extends javax.swing.JFrame {
     private javax.swing.JTable Tabla;
     private javax.swing.JButton añadir;
     private javax.swing.JButton cancelar;
-    private corralon.vistas.clientes.detalleProveedores detalle;
-    private corralon.vistas.clientes.detalleProveedores detalleCliente1;
+    private corralon.vistas.clientes.DetalleClientes detalle;
+    private corralon.vistas.clientes.DetalleClientes detalleCliente1;
     private javax.swing.JButton eliminar;
     private javax.swing.JButton guardar;
     private javax.swing.JMenu jMenu1;

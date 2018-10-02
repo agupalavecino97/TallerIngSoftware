@@ -43,7 +43,7 @@ public class ListaProveedores extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        detalleCliente1 = new corralon.vistas.clientes.detalleProveedores();
+        detalleCliente1 = new corralon.vistas.clientes.DetalleClientes();
         jPanel1 = new javax.swing.JPanel();
         toolbar = new javax.swing.JToolBar();
         añadir = new javax.swing.JButton();
@@ -54,7 +54,7 @@ public class ListaProveedores extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
-        detalle = new corralon.vistas.clientes.detalleProveedores();
+        detalle = new corralon.vistas.clientes.DetalleClientes();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -186,12 +186,12 @@ public class ListaProveedores extends javax.swing.JFrame {
   
     private proveedor getClienteSeleccionado(){
         Long id=(Long) Tabla.getValueAt(Tabla.getSelectedRow(), 0);   
-        return manager.getclienteDao().obtener(id);
+        return manager.getproveedorDao().obtener(id);
     } 
     
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-        cliente cliente=getClienteSeleccionado();
-        detalle.setCliente(cliente);
+        proveedor proveedor=getClienteSeleccionado();
+        detalle.setCliente(proveedor);
         detalle.setEditable(true);
         detalle.loadData();
         guardar.setEnabled(true);
@@ -251,8 +251,8 @@ public class ListaProveedores extends javax.swing.JFrame {
     private javax.swing.JTable Tabla;
     private javax.swing.JButton añadir;
     private javax.swing.JButton cancelar;
-    private corralon.vistas.clientes.detalleProveedores detalle;
-    private corralon.vistas.clientes.detalleProveedores detalleCliente1;
+    private corralon.vistas.clientes.DetalleClientes detalle;
+    private corralon.vistas.clientes.DetalleClientes detalleCliente1;
     private javax.swing.JButton eliminar;
     private javax.swing.JButton guardar;
     private javax.swing.JMenu jMenu1;
