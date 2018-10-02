@@ -1,9 +1,11 @@
     
 package corralon.vistas.proveedores;
 
+// OJO ESTA RECIEN COPIADA DESDE LISTACLIENTES
+import corralon.vistas.clientes.*;
 import corralon.DAO.DAOManager;
 import corralon.DAO.mysql.MySQLDAOManager;
-import corralon.modelos.proveedor;
+import corralon.modelos.cliente;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -13,12 +15,12 @@ import javax.swing.JOptionPane;
 public class ListaProveedores extends javax.swing.JFrame {
 
     private DAOManager manager;
-    private proveedorestableModel model;
+    private Clientestablemodel model;
     
      public ListaProveedores(DAOManager manager){
         initComponents();
         this.manager=manager;
-        this.model=new proveedorestableModel(manager.getproveedorDao());
+        this.model=new Clientestablemodel(manager.getclienteDao());
         this.model.updateModel();
         this.Tabla.setModel(model); 
         //modificar.setEnabled(false);
@@ -173,25 +175,24 @@ public class ListaProveedores extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         if(JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quieres borrar este cliente?","borrar cliente", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==JOptionPane.YES_OPTION){
-            proveedor c=getClienteSeleccionado();
-            manager.getproveedorDao().eliminar(c);            
+            cliente c=getClienteSeleccionado();
+            manager.getclienteDao().eliminar(c);            
         }
        //para actualizar la tabla
        model.updateModel();
        model.fireTableDataChanged();
     }//GEN-LAST:event_eliminarActionPerformed
   
-    private proveedor getClienteSeleccionado(){
+    private cliente getClienteSeleccionado(){
         Long id=(Long) Tabla.getValueAt(Tabla.getSelectedRow(), 0);   
-        return manager.getproveedorDao().obtener(id);
+        return manager.getclienteDao().obtener(id);
     } 
     
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-        proveedor proveedor=getClienteSeleccionado();
-        detalle.setCliente(proveedor);
+        cliente cliente=getClienteSeleccionado();
+        detalle.setCliente(cliente);
         detalle.setEditable(true);
         detalle.loadData();
         guardar.setEnabled(true);
@@ -243,7 +244,7 @@ public class ListaProveedores extends javax.swing.JFrame {
 //
 //        DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
 //        java.awt.EventQueue.invokeLater(()-> {        
-//                new ListaProveedores(manager).setVisible(true);
+//                new ListaClientes(manager).setVisible(true);
 //        });
 //    }
 

@@ -27,6 +27,10 @@ public class DetalleProveedor extends javax.swing.JPanel {
 
     public void setEditable(boolean editable) {
         this.editable = editable;
+        cuit.setEditable(editable);
+        nombre.setEditable(editable);
+        direccion.setEditable(editable);
+        telefono.setEditable(editable);
     }
 
 
