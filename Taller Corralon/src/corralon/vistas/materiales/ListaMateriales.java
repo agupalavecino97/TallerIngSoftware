@@ -8,13 +8,13 @@ import java.sql.SQLException;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 
-public class ListaProveedores extends javax.swing.JFrame {
+public class ListaMateriales extends javax.swing.JFrame {
 
   private DAOManager manager;
     private MaterialesTableModel model;
     
     
-    public ListaProveedores(DAOManager manager) {
+    public ListaMateriales(DAOManager manager) {
         initComponents();
         this.manager=manager;
         this.model=new MaterialesTableModel(manager.getmaterialDao());
@@ -236,21 +236,23 @@ public class ListaProveedores extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
            
         DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
         java.awt.EventQueue.invokeLater(() -> {
-            new ListaProveedores(manager).setVisible(true);
+            new ListaMateriales(manager).setVisible(true);
         });
     }
 
