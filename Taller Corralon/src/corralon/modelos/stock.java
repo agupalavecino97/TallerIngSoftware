@@ -5,14 +5,14 @@ package corralon.modelos;
 public class stock {
     private Long codMaterial;    
     private String nombreMaterial;
-    private float precio;
+    private Long precio;
     private String descripcionMaterial;
-    private int cantidadExistente;
-    private int stockMinimo;
-    private int stockMaximo;
+    private Long cantidadExistente;
+    private Long stockMinimo;
+    private Long stockMaximo;
     private boolean estadoMaterial;
 
-    public stock(Long codMaterial, String nombreMaterial, float precio, String descripcionMaterial, int cantidadExistente, int stockMinimo, int stockMaximo, boolean estadoMaterial) {     
+    public stock(Long codMaterial, String nombreMaterial, Long precio, String descripcionMaterial, Long cantidadExistente, Long stockMinimo, Long stockMaximo, boolean estadoMaterial) {     
         this.codMaterial = codMaterial;
         this.nombreMaterial = nombreMaterial;
         this.precio = precio;
@@ -26,11 +26,11 @@ public class stock {
     public stock() {
         this.codMaterial=null;
         this.nombreMaterial = "";
-        this.precio = 0;
+        this.precio = null;
         this.descripcionMaterial = "";
-        this.cantidadExistente = 0;
-        this.stockMinimo = 0;
-        this.stockMaximo = 0;    
+        this.cantidadExistente = null;
+        this.stockMinimo = null;
+        this.stockMaximo = null;    
     }
 
     public Long getCodMaterial() {
@@ -41,7 +41,7 @@ public class stock {
         return nombreMaterial;
     }
 
-    public float getPrecio() {
+    public Long getPrecio() {
         return precio;
     }
 
@@ -49,15 +49,15 @@ public class stock {
         return descripcionMaterial;
     }
 
-    public int getCantidadExistente() {
+    public Long getCantidadExistente() {
         return cantidadExistente;
     }
 
-    public int getStockMinimo() {
+    public Long getStockMinimo() {
         return stockMinimo;
     }
 
-    public int getStockMaximo() {
+    public Long getStockMaximo() {
         return stockMaximo;
     }
 
@@ -73,7 +73,7 @@ public class stock {
         this.nombreMaterial = nombreMaterial;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(Long precio) {
         this.precio = precio;
     }
 
@@ -81,15 +81,15 @@ public class stock {
         this.descripcionMaterial = descripcionMaterial;
     }
 
-    public void setCantidadExistente(int cantidadExistente) {
+    public void setCantidadExistente(Long cantidadExistente) {
         this.cantidadExistente = cantidadExistente;
     }
 
-    public void setStockMinimo(int stockMinimo) {
+    public void setStockMinimo(Long stockMinimo) {
         this.stockMinimo = stockMinimo;
     }
 
-    public void setStockMaximo(int stockMaximo) {
+    public void setStockMaximo(Long stockMaximo) {
         this.stockMaximo = stockMaximo;
     }
 

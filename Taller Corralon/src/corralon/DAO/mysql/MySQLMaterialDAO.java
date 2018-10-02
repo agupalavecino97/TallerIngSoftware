@@ -37,11 +37,11 @@ public class MySQLMaterialDAO implements materialDAO{
             stat=con.prepareStatement(INSERT);
             stat.setLong(1,a.getCodMaterial());
             stat.setString(2,a.getNombreMaterial());
-            stat.setFloat(3,a.getPrecio());
+            stat.setLong(3,a.getPrecio());
             stat.setString(4,a.getDescripcionMaterial());
-            stat.setInt(5,a.getCantidadExistente());
-            stat.setInt(6,a.getStockMaximo());
-            stat.setInt(7 ,a.getStockMinimo());
+            stat.setLong(5,a.getCantidadExistente());
+            stat.setLong(6,a.getStockMaximo());
+            stat.setLong(7 ,a.getStockMinimo());
             stat.setBoolean(8,true); 
             if(stat.executeUpdate()==0){
                 System.out.println("Quizas no se guardo correctamente gg");
@@ -78,11 +78,11 @@ public class MySQLMaterialDAO implements materialDAO{
             stat=con.prepareStatement(UPDATE); 
             stat.setLong(1,a.getCodMaterial());
             stat.setString(2,a.getNombreMaterial());
-            stat.setFloat(3,a.getPrecio());
+            stat.setLong(3,a.getPrecio());
             stat.setString(4,a.getDescripcionMaterial());
-            stat.setInt(5,a.getCantidadExistente());
-            stat.setInt(6,a.getStockMaximo());
-            stat.setInt(7,a.getStockMinimo());
+            stat.setLong(5,a.getCantidadExistente());
+            stat.setLong(6,a.getStockMaximo());
+            stat.setLong(7,a.getStockMinimo());
             stat.setBoolean(8,a.isEstadoMaterial());
             if(stat.executeUpdate()==0){
                 System.out.println("Quizas no se guardo correctamente gg");
@@ -123,11 +123,11 @@ public class MySQLMaterialDAO implements materialDAO{
     private stock convertir(ResultSet rs)throws SQLException {
           Long codigo=rs.getLong("codMaterial");
           String nombre=rs.getString("nombreMat");
-          float precio=rs.getFloat("precio");
+          Long precio=rs.getLong("precio");
           String descripcion=rs.getString("descripcionMat");
-          int cantidad=rs.getInt("cantExistente");
-          int stockmax=rs.getInt("StockMax");
-          int stockmin=rs.getInt("stockMinimo");
+          Long cantidad=rs.getLong("cantExistente");
+          Long stockmax=rs.getLong("StockMax");
+          Long stockmin=rs.getLong("stockMinimo");
           boolean estado=rs.getBoolean("estadoMat");
           stock material = new stock(codigo,nombre,precio,descripcion,cantidad,stockmax,stockmin,estado);
           return material;       
