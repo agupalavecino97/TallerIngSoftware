@@ -179,6 +179,7 @@ public class ListaMateriales extends javax.swing.JFrame {
           Logger.getLogger(ListaMateriales.class.getName()).log(Level.SEVERE, null, ex);
       }
         stock material=detalleMateriales1.getMaterial();
+<<<<<<< Updated upstream
         System.out.println(material);
        // System.out.println(material);  //para ver si se ingresa bien el amterial
 //        Long a=Long.parseLong(String.valueOf(3));
@@ -190,12 +191,35 @@ public class ListaMateriales extends javax.swing.JFrame {
 //        manager.getmaterialDao().insertar(material);
         stock control=manager.getmaterialDao().obtener(material.getCodMaterial());
         //System.out.println(control);
+=======
+<<<<<<< Updated upstream
+        Long a=Long.parseLong(String.valueOf(3));
+        Long b=Long.parseLong(String.valueOf(2));
+        Long c=Long.parseLong(String.valueOf(2));
+        Long d=Long.parseLong(String.valueOf(2));
+        Long e=Long.parseLong(String.valueOf(2));
+        stock g=new stock(a,"nombremodificado",b,"deascr",c,d,e,true);
+        manager.getmaterialDao().insertar(material);
+//        stock control=manager.getmaterialDao().obtener(material.getCodMaterial());
+//        if(control==null){
+//            manager.getmaterialDao().insertar(material);          
+//        }
+//        else{
+//            manager.getmaterialDao().modificar(material);
+//        }
+=======
+        stock control=manager.getmaterialDao().obtener(material.getCodMaterial());
+>>>>>>> Stashed changes
         if(control==null){
             manager.getmaterialDao().insertar(material);          
         }
         else{
             manager.getmaterialDao().modificar(material);
         }
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
         //para que se limpie todo
        detalleMateriales1.setMaterial(null);
        detalleMateriales1.setEditable(false);
