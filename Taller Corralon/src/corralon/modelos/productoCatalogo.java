@@ -1,7 +1,7 @@
 
 package corralon.modelos;
 
-class productoCatalogo{
+public class productoCatalogo{
       private Long codProductoCatalogo;
       private String nombreProcudcoCatalogo;
       private String descripcionPorductoCatalogo;
