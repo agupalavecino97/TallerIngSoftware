@@ -4,13 +4,13 @@ package corralon.vistas.proveedores;
 import corralon.modelos.proveedor;
 import java.text.ParseException;
 
-public class DetalleProveedores2 extends javax.swing.JFrame {
+public class DetalleProveedores3 extends javax.swing.JPanel {
 
     private proveedor proveedor;
     private boolean editable;
     
     
-    public DetalleProveedores2() {
+    public DetalleProveedores3() {
         initComponents();
     }
 
@@ -102,13 +102,13 @@ public class DetalleProveedores2 extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(DetalleProveedores2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(DetalleProveedores3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(DetalleProveedores2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(DetalleProveedores3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(DetalleProveedores2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(DetalleProveedores3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(DetalleProveedores2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(DetalleProveedores3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //        //</editor-fold>
@@ -116,7 +116,7 @@ public class DetalleProveedores2 extends javax.swing.JFrame {
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new DetalleProveedores2().setVisible(true);
+//                new DetalleProveedores3().setVisible(true);
 //            }
 //        });
 //    }
