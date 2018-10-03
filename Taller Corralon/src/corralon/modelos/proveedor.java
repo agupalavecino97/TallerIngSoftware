@@ -5,10 +5,10 @@ public class proveedor {
     private Long cuitProveedor;
     private String nombreProveedor;
     private String direccionProveedor;
-    private int telefonoProveedor;
+    private Long telefonoProveedor;
     private boolean estadoProveedor;
 
-    public proveedor(Long cuitProveedor, String nombreProveedor, String direccionProveedor, int telefonoProveedor, boolean estadoProveedor) {
+    public proveedor(Long cuitProveedor, String nombreProveedor, String direccionProveedor,Long telefonoProveedor, boolean estadoProveedor) {
         this.cuitProveedor = cuitProveedor;
         this.nombreProveedor = nombreProveedor;
         this.direccionProveedor = direccionProveedor;
@@ -32,7 +32,7 @@ public class proveedor {
         return direccionProveedor;
     }
 
-    public int getTelefonoProveedor() {
+    public Long getTelefonoProveedor() {
         return telefonoProveedor;
     }
 
@@ -52,7 +52,7 @@ public class proveedor {
         this.direccionProveedor = direccionProveedor;
     }
 
-    public void setTelefonoProveedor(int telefonoProveedor) {
+    public void setTelefonoProveedor(Long telefonoProveedor) {
         this.telefonoProveedor = telefonoProveedor;
     }
 
