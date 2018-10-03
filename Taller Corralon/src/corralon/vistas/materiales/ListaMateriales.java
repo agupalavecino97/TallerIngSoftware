@@ -157,7 +157,8 @@ public class ListaMateriales extends javax.swing.JFrame {
 
     
     private stock getMaterialSeleccionado(){
-        Long id=(Long) tabla.getValueAt(tabla.getSelectedRow(),0);   
+        Long id=(Long) tabla.getValueAt(tabla.getSelectedRow(),0);  
+        //System.out.println(id);
         return manager.getmaterialDao().obtener(id);
     } 
     
@@ -171,28 +172,30 @@ public class ListaMateriales extends javax.swing.JFrame {
     }//GEN-LAST:event_añadirActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-       
-        
+     
       try {
           detalleMateriales1.saveData();
       } catch (ParseException ex) {
           Logger.getLogger(ListaMateriales.class.getName()).log(Level.SEVERE, null, ex);
       }
         stock material=detalleMateriales1.getMaterial();
-        Long a=Long.parseLong(String.valueOf(3));
-        Long b=Long.parseLong(String.valueOf(2));
-        Long c=Long.parseLong(String.valueOf(2));
-        Long d=Long.parseLong(String.valueOf(2));
-        Long e=Long.parseLong(String.valueOf(2));
-        stock g=new stock(a,"nombremodificado",b,"deascr",c,d,e,true);
-        manager.getmaterialDao().insertar(material);
-//        stock control=manager.getmaterialDao().obtener(material.getCodMaterial());
-//        if(control==null){
-//            manager.getmaterialDao().insertar(material);          
-//        }
-//        else{
-//            manager.getmaterialDao().modificar(material);
-//        }
+        System.out.println(material);
+       // System.out.println(material);  //para ver si se ingresa bien el amterial
+//        Long a=Long.parseLong(String.valueOf(3));
+//        Long b=Long.parseLong(String.valueOf(2));
+//        Long c=Long.parseLong(String.valueOf(2));
+//        Long d=Long.parseLong(String.valueOf(2));
+//        Long e=Long.parseLong(String.valueOf(2));
+//        stock g=new stock(a,"nombremodificado",b,"deascr",c,d,e,true);
+//        manager.getmaterialDao().insertar(material);
+        stock control=manager.getmaterialDao().obtener(material.getCodMaterial());
+        //System.out.println(control);
+        if(control==null){
+            manager.getmaterialDao().insertar(material);          
+        }
+        else{
+            manager.getmaterialDao().modificar(material);
+        }
         //para que se limpie todo
        detalleMateriales1.setMaterial(null);
        detalleMateriales1.setEditable(false);
@@ -209,6 +212,7 @@ public class ListaMateriales extends javax.swing.JFrame {
         detalleMateriales1.setMaterial(getMaterialSeleccionado());
         detalleMateriales1.setEditable(true);
         detalleMateriales1.loadData();
+        //System.out.println(getMaterialSeleccionado());
         guardar.setEnabled(true);
         cancelar.setEnabled(true);      
     }//GEN-LAST:event_modificarActionPerformed

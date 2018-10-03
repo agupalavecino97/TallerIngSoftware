@@ -36,22 +36,27 @@ public class detalleMateriales extends javax.swing.JPanel {
     
     public void loadData(){
         if(material!=null){
-            codigo.setValue(material.getCodMaterial());
+            String cod=String.valueOf(material.getCodMaterial());
+            codigo.setText(cod);
             nombre.setText(material.getNombreMaterial());
-            precio.setValue(material.getPrecio());
+            String pre=String.valueOf(material.getPrecio());
+            precio.setText(pre);
             descripcion.setText(material.getDescripcionMaterial());
-            cantidad.setValue(material.getCantidadExistente());
-            stockmax.setValue(material.getStockMaximo());
-            stockmin.setValue(material.getStockMinimo());                      
+            String cant=String.valueOf(material.getCantidadExistente());
+            cantidad.setText(cant);
+            String smax=String.valueOf(material.getStockMaximo());
+            stockmax.setText(smax);
+            String smin=String.valueOf(material.getStockMinimo());
+            stockmin.setText(smin);                      
         }
         else{
-            codigo.setValue(null);
+            codigo.setText("");
             nombre.setText("");
-            precio.setValue(null);
+            precio.setText("");
             descripcion.setText("");
-            cantidad.setValue(null);
-            stockmax.setValue(null);
-            stockmin.setValue(null);  
+            cantidad.setText("");
+            stockmax.setText("");
+            stockmin.setText("");  
         }        
     }
      
@@ -60,13 +65,20 @@ public class detalleMateriales extends javax.swing.JPanel {
            material=new stock();        
        }
        //material.setIdMaterial((Long)id.getValu);
-       material.setCodMaterial((Long)codigo.getValue());
+       //int cod=Integer.parseInt(codigo.getText());
+       Long cod=Long.valueOf(codigo.getText());
+       material.setCodMaterial(cod);
        material.setNombreMaterial(nombre.getText());
-       material.setPrecio((Long) precio.getValue());
+       Long pre=Long.valueOf(precio.getText());
+       material.setPrecio(pre);
        material.setDescripcionMaterial(descripcion.getText());
-       material.setCantidadExistente((Long)cantidad.getValue());
-       material.setStockMaximo((Long)stockmax.getValue());
-       material.setStockMinimo((Long)stockmin.getValue());
+       Long cant=Long.valueOf(cantidad.getText());
+       material.setCantidadExistente(cant);
+       Long smin=Long.valueOf(stockmin.getText());
+       material.setStockMaximo(smin);
+       Long smax=Long.valueOf(stockmax.getText());
+       material.setStockMinimo(smax);
+       //System.out.println(material);
     }
  
     public detalleMateriales() {
@@ -92,12 +104,12 @@ public class detalleMateriales extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         nombre = new javax.swing.JTextField();
-        codigo = new javax.swing.JFormattedTextField();
-        precio = new javax.swing.JFormattedTextField();
         descripcion = new javax.swing.JTextField();
-        stockmax = new javax.swing.JFormattedTextField();
-        stockmin = new javax.swing.JFormattedTextField();
-        cantidad = new javax.swing.JFormattedTextField();
+        codigo = new javax.swing.JTextField();
+        precio = new javax.swing.JTextField();
+        cantidad = new javax.swing.JTextField();
+        stockmin = new javax.swing.JTextField();
+        stockmax = new javax.swing.JTextField();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -125,12 +137,6 @@ public class detalleMateriales extends javax.swing.JPanel {
 
         jLabel7.setText("Stcok Maximo:");
 
-        stockmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stockminActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,8 +151,8 @@ public class detalleMateriales extends javax.swing.JPanel {
                             .addComponent(jLabel3))
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(codigo, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                            .addComponent(nombre)
+                            .addComponent(nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                            .addComponent(codigo)
                             .addComponent(precio)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,10 +162,10 @@ public class detalleMateriales extends javax.swing.JPanel {
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(descripcion)
+                            .addComponent(cantidad)
                             .addComponent(stockmin)
-                            .addComponent(stockmax, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(descripcion, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cantidad))))
+                            .addComponent(stockmax))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -188,22 +194,18 @@ public class detalleMateriales extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(stockmax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(stockmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(stockmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(stockmax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void stockminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stockminActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFormattedTextField cantidad;
-    private javax.swing.JFormattedTextField codigo;
+    private javax.swing.JTextField cantidad;
+    private javax.swing.JTextField codigo;
     private javax.swing.JTextField descripcion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -219,8 +221,8 @@ public class detalleMateriales extends javax.swing.JPanel {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JTextField nombre;
-    private javax.swing.JFormattedTextField precio;
-    private javax.swing.JFormattedTextField stockmax;
-    private javax.swing.JFormattedTextField stockmin;
+    private javax.swing.JTextField precio;
+    private javax.swing.JTextField stockmax;
+    private javax.swing.JTextField stockmin;
     // End of variables declaration//GEN-END:variables
 }

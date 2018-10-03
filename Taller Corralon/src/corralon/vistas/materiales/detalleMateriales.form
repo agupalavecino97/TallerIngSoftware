@@ -65,8 +65,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="codigo" pref="124" max="32767" attributes="0"/>
-                          <Component id="nombre" alignment="0" max="32767" attributes="0"/>
+                          <Component id="nombre" alignment="0" pref="125" max="32767" attributes="0"/>
+                          <Component id="codigo" alignment="0" max="32767" attributes="0"/>
                           <Component id="precio" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -79,10 +79,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="stockmin" max="32767" attributes="0"/>
-                          <Component id="stockmax" alignment="1" max="32767" attributes="0"/>
-                          <Component id="descripcion" alignment="1" max="32767" attributes="0"/>
+                          <Component id="descripcion" max="32767" attributes="0"/>
                           <Component id="cantidad" alignment="0" max="32767" attributes="0"/>
+                          <Component id="stockmin" max="32767" attributes="0"/>
+                          <Component id="stockmax" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -121,12 +121,12 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="stockmax" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="stockmin" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="stockmin" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="stockmax" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -170,20 +170,17 @@
     </Component>
     <Component class="javax.swing.JTextField" name="nombre">
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="codigo">
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="precio">
-    </Component>
     <Component class="javax.swing.JTextField" name="descripcion">
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="stockmax">
+    <Component class="javax.swing.JTextField" name="codigo">
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="stockmin">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stockminActionPerformed"/>
-      </Events>
+    <Component class="javax.swing.JTextField" name="precio">
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="cantidad">
+    <Component class="javax.swing.JTextField" name="cantidad">
+    </Component>
+    <Component class="javax.swing.JTextField" name="stockmin">
+    </Component>
+    <Component class="javax.swing.JTextField" name="stockmax">
     </Component>
   </SubComponents>
 </Form>

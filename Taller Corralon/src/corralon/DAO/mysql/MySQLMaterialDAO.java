@@ -19,7 +19,7 @@ public class MySQLMaterialDAO implements materialDAO{
     final String INSERT="INSERT INTO stock(codMaterial, nombreMat,precio, descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat) VALUES (?,?,?,?,?,?,?,?)";
     final String DELETE="DELETE FROM stock WHERE codMaterial=?";
     //final String DELETE="UPDATE stcok set estado=false WHERE codigoMaterial=?";
-    final String UPDATE="UPDATE stock SET codMaterial=?,nombreMat=?, precio=?, descripcionMat=?, cantExistente=?, stockMinimo=?, stockMax=?, estadoMat=?";
+    final String UPDATE="UPDATE stock SET nombreMat=?, precio=?, descripcionMat=?, cantExistente=?, stockMinimo=?, stockMax=?, estadoMat=? WHERE codMaterial=?";
     final String GETALL="SELECT codMaterial,nombreMat,precio,descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat FROM stock";
     final String GETONE="SELECT codMaterial,nombreMat,precio, descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat FROM stock WHERE codMaterial=?";
 
@@ -75,15 +75,15 @@ public class MySQLMaterialDAO implements materialDAO{
     public void modificar(stock a) {
                 PreparedStatement stat=null;
         try{
-            stat=con.prepareStatement(UPDATE); 
-            stat.setLong(1,a.getCodMaterial());
-            stat.setString(2,a.getNombreMaterial());
-            stat.setLong(3,a.getPrecio());
-            stat.setString(4,a.getDescripcionMaterial());
-            stat.setLong(5,a.getCantidadExistente());
-            stat.setLong(6,a.getStockMaximo());
-            stat.setLong(7,a.getStockMinimo());
-            stat.setBoolean(8,a.isEstadoMaterial());
+            stat=con.prepareStatement(UPDATE);
+            stat.setString(1,a.getNombreMaterial());
+            stat.setLong(2,a.getPrecio());
+            stat.setString(3,a.getDescripcionMaterial());
+            stat.setLong(4,a.getCantidadExistente());
+            stat.setLong(5,a.getStockMaximo());
+            stat.setLong(6,a.getStockMinimo());
+            stat.setBoolean(7,a.isEstadoMaterial());
+            stat.setLong(8,a.getCodMaterial());
             if(stat.executeUpdate()==0){
                 System.out.println("Quizas no se guardo correctamente gg");
             } 
