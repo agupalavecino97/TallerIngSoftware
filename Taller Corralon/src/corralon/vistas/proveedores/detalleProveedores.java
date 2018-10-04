@@ -61,7 +61,7 @@ public class detalleProveedores extends javax.swing.JPanel {
        //int cod=Integer.parseInt(codigo.getText());
        Long cu=Long.valueOf(cuit.getText());
        proveedor.setCuitProveedor(cu);
-       //nombre.setnom(nombre.getText());
+       proveedor.setNombreProveedor(nombre.getText());
        proveedor.setDireccionProveedor(direccion.getText());
        Long te=Long.valueOf(telefono.getText());
        proveedor.setTelefonoProveedor(te);
@@ -94,6 +94,12 @@ public class detalleProveedores extends javax.swing.JPanel {
         cuit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cuitActionPerformed(evt);
+            }
+        });
+
+        nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreActionPerformed(evt);
             }
         });
 
@@ -162,6 +168,10 @@ public class detalleProveedores extends javax.swing.JPanel {
     private void cuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cuitActionPerformed
+
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreActionPerformed
 
 
     
