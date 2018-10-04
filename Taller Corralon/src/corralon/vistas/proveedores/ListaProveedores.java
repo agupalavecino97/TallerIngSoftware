@@ -92,6 +92,11 @@ public class ListaProveedores extends javax.swing.JFrame {
         cancelar.setFocusable(false);
         cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(cancelar);
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(252, 402));
@@ -144,7 +149,11 @@ public class ListaProveedores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void añadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirActionPerformed
-        // TODO add your handling code here:
+        detalle.setProveedor(null);
+        detalle.loadData();
+        detalle.setEditable(true);
+        guardar.setEnabled(true);
+        cancelar.setEnabled(true);
     }//GEN-LAST:event_añadirActionPerformed
 
     
@@ -162,7 +171,18 @@ public class ListaProveedores extends javax.swing.JFrame {
        detalle.setProveedor(proveedor);
        detalle.setEditable(true);
        detalle.loadData();
+       guardar.setEnabled(true);
+       cancelar.setEnabled(true);
     }//GEN-LAST:event_modificarActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        detalle.setProveedor(null);
+        detalle.setEditable(false);
+        detalle.loadData();
+        Tabla.clearSelection();
+        guardar.setEnabled(false);
+        cancelar.setEnabled(false);
+    }//GEN-LAST:event_cancelarActionPerformed
 
     /**
      * @param args the command line arguments

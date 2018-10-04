@@ -51,7 +51,8 @@ public class detalleProveedores extends javax.swing.JPanel {
             nombre.setText("");
             direccion.setText("");
             telefono.setText("");
-        }        
+        }     
+        cuit.requestFocus();
     }
     
         public void saveData()throws ParseException{
