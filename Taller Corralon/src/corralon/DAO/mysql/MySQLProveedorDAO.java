@@ -30,6 +30,7 @@ public class MySQLProveedorDAO implements proveedorDAO{
      }
         
 
+    @Override
     public void insertar(proveedor a) {
         PreparedStatement stat=null;
         ResultSet rs=null;
@@ -38,7 +39,7 @@ public class MySQLProveedorDAO implements proveedorDAO{
             stat.setLong(1,a.getCuitProveedor());
             stat.setString(2,a.getNombreProveedor());
             stat.setString(3,a.getDireccionProveedor());
-            stat.setInt(4,a.getTelefonoProveedor());
+            stat.setLong(4,a.getTelefonoProveedor());
             stat.setBoolean(5,true); 
             if(stat.executeUpdate()==0){
                 System.out.println("Quizas no se guardo correctamente gg");
@@ -69,13 +70,14 @@ public class MySQLProveedorDAO implements proveedorDAO{
     }
     
     
+    @Override
     public void modificar(proveedor a) {
             PreparedStatement stat=null;
         try{
             stat=con.prepareStatement(UPDATE);      
             stat.setString(1,a.getNombreProveedor());
             stat.setString(2,a.getDireccionProveedor());
-            stat.setInt(3,a.getTelefonoProveedor());
+            stat.setLong(3,a.getTelefonoProveedor());
             stat.setBoolean(4,a.isEstadoProveedor());
             stat.setLong(5,a.getCuitProveedor());
             if(stat.executeUpdate()==0){
@@ -93,6 +95,7 @@ public class MySQLProveedorDAO implements proveedorDAO{
              }
     }
     
+    @Override
     public void eliminar(proveedor a) {
                PreparedStatement stat=null;
         try{
@@ -118,12 +121,13 @@ public class MySQLProveedorDAO implements proveedorDAO{
           Long cuit=rs.getLong("cuitProveedor");
           String nombre=rs.getString("nombreProve");
           String direccion=rs.getString("direccionProv");
-          int telefono=rs.getInt("telefonoProv");
+          Long telefono=rs.getLong("telefonoProv");
           boolean estado=rs.getBoolean("estadoProv");
           proveedor proveedor = new proveedor(cuit,nombre,direccion,telefono,estado);
           return proveedor;        
     }
     
+    @Override
     public List<proveedor> obtenerTodos() {
         PreparedStatement stat=null;
         ResultSet rs=null;
