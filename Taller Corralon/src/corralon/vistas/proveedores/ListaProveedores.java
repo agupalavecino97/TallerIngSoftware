@@ -3,6 +3,7 @@ package corralon.vistas.proveedores;
 
 import corralon.DAO.DAOManager;
 import corralon.DAO.mysql.MySQLDAOManager;
+import corralon.modelos.proveedor;
 import java.sql.SQLException;
 
 public class ListaProveedores extends javax.swing.JFrame {
@@ -18,6 +19,11 @@ public class ListaProveedores extends javax.swing.JFrame {
      this.model = new ProveedorTableModel(manager.getproveedorDao());
      this.model.updateModel();
      this.Tabla.setModel(model);
+     this.Tabla.getSelectionModel().addListSelectionListener(e ->{
+            boolean seleccionValida = (Tabla.getSelectedRow() != 1);
+            modificar.setEnabled(seleccionValida);
+            eliminar.setEnabled(seleccionValida);
+     });
              
  }
  
@@ -141,8 +147,21 @@ public class ListaProveedores extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_añadirActionPerformed
 
+    
+    private proveedor getProveedorSeleccionado(){
+        Long id = (Long) Tabla.getValueAt(Tabla.getSelectedRow(),0);
+        return manager.getproveedorDao().obtener(id);
+    }
+    
+    
+    
+    
+    
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-        // TODO add your handling code here:
+       proveedor proveedor = getProveedorSeleccionado();
+       detalle.setProveedor(proveedor);
+       detalle.setEditable(true);
+       detalle.loadData();
     }//GEN-LAST:event_modificarActionPerformed
 
     /**
