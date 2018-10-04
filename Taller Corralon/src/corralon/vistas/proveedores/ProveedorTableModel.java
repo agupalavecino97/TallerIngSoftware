@@ -13,13 +13,15 @@ public class ProveedorTableModel extends AbstractTableModel {
     
     private List<proveedor> datos = new ArrayList<>();
     
+    public ProveedorTableModel(proveedorDAO proveedor){
+    this.proveedor = proveedor;
+}
+    
     public void updateModel(){ 
         datos = proveedor.obtenerTodos();
     }
     
-    public ProveedorTableModel(proveedorDAO proveedor){
-    this.proveedor = proveedor;
-}
+
 
     @Override
     public String getColumnName(int i) {
