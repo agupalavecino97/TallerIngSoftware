@@ -58,7 +58,7 @@ public class MySQLProveedorDAO implements proveedorDAO{
                         try {
                             rs.close();
                     } catch (SQLException ex) {
-                        Logger.getLogger(MySQLClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(MySQLProveedorDAO.class.getName()).log(Level.SEVERE, null, ex);
                     }   
                 if (stat != null)
                     try {

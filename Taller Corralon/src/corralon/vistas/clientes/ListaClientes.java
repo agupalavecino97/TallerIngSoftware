@@ -215,11 +215,6 @@ public class ListaClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_añadirActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        try {
-            detalle.saveData();
-        } catch (ParseException ex) {
-            Logger.getLogger(ListaClientes.class.getName()).log(Level.SEVERE, null, ex);
-        }
         cliente c=detalle.getCliente();
         cliente control=manager.getclienteDao().obtener(c.getCuitCliente()); //para controlar si el cliente existe ya comparando el cuit con los existentes en la base de datos, si existte se actualizan los datos si no se inserta un nuevo cliente
         if(control==null){
