@@ -6,9 +6,7 @@ import java.text.ParseException;
 
 public class detalleProveedores extends javax.swing.JPanel {
 
-    /**
-     * Creates new form detalleProveedores
-     */
+
     public detalleProveedores() {
         initComponents();
     }

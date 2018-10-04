@@ -119,7 +119,7 @@ public class MySQLProveedorDAO implements proveedorDAO{
     
     private proveedor convertir(ResultSet rs)throws SQLException {
           Long cuit=rs.getLong("cuitProveedor");
-          String nombre=rs.getString("nombreProve");
+          String nombre=rs.getString("nombreProv");
           String direccion=rs.getString("direccionProv");
           Long telefono=rs.getLong("telefonoProv");
           boolean estado=rs.getBoolean("estadoProv");
@@ -157,6 +157,7 @@ public class MySQLProveedorDAO implements proveedorDAO{
     return proveedor;      
     }
     
+    @Override
      public proveedor obtener(Long id){
         PreparedStatement stat=null;
         ResultSet rs=null;
