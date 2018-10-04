@@ -191,12 +191,7 @@ public class ListaProveedores extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-            try {
-            detalle.saveData();
-        } catch (ParseException ex) {
-            Logger.getLogger(ListaProveedores.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        proveedor c=detalle.getProveedor();
+        proveedor c=detalle.getProveedor();    
         proveedor control=manager.getproveedorDao().obtener(c.getCuitProveedor()); //para controlar si el cliente existe ya comparando el cuit con los existentes en la base de datos, si existte se actualizan los datos si no se inserta un nuevo cliente
         if(control==null){
             manager.getproveedorDao().insertar(c);
@@ -211,6 +206,28 @@ public class ListaProveedores extends javax.swing.JFrame {
        //para actualizar la tabla
        model.updateModel();
        model.fireTableDataChanged();
+        
+        
+//        try {
+//            detalle.saveData();
+//        } catch (ParseException ex) {
+//            Logger.getLogger(ListaProveedores.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        proveedor c=detalle.getProveedor();
+//        proveedor control=manager.getproveedorDao().obtener(c.getCuitProveedor()); //para controlar si el cliente existe ya comparando el cuit con los existentes en la base de datos, si existte se actualizan los datos si no se inserta un nuevo cliente
+//        if(control==null){
+//            manager.getproveedorDao().insertar(c);
+//        }else manager.getproveedorDao().modificar(c);
+//       //para que se limpie todo
+//       detalle.setProveedor(null);
+//       detalle.setEditable(false);
+//       detalle.loadData();
+//       Tabla.clearSelection();
+//       guardar.setEnabled(false);
+//       cancelar.setEnabled(false);
+//       //para actualizar la tabla
+//       model.updateModel();
+//       model.fireTableDataChanged();
     }//GEN-LAST:event_guardarActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
