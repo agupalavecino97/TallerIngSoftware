@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class ListaProveedores extends javax.swing.JFrame {
 
@@ -78,6 +79,11 @@ public class ListaProveedores extends javax.swing.JFrame {
         eliminar.setFocusable(false);
         eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         eliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(eliminar);
 
         guardar.setText("Guardar");
@@ -206,6 +212,16 @@ public class ListaProveedores extends javax.swing.JFrame {
        model.updateModel();
        model.fireTableDataChanged();
     }//GEN-LAST:event_guardarActionPerformed
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        if(JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quieres borrar este cliente?","borrar cliente", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==JOptionPane.YES_OPTION){
+            proveedor c=getProveedorSeleccionado();
+            manager.getproveedorDao().eliminar(c);            
+        }
+       //para actualizar la tabla
+       model.updateModel();
+       model.fireTableDataChanged();
+    }//GEN-LAST:event_eliminarActionPerformed
 
     /**
      * @param args the command line arguments
