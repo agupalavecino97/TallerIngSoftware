@@ -5,19 +5,25 @@ import corralon.modelos.stock;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class cantidadMateriales extends javax.swing.JPanel {
 
    
     public cantidadMateriales() {
         initComponents();
+        aceptar.setEnabled(false);
+        cancelar.setEnabled(false);
+        nombre.setEditable(false);
+        precio.setEditable(false);    
     }
 
     
-    private stock material; //me aprece que no se usa
+    private stock material; 
     private boolean editable;
     private int cantidadMaterial;
-    private List<Long> pedido=new ArrayList();
+    private List<pedido> pedido=new ArrayList();
     
     
     public stock getMaterial() {
@@ -41,6 +47,8 @@ public class cantidadMateriales extends javax.swing.JPanel {
     
      public void loadData(){
         if(material!=null){
+            aceptar.setEnabled(true);
+            cancelar.setEnabled(true);
             nombre.setText(material.getNombreMaterial());
             String pre=String.valueOf(material.getPrecio());
             precio.setText(pre);
@@ -63,6 +71,8 @@ public class cantidadMateriales extends javax.swing.JPanel {
        cantidadMaterial=cantidad.getItemCount();
        System.out.println(cantidadMaterial);
     }
+    
+    
  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -98,6 +108,11 @@ public class cantidadMateriales extends javax.swing.JPanel {
         cancelar.setFocusable(false);
         cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(cancelar);
 
         aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/accept.png"))); // NOI18N
@@ -105,6 +120,11 @@ public class cantidadMateriales extends javax.swing.JPanel {
         aceptar.setFocusable(false);
         aceptar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         aceptar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(aceptar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -155,6 +175,23 @@ public class cantidadMateriales extends javax.swing.JPanel {
     private void cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadActionPerformed
 
     }//GEN-LAST:event_cantidadActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        setEditable(false);
+        setMaterial(null);
+        loadData();
+        aceptar.setEnabled(false);
+        cancelar.setEnabled(false);
+    }//GEN-LAST:event_cancelarActionPerformed
+
+    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
+        try {
+            saveData();
+        } catch (ParseException ex) {
+            Logger.getLogger(cantidadMateriales.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_aceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
