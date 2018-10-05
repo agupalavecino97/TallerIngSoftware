@@ -3,6 +3,7 @@ package corralon.vistas.ventaSinPresupuesto;
 
 import corralon.DAO.DAOManager;
 import corralon.DAO.mysql.MySQLDAOManager;
+import corralon.modelos.stock;
 import java.sql.SQLException;
 
 
@@ -21,21 +22,41 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
         this.tabla.setModel(model); 
     }
 
+    
+       
   
+    
+    private stock getMaterialSeleccionado(){
+        Long id=(Long) tabla.getValueAt(tabla.getSelectedRow(),0);   
+        return manager.getmaterialDao().obtener(id);
+        
+    } 
+    
+   
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
         Continuar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
+        cantidadMateriales1 = new corralon.vistas.ventaSinPresupuesto.cantidadMateriales();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Materiales disponibles:");
         getContentPane().add(jLabel1, java.awt.BorderLayout.PAGE_START);
+
+        Continuar.setText("Continuar");
+        Continuar.setEnabled(false);
+        getContentPane().add(Continuar, java.awt.BorderLayout.PAGE_END);
+
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -48,16 +69,30 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tabla);
+        jScrollPane2.setViewportView(tabla);
 
-        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        jPanel1.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+        jPanel1.add(cantidadMateriales1, java.awt.BorderLayout.PAGE_END);
 
-        Continuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/next.png"))); // NOI18N
-        Continuar.setText("Continuar");
-        getContentPane().add(Continuar, java.awt.BorderLayout.PAGE_END);
+        jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, java.awt.BorderLayout.LINE_END);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        stock material=getMaterialSeleccionado();
+        cantidadMateriales1.setMaterial(material);
+        cantidadMateriales1.setEditable(true);
+        cantidadMateriales1.loadData();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
    
     
@@ -102,8 +137,11 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Continuar;
+    private corralon.vistas.ventaSinPresupuesto.cantidadMateriales cantidadMateriales1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

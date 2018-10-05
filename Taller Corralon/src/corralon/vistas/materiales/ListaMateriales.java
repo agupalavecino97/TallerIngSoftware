@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 public class ListaMateriales extends javax.swing.JFrame {
 
-  private DAOManager manager;
+    private DAOManager manager;
     private MaterialesTableModel model;
     
     
@@ -180,7 +180,7 @@ public class ListaMateriales extends javax.swing.JFrame {
       }
         stock material=detalleMateriales1.getMaterial();
 
-        System.out.println(material);
+        //System.out.println(material);
        // System.out.println(material);  //para ver si se ingresa bien el amterial
 //        Long a=Long.parseLong(String.valueOf(3));
 //        Long b=Long.parseLong(String.valueOf(2));
@@ -193,13 +193,13 @@ public class ListaMateriales extends javax.swing.JFrame {
         //System.out.println(control);
 
 
-        Long a=Long.parseLong(String.valueOf(3));
-        Long b=Long.parseLong(String.valueOf(2));
-        Long c=Long.parseLong(String.valueOf(2));
-        Long d=Long.parseLong(String.valueOf(2));
-        Long e=Long.parseLong(String.valueOf(2));
-        stock g=new stock(a,"nombremodificado",b,"deascr",c,d,e,true);
-        manager.getmaterialDao().insertar(material);
+//        Long a=Long.parseLong(String.valueOf(3));
+//        Long b=Long.parseLong(String.valueOf(2));
+//        Long c=Long.parseLong(String.valueOf(2));
+//        Long d=Long.parseLong(String.valueOf(2));
+//        Long e=Long.parseLong(String.valueOf(2));
+//        stock g=new stock(a,"nombremodificado",b,"deascr",c,d,e,true);
+//        manager.getmaterialDao().insertar(material);
 //        stock control=manager.getmaterialDao().obtener(material.getCodMaterial());
 //        if(control==null){
 //            manager.getmaterialDao().insertar(material);          
@@ -217,9 +217,6 @@ public class ListaMateriales extends javax.swing.JFrame {
         else{
             manager.getmaterialDao().modificar(material);
         }
-
-
-
 
         //para que se limpie todo
        detalleMateriales1.setMaterial(null);
@@ -243,7 +240,7 @@ public class ListaMateriales extends javax.swing.JFrame {
     }//GEN-LAST:event_modificarActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-         if(JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quieres borrar este cliente?","borrar cliente", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==JOptionPane.YES_OPTION){
+         if(JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quieres borrar este material?","borrar material", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==JOptionPane.YES_OPTION){
          manager.getmaterialDao().eliminar(getMaterialSeleccionado());
          }
          model.updateModel();
@@ -266,40 +263,40 @@ public class ListaMateriales extends javax.swing.JFrame {
     
     
     
-    
-    public static void main(String args[]) throws SQLException {
-        
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-           
-        DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
-        java.awt.EventQueue.invokeLater(() -> {
-            new ListaMateriales(manager).setVisible(true);
-        });
-    }
+//    
+//    public static void main(String args[]) throws SQLException {
+//        
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(ListaMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(ListaMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(ListaMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(ListaMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//           
+//        DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
+//        java.awt.EventQueue.invokeLater(() -> {
+//            new ListaMateriales(manager).setVisible(true);
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton añadir;
