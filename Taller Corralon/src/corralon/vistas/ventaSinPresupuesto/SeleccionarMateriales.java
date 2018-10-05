@@ -5,6 +5,8 @@ import corralon.DAO.DAOManager;
 import corralon.DAO.mysql.MySQLDAOManager;
 import corralon.modelos.stock;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class SeleccionarMateriales extends javax.swing.JFrame {
@@ -53,7 +55,11 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
         getContentPane().add(jLabel1, java.awt.BorderLayout.PAGE_START);
 
         Continuar.setText("Continuar");
-        Continuar.setEnabled(false);
+        Continuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContinuarActionPerformed(evt);
+            }
+        });
         getContentPane().add(Continuar, java.awt.BorderLayout.PAGE_END);
 
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -93,6 +99,12 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
         cantidadMateriales1.setEditable(true);
         cantidadMateriales1.loadData();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
+       List<pedidoConCantidad> pedido;
+       pedido=cantidadMateriales1.getLista();
+        System.out.println(pedido);
+    }//GEN-LAST:event_ContinuarActionPerformed
 
    
     

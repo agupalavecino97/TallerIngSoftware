@@ -22,12 +22,15 @@ public class cantidadMateriales extends javax.swing.JPanel {
     
     private stock material; 
     private boolean editable;
-    private int cantidadMaterial;
-    private List<pedido> pedido=new ArrayList();
+    private Object cantidadMaterial;
+    private List<pedidoConCantidad> pedido=new ArrayList();
     
     
     public stock getMaterial() {
         return material;
+    }
+    public List getLista(){
+        return pedido;
     }
 
     public boolean isEditable() {
@@ -42,7 +45,6 @@ public class cantidadMateriales extends javax.swing.JPanel {
         this.editable = editable;
         nombre.setEditable(editable);
         precio.setEditable(editable);
-        cantidad.setEditable(editable);
     }
     
      public void loadData(){
@@ -68,8 +70,8 @@ public class cantidadMateriales extends javax.swing.JPanel {
        material.setNombreMaterial(nombre.getText());
        Long pre=Long.valueOf(precio.getText());
        material.setPrecio(pre);
-       cantidadMaterial=cantidad.getItemCount();
-       System.out.println(cantidadMaterial);
+       cantidadMaterial=cantidad.getValue();          
+       //System.out.println(cantidadMaterial);
     }
     
     
@@ -83,23 +85,16 @@ public class cantidadMateriales extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         precio = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        cantidad = new javax.swing.JComboBox<>();
         jToolBar1 = new javax.swing.JToolBar();
         cancelar = new javax.swing.JButton();
         aceptar = new javax.swing.JButton();
+        cantidad = new javax.swing.JSpinner();
 
         jLabel1.setText("Producto");
 
         jLabel2.setText("Precio");
 
         jLabel3.setText("Cantidad");
-
-        cantidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cantidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantidadActionPerformed(evt);
-            }
-        });
 
         jToolBar1.setRollover(true);
 
@@ -135,21 +130,19 @@ public class cantidadMateriales extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombre)
+                            .addComponent(nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
                             .addComponent(precio)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 211, Short.MAX_VALUE)))))
-                .addContainerGap())
+                                .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,18 +156,14 @@ public class cantidadMateriales extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
-                    .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                    .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadActionPerformed
-
-    }//GEN-LAST:event_cantidadActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         setEditable(false);
@@ -190,14 +179,24 @@ public class cantidadMateriales extends javax.swing.JPanel {
         } catch (ParseException ex) {
             Logger.getLogger(cantidadMateriales.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        Long codigo=material.getCodMaterial();
+        String nombre=material.getNombreMaterial();
+        Object cantidad=cantidadMaterial;
+        pedidoConCantidad pedidoc=new pedidoConCantidad(codigo,nombre,cantidad);
+        pedido.add(pedidoc);
+        setEditable(false);
+        setMaterial(null);
+        loadData();
+        aceptar.setEnabled(false);
+        cancelar.setEnabled(false);
+        this.cantidad.setValue(0);
     }//GEN-LAST:event_aceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
     private javax.swing.JButton cancelar;
-    private javax.swing.JComboBox<String> cantidad;
+    private javax.swing.JSpinner cantidad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
