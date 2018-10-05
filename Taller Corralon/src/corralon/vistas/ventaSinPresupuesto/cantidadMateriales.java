@@ -183,6 +183,10 @@ public class cantidadMateriales extends javax.swing.JPanel {
         String nombre=material.getNombreMaterial();
         Object cantidad=cantidadMaterial;
         pedidoConCantidad pedidoc=new pedidoConCantidad(codigo,nombre,cantidad);
+        if(buscarEnLista(codigo)){
+            //aqui tendria que buscar el elemto de este codigo y aumentarle la cantidad ingresada nada mas
+            // no se como gg.
+        }
         pedido.add(pedidoc);
         setEditable(false);
         setMaterial(null);
@@ -192,6 +196,12 @@ public class cantidadMateriales extends javax.swing.JPanel {
         this.cantidad.setValue(0);
     }//GEN-LAST:event_aceptarActionPerformed
 
+    
+    public boolean buscarEnLista(Long cod){
+        if(pedido.contains(cod)){
+            return true;
+        }else return false;               
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
