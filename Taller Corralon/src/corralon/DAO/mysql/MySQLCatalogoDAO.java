@@ -1,8 +1,10 @@
 
 package corralon.DAO.mysql;
 
+import corralon.DAO.DAOManager;
 import corralon.DAO.catalogoDAO;
 import corralon.modelos.catalogo;
+import corralon.vistas.proveedores.ListaProveedores;
 import java.sql.Array;
 import java.sql.Connection;
 import java.sql.Date;
@@ -20,6 +22,7 @@ public class MySQLCatalogoDAO implements catalogoDAO{
     final String UPDATE = "UPDATE catalogo SET cuitProveedor=?, codProductoCatalogo=?, precioUnitario=?, fechaVigencia=? WHERE cuitProveedor=?" ;
     final String DELETE = "DELETE FROM catalogo WHERE cuitProveedor=?";
     final String GETALL = "SELECT cuitProveedor, codProductoCatalogo, precioUnitario  FROM catalogo";
+    final String GETALLdeprov = "SELECT codProductoCatalogo, precioUnitario  FROM catalogo WHERE cuitProveedor =?";
     final String GETONE = "SELECT cuitProveedor, codProductoCatalogo, precioUnitario FROM catalogo WHERE cuitProveedor=?";
     
     private catalogo convertir(ResultSet rs)throws SQLException {
@@ -30,6 +33,21 @@ public class MySQLCatalogoDAO implements catalogoDAO{
           catalogo cat= new catalogo(cuit, cod, precio, fecha);
           return cat;
     }
+    
+      public  void main(String args[]) throws SQLException {
+        DAOManager manager = new MySQLDAOManager("localhost", "taller", "root", "root");
+                
+        java.awt.EventQueue.invokeLater(() -> {
+            new ListaProveedores(manager).setVisible(true);
+            Long a = Long.valueOf(10);
+            List<catalogo> catalogos2= new ArrayList<>();
+            catalogos2 = obtenerTodosDeProv(a);
+        });
+    }
+    
+    
+    
+    
     
     @Override
     public void insertar(catalogo a) {
@@ -110,6 +128,38 @@ public class MySQLCatalogoDAO implements catalogoDAO{
         List<catalogo> catalogos= new ArrayList<>();
         try {
              stat=conn.prepareStatement(GETALL);
+             rs=stat.executeQuery();
+             while(rs.next()){
+                 catalogos.add(convertir(rs));
+             }
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQLCatalogoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            if (rs!=null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MySQLCatalogoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (stat!=null) {
+                try {
+                    stat.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MySQLCatalogoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return catalogos;
+    }
+    
+    
+       public List<catalogo> obtenerTodosDeProv(Long id) {
+        PreparedStatement stat=null;
+        ResultSet rs=null;
+        List<catalogo> catalogos= new ArrayList<>();
+        try {
+             stat=conn.prepareStatement(GETALLdeprov);
              rs=stat.executeQuery();
              while(rs.next()){
                  catalogos.add(convertir(rs));

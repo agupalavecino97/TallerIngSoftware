@@ -2,6 +2,8 @@
 package corralon.vistas.pedidoProveedor;
 
 import corralon.DAO.materialDAO;
+import corralon.DAO.productoCatalogoDAO;
+import corralon.modelos.catalogo;
 import corralon.modelos.stock;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +12,7 @@ import javax.swing.table.AbstractTableModel;
 public class materialesTableModel3 {
     
     private materialDAO material;
+    private productoCatalogoDAO productocatalogo;
     private List<stock> datos=new ArrayList();
     
     public materialesTableModel3(materialDAO material){
@@ -17,7 +20,8 @@ public class materialesTableModel3 {
     }
         
     public void updateModel(){
-        datos=material.obtenerTodos();
+        datos=catalogo.obtenerTodos();
+        datosprod
     }
 
     public String getColumnName(int i){
@@ -25,9 +29,6 @@ public class materialesTableModel3 {
             case 0:return "codigo";
             case 1:return "nombre";
             case 2:return "precio";
-            case 3:return "cantidadExistente";
-            case 4:return "cantidadSolicitada";
-            case 5: return "codProveedor";
             default:return "[no]"; 
         }
     }

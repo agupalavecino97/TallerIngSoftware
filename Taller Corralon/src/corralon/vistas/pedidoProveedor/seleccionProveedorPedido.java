@@ -98,8 +98,8 @@ public class seleccionProveedorPedido extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-           seleccionMaterialesPedido siguienteVista = new seleccionMaterialesPedido(manager);
-           siguienteVista.getCuitProveedorIngresado(getProveedorSeleccionado().getCuitProveedor());
+//           seleccionMaterialesPedido siguienteVista = new seleccionMaterialesPedido(manager);
+//           siguienteVista.getCuitProveedorIngresado(getProveedorSeleccionado().getCuitProveedor());
     }//GEN-LAST:event_aceptarActionPerformed
 
     /**
