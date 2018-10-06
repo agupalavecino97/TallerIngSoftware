@@ -6,6 +6,7 @@ import java.sql.Date;
 public class catalogo{
     private Long cuitProveedor;
     private int codProductoCatalogo;
+    private String descripcionProdCat;
     private float precioUnitario;
     private Date fechaVigencia;   
 
