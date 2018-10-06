@@ -80,7 +80,6 @@ public class ListaClientes extends javax.swing.JFrame {
 
         toolbar.setRollover(true);
 
-        añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/add.png"))); // NOI18N
         añadir.setText("Añadir");
         añadir.setFocusable(false);
         añadir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -92,7 +91,6 @@ public class ListaClientes extends javax.swing.JFrame {
         });
         toolbar.add(añadir);
 
-        modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/update.png"))); // NOI18N
         modificar.setText("Modificar");
         modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         modificar.setDisabledSelectedIcon(null);
@@ -107,7 +105,6 @@ public class ListaClientes extends javax.swing.JFrame {
         });
         toolbar.add(modificar);
 
-        eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/delete.png"))); // NOI18N
         eliminar.setText("Eliminar");
         eliminar.setDisabledSelectedIcon(null);
         eliminar.setFocusable(false);
@@ -120,7 +117,6 @@ public class ListaClientes extends javax.swing.JFrame {
         });
         toolbar.add(eliminar);
 
-        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/save.png"))); // NOI18N
         guardar.setText("Guardar");
         guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         guardar.setDisabledSelectedIcon(null);
@@ -134,7 +130,6 @@ public class ListaClientes extends javax.swing.JFrame {
         });
         toolbar.add(guardar);
 
-        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/cancel.png"))); // NOI18N
         cancelar.setText("Cancelar");
         cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cancelar.setDisabledSelectedIcon(null);
@@ -215,6 +210,11 @@ public class ListaClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_añadirActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+        try {
+            detalle.saveData();
+        } catch (ParseException ex) {
+            Logger.getLogger(ListaClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
         cliente c=detalle.getCliente();
         cliente control=manager.getclienteDao().obtener(c.getCuitCliente()); //para controlar si el cliente existe ya comparando el cuit con los existentes en la base de datos, si existte se actualizan los datos si no se inserta un nuevo cliente
         if(control==null){
@@ -233,13 +233,13 @@ public class ListaClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_guardarActionPerformed
 
  
-//public static void main(String args[]) throws SQLException {
-//
-//        DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
-//        java.awt.EventQueue.invokeLater(()-> {        
-//                new ListaClientes(manager).setVisible(true);
-//        });
-//    }
+public static void main(String args[]) throws SQLException {
+
+        DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
+        java.awt.EventQueue.invokeLater(()-> {        
+                new ListaClientes(manager).setVisible(true);
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabla;

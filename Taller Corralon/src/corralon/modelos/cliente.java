@@ -6,16 +6,16 @@ public class cliente {
     private Long cuitCliente;
     private String razonSocial;
     private String direccionCliente;
-    private int telefonoCliente;
+    private Long telefonoCliente;
     private boolean estadoClie;
     
     public cliente(){
         this.direccionCliente="";
         this.direccionCliente="";
-        this.telefonoCliente=0;  
+        this.telefonoCliente=null;  
     }
 
-    public cliente(Long cuitCliente,String razonSocial, String direccionCliente, int telefonoCliente, boolean estadoClie) {
+    public cliente(Long cuitCliente,String razonSocial, String direccionCliente, Long telefonoCliente, boolean estadoClie) {
         this.cuitCliente=cuitCliente;
         this.razonSocial = razonSocial;
         this.direccionCliente = direccionCliente;
@@ -35,7 +35,7 @@ public class cliente {
         return direccionCliente;
     }
 
-    public int getTelefonoCliente() {
+    public Long getTelefonoCliente() {
         return telefonoCliente;
     }
 
@@ -55,7 +55,7 @@ public class cliente {
         this.direccionCliente = direccionCliente;
     }
 
-    public void setTelefonoCliente(int telefonoCliente) {
+    public void setTelefonoCliente(Long telefonoCliente) {
         this.telefonoCliente = telefonoCliente;
     }
 

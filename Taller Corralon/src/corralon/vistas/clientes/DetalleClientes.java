@@ -50,11 +50,17 @@ public class DetalleClientes extends javax.swing.JPanel {
         if(cliente==null){
             cliente=new cliente();
         }
-            cliente.setCuitCliente((Long)cuit.getValue());
-            cliente.setRazonSocial(nombre.getText());
-            cliente.setDireccionCliente(direccion.getText());
-            telefono.commitEdit(); 
-            cliente.setTelefonoCliente((int) telefono.getValue());          
+              Long cu=Long.valueOf(cuit.getText());
+              cliente.setCuitCliente(cu);
+              cliente.setRazonSocial(nombre.getText());
+              cliente.setDireccionCliente(direccion.getText());
+              Long te=Long.valueOf(telefono.getText());
+              cliente.setTelefonoCliente(te);
+//            cliente.setCuitCliente((Long)cuit.getValue());
+//            cliente.setRazonSocial(nombre.getText());
+//            cliente.setDireccionCliente(direccion.getText());
+//            telefono.commitEdit(); 
+//            cliente.setTelefonoCliente((int) telefono.getValue());          
     }
             
     
