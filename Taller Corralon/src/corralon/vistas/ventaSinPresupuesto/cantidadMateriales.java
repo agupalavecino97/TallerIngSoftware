@@ -94,6 +94,12 @@ public class cantidadMateriales extends javax.swing.JPanel {
 
         jLabel2.setText("Precio");
 
+        precio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                precioActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("Cantidad");
 
         jToolBar1.setRollover(true);
@@ -193,6 +199,10 @@ public class cantidadMateriales extends javax.swing.JPanel {
         cancelar.setEnabled(false);
         this.cantidad.setValue(0);
     }//GEN-LAST:event_aceptarActionPerformed
+
+    private void precioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_precioActionPerformed
 
     
     public boolean buscarEnLista(Long cod){

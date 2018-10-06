@@ -23,11 +23,11 @@ public class ListaProveedores extends javax.swing.JFrame {
      this.model = new ProveedorTableModel(manager.getproveedorDao());
      this.model.updateModel();
      this.Tabla.setModel(model);
-     this.Tabla.getSelectionModel().addListSelectionListener(e ->{
-            boolean seleccionValida = (Tabla.getSelectedRow() != 1);
-            modificar.setEnabled(seleccionValida);
-            eliminar.setEnabled(seleccionValida);
-     });
+//     this.Tabla.getSelectionModel().addListSelectionListener(e ->{
+//            boolean seleccionValida = (Tabla.getSelectedRow() != 1);
+//            modificar.setEnabled(seleccionValida);
+//            eliminar.setEnabled(seleccionValida);
+//     });
              
  }
  
