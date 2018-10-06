@@ -191,6 +191,7 @@ public class ListaProveedores extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+        //detalle.saveData();
         proveedor c=detalle.getProveedor();    
         proveedor control=manager.getproveedorDao().obtener(c.getCuitProveedor()); //para controlar si el cliente existe ya comparando el cuit con los existentes en la base de datos, si existte se actualizan los datos si no se inserta un nuevo cliente
         if(control==null){
@@ -231,7 +232,7 @@ public class ListaProveedores extends javax.swing.JFrame {
     }//GEN-LAST:event_guardarActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        if(JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quieres borrar este cliente?","borrar cliente", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quieres borrar este proveedor?","borrar proveedor", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==JOptionPane.YES_OPTION){
             proveedor c=getProveedorSeleccionado();
             manager.getproveedorDao().eliminar(c);            
         }
