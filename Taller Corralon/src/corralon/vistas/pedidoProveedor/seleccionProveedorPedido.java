@@ -2,8 +2,11 @@
 package corralon.vistas.pedidoProveedor;
 
 import corralon.DAO.DAOManager;
+import corralon.DAO.mysql.MySQLDAOManager;
 import corralon.modelos.proveedor;
 import corralon.vistas.proveedores.ProveedorTableModel;
+import java.sql.SQLException;
+
 
 
 public class seleccionProveedorPedido extends javax.swing.JFrame {
@@ -12,7 +15,7 @@ public class seleccionProveedorPedido extends javax.swing.JFrame {
    private ProveedorTableModel model;
    
     
-    public seleccionProveedorPedido() {
+    public seleccionProveedorPedido(DAOManager manager) {
         initComponents();
         this.manager = manager;
         this.model=new ProveedorTableModel(manager.getproveedorDao());
@@ -86,8 +89,10 @@ public class seleccionProveedorPedido extends javax.swing.JFrame {
 
     /**
      * @param args the command line arguments
+     * @throws java.sql.SQLException
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws SQLException {
+                DAOManager manager = new MySQLDAOManager("localhost", "taller", "root", "root");
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -113,8 +118,9 @@ public class seleccionProveedorPedido extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new seleccionProveedorPedido().setVisible(true);
+                new seleccionProveedorPedido(manager).setVisible(true);
             }
         });
     }
