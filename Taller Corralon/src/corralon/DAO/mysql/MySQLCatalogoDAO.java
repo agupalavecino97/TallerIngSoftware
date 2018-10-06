@@ -19,8 +19,8 @@ public class MySQLCatalogoDAO implements catalogoDAO{
     final String INSERT = "INSERT INTO catalogo(cuitProveedor, codProductoCatalogo, precioUnitario, fechaVigencia) VALUES(?,?,?,?)";
     final String UPDATE = "UPDATE catalogo SET cuitProveedor=?, codProductoCatalogo=?, precioUnitario=?, fechaVigencia=? WHERE cuitProveedor=?" ;
     final String DELETE = "DELETE FROM catalogo WHERE cuitProveedor=?";
-    final String GETALL = "SELECT cuitProveedor, codProductoCatalogo, precioUnitario, fechaVigencia FROM catalogo";
-    final String GETONE = "SELECT cuitProveedor, codProductoCatalogo, precioUnitario, fechaVigencia FROM catalogo WHERE cuitProveedor=?";
+    final String GETALL = "SELECT cuitProveedor, codProductoCatalogo, precioUnitario  FROM catalogo";
+    final String GETONE = "SELECT cuitProveedor, codProductoCatalogo, precioUnitario FROM catalogo WHERE cuitProveedor=?";
     
     private catalogo convertir(ResultSet rs)throws SQLException {
           Long cuit=rs.getLong("cuitProveedor");
@@ -39,7 +39,7 @@ public class MySQLCatalogoDAO implements catalogoDAO{
             stat.setLong(1, a.getCuitProveedor());
             stat.setInt(2, a.getCodProductoCatalogo());
             stat.setFloat(3, a.getPrecioUnitario());
-            stat.setDate(4, a.getFechaVigencia());
+            //stat.setDate(4, a.getFechaVigencia());
             if (stat.executeUpdate()==0) {
                 System.out.println("Puede que no se haya guardado correctamente.");
             }
