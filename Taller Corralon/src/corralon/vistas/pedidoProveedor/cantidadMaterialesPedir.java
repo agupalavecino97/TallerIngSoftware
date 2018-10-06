@@ -1,6 +1,16 @@
 
 package corralon.vistas.pedidoProveedor;
 
+import corralon.modelos.catalogo;
+import corralon.modelos.stock;
+import corralon.vistas.proveedores.pedidoConCantidadProv;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 public class cantidadMaterialesPedir extends javax.swing.JPanel {
 
     /**
@@ -8,7 +18,66 @@ public class cantidadMaterialesPedir extends javax.swing.JPanel {
      */
     public cantidadMaterialesPedir() {
         initComponents();
+        aceptar.setEnabled(false);
+        cancelar.setEnabled(false);
+        nombre.setEditable(false);
+        precio.setEditable(false);    
     }
+    
+        
+    private stock material;
+    private catalogo catalogo;
+    private boolean editable;
+    private Object cantidadMaterial;
+    private pedidoConCantidadProv pedidocantprov;
+    private List<cantidadMaterialesPedir> pedido=new ArrayList();
+
+    public stock getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(stock material) {
+        this.material = material;
+    }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+        nombre.setEditable(editable);
+        precio.setEditable(editable);
+    }
+    
+    public void loadData(){
+        if(material!=null){
+            aceptar.setEnabled(true);
+            cancelar.setEnabled(true);
+            nombre.setText(material.getNombreMaterial());
+            String pre=String.valueOf(catalogo.getPrecioUnitario());
+            precio.setText(pre);
+                              
+        }
+        else{
+            nombre.setText("");
+            precio.setText("");
+        }        
+    }
+     
+    public void saveData()throws ParseException{
+       if(material==null) {
+           material=new stock();        
+       }
+       
+       material.setNombreMaterial(nombre.getText());
+       Long pre=Long.valueOf(precio.getText());
+       material.setPrecio(pre);
+       cantidadMaterial=cantidad.getValue();          
+       //System.out.println(cantidadMaterial);
+    }
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -20,7 +89,7 @@ public class cantidadMaterialesPedir extends javax.swing.JPanel {
         nombre = new javax.swing.JTextField();
         precio = new javax.swing.JTextField();
         cancelar = new javax.swing.JButton();
-        guardar = new javax.swing.JButton();
+        aceptar = new javax.swing.JButton();
         cantidad = new javax.swing.JSpinner();
 
         jLabel1.setText("Nombre Material:");
@@ -31,7 +100,7 @@ public class cantidadMaterialesPedir extends javax.swing.JPanel {
 
         cancelar.setText("Cancelar");
 
-        guardar.setText("Guardar");
+        aceptar.setText("Aceptar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -58,7 +127,7 @@ public class cantidadMaterialesPedir extends javax.swing.JPanel {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cancelar)
                         .addGap(18, 18, 18)
-                        .addComponent(guardar)))
+                        .addComponent(aceptar)))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -78,7 +147,7 @@ public class cantidadMaterialesPedir extends javax.swing.JPanel {
                     .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(guardar)
+                    .addComponent(aceptar)
                     .addComponent(cancelar))
                 .addContainerGap(93, Short.MAX_VALUE))
         );
@@ -86,9 +155,9 @@ public class cantidadMaterialesPedir extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton aceptar;
     private javax.swing.JButton cancelar;
     private javax.swing.JSpinner cantidad;
-    private javax.swing.JButton guardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
