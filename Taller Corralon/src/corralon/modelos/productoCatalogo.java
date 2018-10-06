@@ -3,14 +3,14 @@ package corralon.modelos;
 
 public class productoCatalogo{
       private Long codProductoCatalogo;
-      private String nombreProcudcoCatalogo;
-      private String descripcionPorductoCatalogo;
+      private String nombreProductoCatalogo;
+      private String descripcionProductoCatalogo;
       private String tipoProductoCatalogo;
 
     public productoCatalogo(Long codProductoCatalogo, String nombreProcudcoCatalogo, String descripcionPorductoCatalogo, String tipoProductoCatalogo) {
         this.codProductoCatalogo = codProductoCatalogo;
-        this.nombreProcudcoCatalogo = nombreProcudcoCatalogo;
-        this.descripcionPorductoCatalogo = descripcionPorductoCatalogo;
+        this.nombreProductoCatalogo = nombreProcudcoCatalogo;
+        this.descripcionProductoCatalogo = descripcionPorductoCatalogo;
         this.tipoProductoCatalogo = tipoProductoCatalogo;
     }
 
@@ -18,12 +18,12 @@ public class productoCatalogo{
         return codProductoCatalogo;
     }
 
-    public String getNombreProcudcoCatalogo() {
-        return nombreProcudcoCatalogo;
+    public String getNombreProductoCatalogo() {
+        return nombreProductoCatalogo;
     }
 
-    public String getDescripcionPorductoCatalogo() {
-        return descripcionPorductoCatalogo;
+    public String getDescripcionProductoCatalogo() {
+        return descripcionProductoCatalogo;
     }
 
     public String getTipoProductoCatalogo() {
@@ -34,12 +34,12 @@ public class productoCatalogo{
         this.codProductoCatalogo = codProductoCatalogo;
     }
 
-    public void setNombreProcudcoCatalogo(String nombreProcudcoCatalogo) {
-        this.nombreProcudcoCatalogo = nombreProcudcoCatalogo;
+    public void setNombreProductoCatalogo(String nombreProductoCatalogo) {
+        this.nombreProductoCatalogo = nombreProductoCatalogo;
     }
 
-    public void setDescripcionPorductoCatalogo(String descripcionPorductoCatalogo) {
-        this.descripcionPorductoCatalogo = descripcionPorductoCatalogo;
+    public void setDescripcionProductoCatalogo(String descripcionProductoCatalogo) {
+        this.descripcionProductoCatalogo = descripcionProductoCatalogo;
     }
 
     public void setTipoProductoCatalogo(String tipoProductoCatalogo) {
@@ -48,7 +48,7 @@ public class productoCatalogo{
 
     @Override
     public String toString() {
-        return "productoCatalogo{" + "codProductoCatalogo=" + codProductoCatalogo + ", nombreProcudcoCatalogo=" + nombreProcudcoCatalogo + ", descripcionPorductoCatalogo=" + descripcionPorductoCatalogo + ", tipoProductoCatalogo=" + tipoProductoCatalogo + '}';
+        return "productoCatalogo{" + "codProductoCatalogo=" + codProductoCatalogo + ", nombreProcudcoCatalogo=" + nombreProductoCatalogo + ", descripcionPorductoCatalogo=" + descripcionProductoCatalogo + ", tipoProductoCatalogo=" + tipoProductoCatalogo + '}';
     }
     
     
