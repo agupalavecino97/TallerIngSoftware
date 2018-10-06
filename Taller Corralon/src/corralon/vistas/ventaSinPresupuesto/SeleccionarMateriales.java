@@ -45,8 +45,8 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        cantidadMateriales1 = new corralon.vistas.ventaSinPresupuesto.cantidadMateriales();
         jButton1 = new javax.swing.JButton();
+        cantidadMateriales1 = new corralon.vistas.ventaSinPresupuesto.cantidadMateriales();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +78,6 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tabla);
 
         jPanel1.add(jScrollPane2, java.awt.BorderLayout.CENTER);
-        jPanel1.add(cantidadMateriales1, java.awt.BorderLayout.PAGE_END);
 
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +86,7 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, java.awt.BorderLayout.LINE_END);
+        jPanel1.add(cantidadMateriales1, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
