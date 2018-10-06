@@ -34,7 +34,7 @@ public class MySQLClienteDAO implements clienteDAO{
             stat.setLong(1,a.getCuitCliente());
             stat.setString(2,a.getRazonSocial());
             stat.setString(3,a.getDireccionCliente());
-            stat.setInt(4,a.getTelefonoCliente());
+            stat.setLong(4,a.getTelefonoCliente());
             stat.setBoolean(5,true); 
             if(stat.executeUpdate()==0){
                 System.out.println("Quizas no se guardo correctamente gg");
@@ -71,7 +71,7 @@ public class MySQLClienteDAO implements clienteDAO{
                 stat=con.prepareStatement(UPDATE);      
                 stat.setString(1,a.getRazonSocial());
                 stat.setString(2,a.getDireccionCliente());
-                stat.setInt(3,a.getTelefonoCliente());
+                stat.setLong(3,a.getTelefonoCliente());
                 stat.setBoolean(4,a.isEstadoClie());
                 stat.setLong(5,a.getCuitCliente());
                 if(stat.executeUpdate()==0){
@@ -115,7 +115,7 @@ public class MySQLClienteDAO implements clienteDAO{
           Long cuit=rs.getLong("cuitCliente");
           String nombre=rs.getString("razonSocial");
           String direccion=rs.getString("direccionCliente");
-          int telefono=rs.getInt("telefonoCliente");
+          Long telefono=rs.getLong("telefonoCliente");
           boolean estado=rs.getBoolean("estadoClie");
           cliente cliente = new cliente(cuit,nombre,direccion,telefono,estado);
           return cliente;        
