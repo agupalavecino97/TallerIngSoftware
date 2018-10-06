@@ -182,6 +182,11 @@ public class ListaProveedores extends javax.swing.JFrame {
     }//GEN-LAST:event_modificarActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+     try {
+         detalle.saveData();
+     } catch (ParseException ex) {
+         Logger.getLogger(ListaProveedores.class.getName()).log(Level.SEVERE, null, ex);
+     }
         detalle.setProveedor(null);
         detalle.setEditable(false);
         detalle.loadData();
@@ -191,7 +196,11 @@ public class ListaProveedores extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        //detalle.saveData();
+     try {
+         detalle.saveData();
+     } catch (ParseException ex) {
+         Logger.getLogger(ListaProveedores.class.getName()).log(Level.SEVERE, null, ex);
+     }
         proveedor c=detalle.getProveedor();    
         proveedor control=manager.getproveedorDao().obtener(c.getCuitProveedor()); //para controlar si el cliente existe ya comparando el cuit con los existentes en la base de datos, si existte se actualizan los datos si no se inserta un nuevo cliente
         if(control==null){
@@ -246,13 +255,13 @@ public class ListaProveedores extends javax.swing.JFrame {
      * @throws java.sql.SQLException
      */
     
-//    public static void main(String args[]) throws SQLException {
-//        DAOManager manager = new MySQLDAOManager("localhost", "taller", "root", "root");
-//                
-//        java.awt.EventQueue.invokeLater(() -> {
-//            new ListaProveedores(manager).setVisible(true);
-//        });
-//    }
+    public static void main(String args[]) throws SQLException {
+        DAOManager manager = new MySQLDAOManager("localhost", "taller", "root", "root");
+                
+        java.awt.EventQueue.invokeLater(() -> {
+            new ListaProveedores(manager).setVisible(true);
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabla;

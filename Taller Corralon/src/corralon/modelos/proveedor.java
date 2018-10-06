@@ -8,6 +8,14 @@ public class proveedor {
     private Long telefonoProveedor;
     private boolean estadoProveedor;
 
+    
+        public proveedor() {
+        this.nombreProveedor="";
+        this.direccionProveedor="";
+        this.telefonoProveedor=null;  
+            }
+
+    
     public proveedor(Long cuitProveedor, String nombreProveedor, String direccionProveedor,Long telefonoProveedor, boolean estadoProveedor) {
         this.cuitProveedor = cuitProveedor;
         this.nombreProveedor = nombreProveedor;
@@ -16,9 +24,6 @@ public class proveedor {
         this.estadoProveedor = estadoProveedor;
     }
 
-    public proveedor() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     public Long getCuitProveedor() {
         return cuitProveedor;
