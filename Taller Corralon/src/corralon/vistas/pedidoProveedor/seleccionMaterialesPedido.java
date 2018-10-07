@@ -2,6 +2,7 @@
 package corralon.vistas.pedidoProveedor;
 
 import corralon.DAO.DAOManager;
+import corralon.DAO.catalogoDAO;
 import corralon.DAO.mysql.MySQLDAOManager;
 import corralon.modelos.proveedor;
 import corralon.modelos.catalogo;
@@ -24,6 +25,11 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
         this.manager = manager;
         List<catalogo> datos;
         datos = manager.getcatalogoDao().obtenerTodos();
+        seleccionProveedorPedido sel = new seleccionProveedorPedido(manager);
+        
+        System.out.println("esto esssssssssss");
+        System.out.println(sel.getIdProveedorSelec());
+        //datos = manager.getcatalogoDao().obtenerTodosDeProv(idProveedorSelec);
         System.out.println(datos);
         this.model=new materialesTableModel3(datos);
 //        this.model.updateModel();
@@ -142,7 +148,7 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new seleccionMaterialesPedido(manager).setVisible(true);
+                new seleccionMaterialesPedido(manager).setVisible(false);
             }
         });
     }
@@ -154,7 +160,5 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 
-    void getCuitProveedorIngresado(Long cuitProveedor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 }

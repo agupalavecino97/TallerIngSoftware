@@ -50,7 +50,7 @@ public class catalogo{
 
     @Override
     public String toString() {
-        return "catalogo{" + "cuitProveedor=" + cuitProveedor + ", codProductoCatalogo=" + codProductoCatalogo + "Fecha vigencia=" + fechaVigencia + ", descripcionProdCat=" + ", precioUnitario=" + precioUnitario + '}';
+        return "catalogo{" + "cuitProveedor=" + cuitProveedor + ", codProductoCatalogo=" + codProductoCatalogo + "Fecha vigencia=" + fechaVigencia +  "precioUnitario=" + precioUnitario + '}';
     }
     
     

@@ -15,11 +15,11 @@ public class seleccionProveedorPedido extends javax.swing.JFrame {
    private ProveedorTableModel model;
    public static Long idProveedorSelec=null;
 
-    public static Long getIdProveedorSelec() {
+    public  Long getIdProveedorSelec() {
         return idProveedorSelec;
     }
 
-    public static void setIdProveedorSelec(Long idProveedorSelec) {
+    public  void setIdProveedorSelec(Long idProveedorSelec) {
         seleccionProveedorPedido.idProveedorSelec = idProveedorSelec;
     }
 
@@ -111,10 +111,11 @@ public class seleccionProveedorPedido extends javax.swing.JFrame {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
           System.out.println(getProveedorSeleccionado());
-          seleccionMaterialesPedido siguienteVista = new seleccionMaterialesPedido(manager);
           proveedor proveedor = getProveedorSeleccionado();
           setIdProveedorSelec(proveedor.getCuitProveedor());
+          System.out.println("pasando parametro");
           System.out.println(getIdProveedorSelec());
+          seleccionMaterialesPedido siguienteVista = new seleccionMaterialesPedido(manager);
            siguienteVista.setVisible(true);
            this.setVisible(false);
     }//GEN-LAST:event_aceptarActionPerformed

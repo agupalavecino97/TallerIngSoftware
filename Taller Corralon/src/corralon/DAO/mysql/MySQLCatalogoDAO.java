@@ -23,7 +23,7 @@ public class MySQLCatalogoDAO implements catalogoDAO{
     final String UPDATE = "UPDATE catalogo SET cuitProveedor=?, codProducto=?, precioUnitario=?, fechaDeActualizacion=? WHERE cuitProveedor=?" ;
     final String DELETE = "DELETE FROM catalogo WHERE cuitProveedor=?";
     final String GETALL = "SELECT cuitProveedor, codProducto, fechaDeActualizacion, precioUnitario  FROM catalogo";
-    final String GETALLdeprov = "SELECT codProducto, cuitProveedor, precioUnitario  FROM catalogo WHERE cuitProveedor =?";
+    final String GETALLdeprov = "SELECT cuitProveedor, codProducto, precioUnitario, fechaDeActualizacion  FROM catalogo WHERE cuitProveedor =?";
     final String GETONE = "SELECT cuitProveedor, codProducto, precioUnitario FROM catalogo WHERE cuitProveedor=?";
 
     
