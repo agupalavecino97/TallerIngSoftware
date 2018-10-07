@@ -2,7 +2,9 @@
 package corralon.vistas.pedidoProveedor;
 
 import corralon.DAO.DAOManager;
+import corralon.DAO.mysql.MySQLDAOManager;
 import corralon.modelos.proveedor;
+import corralon.modelos.catalogo;
 import javax.swing.table.TableModel;
 
 public class seleccionMaterialesPedido extends javax.swing.JFrame {
@@ -11,14 +13,10 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
    private materialesTableModel3 model;
    private Long cuitProveedorIngresado;
 
-    
-
-    
-    
     public seleccionMaterialesPedido(DAOManager manager) {
         initComponents();
         this.manager = manager;
-        this.model=new materialesTableModel3(manager.getmaterialDao());
+        this.model=new materialesTableModel3(manager.getcatalogoDao());
         this.model.updateModel();
         this.tabla.setModel((TableModel) model);
         

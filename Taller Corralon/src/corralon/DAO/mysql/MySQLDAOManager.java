@@ -4,6 +4,7 @@ import corralon.DAO.DAOManager;
 import corralon.DAO.clienteDAO;
 import corralon.DAO.materialDAO;
 import corralon.DAO.proveedorDAO;
+import corralon.modelos.catalogo;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -16,6 +17,8 @@ public class MySQLDAOManager implements DAOManager{
     private materialDAO materiales=null;
 
     private proveedorDAO proveedor=null;
+    
+    private catalogoDAO catalogo=null;
 
     private final Connection con;
     
@@ -55,6 +58,14 @@ public class MySQLDAOManager implements DAOManager{
     @Override
     public materialDAO getmaterialDao() {
         if(materiales==null){
+                        materiales=new MySQLMaterialDAO(con); 
+                    }
+                    return materiales;
+    }
+
+    @Override
+    public materialDAO getcatalogoDao() {
+               if(catalogo==null){
                         materiales=new MySQLMaterialDAO(con); 
                     }
                     return materiales;
