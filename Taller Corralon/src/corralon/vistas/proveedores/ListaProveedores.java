@@ -46,7 +46,7 @@ public class ListaProveedores extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
-        detalle = new corralon.vistas.proveedores.detalleProveedores();
+        detalleProveedores1 = new corralon.vistas.proveedores.detalleProveedores();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -135,18 +135,18 @@ public class ListaProveedores extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(detalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(detalleProveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(detalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(detalleProveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -155,9 +155,9 @@ public class ListaProveedores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void añadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirActionPerformed
-        detalle.setProveedor(null);
-        detalle.loadData();
-        detalle.setEditable(true);
+        detalleProveedores1.setProveedor(null);
+        detalleProveedores1.loadData();
+        detalleProveedores1.setEditable(true);
         guardar.setEnabled(true);
         cancelar.setEnabled(true);
     }//GEN-LAST:event_añadirActionPerformed
@@ -174,22 +174,22 @@ public class ListaProveedores extends javax.swing.JFrame {
     
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
        proveedor proveedor = getProveedorSeleccionado();
-       detalle.setProveedor(proveedor);
-       detalle.setEditable(true);
-       detalle.loadData();
+       detalleProveedores1.setProveedor(proveedor);
+       detalleProveedores1.setEditable(true);
+       detalleProveedores1.loadData();
        guardar.setEnabled(true);
        cancelar.setEnabled(true);
     }//GEN-LAST:event_modificarActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
      try {
-         detalle.saveData();
+         detalleProveedores1.saveData();
      } catch (ParseException ex) {
          Logger.getLogger(ListaProveedores.class.getName()).log(Level.SEVERE, null, ex);
      }
-        detalle.setProveedor(null);
-        detalle.setEditable(false);
-        detalle.loadData();
+        detalleProveedores1.setProveedor(null);
+        detalleProveedores1.setEditable(false);
+        detalleProveedores1.loadData();
         Tabla.clearSelection();
         guardar.setEnabled(false);
         cancelar.setEnabled(false);
@@ -197,19 +197,19 @@ public class ListaProveedores extends javax.swing.JFrame {
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
      try {
-         detalle.saveData();
+         detalleProveedores1.saveData();
      } catch (ParseException ex) {
          Logger.getLogger(ListaProveedores.class.getName()).log(Level.SEVERE, null, ex);
      }
-        proveedor c=detalle.getProveedor();    
+        proveedor c=detalleProveedores1.getProveedor();    
         proveedor control=manager.getproveedorDao().obtener(c.getCuitProveedor()); //para controlar si el cliente existe ya comparando el cuit con los existentes en la base de datos, si existte se actualizan los datos si no se inserta un nuevo cliente
         if(control==null){
             manager.getproveedorDao().insertar(c);
         }else manager.getproveedorDao().modificar(c);
        //para que se limpie todo
-       detalle.setProveedor(null);
-       detalle.setEditable(false);
-       detalle.loadData();
+       detalleProveedores1.setProveedor(null);
+       detalleProveedores1.setEditable(false);
+       detalleProveedores1.loadData();
        Tabla.clearSelection();
        guardar.setEnabled(false);
        cancelar.setEnabled(false);
@@ -267,7 +267,7 @@ public class ListaProveedores extends javax.swing.JFrame {
     private javax.swing.JTable Tabla;
     private javax.swing.JButton añadir;
     private javax.swing.JButton cancelar;
-    private corralon.vistas.proveedores.detalleProveedores detalle;
+    private corralon.vistas.proveedores.detalleProveedores detalleProveedores1;
     private javax.swing.JButton eliminar;
     private javax.swing.JButton guardar;
     private javax.swing.JPanel jPanel2;

@@ -1,4 +1,3 @@
-
 package corralon.vistas.ventaSinPresupuesto;
 
 import corralon.modelos.stock;
@@ -186,7 +185,8 @@ public class cantidadMateriales extends javax.swing.JPanel {
         Long codigo=material.getCodMaterial();
         String nombre=material.getNombreMaterial();
         Object cantidad=cantidadMaterial;
-        pedidoConCantidad pedidoc=new pedidoConCantidad(codigo,nombre,cantidad);
+        Long precio=material.getPrecio();
+        pedidoConCantidad pedidoc=new pedidoConCantidad(codigo,nombre,cantidad,precio);
         if(buscarEnLista(codigo)){
             //aqui tendria que buscar el elemto de este codigo y aumentarle la cantidad ingresada nada mas
             // no se como gg.

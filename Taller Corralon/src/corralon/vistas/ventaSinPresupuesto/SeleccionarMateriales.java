@@ -15,6 +15,7 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
    private DAOManager manager;
    private materialesTalbeModel2 model;
    private Long CuitClienteIngresado=null;
+   public  static List<pedidoConCantidad> pedido=new ArrayList();
    
     public SeleccionarMateriales(DAOManager manager) {
         initComponents();
@@ -24,18 +25,23 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
         this.tabla.setModel(model); 
     }
 
+    public List<pedidoConCantidad> getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(List<pedidoConCantidad> pedido) {
+        this.pedido = pedido;
+    }
+
+    
     public void setCuitClienteIngresado(Long CuitClienteIngresado) {
         this.CuitClienteIngresado = CuitClienteIngresado;
     }
 
-    
-       
-  
-    
     private stock getMaterialSeleccionado(){
         Long id=(Long) tabla.getValueAt(tabla.getSelectedRow(),0);   
         return manager.getmaterialDao().obtener(id);
-        
+     
     } 
     
    
@@ -105,51 +111,55 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
-       List<pedidoConCantidad> pedido;
-       pedido=cantidadMateriales1.getLista();
-        System.out.println(pedido);
+        setPedido(cantidadMateriales1.getLista());
+        System.out.print("lista enviada:");
+        System.out.println(getPedido());
+       validacionVenta vistaSiguiente=new validacionVenta(manager);
+//       vistaSiguiente.setPedidoRecibido(pedido);
+       vistaSiguiente.setVisible(true);
+       this.setVisible(false);
     }//GEN-LAST:event_ContinuarActionPerformed
 
    
     
     
-//    public static void main(String args[]) throws SQLException {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(SeleccionarMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(SeleccionarMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(SeleccionarMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(SeleccionarMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
-//        java.awt.EventQueue.invokeLater(() -> {
-//            new SeleccionarMateriales(manager).setVisible(true);
-//        });
-//    }
+    public static void main(String args[]) throws SQLException {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(SeleccionarMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(SeleccionarMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(SeleccionarMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(SeleccionarMateriales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
+        java.awt.EventQueue.invokeLater(() -> {
+            new SeleccionarMateriales(manager).setVisible(true);
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Continuar;
