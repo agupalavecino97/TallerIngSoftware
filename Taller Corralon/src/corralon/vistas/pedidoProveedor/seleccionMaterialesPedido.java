@@ -3,9 +3,32 @@ package corralon.vistas.pedidoProveedor;
 
 import corralon.DAO.DAOManager;
 import corralon.modelos.proveedor;
+import javax.swing.table.TableModel;
 
 public class seleccionMaterialesPedido extends javax.swing.JFrame {
-    private Long cuitProveedorIngresado;
+    
+   private DAOManager manager;
+   private materialesTableModel3 model;
+   private Long cuitProveedorIngresado;
+
+    
+
+    
+    
+    public seleccionMaterialesPedido(DAOManager manager) {
+        initComponents();
+        this.manager = manager;
+        this.model=new materialesTableModel3(manager.getmaterialDao());
+        this.model.updateModel();
+        this.tabla.setModel((TableModel) model);
+        
+    }
+
+ 
+
+    private seleccionMaterialesPedido() {
+        System.out.println(cuitProveedorIngresado);
+    }
 
     public Long getCuitProveedorIngresado() {
         return cuitProveedorIngresado;
@@ -15,13 +38,6 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
         this.cuitProveedorIngresado = cuitProveedorIngresado;
     }
   
-    
-
-    
-    
-    public seleccionMaterialesPedido(DAOManager manager) {
-        initComponents();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -115,6 +131,7 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new seleccionMaterialesPedido().setVisible(true);
             }

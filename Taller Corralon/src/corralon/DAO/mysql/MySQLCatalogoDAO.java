@@ -34,17 +34,17 @@ public class MySQLCatalogoDAO implements catalogoDAO{
           return cat;
     }
     
-      public  void main(String args[]) throws SQLException {
-        DAOManager manager = new MySQLDAOManager("localhost", "taller", "root", "root");
-                
-        java.awt.EventQueue.invokeLater(() -> {
-            new ListaProveedores(manager).setVisible(true);
-            Long a = Long.valueOf(10);
-            List<catalogo> catalogos2= new ArrayList<>();
-            catalogos2 = obtenerTodosDeProv(a);
-        });
-    }
-    
+//      public static void main(String args[]) throws SQLException {
+//        DAOManager manager = new MySQLDAOManager("localhost", "taller", "root", "root");
+//                
+//        java.awt.EventQueue.invokeLater(() -> {
+//            new ListaProveedores(manager).setVisible(true);
+//            Long a = Long.valueOf(10);
+//            List<catalogo> catalogos= new ArrayList<>();
+//            obtenerTodosDeProv(a);
+//        });
+//    }
+//    
     
     
     
@@ -154,36 +154,7 @@ public class MySQLCatalogoDAO implements catalogoDAO{
     }
     
     
-       public List<catalogo> obtenerTodosDeProv(Long id) {
-        PreparedStatement stat=null;
-        ResultSet rs=null;
-        List<catalogo> catalogos= new ArrayList<>();
-        try {
-             stat=conn.prepareStatement(GETALLdeprov);
-             rs=stat.executeQuery();
-             while(rs.next()){
-                 catalogos.add(convertir(rs));
-             }
-        } catch (SQLException ex) {
-            Logger.getLogger(MySQLCatalogoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }finally {
-            if (rs!=null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(MySQLCatalogoDAO.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            if (stat!=null) {
-                try {
-                    stat.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(MySQLCatalogoDAO.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-        return catalogos;
-    }
+       
 
     @Override
     public catalogo obtener(Long id) {
@@ -219,5 +190,38 @@ public class MySQLCatalogoDAO implements catalogoDAO{
         }
         return cat;
     }
+
+    @Override
+    public List<catalogo> obtenerTodosDeProv(Long id) {
+        PreparedStatement stat=null;
+        ResultSet rs=null;
+        List<catalogo> catalogos= new ArrayList<>();
+        try {
+             stat=conn.prepareStatement(GETALLdeprov);
+             rs=stat.executeQuery();
+             while(rs.next()){
+                 catalogos.add(convertir(rs));
+             }
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQLCatalogoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            if (rs!=null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MySQLCatalogoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (stat!=null) {
+                try {
+                    stat.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MySQLCatalogoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return catalogos;
+    }
+    
     
 }
