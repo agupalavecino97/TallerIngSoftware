@@ -14,18 +14,17 @@ import java.util.logging.Logger;
 
 public class MySQLProductoCatalogoDAO implements productoCatalogoDAO{
     private Connection conn;
-    final String INSERT = "INSERT INTO productoCatalogo(codProductoCatalogo,nombreProcudcoCatalogo,descripcionPorductoCatalogo,tipoProductoCatalogo) VALUES(?,?,?,?)";
+    final String INSERT = "INSERT INTO productoCatalogo(codProductoCatalogo,nombreProcudcoCatalogo,descripcionPorductoCatalogo) VALUES(?,?,?)";
     final String UPDATE = "UPDATE productoCatalogo SET codProductoCatalogo=?, dniCliente=?, fechaPresupuesto=? WHERE codProductoCatalogo=?" ;
     final String DELETE = "DELETE FROM productoCatalogo WHERE codProductoCatalogo=?";
-    final String GETALL = "SELECT codProductoCatalogo,nombreProcudcoCatalogo,descripcionPorductoCatalogo,tipoProductoCatalogo FROM productoCatalogo";
-    final String GETONE = "SELECT codProductoCatalogo,nombreProcudcoCatalogo,descripcionPorductoCatalogo,tipoProductoCatalogo FROM productoCatalogo WHERE codProductoCatalogo=?";
+    final String GETALL = "SELECT codProductoCatalogo,nombreProcudcoCatalogo,descripcionPorductoCatalogo FROM productoCatalogo";
+    final String GETONE = "SELECT codProductoCatalogo,nombreProcudcoCatalogo,descripcionPorductoCatalogo FROM productoCatalogo WHERE codProductoCatalogo=?";
     
     private productoCatalogo convertir(ResultSet rs)throws SQLException {
           Long cod=rs.getLong("codProductoCatalogo");
           String nombre=rs.getString("nombreProductoCatalogo");
           String descrip=rs.getString("descripcionProductoCatalogo");
-          String tipo=rs.getString("tipoProductoCatalogo");
-          productoCatalogo prodCat = new productoCatalogo(cod, nombre, descrip, tipo);
+          productoCatalogo prodCat = new productoCatalogo(cod, nombre, descrip);
           return prodCat;
     }
 
@@ -37,7 +36,6 @@ public class MySQLProductoCatalogoDAO implements productoCatalogoDAO{
             stat.setLong(1, a.getCodProductoCatalogo());
             stat.setString(2, a.getNombreProductoCatalogo());
             stat.setString(3, a.getDescripcionProductoCatalogo());
-            stat.setString(4, a.getTipoProductoCatalogo());
             if (stat.executeUpdate()==0) {
                 System.out.println("Puede que no se haya guardado correctamente.");
             }
@@ -62,7 +60,6 @@ public class MySQLProductoCatalogoDAO implements productoCatalogoDAO{
             stat.setLong(1, a.getCodProductoCatalogo());
             stat.setString(2, a.getNombreProductoCatalogo());
             stat.setString(3, a.getDescripcionProductoCatalogo());
-            stat.setString(4, a.getTipoProductoCatalogo());
             if (stat.executeUpdate()==0) {
                 System.out.println("Puede que no se haya guardado correctamente.");
             }

@@ -23,21 +23,29 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
     public seleccionMaterialesPedido(DAOManager manager) {
         initComponents();
         this.manager = manager;
-        List<catalogo> datos;
-        //datos = manager.getcatalogoDao().obtenerTodos();   
+        List<catalogo> datos;  
         seleccionProveedorPedido sel = new seleccionProveedorPedido(manager);
-//        System.out.println("esto esssssssssss");
-//        System.out.println(sel.getIdProveedorSelec());
         datos = manager.getcatalogoDao().obtenerTodosDeProv(sel.getIdProveedorSelec());
-        //datos = manager.getcatalogoDao().obtenerTodosDeProv(idProveedorSelec);
         System.out.println(datos);
         this.model=new materialesTableModel3(datos);
-//        this.model.updateModel();
+       //        this.model.updateModel();
         this.tabla.setModel(model);
         
     }
 
- 
+//      ESTA FUNCIONA PERFECTAMENTE!!! RESPALDO
+//    public seleccionMaterialesPedido(DAOManager manager) {
+//        initComponents();
+//        this.manager = manager;
+//        List<catalogo> datos;  
+//        seleccionProveedorPedido sel = new seleccionProveedorPedido(manager);
+//        datos = manager.getcatalogoDao().obtenerTodosDeProv(sel.getIdProveedorSelec());
+//        System.out.println(datos);
+//        this.model=new materialesTableModel3(datos);
+//       //        this.model.updateModel();
+//        this.tabla.setModel(model);
+//        
+//    }
 
     private seleccionMaterialesPedido() {
         System.out.println(cuitProveedorIngresado);
