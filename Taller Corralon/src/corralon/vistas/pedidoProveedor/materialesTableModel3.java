@@ -2,10 +2,7 @@
 package corralon.vistas.pedidoProveedor;
 
 import corralon.DAO.catalogoDAO;
-import corralon.DAO.materialDAO;
-import corralon.DAO.productoCatalogoDAO;
 import corralon.modelos.catalogo;
-import corralon.modelos.stock;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -13,7 +10,7 @@ import javax.swing.table.AbstractTableModel;
 public class materialesTableModel3 {
     
     private catalogoDAO catalogo;
-    private List<catalogo> listacat=new ArrayList();
+    private List<catalogo> datos=new ArrayList();
     
     public materialesTableModel3(catalogoDAO catalogo){
         this.catalogo=catalogo;
@@ -21,7 +18,7 @@ public class materialesTableModel3 {
         
     public void updateModel(){
         Long a = Long.valueOf("1");
-        listacat =(List<catalogo>) catalogo.obtener(a);
+        datos =(List<catalogo>) catalogo.obtenerTodos();
     }
 
     public String getColumnName(int i){
@@ -34,7 +31,7 @@ public class materialesTableModel3 {
     }
        
     public int getRowCount() {
-        return listacat.size();
+        return datos.size();
     }
 
     public int getColumnCount() {    
@@ -42,10 +39,11 @@ public class materialesTableModel3 {
         }
     
        public Object getValueAt(int rowIndex, int columnIndex) {
-        catalogo consulta=listacat.get(rowIndex);
+        catalogo consulta=datos.get(rowIndex);
         switch(columnIndex){
             case 0:return consulta.getCodProductoCatalogo();
-//            case 1:return consulta.getCuitProveedor();
+            case 1: return consulta.getCodProductoCatalogo();
+            case 2: return consulta.getPrecioUnitario();
 //            case 2:return consulta.getPrecioUnitario();
             //case 4: return consulta.getCodProv();
             default: return "";

@@ -12,6 +12,7 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
    private DAOManager manager;
    private materialesTableModel3 model;
    private Long cuitProveedorIngresado;
+   
 
     public seleccionMaterialesPedido(DAOManager manager) {
         initComponents();

@@ -17,26 +17,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MySQLCatalogoDAO implements catalogoDAO{
-    private Connection conn;
-    final String INSERT = "INSERT INTO catalogo(cuitProveedor, codProductoCatalogo, precioUnitario, fechaVigencia) VALUES(?,?,?,?)";
-    final String UPDATE = "UPDATE catalogo SET cuitProveedor=?, codProductoCatalogo=?, precioUnitario=?, fechaVigencia=? WHERE cuitProveedor=?" ;
+    final String INSERT = "INSERT INTO catalogo(cuitProveedor, codProducto, precioUnitario, fechaDeActualizacion) VALUES(?,?,?,?)";
+    final String UPDATE = "UPDATE catalogo SET cuitProveedor=?, codProducto=?, precioUnitario=?, fechaDeActualizacion=? WHERE cuitProveedor=?" ;
     final String DELETE = "DELETE FROM catalogo WHERE cuitProveedor=?";
-    final String GETALL = "SELECT cuitProveedor, codProductoCatalogo, precioUnitario  FROM catalogo";
-    final String GETALLdeprov = "SELECT codProductoCatalogo, precioUnitario  FROM catalogo WHERE cuitProveedor =?";
-    final String GETONE = "SELECT cuitProveedor, codProductoCatalogo, precioUnitario FROM catalogo WHERE cuitProveedor=?";
+    final String GETALL = "SELECT cuitProveedor, codProducto, precioUnitario  FROM catalogo";
+    final String GETALLdeprov = "SELECT codProducto, precioUnitario  FROM catalogo WHERE cuitProveedor =?";
+    final String GETONE = "SELECT cuitProveedor, codProducto, precioUnitario FROM catalogo WHERE cuitProveedor=?";
 
     
-    private final Connection con;
+    private final Connection conn;
     
     MySQLCatalogoDAO(Connection con) {
-        this.con = con;
+        this.conn = con;
     }
     
     private catalogo convertir(ResultSet rs)throws SQLException {
           Long cuit=rs.getLong("cuitProveedor");
-          int cod= rs.getInt("codProductoCatalogo");
+          int cod= rs.getInt("codProducto");
           float precio=rs.getFloat("precioUnitario");
-          Date fecha= rs.getDate("fechaVigencia");
+          Date fecha= rs.getDate("fechaDeActualizacion");
           catalogo cat= new catalogo(cuit, cod, precio, fecha);
           return cat;
     }
