@@ -18,7 +18,6 @@ public class MySQLDAOManager implements DAOManager{
 
     private proveedorDAO proveedor=null;
     
-    private catalogoDAO catalogo=null;
 
     private final Connection con;
     
@@ -65,11 +64,10 @@ public class MySQLDAOManager implements DAOManager{
 
     @Override
     public materialDAO getcatalogoDao() {
-               if(catalogo==null){
-                        materiales=new MySQLMaterialDAO(con); 
-                    }
-                    return materiales;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+  
     
     
     
