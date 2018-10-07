@@ -13,6 +13,7 @@ public class seleccionProveedorPedido extends javax.swing.JFrame {
 
   private DAOManager manager;
    private ProveedorTableModel model;
+   
 
     
     public seleccionProveedorPedido(DAOManager manager) {
@@ -29,6 +30,7 @@ public class seleccionProveedorPedido extends javax.swing.JFrame {
          
     private proveedor getProveedorSeleccionado(){
         Long id = (Long) tabla.getValueAt(tabla.getSelectedRow(),0);
+
         return manager.getproveedorDao().obtener(id);
     }
     
@@ -98,8 +100,12 @@ public class seleccionProveedorPedido extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-           seleccionMaterialesPedido siguienteVista = new seleccionMaterialesPedido(manager);
-           siguienteVista.getCuitProveedorIngresado(getProveedorSeleccionado().getCuitProveedor());
+          System.out.println(getProveedorSeleccionado());
+        seleccionMaterialesPedido siguienteVista = new seleccionMaterialesPedido(manager);
+           Long id22 = getProveedorSeleccionado().getCuitProveedor();
+           siguienteVista.setCuitProveedorIngresado(id22);
+           siguienteVista.setVisible(true);
+           this.setVisible(false);
     }//GEN-LAST:event_aceptarActionPerformed
 
     /**

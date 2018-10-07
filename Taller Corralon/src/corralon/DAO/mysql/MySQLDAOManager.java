@@ -1,9 +1,11 @@
 package corralon.DAO.mysql;
 
 import corralon.DAO.DAOManager;
+import corralon.DAO.catalogoDAO;
 import corralon.DAO.clienteDAO;
 import corralon.DAO.materialDAO;
 import corralon.DAO.proveedorDAO;
+import corralon.modelos.catalogo;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -16,7 +18,9 @@ public class MySQLDAOManager implements DAOManager{
     private materialDAO materiales=null;
 
     private proveedorDAO proveedor=null;
-
+    
+    private catalogoDAO catalogo = null;
+    
     private final Connection con;
     
     public MySQLDAOManager(String host, String database, String user, String password) throws SQLException {
@@ -59,6 +63,17 @@ public class MySQLDAOManager implements DAOManager{
                     }
                     return materiales;
     }
+
+    @Override
+    public catalogoDAO getcatalogoDao() {
+        if(catalogo==null){
+                        catalogo=new MySQLCatalogoDAO(con); 
+                    }
+                    return catalogo;
+    }
+
+
+
     
     
     
