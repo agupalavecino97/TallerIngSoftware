@@ -5,6 +5,10 @@ import corralon.DAO.DAOManager;
 import corralon.DAO.mysql.MySQLDAOManager;
 import corralon.modelos.proveedor;
 import corralon.modelos.catalogo;
+import static corralon.vistas.pedidoProveedor.seleccionProveedorPedido.idProveedorSelec;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.TableModel;
 
 public class seleccionMaterialesPedido extends javax.swing.JFrame {
@@ -13,12 +17,16 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
    private materialesTableModel3 model;
    private Long cuitProveedorIngresado;
    
+   
 
     public seleccionMaterialesPedido(DAOManager manager) {
         initComponents();
         this.manager = manager;
-        this.model=new materialesTableModel3(manager.getcatalogoDao());
-        this.model.updateModel();
+        List<catalogo> datos;
+        datos = manager.getcatalogoDao().obtenerTodos();
+        System.out.println(datos);
+        this.model=new materialesTableModel3(datos);
+//        this.model.updateModel();
         this.tabla.setModel(model);
         
     }
@@ -103,8 +111,10 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
 
     /**
      * @param args the command line arguments
+     * @throws java.sql.SQLException
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws SQLException {
+        DAOManager manager = new MySQLDAOManager("localhost", "taller", "root", "root");
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -132,7 +142,7 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new seleccionMaterialesPedido().setVisible(true);
+                new seleccionMaterialesPedido(manager).setVisible(true);
             }
         });
     }

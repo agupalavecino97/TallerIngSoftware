@@ -23,7 +23,7 @@ public class MySQLCatalogoDAO implements catalogoDAO{
     final String UPDATE = "UPDATE catalogo SET cuitProveedor=?, codProducto=?, precioUnitario=?, fechaDeActualizacion=? WHERE cuitProveedor=?" ;
     final String DELETE = "DELETE FROM catalogo WHERE cuitProveedor=?";
     final String GETALL = "SELECT cuitProveedor, codProducto, precioUnitario  FROM catalogo";
-    final String GETALLdeprov = "SELECT codProducto, precioUnitario  FROM catalogo WHERE cuitProveedor =?";
+    final String GETALLdeprov = "SELECT codProducto, cuitProveedor, precioUnitario  FROM catalogo WHERE cuitProveedor =?";
     final String GETONE = "SELECT cuitProveedor, codProducto, precioUnitario FROM catalogo WHERE cuitProveedor=?";
 
     
@@ -39,7 +39,8 @@ public class MySQLCatalogoDAO implements catalogoDAO{
           float precio=rs.getFloat("precioUnitario");
           //SimpleDateFormat fecha= rs.getd("fechaDeActualizacion");
           Date fecha = rs.getDate("fechaDeActualizacion");
-          catalogo cat= new catalogo(cuit, cod, precio, fecha);
+          String fecha2 = fecha.toString();
+          catalogo cat= new catalogo(cuit, cod, precio,fecha2);
           return cat;
     }
     
@@ -67,7 +68,7 @@ public class MySQLCatalogoDAO implements catalogoDAO{
             stat.setInt(2, a.getCodProductoCatalogo());
             stat.setFloat(3, a.getPrecioUnitario());
             //stat.setDate(4, a.getFechaVigencia());
-            stat.setDate(4, new Date(a.getFechaVigencia().getTime()));
+            stat.setString(4, a.getFechaVigencia());
             if (stat.executeUpdate()==0) {
                 System.out.println("Puede que no se haya guardado correctamente.");
             }
@@ -92,7 +93,7 @@ public class MySQLCatalogoDAO implements catalogoDAO{
             stat.setLong(1, a.getCuitProveedor());
             stat.setInt(2, a.getCodProductoCatalogo());
             stat.setFloat(3, a.getPrecioUnitario());
-            stat.setDate(4, a.getFechaVigencia());
+            stat.setString(4, a.getFechaVigencia());
             if (stat.executeUpdate()==0) {
                 System.out.println("Puede que no se haya guardado correctamente.");
             }
