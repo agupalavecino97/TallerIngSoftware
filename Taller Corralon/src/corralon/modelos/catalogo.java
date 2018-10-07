@@ -48,5 +48,13 @@ public class catalogo{
     public void setFechaVigencia(Date fechaVigencia) {
         this.fechaVigencia = fechaVigencia;
     }
+
+    @Override
+    public String toString() {
+        return "catalogo{" + "cuitProveedor=" + cuitProveedor + ", codProductoCatalogo=" + codProductoCatalogo + ", descripcionProdCat=" + descripcionProdCat + ", precioUnitario=" + precioUnitario + '}';
+    }
+    
+    
+    
     
 }

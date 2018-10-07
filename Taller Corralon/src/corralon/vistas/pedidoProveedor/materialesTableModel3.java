@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-public class materialesTableModel3 {
+ class materialesTableModel3 extends AbstractTableModel{
     
     private catalogoDAO catalogo;
     private List<catalogo> datos=new ArrayList();
@@ -18,9 +18,10 @@ public class materialesTableModel3 {
         
     public void updateModel(){
         Long a = Long.valueOf("1");
-        datos =(List<catalogo>) catalogo.obtenerTodos();
+        datos = catalogo.obtenerTodos();
     }
 
+    @Override
     public String getColumnName(int i){
         switch(i){
             case 0:return "codigo";
@@ -30,14 +31,17 @@ public class materialesTableModel3 {
         }
     }
        
+    @Override
     public int getRowCount() {
         return datos.size();
     }
 
+    @Override
     public int getColumnCount() {    
         return 3;
         }
     
+    @Override
        public Object getValueAt(int rowIndex, int columnIndex) {
         catalogo consulta=datos.get(rowIndex);
         switch(columnIndex){

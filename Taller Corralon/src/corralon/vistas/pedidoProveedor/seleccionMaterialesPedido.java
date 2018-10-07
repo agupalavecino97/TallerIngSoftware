@@ -19,7 +19,7 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
         this.manager = manager;
         this.model=new materialesTableModel3(manager.getcatalogoDao());
         this.model.updateModel();
-        this.tabla.setModel((TableModel) model);
+        this.tabla.setModel(model);
         
     }
 
