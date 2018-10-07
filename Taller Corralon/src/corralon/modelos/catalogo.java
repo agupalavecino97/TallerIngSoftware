@@ -7,9 +7,9 @@ public class catalogo{
     private Long cuitProveedor;
     private int codProductoCatalogo;
     private float precioUnitario;
-    private String fechaVigencia;   
+    private Date fechaVigencia;   
 
-    public catalogo(Long cuitProveedor, int codProductoCatalogo, float precioUnitario, String fechaVigencia) {
+    public catalogo(Long cuitProveedor, int codProductoCatalogo, float precioUnitario, Date fechaVigencia) {
         this.cuitProveedor = cuitProveedor;
         this.codProductoCatalogo = codProductoCatalogo;
         this.precioUnitario = precioUnitario;
@@ -28,7 +28,7 @@ public class catalogo{
         return precioUnitario;
     }
 
-    public String getFechaVigencia() {
+    public Date getFechaVigencia() {
         return fechaVigencia;
     }
 
@@ -44,13 +44,13 @@ public class catalogo{
         this.precioUnitario = precioUnitario;
     }
 
-    public void setFechaVigencia(String fechaVigencia) {
+    public void setFechaVigencia(Date fechaVigencia) {
         this.fechaVigencia = fechaVigencia;
     }
 
     @Override
     public String toString() {
-        return "catalogo{" + "cuitProveedor=" + cuitProveedor + ", codProductoCatalogo=" + codProductoCatalogo + ", descripcionProdCat=" + ", precioUnitario=" + precioUnitario + '}';
+        return "catalogo{" + "cuitProveedor=" + cuitProveedor + ", codProductoCatalogo=" + codProductoCatalogo + "Fecha vigencia=" + fechaVigencia + ", descripcionProdCat=" + ", precioUnitario=" + precioUnitario + '}';
     }
     
     

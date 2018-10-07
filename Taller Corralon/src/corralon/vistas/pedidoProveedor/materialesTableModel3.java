@@ -27,7 +27,8 @@ import javax.swing.table.AbstractTableModel;
         switch(i){
             case 0:return "codigo";
             case 1:return "cuit";
-            case 2:return "precio";
+            case 2: return "fecha actualizacion";
+            case 3:return "precio";
             default:return "[no]"; 
         }
     }
@@ -39,7 +40,7 @@ import javax.swing.table.AbstractTableModel;
 
     @Override
     public int getColumnCount() {    
-        return 3;
+        return 4;
         }
     
     @Override
@@ -48,8 +49,8 @@ import javax.swing.table.AbstractTableModel;
         switch(columnIndex){
             case 0:return consulta.getCodProductoCatalogo();
             case 1: return consulta.getCuitProveedor();
-            case 2: return consulta.getPrecioUnitario();
-//            case 2:return consulta.getPrecioUnitario();
+            case 2:return consulta.getFechaVigencia();
+            case 3: return consulta.getPrecioUnitario();
 //                DateFormat df = DateFormat.getDateInstance();
 //                return df.format(consulta.getFechaVigencia());
             default: return "";
