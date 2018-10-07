@@ -24,11 +24,11 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
         initComponents();
         this.manager = manager;
         List<catalogo> datos;
-        datos = manager.getcatalogoDao().obtenerTodos();
+        //datos = manager.getcatalogoDao().obtenerTodos();   
         seleccionProveedorPedido sel = new seleccionProveedorPedido(manager);
-        
-        System.out.println("esto esssssssssss");
-        System.out.println(sel.getIdProveedorSelec());
+//        System.out.println("esto esssssssssss");
+//        System.out.println(sel.getIdProveedorSelec());
+        datos = manager.getcatalogoDao().obtenerTodosDeProv(sel.getIdProveedorSelec());
         //datos = manager.getcatalogoDao().obtenerTodosDeProv(idProveedorSelec);
         System.out.println(datos);
         this.model=new materialesTableModel3(datos);
