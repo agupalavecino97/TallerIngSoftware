@@ -12,16 +12,16 @@ import javax.swing.table.AbstractTableModel;
 
 public class materialesTableModel3 {
     
-    private materialDAO material;
     private catalogoDAO catalogo;
     private List<catalogo> listacat=new ArrayList();
     
-    public materialesTableModel3(materialDAO material){
-        this.material=material;
+    public materialesTableModel3(catalogoDAO catalogo){
+        this.catalogo=catalogo;
     }
         
     public void updateModel(){
-        listacat =catalogo.obtenerTodos();
+        Long a = Long.valueOf("1");
+        listacat =(List<catalogo>) catalogo.obtener(a);
     }
 
     public String getColumnName(int i){

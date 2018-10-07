@@ -25,8 +25,11 @@ public class MySQLCatalogoDAO implements catalogoDAO{
     final String GETALLdeprov = "SELECT codProductoCatalogo, precioUnitario  FROM catalogo WHERE cuitProveedor =?";
     final String GETONE = "SELECT cuitProveedor, codProductoCatalogo, precioUnitario FROM catalogo WHERE cuitProveedor=?";
 
+    
+    private final Connection con;
+    
     MySQLCatalogoDAO(Connection con) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.con = con;
     }
     
     private catalogo convertir(ResultSet rs)throws SQLException {

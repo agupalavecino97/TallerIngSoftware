@@ -5,7 +5,6 @@ public interface DAOManager {
     clienteDAO getclienteDao();
     materialDAO getmaterialDao();
     proveedorDAO getproveedorDao();
-
-    public materialDAO getcatalogoDao();
+    catalogoDAO getcatalogoDao();
 
 }

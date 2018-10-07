@@ -1,6 +1,7 @@
 package corralon.DAO.mysql;
 
 import corralon.DAO.DAOManager;
+import corralon.DAO.catalogoDAO;
 import corralon.DAO.clienteDAO;
 import corralon.DAO.materialDAO;
 import corralon.DAO.proveedorDAO;
@@ -18,7 +19,8 @@ public class MySQLDAOManager implements DAOManager{
 
     private proveedorDAO proveedor=null;
     
-
+    private catalogoDAO catalogo = null;
+    
     private final Connection con;
     
     public MySQLDAOManager(String host, String database, String user, String password) throws SQLException {
@@ -63,11 +65,15 @@ public class MySQLDAOManager implements DAOManager{
     }
 
     @Override
-    public materialDAO getcatalogoDao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public catalogoDAO getcatalogoDao() {
+        if(catalogo==null){
+                        catalogo=new MySQLCatalogoDAO(con); 
+                    }
+                    return catalogo;
     }
 
-  
+
+
     
     
     
