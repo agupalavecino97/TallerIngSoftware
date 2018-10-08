@@ -9,8 +9,8 @@ import javax.swing.table.AbstractTableModel;
 
 
 public class ProveedorTableModel extends AbstractTableModel {
-    private proveedorDAO proveedor;
     
+    private proveedorDAO proveedor;   
     private List<proveedor> datos = new ArrayList<>();
     
     public ProveedorTableModel(proveedorDAO proveedor){
@@ -21,8 +21,6 @@ public class ProveedorTableModel extends AbstractTableModel {
         datos = proveedor.obtenerTodos();
     }
     
-
-
     @Override
     public String getColumnName(int i) {
             switch(i){

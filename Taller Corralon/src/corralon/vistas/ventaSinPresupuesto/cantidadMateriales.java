@@ -21,7 +21,7 @@ public class cantidadMateriales extends javax.swing.JPanel {
     
     private stock material; 
     private boolean editable;
-    private Object cantidadMaterial;
+    private Long cantidadMaterial;
     private List<pedidoConCantidad> pedido=new ArrayList();
     
     
@@ -61,7 +61,7 @@ public class cantidadMateriales extends javax.swing.JPanel {
         }        
     }
      
-    public void saveData()throws ParseException{
+    public boolean saveData()throws ParseException{
        if(material==null) {
            material=new stock();        
        }
@@ -69,7 +69,14 @@ public class cantidadMateriales extends javax.swing.JPanel {
        material.setNombreMaterial(nombre.getText());
        Long pre=Long.valueOf(precio.getText());
        material.setPrecio(pre);
-       cantidadMaterial=cantidad.getValue();          
+       String stringToConvert = String.valueOf(cantidad.getValue());
+       Long convertedLong = Long.parseLong(stringToConvert);
+       if(convertedLong<material.getCantidadExistente()){
+           cantidadMaterial=convertedLong; 
+           return true;
+       }
+           return false;
+                
        //System.out.println(cantidadMaterial);
     }
     
@@ -178,26 +185,28 @@ public class cantidadMateriales extends javax.swing.JPanel {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         try {
-            saveData();
+            if(saveData()){
+                Long codigo=material.getCodMaterial();
+                String nombre=material.getNombreMaterial();
+                Long cantidad2=Long.valueOf(cantidadMaterial);
+                Long precio=material.getPrecio();
+                pedidoConCantidad pedidoc=new pedidoConCantidad(codigo,nombre,cantidad2,precio);
+                if(buscarEnLista(codigo)){
+                    //aqui tendria que buscar el elemto de este codigo y aumentarle la cantidad ingresada nada mas
+                    // no se como gg.
+                }
+                pedido.add(pedidoc);
+                setEditable(false);
+                setMaterial(null);
+                loadData();
+                aceptar.setEnabled(false);
+                cancelar.setEnabled(false);
+                this.cantidad.setValue(0);
+            }
+           
         } catch (ParseException ex) {
             Logger.getLogger(cantidadMateriales.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Long codigo=material.getCodMaterial();
-        String nombre=material.getNombreMaterial();
-        Object cantidad=cantidadMaterial;
-        Long precio=material.getPrecio();
-        pedidoConCantidad pedidoc=new pedidoConCantidad(codigo,nombre,cantidad,precio);
-        if(buscarEnLista(codigo)){
-            //aqui tendria que buscar el elemto de este codigo y aumentarle la cantidad ingresada nada mas
-            // no se como gg.
-        }
-        pedido.add(pedidoc);
-        setEditable(false);
-        setMaterial(null);
-        loadData();
-        aceptar.setEnabled(false);
-        cancelar.setEnabled(false);
-        this.cantidad.setValue(0);
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void precioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioActionPerformed

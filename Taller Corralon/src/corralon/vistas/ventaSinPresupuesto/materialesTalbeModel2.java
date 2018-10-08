@@ -26,7 +26,6 @@ class materialesTalbeModel2 extends AbstractTableModel{
             case 1:return "nombre";
             case 2:return "precio";
             case 3:return "cantidadExistente";
-            case 4:return "cantidadSolicitada";
             default:return "[no]"; 
         }
     }
@@ -38,7 +37,7 @@ class materialesTalbeModel2 extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {    
-        return 5;
+        return 4;
         }
 
     @Override

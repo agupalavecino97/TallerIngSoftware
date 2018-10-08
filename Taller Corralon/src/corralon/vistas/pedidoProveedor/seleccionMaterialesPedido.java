@@ -2,16 +2,9 @@
 package corralon.vistas.pedidoProveedor;
 
 import corralon.DAO.DAOManager;
-import corralon.DAO.catalogoDAO;
 import corralon.DAO.mysql.MySQLDAOManager;
-import corralon.DAO.productoCatalogoDAO;
 import corralon.modelos.proveedor;
 import corralon.modelos.catalogo;
-import corralon.modelos.productoCatalogo;
-import static corralon.vistas.pedidoProveedor.seleccionProveedorPedido.idProveedorSelec;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.table.TableModel;
 
 public class seleccionMaterialesPedido extends javax.swing.JFrame {
@@ -19,64 +12,18 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
    private DAOManager manager;
    private materialesTableModel3 model;
    private Long cuitProveedorIngresado;
-   private productoCatalogoDAO prodCatdao;
-   private productoCatalogo produC;
-   public  static List<catalogoUnProveedor> nueva=new ArrayList();
-   public  static List<elementosDePedido> pedido=new ArrayList();
-
-    public static List<catalogoUnProveedor> getNueva() {
-        return nueva;
-    }
-
-    public static void setNueva(List<catalogoUnProveedor> nueva) {
-        seleccionMaterialesPedido.nueva = nueva;
-    }
-
    
-   
-   
-   
-//      ESTA FUNCIONA PERFECTAMENTE!!! RESPALDO
-//   public seleccionMaterialesPedido(DAOManager manager) {
-//        initComponents();
-//        this.manager = manager;
-//        List<catalogo> datos;  
-//        seleccionProveedorPedido sel = new seleccionProveedorPedido(manager);
-//        datos = manager.getcatalogoDao().obtenerTodosDeProv(sel.getIdProveedorSelec());
-//        System.out.println(datos);
-//        this.model=new materialesTableModel3(datos);
-//       //        this.model.updateModel();
-//        this.tabla.setModel(model);
-//        
-//    }
-
 
     public seleccionMaterialesPedido(DAOManager manager) {
         initComponents();
         this.manager = manager;
-        List<catalogo> datos;  
-
-        catalogoUnProveedor elem;
-        seleccionProveedorPedido sel = new seleccionProveedorPedido(manager);
-        datos = manager.getcatalogoDao().obtenerTodosDeProv(sel.getIdProveedorSelec());
-        System.out.println(datos);
-        int i=0;
-        while (i<datos.size()){         
-            Long mandar = Long.valueOf(datos.get(i).getCodProductoCatalogo());
-            produC = manager.getproductocatalogoDao().obtener(mandar);
-            String nombre = produC.getNombreProductoCatalogo();
-            Long dato = Long.valueOf(datos.get(i).getCodProductoCatalogo());
-            elem = new catalogoUnProveedor(dato, nombre , datos.get(i).getPrecioUnitario());
-            nueva.add(i, elem);
-            i++;
-        }
-        System.out.println("listaaaa");
-        System.out.println(nueva);       
-        this.model=new materialesTableModel3(nueva);
-       //        this.model.updateModel();
-        this.tabla.setModel(model);
+        this.model=new materialesTableModel3(manager.getcatalogoDao());
+        this.model.updateModel();
+        this.tabla.setModel((TableModel) model);
         
     }
+
+ 
 
     private seleccionMaterialesPedido() {
         System.out.println(cuitProveedorIngresado);
@@ -90,14 +37,7 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
         this.cuitProveedorIngresado = cuitProveedorIngresado;
     }
   
-   private catalogoUnProveedor getMaterialSeleccionado(){
-        Long id=(Long) tabla.getValueAt(tabla.getSelectedRow(),0);   
-        Object nombre = tabla.getValueAt(tabla.getSelectedRow(), 1);
-        Object precio= tabla.getValueAt(tabla.getSelectedRow(), 2);
-        catalogoUnProveedor cat = new catalogoUnProveedor(id, nombre.toString(), (float) precio);
-         return cat;
-    } 
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -111,7 +51,6 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
         tabla = new javax.swing.JTable();
         agregar = new javax.swing.JButton();
         continuar = new javax.swing.JButton();
-        cantidadMaterialesPedir1 = new corralon.vistas.pedidoProveedor.cantidadMaterialesPedir();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -129,77 +68,43 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabla);
 
         agregar.setText("Agregar");
-        agregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agregarActionPerformed(evt);
-            }
-        });
 
         continuar.setText("Continuar");
-        continuar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                continuarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(agregar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(173, 173, 173)
-                                .addComponent(continuar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(cantidadMaterialesPedir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(agregar)
+                .addGap(0, 2, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(188, 188, 188)
+                .addComponent(continuar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(agregar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cantidadMaterialesPedir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(continuar))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(continuar)
+                .addGap(0, 48, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addComponent(agregar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
-        catalogoUnProveedor cata = getMaterialSeleccionado();
-        cantidadMaterialesPedir1.setCatalogo(cata);
-        cantidadMaterialesPedir1.loadData();
-        cantidadMaterialesPedir1.setEditable(true);
-        
-    }//GEN-LAST:event_agregarActionPerformed
-
-    private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
-        confirmarPedido siguientevista = new confirmarPedido();
-        setVisible(false);
-        siguientevista.setVisible(true);
-    }//GEN-LAST:event_continuarActionPerformed
-
     /**
      * @param args the command line arguments
-     * @throws java.sql.SQLException
      */
-    public static void main(String args[]) throws SQLException {
-        DAOManager manager = new MySQLDAOManager("localhost", "taller", "root", "root");
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -227,18 +132,19 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new seleccionMaterialesPedido(manager).setVisible(false);
+                new seleccionMaterialesPedido().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregar;
-    private corralon.vistas.pedidoProveedor.cantidadMaterialesPedir cantidadMaterialesPedir1;
     private javax.swing.JButton continuar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 
-
+    void getCuitProveedorIngresado(Long cuitProveedor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

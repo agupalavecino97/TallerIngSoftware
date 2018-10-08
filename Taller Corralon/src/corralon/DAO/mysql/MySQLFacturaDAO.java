@@ -16,32 +16,44 @@ import java.util.logging.Logger;
 
 public class MySQLFacturaDAO implements facturaDAO{
     private Connection conn;
-    final String INSERT = "INSERT INTO factura(codigoFactura, fechaFactura, codigoPedidoClie, estadoFactura) VALUES(?,?,?,?)";
-    final String UPDATE = "UPDATE factura SET codigoFactura=?, fechaFactura=?, codigoPedidoClie=?, estadoFactura=? WHERE codigoFactura=?" ;
-    final String DELETE = "DELETE FROM factura WHERE codigoFactura=?";
-    final String GETALL = "SELECT codigoFactura, fechaFactura, codigoPedidoClie, estadoFactura FROM factura";
-    final String GETONE = "SELECT codigoFactura, fechaFactura, codigoPedidoClie, estadoFactura FROM factura WHERE codgioFactura=?";
+    final String INSERT = "INSERT INTO factura(fechaFactura, codPedidoClie, estadoFactura) VALUES(?,?,?)";
+    final String UPDATE = "UPDATE factura SET codFactura=?, fechaFactura=?, codPedidoClie=?, estadoFactura=? WHERE codigoFactura=?" ;
+    final String DELETE = "DELETE FROM factura WHERE codFactura=?";
+    final String GETALL = "SELECT codFactura, fechaFactura, codPedidoClie, estadoFactura FROM factura";
+    final String GETONE = "SELECT codFactura, fechaFactura, codPedidoClie, estadoFactura FROM factura WHERE codFactura=?";
 
+    public MySQLFacturaDAO(Connection con) {
+        this.conn = con;
+     }
+    
     private factura convertir(ResultSet rs)throws SQLException {
-          Long id=rs.getLong("codigoFactura");
           Date fecha= rs.getDate("fechaFactura");
-          int codigo= rs.getInt("codigoPedidoClie");
-          int estado= rs.getInt("estadoFactura");
-          factura fac= new factura(id, fecha, codigo, estado);
+          Long codigo= rs.getLong("codPedidoClie");
+          String estado= rs.getString("estadoFactura");
+          factura fac= new factura(fecha, codigo, estado);
           return fac;
     }
     @Override
     public void insertar(factura a) {
         PreparedStatement stat=null;
+        ResultSet rs=null;
         try {
             stat=conn.prepareStatement(INSERT);
-            stat.setLong(1, a.getCodigoFactura());
-            stat.setDate(2, a.getFechaFactura());
-            stat.setInt(3, a.getCodigoPedidoClie());
-            stat.setInt(4, a.getEstadoFactura());
+            stat.setDate(1, a.getFechaFactura());
+            stat.setLong(2, a.getCodigoPedidoClie());
+            stat.setString(3, a.getEstadoFactura());
             if (stat.executeUpdate()==0) {
                 System.out.println("Puede que no se haya guardado correctamente.");
             }
+            rs = stat.getGeneratedKeys();
+                if(rs.next())
+                { //esto es para guardar el atributo autoincremental en el objeto 
+                    int last_inserted_id = rs.getInt(1);
+                     System.out.println(last_inserted_id);
+                     a.setCodigoFactura(Long.valueOf(last_inserted_id));
+                }
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(MySQLFacturaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }finally {
@@ -62,8 +74,8 @@ public class MySQLFacturaDAO implements facturaDAO{
             stat=conn.prepareStatement(UPDATE);
             stat.setLong(1, a.getCodigoFactura());
             stat.setDate(2, a.getFechaFactura());
-            stat.setInt(3, a.getCodigoPedidoClie());
-            stat.setInt(4, a.getEstadoFactura());
+            stat.setLong(3, a.getCodigoPedidoClie());
+            stat.setString(4, a.getEstadoFactura());
             if (stat.executeUpdate()==0) {
                 System.out.println("Puede que no se haya guardado correctamente.");
             }

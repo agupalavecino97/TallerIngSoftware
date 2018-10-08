@@ -6,10 +6,10 @@ public class pedidoConCantidad {
     
     private Long codMaterial;    
     private String nombreMaterial;
-    private Object cantidad;
+    private Long cantidad;
     private Long precio;
 
-    public pedidoConCantidad(Long codMaterial, String nombreMaterial, Object cantidad, Long precio) {
+    public pedidoConCantidad(Long codMaterial, String nombreMaterial, Long cantidad, Long precio) {
         this.codMaterial = codMaterial;
         this.nombreMaterial = nombreMaterial;
         this.cantidad = cantidad;
@@ -24,7 +24,7 @@ public class pedidoConCantidad {
         return nombreMaterial;
     }
 
-    public Object getCantidad() {
+    public Long getCantidad() {
         return cantidad;
     }
 
@@ -40,7 +40,7 @@ public class pedidoConCantidad {
         this.nombreMaterial = nombreMaterial;
     }
 
-    public void setCantidad(Object cantidad) {
+    public void setCantidad(Long cantidad) {
         this.cantidad = cantidad;
     }
 

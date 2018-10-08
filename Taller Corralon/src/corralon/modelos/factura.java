@@ -6,15 +6,16 @@ public class factura {
  
     private Long codigoFactura;
     private Date fechaFactura;
-    private int codigoPedidoClie;
-    private int estadoFactura;
+    private Long codigoPedidoClie;
+    private String estadoFactura;
 
-    public factura(Long codigoFactura, Date fechaFactura, int codigoPedidoClie, int estadoFactura) {
-        this.codigoFactura = codigoFactura;
+    public factura(Date fechaFactura, Long codigoPedidoClie, String estadoFactura) {
         this.fechaFactura = fechaFactura;
         this.codigoPedidoClie = codigoPedidoClie;
         this.estadoFactura = estadoFactura;
     }
+
+   
 
     public Long getCodigoFactura() {
         return codigoFactura;
@@ -32,19 +33,19 @@ public class factura {
         this.fechaFactura = fechaFactura;
     }
 
-    public int getCodigoPedidoClie() {
+    public Long getCodigoPedidoClie() {
         return codigoPedidoClie;
     }
 
-    public void setCodigoPedidoClie(int codigoPedidoClie) {
+    public void setCodigoPedidoClie(Long codigoPedidoClie) {
         this.codigoPedidoClie = codigoPedidoClie;
     }
 
-    public int getEstadoFactura() {
+    public String getEstadoFactura() {
         return estadoFactura;
     }
 
-    public void setEstadoFactura(int estadoFactura) {
+    public void setEstadoFactura(String estadoFactura) {
         this.estadoFactura = estadoFactura;
     }
 
@@ -52,5 +53,6 @@ public class factura {
     public String toString() {
         return "factura{" + "codigoFactura=" + codigoFactura + ", fechaFactura=" + fechaFactura + ", codigoPedidoClie=" + codigoPedidoClie + ", estadoFactura=" + estadoFactura + '}';
     }
+
     
 }

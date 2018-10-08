@@ -3,10 +3,13 @@ package corralon.DAO.mysql;
 import corralon.DAO.DAOManager;
 import corralon.DAO.catalogoDAO;
 import corralon.DAO.clienteDAO;
+import corralon.DAO.facturaDAO;
 import corralon.DAO.materialDAO;
-import corralon.DAO.productoCatalogoDAO;
+import corralon.DAO.pedidoClienteDAO;
+import corralon.DAO.pedidoMaterialDAO;
 import corralon.DAO.proveedorDAO;
 import corralon.modelos.catalogo;
+import corralon.modelos.pedidoMaterial;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -22,7 +25,11 @@ public class MySQLDAOManager implements DAOManager{
     
     private catalogoDAO catalogo = null;
     
-    private productoCatalogoDAO productoCatalogo = null;
+    private pedidoClienteDAO pedidoCliente=null;
+    
+    private facturaDAO factura=null;
+    
+    private pedidoMaterialDAO pedidoMaterial=null;
     
     private final Connection con;
     
@@ -75,19 +82,34 @@ public class MySQLDAOManager implements DAOManager{
                     return catalogo;
     }
 
+    @Override
+    public pedidoClienteDAO getpedidoClienteDao() {
+        if(pedidoCliente==null){
+                                pedidoCliente=new MySQLPedidoClienteDAO(con); 
+                            }
+                            return pedidoCliente;   
+    }
 
     @Override
-    public productoCatalogoDAO getproductocatalogoDao() {
-          if(productoCatalogo==null){
-                        productoCatalogo=new MySQLProductoCatalogoDAO(con); 
-                    }
-                    return productoCatalogo;
+    public facturaDAO getfacturaDao() {
+        if(factura==null){
+                                        factura=new MySQLFacturaDAO(con); 
+                                    }
+                                    return factura;  
     }
+
+    @Override
+    public pedidoMaterialDAO getpedidoMaterialDao() {
+        if(pedidoMaterial==null){
+                                        pedidoMaterial=new MySQLPedidoMaterialDAO(con); 
+                                    }
+                                    return pedidoMaterial;  
     }
 
 
 
     
     
-   
+    
+}
  

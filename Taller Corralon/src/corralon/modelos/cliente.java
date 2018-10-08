@@ -10,9 +10,11 @@ public class cliente {
     private boolean estadoClie;
     
     public cliente(){
+        this.cuitCliente=null;
         this.direccionCliente="";
         this.direccionCliente="";
-        this.telefonoCliente=null;  
+        this.telefonoCliente=null; 
+        this.estadoClie=false;
     }
 
     public cliente(Long cuitCliente,String razonSocial, String direccionCliente, Long telefonoCliente, boolean estadoClie) {

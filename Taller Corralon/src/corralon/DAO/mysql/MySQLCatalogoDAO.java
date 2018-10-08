@@ -11,21 +11,17 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class MySQLCatalogoDAO implements catalogoDAO{
     final String INSERT = "INSERT INTO catalogo(cuitProveedor, codProducto, precioUnitario, fechaDeActualizacion) VALUES(?,?,?,?)";
     final String UPDATE = "UPDATE catalogo SET cuitProveedor=?, codProducto=?, precioUnitario=?, fechaDeActualizacion=? WHERE cuitProveedor=?" ;
     final String DELETE = "DELETE FROM catalogo WHERE cuitProveedor=?";
-    final String GETALL = "SELECT cuitProveedor, codProducto, fechaDeActualizacion, precioUnitario  FROM catalogo";
-    final String GETALLdeprov = "(SELECT cuitProveedor, codProducto, precioUnitario, fechaDeActualizacion  FROM catalogo WHERE cuitProveedor =?)";
-//    final String GETALLdeprov = "SELECT  cat.codProducto as 'id', cat.precioUnitario as 'preP', prodcat.nombreProd as 'nombre' FROM catalogo as cat JOIN "
-//            + "productocatalogo as prodCat ON prodCat.codProducto = cat.id WHERE cuitProveedor =?";
+    final String GETALL = "SELECT cuitProveedor, codProducto, precioUnitario  FROM catalogo";
+    final String GETALLdeprov = "SELECT codProducto, precioUnitario  FROM catalogo WHERE cuitProveedor =?";
     final String GETONE = "SELECT cuitProveedor, codProducto, precioUnitario FROM catalogo WHERE cuitProveedor=?";
 
     
@@ -39,10 +35,8 @@ public class MySQLCatalogoDAO implements catalogoDAO{
           Long cuit=rs.getLong("cuitProveedor");
           int cod= rs.getInt("codProducto");
           float precio=rs.getFloat("precioUnitario");
-          //SimpleDateFormat fecha= rs.getd("fechaDeActualizacion");
-          Date fecha = rs.getDate("fechaDeActualizacion");
-//          String fecha2 = fecha.toString();
-          catalogo cat= new catalogo(cuit, cod, precio,fecha);
+          Date fecha= rs.getDate("fechaDeActualizacion");
+          catalogo cat= new catalogo(cuit, cod, precio, fecha);
           return cat;
     }
     
@@ -70,7 +64,6 @@ public class MySQLCatalogoDAO implements catalogoDAO{
             stat.setInt(2, a.getCodProductoCatalogo());
             stat.setFloat(3, a.getPrecioUnitario());
             //stat.setDate(4, a.getFechaVigencia());
-            stat.setDate(4, a.getFechaVigencia());
             if (stat.executeUpdate()==0) {
                 System.out.println("Puede que no se haya guardado correctamente.");
             }
@@ -210,13 +203,9 @@ public class MySQLCatalogoDAO implements catalogoDAO{
         ResultSet rs=null;
         List<catalogo> catalogos= new ArrayList<>();
         try {
-//                         stat=conn.prepareStatement(GETONE);
-//             stat.setLong(1, id);
-//             rs=stat.executeQuery(); 
-            stat=conn.prepareStatement(GETALLdeprov);
-            stat.setLong(1, id);
+             stat=conn.prepareStatement(GETALLdeprov);
              rs=stat.executeQuery();
-             while(rs.next() ){
+             while(rs.next()){
                  catalogos.add(convertir(rs));
              }
         } catch (SQLException ex) {

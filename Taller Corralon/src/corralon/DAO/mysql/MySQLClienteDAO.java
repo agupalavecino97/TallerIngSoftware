@@ -3,6 +3,7 @@ package corralon.DAO.mysql;
 import corralon.DAO.clienteDAO;
 import corralon.modelos.cliente;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -186,27 +187,28 @@ public class MySQLClienteDAO implements clienteDAO{
     }
  
  
-/*
-    Esto es para probar 
- public static void main(String[]args) throws SQLException{
-    String driver = "com.mysql.jdbc.Driver";
-    String database = "taller";
-    String hostname = "localhost";
-    String port = "3306";
-    String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database + "?useSSL=false";
-    Connection con=null;
-    con=DriverManager.getConnection(url,"root","root");
-    MySQLClienteDAO dao=new MySQLClienteDAO(con);
-    
-    
-     cliente a=new cliente(45,"pepo","dirpepo", 456,true);
-     dao.eliminar(a);
-     List<cliente> clientes=dao.obtenerTodos(); 
-     for(cliente c :clientes){
-         System.out.println(c.toString());
-     }     
- }    
- */
+
+   // Esto es para probar 
+// public static void main(String[]args) throws SQLException{
+//    String driver = "com.mysql.jdbc.Driver";
+//    String database = "taller";
+//    String hostname = "localhost";
+//    String port = "3306";
+//    String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database + "?useSSL=false";
+//    Connection con=null;
+//    con=DriverManager.getConnection(url,"root","root");
+//    MySQLClienteDAO dao=new MySQLClienteDAO(con);
+//        Long aca=Long.valueOf(1);
+//        Long b=Long.valueOf(2);
+//    
+//     cliente a=new cliente(aca,"pepo","dirpepo",b,true);
+//     dao.insertar(a);
+//     List<cliente> clientes=dao.obtenerTodos(); 
+//     for(cliente c :clientes){
+//         System.out.println(c.toString());
+//     }     
+// }    
+// 
 
      
    

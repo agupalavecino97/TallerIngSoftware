@@ -4,12 +4,13 @@ package corralon.modelos;
 public class pedidoMaterial {
     
     private Long codigoPedidoClie;
-    //private int codigoPedidoMaterial;   //AQUI este atributo no tendria que existir. LO SACO.
-    private int cantidadMaterial;
-    private float subTotalMat;
+    private Long  codMaterial;
+    private Long cantidadMaterial;
+    private Long subTotalMat;
 
-    public pedidoMaterial(Long codigoPedidoClie, int cantidadMaterial, float subTotalMat) {
+    public pedidoMaterial(Long codigoPedidoClie, Long codMaterial, Long cantidadMaterial, Long subTotalMat) {
         this.codigoPedidoClie = codigoPedidoClie;
+        this.codMaterial = codMaterial;
         this.cantidadMaterial = cantidadMaterial;
         this.subTotalMat = subTotalMat;
     }
@@ -18,24 +19,37 @@ public class pedidoMaterial {
         return codigoPedidoClie;
     }
 
-    public int getCantidadMaterial() {
-        return cantidadMaterial;
-    }
-
-    public float getSubTotalMat() {
-        return subTotalMat;
-    }
-
     public void setCodigoPedidoClie(Long codigoPedidoClie) {
         this.codigoPedidoClie = codigoPedidoClie;
     }
 
-    public void setCantidadMaterial(int cantidadMaterial) {
+    public Long getCodMaterial() {
+        return codMaterial;
+    }
+
+    public void setCodMaterial(Long codMaterial) {
+        this.codMaterial = codMaterial;
+    }
+
+    public Long getCantidadMaterial() {
+        return cantidadMaterial;
+    }
+
+    public void setCantidadMaterial(Long cantidadMaterial) {
         this.cantidadMaterial = cantidadMaterial;
     }
 
-    public void setSubTotalMat(float subTotalMat) {
+    public Long getSubTotalMat() {
+        return subTotalMat;
+    }
+
+    public void setSubTotalMat(Long subTotalMat) {
         this.subTotalMat = subTotalMat;
+    }
+
+    @Override
+    public String toString() {
+        return "pedidoMaterial{" + "codigoPedidoClie=" + codigoPedidoClie + ", codMaterial=" + codMaterial + ", cantidadMaterial=" + cantidadMaterial + ", subTotalMat=" + subTotalMat + '}';
     }
 
     
