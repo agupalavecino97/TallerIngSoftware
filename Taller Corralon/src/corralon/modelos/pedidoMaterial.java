@@ -4,7 +4,7 @@ package corralon.modelos;
 public class pedidoMaterial {
     
     private Long codigoPedidoClie;
-    private Long  codMaterial;
+    private Long codMaterial;
     private Long cantidadMaterial;
     private Long subTotalMat;
 

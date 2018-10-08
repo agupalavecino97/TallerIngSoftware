@@ -264,7 +264,7 @@ public class ListaMateriales extends javax.swing.JFrame {
     
     
     
-//    
+    
 //    public static void main(String args[]) throws SQLException {
 //        
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -291,7 +291,6 @@ public class ListaMateriales extends javax.swing.JFrame {
 //        //</editor-fold>
 //        //</editor-fold>
 //        //</editor-fold>
-//
 //           
 //        DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
 //        java.awt.EventQueue.invokeLater(() -> {

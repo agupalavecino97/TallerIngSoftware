@@ -18,6 +18,14 @@ public class pedidoCliente {
         this.estado = estado;
     }
 
+//    public pedidoCliente(Long codigoPedidoClie, Long dniCliente, Date fechaPedidoClie, Long totalPedidoClie, String estado) {
+//        this.codigoPedidoClie = codigoPedidoClie;
+//        this.dniCliente = dniCliente;
+//        this.fechaPedidoClie = fechaPedidoClie;
+//        this.totalPedidoClie = totalPedidoClie;
+//        this.estado = estado;
+//    }
+
     
 
     public Long getCodigoPedidoClie() {
