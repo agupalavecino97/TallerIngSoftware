@@ -189,7 +189,7 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
     }//GEN-LAST:event_agregarActionPerformed
 
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
-        confirmarPedido siguientevista = new confirmarPedido();
+        confirmarPedido siguientevista = new confirmarPedido(manager);
         setVisible(false);
         siguientevista.setVisible(true);
     }//GEN-LAST:event_continuarActionPerformed
