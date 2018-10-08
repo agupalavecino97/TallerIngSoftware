@@ -113,7 +113,6 @@ public class seleccionProveedorPedido extends javax.swing.JFrame {
           System.out.println(getProveedorSeleccionado());
           proveedor proveedor = getProveedorSeleccionado();
           setIdProveedorSelec(proveedor.getCuitProveedor());
-          System.out.println("pasando parametro");
           System.out.println(getIdProveedorSelec());
           seleccionMaterialesPedido siguienteVista = new seleccionMaterialesPedido(manager);
            siguienteVista.setVisible(true);

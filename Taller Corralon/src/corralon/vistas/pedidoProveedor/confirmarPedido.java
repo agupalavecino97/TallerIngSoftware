@@ -144,7 +144,9 @@ public class confirmarPedido extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
-        // TODO add your handling code here:
+        finalizarPedido siguienteVista = new finalizarPedido(manager);
+        siguienteVista.setVisible(true);
+        this.setVisible(false);    
     }//GEN-LAST:event_continuarActionPerformed
 
     /**
