@@ -1,26 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package corralon.vistas.pedidoProveedor;
 
-public class catalogoUnProveedor {
+public class elementosDePedido {
+    
     private Long codProducto;
     private String nombrePr;
     private float precio;
-    
+    private Object cantidad;
 
-    public catalogoUnProveedor(Long codProducto, String nombrePr, float precio) {
+    public elementosDePedido(Long codProducto, String nombrePr, float precio, Object cantidad) {
         this.codProducto = codProducto;
         this.nombrePr = nombrePr;
         this.precio = precio;
-    }
-
-    public catalogoUnProveedor() {
-         this.codProducto = null;
-        this.nombrePr = null;
-        this.precio = 0;
+        this.cantidad = cantidad;
     }
 
     public Long getCodProducto() {
@@ -47,15 +39,17 @@ public class catalogoUnProveedor {
         this.precio = precio;
     }
 
-    @Override
-    public String toString() {
-        return "catalogoUnProveedor{" + "codProducto=" + codProducto + ", nombrePr=" + nombrePr + ", precio=" + precio + '}';
+    public Object getCantidad() {
+        return cantidad;
     }
 
-    
-    
-    
-    
+    public void setCantidad(Object cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    @Override
+    public String toString() {
+        return "elementosDePedido{" + "codProducto=" + codProducto + ", nombrePr=" + nombrePr + ", precio=" + precio + ", cantidad=" + cantidad + '}';
+    }
     
 }
-
