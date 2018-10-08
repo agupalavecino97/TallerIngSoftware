@@ -8,14 +8,25 @@ public class pedidoConCantidad {
     private String nombreMaterial;
     private Long cantidad;
     private Long precio;
+    private Long SubTotal;
 
     public pedidoConCantidad(Long codMaterial, String nombreMaterial, Long cantidad, Long precio) {
         this.codMaterial = codMaterial;
         this.nombreMaterial = nombreMaterial;
         this.cantidad = cantidad;
         this.precio = precio;
+        this.SubTotal=cantidad*precio;
     }
 
+    public Long getSubTotal() {
+        return SubTotal;
+    }
+
+    public void setSubTotal(Long SubTotal) {
+        this.SubTotal = SubTotal;
+    }
+
+    
     public Long getCodMaterial() {
         return codMaterial;
     }

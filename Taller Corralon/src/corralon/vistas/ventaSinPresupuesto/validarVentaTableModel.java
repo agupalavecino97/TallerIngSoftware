@@ -21,6 +21,7 @@ public class validarVentaTableModel extends AbstractTableModel{
             case 1:return "nombre";
             case 2:return "cantidad solicitada";
             case 3:return "precio";
+            case 4:return "SubTotal";
             default:return "[no]"; 
         }
     }     
@@ -31,7 +32,7 @@ public class validarVentaTableModel extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-            return 4;
+            return 5;
           }
 
     @Override
@@ -42,6 +43,8 @@ public class validarVentaTableModel extends AbstractTableModel{
             case 1:return consulta.getNombreMaterial();
             case 2:return consulta.getCantidad();
             case 3:return consulta.getPrecio();
+            case 4:return consulta.getSubTotal();
+            
             default: return "";
         }
     }

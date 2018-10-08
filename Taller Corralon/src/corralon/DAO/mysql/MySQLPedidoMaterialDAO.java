@@ -48,7 +48,6 @@ private Connection conn;
             stat.setLong(2, a.getCodMaterial());
             stat.setLong(3, a.getCantidadMaterial());
             stat.setLong(4, a.getSubTotalMat());
-            
             if (stat.executeUpdate()==0) {
                 System.out.println("Puede que no se haya guardado correctamente.");
             }

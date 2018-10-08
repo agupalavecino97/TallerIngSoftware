@@ -37,21 +37,19 @@ public class validacionVenta extends javax.swing.JFrame {
         validacionVenta.pedidoclientes = pedidocliente;
     }
 
-   
+    
+    public String ObtenerPrecioTotal(List<pedidoConCantidad> pedido) {
+        int precioTotal = 0;
+       for(pedidoConCantidad c: pedido) {
+            precioTotal += (c.getCantidad().intValue())*(c.getPrecio().intValue());
+        }
+        setPrecioTotal(Long.valueOf(precioTotal));
+    return Integer.toString(precioTotal);
+   }
 
-//    
-//    public String ObtenerPrecioTotal(List<pedidoConCantidad> pedido) {
-//        int precioTotal = 0;
-//       for(pedidoConCantidad c: pedido) {
-//            precioTotal += (c.getCantidad().intValue())*(c.getPrecio().intValue());
-//        }
-//        setPrecioTotal(Long.valueOf(precioTotal));
-//    return Integer.toString(precioTotal);
-//   }
-//
-//    public static void setPrecioTotal(Long precioTotal) {
-//        validacionVenta.precioTotal = precioTotal;
-//    }
+    public static void setPrecioTotal(Long precioTotal) {
+        validacionVenta.precioTotal = precioTotal;
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

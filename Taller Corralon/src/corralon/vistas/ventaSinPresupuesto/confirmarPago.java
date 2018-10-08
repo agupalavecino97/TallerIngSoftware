@@ -184,6 +184,7 @@ public class confirmarPago extends javax.swing.JFrame {
            for(pedidoConCantidad material: pedido){
                pedidoMaterial detallerPedido=new pedidoMaterial(pedidoclientes.getCodigoPedidoClie(),material.getCodMaterial(),material.getCantidad(), (material.getCantidad()*material.getPrecio()));  
                manager.getpedidoMaterialDao().insertar(detallerPedido);
+               manager.getmaterialDao().modificarCantidad(detallerPedido.getCodMaterial(),detallerPedido.getCantidadMaterial());
            }
            
            java.util.Date date=new java.util.Date();

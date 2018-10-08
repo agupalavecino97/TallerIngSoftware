@@ -1,5 +1,6 @@
 package corralon.vistas.ventaSinPresupuesto;
 
+import corralon.DAO.DAOManager;
 import corralon.modelos.stock;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -9,6 +10,8 @@ import java.util.logging.Logger;
 
 public class cantidadMateriales extends javax.swing.JPanel {
 
+    
+    private DAOManager manager;
    
     public cantidadMateriales() {
         initComponents();
@@ -71,7 +74,7 @@ public class cantidadMateriales extends javax.swing.JPanel {
        material.setPrecio(pre);
        String stringToConvert = String.valueOf(cantidad.getValue());
        Long convertedLong = Long.parseLong(stringToConvert);
-       if(convertedLong<material.getCantidadExistente()){
+       if(convertedLong<=material.getCantidadExistente()){
            cantidadMaterial=convertedLong; 
            return true;
        }
@@ -192,6 +195,17 @@ public class cantidadMateriales extends javax.swing.JPanel {
                 Long precio=material.getPrecio();
                 pedidoConCantidad pedidoc=new pedidoConCantidad(codigo,nombre,cantidad2,precio);
                 if(buscarEnLista(codigo)){
+                    int posicion=(pedido.lastIndexOf(codigo));
+                    pedidoConCantidad nuevoPedido=pedido.get(posicion);
+                    nuevoPedido.setCantidad(nuevoPedido.getCantidad()+cantidad2);
+                    if(nuevoPedido.getCantidad()<=manager.getmaterialDao().obtenerCantidad(nuevoPedido.getCodMaterial())){
+                         pedido.set(posicion,nuevoPedido);
+                    }else{
+                        setMaterial(null);
+                        loadData();
+                        cantidad.setValue(0);
+                    }
+                   
                     //aqui tendria que buscar el elemto de este codigo y aumentarle la cantidad ingresada nada mas
                     // no se como gg.
                 }

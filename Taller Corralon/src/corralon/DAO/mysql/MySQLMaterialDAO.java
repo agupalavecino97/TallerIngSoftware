@@ -22,7 +22,8 @@ public class MySQLMaterialDAO implements materialDAO{
     final String UPDATE="UPDATE stock SET nombreMat=?, precio=?, descripcionMat=?, cantExistente=?, stockMinimo=?, stockMax=?, estadoMat=? WHERE codMaterial=?";
     final String GETALL="SELECT codMaterial,nombreMat,precio,descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat FROM stock";
     final String GETONE="SELECT codMaterial,nombreMat,precio, descripcionMat, cantExistente, stockMinimo, stockMax, estadoMat FROM stock WHERE codMaterial=?";
-
+    final String UPDATECANT="UPDATE stock SET cantExistente=? WHERE codMaterial=?";
+    final String GETONECANT="SELECT cantExistente FROM stock WHERE codMaterial=?";
     private final Connection con;
     
     public MySQLMaterialDAO(Connection con){
@@ -98,6 +99,29 @@ public class MySQLMaterialDAO implements materialDAO{
                 }
              }    
     }
+    
+     @Override
+    public void modificarCantidad(Long id, Long cantidad) {
+          PreparedStatement stat=null;
+        try{
+            stat=con.prepareStatement(UPDATECANT);
+            stat.setLong(1,cantidad);
+            stat.setLong(2,id);
+            if(stat.executeUpdate()==0){
+                System.out.println("Quizas no se guardo correctamente gg");
+            } 
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally{
+                if (stat != null)
+                    try {
+                        stat.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             }    
+    }
+
 
     @Override
     public void eliminar(stock a) {
@@ -198,6 +222,39 @@ public class MySQLMaterialDAO implements materialDAO{
     return a;    
     }
     
+     @Override
+    public Long obtenerCantidad(Long id) {
+       PreparedStatement stat=null;
+        ResultSet rs=null;
+        Long cantidad=null;
+        try{
+            stat=con.prepareStatement(GETONECANT);  
+            stat.setLong(1,id);
+            rs=stat.executeQuery();
+            if(rs.next()){
+               cantidad=rs.getLong("cantExistente");
+        }else{
+                System.out.println("NO se encontro ese registro");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally{
+                if (rs != null)
+                    try {
+                        rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+                } 
+                if (stat != null)
+                    try {
+                        stat.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+                } 
+             }
+         return cantidad;    
+    }
+
 
 // public static void main(String[]args) throws SQLException{
 //    String driver = "com.mysql.jdbc.Driver";
@@ -227,6 +284,8 @@ public class MySQLMaterialDAO implements materialDAO{
 ////        });     
 // } 
 
+   
+   
    
 }
  
