@@ -75,15 +75,19 @@ public class MySQLDAOManager implements DAOManager{
                     return catalogo;
     }
 
+
     @Override
-    public productoCatalogoDAO getproductocatalogoDAO() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public productoCatalogoDAO getproductocatalogoDao() {
+          if(productoCatalogo==null){
+                        productoCatalogo=new MySQLProductoCatalogoDAO(con); 
+                    }
+                    return productoCatalogo;
+    }
     }
 
 
 
     
     
-    
-}
+   
  

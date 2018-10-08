@@ -13,6 +13,13 @@ public class productoCatalogo{
         this.descripcionProductoCatalogo = descripcionPorductoCatalogo;
 
     }
+//    
+//    
+//     public productoCatalogo(){
+//        this.codProductoCatalogo = null;
+//        this.nombreProductoCatalogo = "";
+//        this.descripcionProductoCatalogo = "";
+//     }
 
     public Long getCodProductoCatalogo() {
         return codProductoCatalogo;

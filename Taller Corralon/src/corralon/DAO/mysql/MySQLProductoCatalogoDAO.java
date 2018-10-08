@@ -19,6 +19,10 @@ public class MySQLProductoCatalogoDAO implements productoCatalogoDAO{
     final String DELETE = "DELETE FROM productoCatalogo WHERE codProductoCatalogo=?";
     final String GETALL = "SELECT codProducto,descripcionProd,nombreProd FROM productocatalogo";
     final String GETONE = "SELECT codProducto,descripcionProd,nombreProd FROM productocatalogo WHERE codProducto=?";
+
+    MySQLProductoCatalogoDAO(Connection con) {
+        this.conn = con;
+    }
     
     private productoCatalogo convertir(ResultSet rs)throws SQLException {
           Long cod=rs.getLong("codProducto");
@@ -162,6 +166,7 @@ public class MySQLProductoCatalogoDAO implements productoCatalogoDAO{
                 }
             }
         }
+
         return prodCat;
     }
     

@@ -6,6 +6,6 @@ public interface DAOManager {
     materialDAO getmaterialDao();
     proveedorDAO getproveedorDao();
     catalogoDAO getcatalogoDao();
-    productoCatalogoDAO getproductocatalogoDAO();
+    productoCatalogoDAO getproductocatalogoDao();
 
 }

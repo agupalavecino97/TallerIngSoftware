@@ -20,6 +20,8 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
    private materialesTableModel3 model;
    private Long cuitProveedorIngresado;
    private productoCatalogoDAO prodCatdao;
+   private productoCatalogo produC;
+
    
 //      ESTA FUNCIONA PERFECTAMENTE!!! RESPALDO
 //   public seleccionMaterialesPedido(DAOManager manager) {
@@ -40,9 +42,9 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
         initComponents();
         this.manager = manager;
         List<catalogo> datos;  
+
         List<catalogoUnProveedor> nueva; 
         catalogoUnProveedor elem;
-         productoCatalogo produC ;
         seleccionProveedorPedido sel = new seleccionProveedorPedido(manager);
         datos = manager.getcatalogoDao().obtenerTodosDeProv(sel.getIdProveedorSelec());
         System.out.println(datos);
@@ -51,7 +53,7 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
             Long mandar = Long.valueOf(datos.get(i).getCodProductoCatalogo());
             System.out.println("variableeeeee");
             System.out.println(mandar);
-            produC = prodCatdao.obtener(mandar);
+            produC = manager.getproductocatalogoDao().obtener(mandar);
             System.out.println("pruoducccccccccccc");
             System.out.println(produC);
             String nombre = produC.getNombreProductoCatalogo();
