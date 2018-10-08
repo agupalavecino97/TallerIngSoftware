@@ -4,8 +4,10 @@ package corralon.vistas.pedidoProveedor;
 import corralon.DAO.DAOManager;
 import corralon.DAO.catalogoDAO;
 import corralon.DAO.mysql.MySQLDAOManager;
+import corralon.DAO.productoCatalogoDAO;
 import corralon.modelos.proveedor;
 import corralon.modelos.catalogo;
+import corralon.modelos.productoCatalogo;
 import static corralon.vistas.pedidoProveedor.seleccionProveedorPedido.idProveedorSelec;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,24 +19,10 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
    private DAOManager manager;
    private materialesTableModel3 model;
    private Long cuitProveedorIngresado;
+   private productoCatalogoDAO prodCatdao;
    
-   
-
-    public seleccionMaterialesPedido(DAOManager manager) {
-        initComponents();
-        this.manager = manager;
-        List<catalogo> datos;  
-        seleccionProveedorPedido sel = new seleccionProveedorPedido(manager);
-        datos = manager.getcatalogoDao().obtenerTodosDeProv(sel.getIdProveedorSelec());
-        System.out.println(datos);
-        this.model=new materialesTableModel3(datos);
-       //        this.model.updateModel();
-        this.tabla.setModel(model);
-        
-    }
-
 //      ESTA FUNCIONA PERFECTAMENTE!!! RESPALDO
-//    public seleccionMaterialesPedido(DAOManager manager) {
+//   public seleccionMaterialesPedido(DAOManager manager) {
 //        initComponents();
 //        this.manager = manager;
 //        List<catalogo> datos;  
@@ -46,6 +34,43 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
 //        this.tabla.setModel(model);
 //        
 //    }
+
+
+    public seleccionMaterialesPedido(DAOManager manager) {
+        initComponents();
+        this.manager = manager;
+        List<catalogo> datos;  
+        List<catalogoUnProveedor> nueva; 
+        catalogoUnProveedor elem;
+         productoCatalogo produC ;
+        seleccionProveedorPedido sel = new seleccionProveedorPedido(manager);
+        datos = manager.getcatalogoDao().obtenerTodosDeProv(sel.getIdProveedorSelec());
+        System.out.println(datos);
+        int i=0;
+        while (i<datos.size()){         
+            Long mandar = Long.valueOf(datos.get(i).getCodProductoCatalogo());
+            System.out.println("variableeeeee");
+            System.out.println(mandar);
+            produC = prodCatdao.obtener(mandar);
+            System.out.println("pruoducccccccccccc");
+            System.out.println(produC);
+            String nombre = produC.getNombreProductoCatalogo();
+            Long dato = Long.valueOf(datos.get(i).getCodProductoCatalogo());
+            elem = new catalogoUnProveedor(dato, nombre , datos.get(i).getPrecioUnitario());
+            System.out.println("productooooooooooooooooooo");
+            System.out.println(elem);
+            i++;
+        }
+        
+        System.out.println("finnnn");
+        
+        
+        
+        this.model=new materialesTableModel3(datos);
+       //        this.model.updateModel();
+        this.tabla.setModel(model);
+        
+    }
 
     private seleccionMaterialesPedido() {
         System.out.println(cuitProveedorIngresado);

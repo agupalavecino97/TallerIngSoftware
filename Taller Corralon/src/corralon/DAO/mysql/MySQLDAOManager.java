@@ -4,6 +4,7 @@ import corralon.DAO.DAOManager;
 import corralon.DAO.catalogoDAO;
 import corralon.DAO.clienteDAO;
 import corralon.DAO.materialDAO;
+import corralon.DAO.productoCatalogoDAO;
 import corralon.DAO.proveedorDAO;
 import corralon.modelos.catalogo;
 import java.sql.DriverManager;
@@ -20,6 +21,8 @@ public class MySQLDAOManager implements DAOManager{
     private proveedorDAO proveedor=null;
     
     private catalogoDAO catalogo = null;
+    
+    private productoCatalogoDAO productoCatalogo = null;
     
     private final Connection con;
     
@@ -70,6 +73,11 @@ public class MySQLDAOManager implements DAOManager{
                         catalogo=new MySQLCatalogoDAO(con); 
                     }
                     return catalogo;
+    }
+
+    @Override
+    public productoCatalogoDAO getproductocatalogoDAO() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

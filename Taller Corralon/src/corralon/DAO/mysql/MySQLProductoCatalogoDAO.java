@@ -17,13 +17,13 @@ public class MySQLProductoCatalogoDAO implements productoCatalogoDAO{
     final String INSERT = "INSERT INTO productoCatalogo(codProductoCatalogo,nombreProcudcoCatalogo,descripcionPorductoCatalogo) VALUES(?,?,?)";
     final String UPDATE = "UPDATE productoCatalogo SET codProductoCatalogo=?, dniCliente=?, fechaPresupuesto=? WHERE codProductoCatalogo=?" ;
     final String DELETE = "DELETE FROM productoCatalogo WHERE codProductoCatalogo=?";
-    final String GETALL = "SELECT codProductoCatalogo,nombreProcudcoCatalogo,descripcionPorductoCatalogo FROM productoCatalogo";
-    final String GETONE = "SELECT codProductoCatalogo,nombreProcudcoCatalogo,descripcionPorductoCatalogo FROM productoCatalogo WHERE codProductoCatalogo=?";
+    final String GETALL = "SELECT codProducto,descripcionProd,nombreProd FROM productocatalogo";
+    final String GETONE = "SELECT codProducto,descripcionProd,nombreProd FROM productocatalogo WHERE codProducto=?";
     
     private productoCatalogo convertir(ResultSet rs)throws SQLException {
-          Long cod=rs.getLong("codProductoCatalogo");
-          String nombre=rs.getString("nombreProductoCatalogo");
-          String descrip=rs.getString("descripcionProductoCatalogo");
+          Long cod=rs.getLong("codProducto");
+          String nombre=rs.getString("nombreProd");
+          String descrip=rs.getString("descripcionProd");
           productoCatalogo prodCat = new productoCatalogo(cod, nombre, descrip);
           return prodCat;
     }
@@ -136,7 +136,7 @@ public class MySQLProductoCatalogoDAO implements productoCatalogoDAO{
         ResultSet rs=null;
         productoCatalogo prodCat= null;
         try {
-             stat=conn.prepareStatement(GETALL);
+             stat=conn.prepareStatement(GETONE);
              stat.setLong(1, id);
              rs=stat.executeQuery();
              if(rs.next()){

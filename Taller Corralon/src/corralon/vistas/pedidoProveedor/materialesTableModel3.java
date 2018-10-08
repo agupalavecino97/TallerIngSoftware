@@ -15,7 +15,7 @@ import javax.swing.table.AbstractTableModel;
     private catalogoDAO catalogo;
     private List<catalogo> datos=new ArrayList();
     private Long cuit = null;
-    private productoCatalogoDAO prodCat;
+
 
    
 
@@ -25,9 +25,9 @@ import javax.swing.table.AbstractTableModel;
         this.datos=datos;
     }
         
-     public void updateModel(){
-        datos=catalogo.obtenerTodos();
-    }
+//     public void updateModel(){
+//        datos=catalogo.obtenerTodos();
+//    }
 //     ESTA FUNCIONA PERFECTAMENTE!!!!!!!!! RESPALDO
 //     public void updateModel(){
 //        datos=catalogo.obtenerTodos();
@@ -67,39 +67,38 @@ import javax.swing.table.AbstractTableModel;
         }
     
     @Override
-          public Object getValueAt(int rowIndex, int columnIndex) {
-        catalogo consulta=datos.get(rowIndex);
-//        
-//                                        productoCatalogo produC ;
-//        produC = prodCat.obtener(consulta.getCuitProveedor());
-//        String nombre = produC.getNombreProductoCatalogo();
-////        System.out.println("aqui esta el nombreeeeeeeee");
-//        System.out.println(nombre);
-//        switch(columnIndex){
-            case 0:return consulta.getCodProductoCatalogo();
-            case 1: return consulta.getCuitProveedor();
-            case 2: return nombre;
-            case 3: return consulta.getPrecioUnitario();
-//                DateFormat df = DateFormat.getDateInstance();
-//                return df.format(consulta.getFechaVigencia());
-            default: return "";
-        }
-    }
-       
-       
-//       ESTA FUNCIONA PERFECTAMENTE!!!!!!!!! RESPALDO
 //          public Object getValueAt(int rowIndex, int columnIndex) {
 //        catalogo consulta=datos.get(rowIndex);
+//            productoCatalogo produC ;
+//            produC = prodCatdao.obtener(consulta.getCuitProveedor());
+//            String nombre = produC.getNombreProductoCatalogo();
+//            System.out.println("aqui esta el nombreeeeeeeee");
+//            System.out.println(nombre);
 //        switch(columnIndex){
 //            case 0:return consulta.getCodProductoCatalogo();
 //            case 1: return consulta.getCuitProveedor();
-//            case 2:return consulta.getFechaVigencia();
+//            case 2: return nombre;
 //            case 3: return consulta.getPrecioUnitario();
 ////                DateFormat df = DateFormat.getDateInstance();
 ////                return df.format(consulta.getFechaVigencia());
 //            default: return "";
 //        }
 //    }
+       
+       
+//       ESTA FUNCIONA PERFECTAMENTE!!!!!!!!! RESPALDO
+          public Object getValueAt(int rowIndex, int columnIndex) {
+        catalogo consulta=datos.get(rowIndex);
+        switch(columnIndex){
+            case 0:return consulta.getCodProductoCatalogo();
+            case 1: return consulta.getCuitProveedor();
+            case 2:return consulta.getFechaVigencia();
+            case 3: return consulta.getPrecioUnitario();
+//                DateFormat df = DateFormat.getDateInstance();
+//                return df.format(consulta.getFechaVigencia());
+            default: return "";
+        }
+    }
     
     
 }
