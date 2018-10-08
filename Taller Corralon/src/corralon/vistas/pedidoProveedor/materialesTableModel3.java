@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
- class materialesTableModel3 extends AbstractTableModel{
+ public class materialesTableModel3 extends AbstractTableModel{
     
     private catalogoDAO catalogo;
     private List<catalogoUnProveedor> datos=new ArrayList();

@@ -145,9 +145,8 @@ public class finalizarPedido extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void finalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarActionPerformed
-        
+        this.setVisible(false);
 
-        
     }//GEN-LAST:event_finalizarActionPerformed
 
     /**
