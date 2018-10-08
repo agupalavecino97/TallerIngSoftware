@@ -21,7 +21,19 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
    private Long cuitProveedorIngresado;
    private productoCatalogoDAO prodCatdao;
    private productoCatalogo produC;
+   public  static List<catalogoUnProveedor> nueva=new ArrayList();
 
+    public static List<catalogoUnProveedor> getNueva() {
+        return nueva;
+    }
+
+    public static void setNueva(List<catalogoUnProveedor> nueva) {
+        seleccionMaterialesPedido.nueva = nueva;
+    }
+
+   
+   
+   
    
 //      ESTA FUNCIONA PERFECTAMENTE!!! RESPALDO
 //   public seleccionMaterialesPedido(DAOManager manager) {
@@ -43,7 +55,6 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
         this.manager = manager;
         List<catalogo> datos;  
 
-        List<catalogoUnProveedor> nueva; 
         catalogoUnProveedor elem;
         seleccionProveedorPedido sel = new seleccionProveedorPedido(manager);
         datos = manager.getcatalogoDao().obtenerTodosDeProv(sel.getIdProveedorSelec());
@@ -51,24 +62,16 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
         int i=0;
         while (i<datos.size()){         
             Long mandar = Long.valueOf(datos.get(i).getCodProductoCatalogo());
-            System.out.println("variableeeeee");
-            System.out.println(mandar);
             produC = manager.getproductocatalogoDao().obtener(mandar);
-            System.out.println("pruoducccccccccccc");
-            System.out.println(produC);
             String nombre = produC.getNombreProductoCatalogo();
             Long dato = Long.valueOf(datos.get(i).getCodProductoCatalogo());
             elem = new catalogoUnProveedor(dato, nombre , datos.get(i).getPrecioUnitario());
-            System.out.println("productooooooooooooooooooo");
-            System.out.println(elem);
+            nueva.add(i, elem);
             i++;
         }
-        
-        System.out.println("finnnn");
-        
-        
-        
-        this.model=new materialesTableModel3(datos);
+        System.out.println("listaaaa");
+        System.out.println(nueva);       
+        this.model=new materialesTableModel3(nueva);
        //        this.model.updateModel();
         this.tabla.setModel(model);
         

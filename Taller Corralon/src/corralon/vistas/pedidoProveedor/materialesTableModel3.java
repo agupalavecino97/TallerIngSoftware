@@ -13,7 +13,7 @@ import javax.swing.table.AbstractTableModel;
  class materialesTableModel3 extends AbstractTableModel{
     
     private catalogoDAO catalogo;
-    private List<catalogo> datos=new ArrayList();
+    private List<catalogoUnProveedor> datos=new ArrayList();
     private Long cuit = null;
 
 
@@ -38,9 +38,8 @@ import javax.swing.table.AbstractTableModel;
     public String getColumnName(int i){
         switch(i){
             case 0:return "codigo";
-            case 1:return "cuit";
-            case 2: return "fecha actualizacion";
-            case 3:return "precio";
+            case 1:return "nombre";
+            case 2:return "precio";
             default:return "[no]"; 
         }
     }
@@ -63,7 +62,7 @@ import javax.swing.table.AbstractTableModel;
 
     @Override
     public int getColumnCount() {    
-        return 4;
+        return 3;
         }
     
     @Override
@@ -88,14 +87,11 @@ import javax.swing.table.AbstractTableModel;
        
 //       ESTA FUNCIONA PERFECTAMENTE!!!!!!!!! RESPALDO
           public Object getValueAt(int rowIndex, int columnIndex) {
-        catalogo consulta=datos.get(rowIndex);
+        catalogoUnProveedor consulta=datos.get(rowIndex);
         switch(columnIndex){
-            case 0:return consulta.getCodProductoCatalogo();
-            case 1: return consulta.getCuitProveedor();
-            case 2:return consulta.getFechaVigencia();
-            case 3: return consulta.getPrecioUnitario();
-//                DateFormat df = DateFormat.getDateInstance();
-//                return df.format(consulta.getFechaVigencia());
+            case 0:return consulta.getCodProducto();
+            case 1: return consulta.getNombrePr();
+            case 2: return consulta.getPrecio();
             default: return "";
         }
     }
