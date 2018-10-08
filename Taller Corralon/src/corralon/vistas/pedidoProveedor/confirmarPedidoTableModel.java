@@ -39,18 +39,15 @@ public class confirmarPedidoTableModel extends AbstractTableModel{
     }
      
      
-     
-     
-     
-    @Override
-    public int getRowCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  @Override
+    public int getRowCount() {       
+         return datos.size();
     }
 
     @Override
     public int getColumnCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+            return 4;
+          }
 
   
 }

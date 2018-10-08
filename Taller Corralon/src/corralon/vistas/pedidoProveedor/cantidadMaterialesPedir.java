@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class cantidadMaterialesPedir extends javax.swing.JPanel {
   private boolean editable;
     private Object cantidadMaterial;
-    List<elementosDePedido> listaPedir = new ArrayList();
+    public static List<elementosDePedido> listaPedir = new ArrayList();
     
     public cantidadMaterialesPedir() {
         initComponents();
