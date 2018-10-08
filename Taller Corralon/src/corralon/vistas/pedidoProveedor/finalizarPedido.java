@@ -7,6 +7,7 @@ import static corralon.vistas.pedidoProveedor.seleccionProveedorPedido.idProveed
 import corralon.DAO.proveedorDAO;
 import corralon.DAO.DAOManager;
 import corralon.DAO.mysql.MySQLDAOManager;
+import corralon.modelos.pedidoProveedor;
 import corralon.modelos.proveedor;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -20,19 +21,25 @@ public class finalizarPedido extends javax.swing.JFrame {
     public finalizarPedido(DAOManager manager) {
         initComponents();
         this.manager=manager;
+        java.util.Date date=new java.util.Date();
+        java.sql.Date fechaHoy=new java.sql.Date(date.getTime());
+//                Calendar fecha = new GregorianCalendar();
+//        int año = fecha.get(Calendar.YEAR); 
+//        int mes = fecha.get(Calendar.MONTH);
+//        int dia = fecha.get(Calendar.DAY_OF_MONTH);
+//        String fechaHoy = dia +"/"+mes+"/"+año;
         proveedor datos = new proveedor();
         datos = manager.getproveedorDao().obtener(idProveedorSelec);
-//        String cod=String.valueOf(pedidoclientes.getCodigoPedidoClie());
-        numPedido.setText("");
+        pedidoProveedor a = new pedidoProveedor(datos.getCuitProveedor(), fechaHoy, precioTotalCompraActual, false);
+        manager.getpedidoProveedorDao().insertar(a);
+//        String cod=String.valueOf();
+        numPedido.setText(String.valueOf(a.getCodigoPedidoProveedor()));
         String nom=String.valueOf(datos.getNombreProveedor());
         nombreProv.setText(nom);
-        Calendar fecha = new GregorianCalendar();
-        int año = fecha.get(Calendar.YEAR); 
-        int mes = fecha.get(Calendar.MONTH);
-        int dia = fecha.get(Calendar.DAY_OF_MONTH);
-        String fechaHoy = dia +"/"+mes+"/"+año;
-        fechaPedido.setText(fechaHoy);
-        String pre=String.valueOf(precioTotalCompraActual);
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String today = formatter.format(a.getFechaPedidoProveedor());
+        fechaPedido.setText(today);
+        String pre=String.valueOf(a.getTotalPedidoProveedor());
         importeTotal.setText(pre);  
     }
     

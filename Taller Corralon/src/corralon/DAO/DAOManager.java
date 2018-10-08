@@ -11,4 +11,5 @@ public interface DAOManager {
     pedidoClienteDAO getpedidoClienteDao();
     facturaDAO getfacturaDao();
     pedidoMaterialDAO getpedidoMaterialDao();
+    pedidoProveedorDAO getpedidoProveedorDao();
 }

@@ -6,13 +6,12 @@ import java.sql.Date;
 
 public class pedidoProveedor {
     private Long codigoPedidoProveedor;
-    private int cuitProveedor;
+    private Long cuitProveedor;
     private Date fechaPedidoProveedor;
     private float totalPedidoProveedor;
     private boolean estadoPedidoProveedor;
 
-    public pedidoProveedor(Long codigoPedidoProveedor, int cuitProveedor, Date fechaPedidoProveedor, float totalPedidoProveedor, boolean estadoPedidoProveedor) {
-        this.codigoPedidoProveedor = codigoPedidoProveedor;
+    public pedidoProveedor(Long cuitProveedor, Date fechaPedidoProveedor, float totalPedidoProveedor, boolean estadoPedidoProveedor) {
         this.cuitProveedor = cuitProveedor;
         this.fechaPedidoProveedor = fechaPedidoProveedor;
         this.totalPedidoProveedor = totalPedidoProveedor;
@@ -23,7 +22,7 @@ public class pedidoProveedor {
         return codigoPedidoProveedor;
     }
 
-    public int getCuitProveedor() {
+    public Long getCuitProveedor() {
         return cuitProveedor;
     }
 
@@ -43,7 +42,7 @@ public class pedidoProveedor {
         this.codigoPedidoProveedor = codigoPedidoProveedor;
     }
 
-    public void setCuitProveedor(int cuitProveedor) {
+    public void setCuitProveedor(Long cuitProveedor) {
         this.cuitProveedor = cuitProveedor;
     }
 

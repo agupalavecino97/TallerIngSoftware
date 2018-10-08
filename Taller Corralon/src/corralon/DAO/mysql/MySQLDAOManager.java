@@ -7,6 +7,7 @@ import corralon.DAO.facturaDAO;
 import corralon.DAO.materialDAO;
 import corralon.DAO.pedidoClienteDAO;
 import corralon.DAO.pedidoMaterialDAO;
+import corralon.DAO.pedidoProveedorDAO;
 import corralon.DAO.productoCatalogoDAO;
 import corralon.DAO.proveedorDAO;
 import corralon.modelos.catalogo;
@@ -33,7 +34,14 @@ public class MySQLDAOManager implements DAOManager{
     private pedidoMaterialDAO pedidoMaterial=null;
     
         private productoCatalogoDAO productoCatalogo = null;
+        
+        private pedidoProveedorDAO pedidoProveedor = null;
+
+
+
     
+        
+        
     private final Connection con;
     
     public MySQLDAOManager(String host, String database, String user, String password) throws SQLException {
@@ -116,7 +124,16 @@ public class MySQLDAOManager implements DAOManager{
                     }
                     return productoCatalogo;
     }
+
+    @Override
+    public pedidoProveedorDAO getpedidoProveedorDao() {
+                             if(pedidoProveedor==null){
+                pedidoProveedor=new MySQLPedidoProveedorDAO(con); 
+            }
+            return pedidoProveedor;
     }
+    }
+    
 
 
     
