@@ -7,6 +7,7 @@ import corralon.DAO.facturaDAO;
 import corralon.DAO.materialDAO;
 import corralon.DAO.pedidoClienteDAO;
 import corralon.DAO.pedidoMaterialDAO;
+import corralon.DAO.productoCatalogoDAO;
 import corralon.DAO.proveedorDAO;
 import corralon.modelos.catalogo;
 import corralon.modelos.pedidoMaterial;
@@ -30,6 +31,8 @@ public class MySQLDAOManager implements DAOManager{
     private facturaDAO factura=null;
     
     private pedidoMaterialDAO pedidoMaterial=null;
+    
+        private productoCatalogoDAO productoCatalogo = null;
     
     private final Connection con;
     
@@ -106,10 +109,18 @@ public class MySQLDAOManager implements DAOManager{
                                     return pedidoMaterial;  
     }
 
+    @Override
+      public productoCatalogoDAO getproductocatalogoDao() {
+          if(productoCatalogo==null){
+                        productoCatalogo=new MySQLProductoCatalogoDAO(con); 
+                    }
+                    return productoCatalogo;
+    }
+    }
 
 
     
     
     
-}
+
  

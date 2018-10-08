@@ -6,7 +6,6 @@ import java.sql.Date;
 public class catalogo{
     private Long cuitProveedor;
     private int codProductoCatalogo;
-    private String descripcionProdCat;
     private float precioUnitario;
     private Date fechaVigencia;   
 
@@ -48,5 +47,13 @@ public class catalogo{
     public void setFechaVigencia(Date fechaVigencia) {
         this.fechaVigencia = fechaVigencia;
     }
+
+    @Override
+    public String toString() {
+        return "catalogo{" + "cuitProveedor=" + cuitProveedor + ", codProductoCatalogo=" + codProductoCatalogo + "Fecha vigencia=" + fechaVigencia +  "precioUnitario=" + precioUnitario + '}';
+    }
+    
+    
+    
     
 }
