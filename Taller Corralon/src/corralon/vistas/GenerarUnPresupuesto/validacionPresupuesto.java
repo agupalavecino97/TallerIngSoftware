@@ -5,8 +5,8 @@ import corralon.vistas.ventaSinPresupuesto.*;
 import corralon.DAO.DAOManager;
 import corralon.DAO.mysql.MySQLDAOManager;
 import corralon.modelos.pedidoCliente;
-import static corralon.vistas.ventaSinPresupuesto.SeleccionarMateriales.pedido;
-import static corralon.vistas.ventaSinPresupuesto.verificarExsistenciaCliente.cuitClienteIngresado;
+import static corralon.vistas.GenerarUnPresupuesto.SeleccionarMateriales.pedido;
+import static corralon.vistas.GenerarUnPresupuesto.verificarExsistenciaCliente.cuitClienteIngresado;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,14 +62,14 @@ public class validacionPresupuesto extends javax.swing.JFrame {
         tabla = new javax.swing.JTable();
         continuar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        total = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        total = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Confirme la compra");
+        jLabel1.setText("Confirme el presupuesto");
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,7 +84,7 @@ public class validacionPresupuesto extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabla);
 
-        continuar.setText("Confirmar Compra");
+        continuar.setText("Confirmar");
         continuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 continuarActionPerformed(evt);
@@ -92,12 +92,6 @@ public class validacionPresupuesto extends javax.swing.JFrame {
         });
 
         jLabel2.setText("Total de la compra:");
-
-        total.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                totalActionPerformed(evt);
-            }
-        });
 
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -115,15 +109,15 @@ public class validacionPresupuesto extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -133,24 +127,20 @@ public class validacionPresupuesto extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(continuar)
                     .addComponent(jLabel2)
-                    .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(total)))
         );
 
         getContentPane().add(jPanel1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
-      
-    }//GEN-LAST:event_totalActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        //volver al menu principal
@@ -163,10 +153,10 @@ public class validacionPresupuesto extends javax.swing.JFrame {
         Long cuitClie=Long.valueOf(cuitClienteIngresado);
         java.util.Date date=new java.util.Date();
         java.sql.Date fechaPedidoClie=new java.sql.Date(date.getTime());
-        pedidoCliente pedido=new pedidoCliente(cuitClie,fechaPedidoClie,precioTotal, "pendiente");
+        pedidoCliente pedido=new pedidoCliente(cuitClie,fechaPedidoClie,precioTotal, "presupuesto");
         manager.getpedidoClienteDao().insertar(pedido);
-        setPedidocliente(pedido);
-        confirmarPago vistanueva=new confirmarPago(manager);
+        setPedidocliente(pedido);       
+        detallePrespuesto vistanueva=new detallePrespuesto(manager);
         vistanueva.setVisible(true);
         this.setVisible(false);         
     }//GEN-LAST:event_continuarActionPerformed
@@ -211,6 +201,6 @@ public class validacionPresupuesto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla;
-    private javax.swing.JTextField total;
+    private javax.swing.JLabel total;
     // End of variables declaration//GEN-END:variables
 }

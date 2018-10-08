@@ -97,7 +97,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="corralon.vistas.ventaSinPresupuesto.cantidadMateriales" name="cantidadMateriales1">
+        <Component class="corralon.vistas.GenerarUnPresupuesto.cantidadMateriales" name="cantidadMateriales2">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
               <BorderConstraints direction="Last"/>

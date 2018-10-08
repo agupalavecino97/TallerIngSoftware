@@ -23,7 +23,7 @@ public class verificarExsistenciaCliente extends javax.swing.JFrame {
     public verificarExsistenciaCliente(DAOManager manager) {
         initComponents();
         this.manager=manager;
-        detalleClientes1.setVisible(false);
+        detalleClientes2.setVisible(false);
         guardar.setVisible(false);
       // clientes=manager.getclienteDao().obtenerTodos();
     }
@@ -45,9 +45,9 @@ public class verificarExsistenciaCliente extends javax.swing.JFrame {
         cuitIngresado = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         aceptar = new javax.swing.JButton();
-        detalleClientes1 = new corralon.vistas.ventaSinPresupuesto.DetalleClientes();
         guardar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        detalleClientes2 = new corralon.vistas.GenerarUnPresupuesto.DetalleClientes();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,8 +73,6 @@ public class verificarExsistenciaCliente extends javax.swing.JFrame {
             }
         });
 
-        detalleClientes1.setEnabled(false);
-
         guardar.setText("Guardar");
         guardar.setEnabled(false);
         guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -99,19 +97,6 @@ public class verificarExsistenciaCliente extends javax.swing.JFrame {
                 .addComponent(guardar)
                 .addGap(57, 57, 57))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(detalleClientes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cuitIngresado, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(aceptar)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -120,6 +105,19 @@ public class verificarExsistenciaCliente extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(45, 45, 45))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(detalleClientes2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cuitIngresado, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(aceptar)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,9 +130,9 @@ public class verificarExsistenciaCliente extends javax.swing.JFrame {
                     .addComponent(cuitIngresado, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(aceptar))
-                .addGap(18, 18, 18)
-                .addComponent(detalleClientes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(detalleClientes2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(guardar)
                 .addContainerGap())
         );
@@ -153,11 +151,11 @@ public class verificarExsistenciaCliente extends javax.swing.JFrame {
         setCuitClienteIngresado(cuit);
         if(manager.getclienteDao().obtener(cuit)==null){
             //agrego un nuevo cliente
-            detalleClientes1.setVisible(true);
+            detalleClientes2.setVisible(true);
             guardar.setVisible(true);
-            detalleClientes1.setCliente(null);
-            detalleClientes1.setEditable(true);
-            detalleClientes1.loadData();
+            detalleClientes2.setCliente(null);
+            detalleClientes2.setEditable(true);
+            detalleClientes2.loadData();
             guardar.setEnabled(true);
 
         }else{
@@ -169,11 +167,11 @@ public class verificarExsistenciaCliente extends javax.swing.JFrame {
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
         try {
-            detalleClientes1.saveData();
+            detalleClientes2.saveData();
         } catch (ParseException ex) {
             Logger.getLogger(verificarExsistenciaCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-        cliente c=detalleClientes1.getCliente();
+        cliente c=detalleClientes2.getCliente();
         manager.getclienteDao().insertar(c);
         setCuitClienteIngresado(c.getCuitCliente());
         SeleccionarMateriales vistaSiguiente=new SeleccionarMateriales(manager);
@@ -183,8 +181,8 @@ public class verificarExsistenciaCliente extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //debe llevar al menu principal;
-        detalleClientes1.setCliente(null);
-        detalleClientes1.loadData();
+        detalleClientes2.setCliente(null);
+        detalleClientes2.loadData();
         cuitIngresado.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -224,7 +222,7 @@ public class verificarExsistenciaCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
     private javax.swing.JTextField cuitIngresado;
-    private corralon.vistas.ventaSinPresupuesto.DetalleClientes detalleClientes1;
+    private corralon.vistas.GenerarUnPresupuesto.DetalleClientes detalleClientes2;
     private javax.swing.JButton guardar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

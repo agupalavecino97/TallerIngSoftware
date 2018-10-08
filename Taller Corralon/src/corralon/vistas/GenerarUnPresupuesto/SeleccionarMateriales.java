@@ -57,7 +57,7 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        cantidadMateriales1 = new corralon.vistas.ventaSinPresupuesto.cantidadMateriales();
+        cantidadMateriales2 = new corralon.vistas.GenerarUnPresupuesto.cantidadMateriales();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,7 +97,7 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, java.awt.BorderLayout.LINE_END);
-        jPanel1.add(cantidadMateriales1, java.awt.BorderLayout.PAGE_END);
+        jPanel1.add(cantidadMateriales2, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -106,13 +106,13 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         stock material=getMaterialSeleccionado();
-        cantidadMateriales1.setMaterial(material);
-        cantidadMateriales1.setEditable(true);
-        cantidadMateriales1.loadData();
+        cantidadMateriales2.setMaterial(material);
+        cantidadMateriales2.setEditable(true);
+        cantidadMateriales2.loadData();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
-        setPedido(cantidadMateriales1.getLista());
+        setPedido(cantidadMateriales2.getLista());
         System.out.print("lista enviada:");
         System.out.println(getPedido());
        validacionPresupuesto vistaSiguiente=new validacionPresupuesto(manager);
@@ -164,7 +164,7 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Continuar;
-    private corralon.vistas.ventaSinPresupuesto.cantidadMateriales cantidadMateriales1;
+    private corralon.vistas.GenerarUnPresupuesto.cantidadMateriales cantidadMateriales2;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
