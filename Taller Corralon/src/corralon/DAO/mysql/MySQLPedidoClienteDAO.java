@@ -20,8 +20,8 @@ public class MySQLPedidoClienteDAO implements pedidoClienteDAO{
     final String INSERT = "INSERT INTO pedidosCliente(cuitCliente, fechaPedidoClie, totalPedidoClie, estado) VALUES(?,?,?,?)";
     final String UPDATE = "UPDATE pedidosCliente SET  cuitCliente=?, fechaPedidoClie=?, totalPedidoClie=?,estado=? WHERE codPedidoClie=?" ;
     final String DELETE = "DELETE FROM pedidosCliente WHERE codigoPedidoClie=?";
-    final String GETALL = "SELECT codPedidoClie, cuitCliente, fechaPedidoClie, totalPedidoClie,estado FROM pedidosCliente";
-    final String GETONE = "SELECT codPedidoClie, cuitCliente, fechaPedidoClie, totalPedidoClie,estado FROM pedidosCliente WHERE codPedidoClie=?";
+    final String GETALL = "SELECT codPedidoClie, cuitCliente, fechaPedidoClie, totalPedidoClie,estado FROM pedidoscliente";
+    final String GETONE = "SELECT cuitCliente, fechaPedidoClie, totalPedidoClie,estado FROM pedidosCliente WHERE codPedidoClie=?";
     final String UPDATEestado= "UPDATE pedidosCliente SET estado=? WHERE codPedidoClie=?";
     
   
@@ -30,12 +30,14 @@ public class MySQLPedidoClienteDAO implements pedidoClienteDAO{
     }
     
     private pedidoCliente convertir(ResultSet rs)throws SQLException {
-          //Long cod=rs.getLong("codigoPedidoClie");
+//          Long cod=rs.getLong("codPedidoClie");
           Long doc= rs.getLong("cuitCliente");
           Date fecha= rs.getDate("fechaPedidoClie");
           Long total=rs.getLong("totalPedidoClie");
           String estado=rs.getString("estado");
           pedidoCliente pedido=new pedidoCliente(doc, fecha, total,estado);
+          System.out.println("aqui llega");
+          System.out.println(pedido);
           return pedido;
     }
 
@@ -157,6 +159,7 @@ public class MySQLPedidoClienteDAO implements pedidoClienteDAO{
 
     @Override
     public pedidoCliente obtener(Long id) {
+
         PreparedStatement stat=null;
         ResultSet rs=null;
         pedidoCliente pedido = null;
@@ -164,8 +167,10 @@ public class MySQLPedidoClienteDAO implements pedidoClienteDAO{
              stat=conn.prepareStatement(GETONE);
              stat.setLong(1, id);
              rs=stat.executeQuery();
+
              if (rs.next()) {
                 pedido=convertir(rs);
+                
             } else {
                  System.out.println("No se ha encontrado el registro.");
             }
@@ -187,6 +192,7 @@ public class MySQLPedidoClienteDAO implements pedidoClienteDAO{
                 }
             }
         }
+        System.out.println(pedido);
         return pedido;
     }
   

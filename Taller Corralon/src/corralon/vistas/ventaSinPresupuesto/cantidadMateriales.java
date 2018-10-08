@@ -56,7 +56,11 @@ public class cantidadMateriales extends javax.swing.JPanel {
             nombre.setText(material.getNombreMaterial());
             String pre=String.valueOf(material.getPrecio());
             precio.setText(pre);
-                              
+            for(pedidoConCantidad ped:pedido){
+                if(ped.getCodMaterial()==material.getCodMaterial()){
+                    cantidad.setValue(ped.getCantidad());
+                }
+            }  
         }
         else{
             nombre.setText("");
@@ -77,6 +81,7 @@ public class cantidadMateriales extends javax.swing.JPanel {
        if(convertedLong<=material.getCantidadExistente()){
            cantidadMaterial=convertedLong; 
            return true;
+           
        }
            return false;
                 
@@ -195,6 +200,13 @@ public class cantidadMateriales extends javax.swing.JPanel {
                 Long precio=material.getPrecio();
                 pedidoConCantidad pedidoc=new pedidoConCantidad(codigo,nombre,cantidad2,precio);
                 if(buscarEnLista(codigo)){
+//                    for(pedidoConCantidad ped:pedido){
+//                        if (ped.getCodMaterial()==codigo){
+//                            
+//                            ped.setCantidad(ped.getCantidad()+cantidad2);
+//                        }
+//                    }
+                    
                     int posicion=(pedido.lastIndexOf(codigo));
                     pedidoConCantidad nuevoPedido=pedido.get(posicion);
                     nuevoPedido.setCantidad(nuevoPedido.getCantidad()+cantidad2);
@@ -205,11 +217,9 @@ public class cantidadMateriales extends javax.swing.JPanel {
                         loadData();
                         cantidad.setValue(0);
                     }
-                   
-                    //aqui tendria que buscar el elemto de este codigo y aumentarle la cantidad ingresada nada mas
-                    // no se como gg.
+                }else{
+                     pedido.add(pedidoc);
                 }
-                pedido.add(pedidoc);
                 setEditable(false);
                 setMaterial(null);
                 loadData();

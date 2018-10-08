@@ -23,7 +23,7 @@ private Connection conn;
     final String DELETE = "DELETE FROM pedidoMaterial WHERE codigoPedidoClie=? AND codMaterial=?";
     final String GETALL = "SELECT codPedidoClie, codMaterial, cantMat,subTotalMat FROM pedidoMaterial";
     final String GETONE = "SELECT codPedidoClie, codMaterial, cantMat,subTotalMat FROM pedidoMaterial WHERE codPedidoClie=?";
-  
+    final String GETALLporProv="SELECT codPedidoClie, codMaterial, cantMat,subTotalMat FROM pedidoMaterial WHERE codPedidoClie=?";
     MySQLPedidoMaterialDAO(Connection con) {
             this.conn=con;
     }
@@ -189,6 +189,39 @@ private Connection conn;
     }
   
     
+    @Override
+    public List<pedidoMaterial> obtenerTodosDeUnPedido(Long cod) {
+        PreparedStatement stat=null;
+        ResultSet rs=null;
+        List<pedidoMaterial> pedidos= new ArrayList<>();
+        try {
+             stat=conn.prepareStatement(GETALLporProv);
+             stat.setLong(1, cod);
+             rs=stat.executeQuery();
+             while(rs.next()){
+                 pedidos.add(convertir(rs));
+             }
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQLPedidoClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            if (rs!=null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MySQLPedidoClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (stat!=null) {
+                try {
+                    stat.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MySQLPedidoClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return pedidos;
+    }
+
  
             
     
