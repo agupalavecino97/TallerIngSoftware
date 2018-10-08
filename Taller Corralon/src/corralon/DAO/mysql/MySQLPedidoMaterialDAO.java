@@ -191,35 +191,38 @@ private Connection conn;
     
     @Override
     public List<pedidoMaterial> obtenerTodosDeUnPedido(Long cod) {
-        PreparedStatement stat=null;
+          PreparedStatement stat=null;
         ResultSet rs=null;
-        List<pedidoMaterial> pedidos= new ArrayList<>();
+        List<pedidoMaterial> pedido= new ArrayList<>();
         try {
-             stat=conn.prepareStatement(GETALLporProv);
-             stat.setLong(1, cod);
+//                         stat=conn.prepareStatement(GETONE);
+//             stat.setLong(1, id);
+//             rs=stat.executeQuery(); 
+            stat=conn.prepareStatement(GETALLporProv);
+            stat.setLong(1, cod);
              rs=stat.executeQuery();
-             while(rs.next()){
-                 pedidos.add(convertir(rs));
+             while(rs.next() ){
+                 pedido.add(convertir(rs));
              }
         } catch (SQLException ex) {
-            Logger.getLogger(MySQLPedidoClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySQLCatalogoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }finally {
             if (rs!=null) {
                 try {
                     rs.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(MySQLPedidoClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MySQLCatalogoDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             if (stat!=null) {
                 try {
                     stat.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(MySQLPedidoClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MySQLCatalogoDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
-        return pedidos;
+        return pedido;
     }
 
  

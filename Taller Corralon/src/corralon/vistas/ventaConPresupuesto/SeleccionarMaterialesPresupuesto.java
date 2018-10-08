@@ -25,7 +25,7 @@ public class SeleccionarMaterialesPresupuesto extends javax.swing.JFrame {
     public SeleccionarMaterialesPresupuesto(DAOManager manager) {
         initComponents();
         this.manager=manager;
-        datos=manager.getpedidoMaterialDao().obtenerTodos();
+        datos=manager.getpedidoMaterialDao().obtenerTodosDeUnPedido(codPedido);
         System.out.println(datos);
         for(pedidoMaterial m:datos){
             if(m.getCodMaterial()==codPedido)
