@@ -70,8 +70,8 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
             nueva.add(i, elem);
             i++;
         }
-        System.out.println("listaaaa");
-        System.out.println(nueva);       
+//        System.out.println("listaaaa");
+//        System.out.println(nueva);       
         this.model=new materialesTableModel3(nueva);
        //        this.model.updateModel();
         this.tabla.setModel(model);

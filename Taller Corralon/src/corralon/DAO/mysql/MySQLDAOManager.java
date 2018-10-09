@@ -10,7 +10,7 @@ import corralon.DAO.pedidoMaterialDAO;
 import corralon.DAO.pedidoProveedorDAO;
 import corralon.DAO.productoCatalogoDAO;
 import corralon.DAO.proveedorDAO;
-import corralon.modelos.catalogo;
+//import corralon.modelos.catalogo;
 import corralon.modelos.pedidoMaterial;
 import java.sql.DriverManager;
 import java.sql.Connection;
@@ -33,15 +33,11 @@ public class MySQLDAOManager implements DAOManager{
     
     private pedidoMaterialDAO pedidoMaterial=null;
     
-        private productoCatalogoDAO productoCatalogo = null;
+    private productoCatalogoDAO productoCatalogo = null;
         
-        private pedidoProveedorDAO pedidoProveedor = null;
+    private pedidoProveedorDAO pedidoProveedor = null;
 
 
-
-    
-        
-        
     private final Connection con;
     
     public MySQLDAOManager(String host, String database, String user, String password) throws SQLException {

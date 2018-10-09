@@ -1,17 +1,28 @@
 
 package corralon.vistas.catalogo;
 
+import corralon.DAO.DAOManager;
 import corralon.modelos.catalogo;
+import corralon.DAO.mysql.MySQLDAOManager;
+import corralon.DAO.productoCatalogoDAO;
+import static corralon.vistas.catalogo.actualizarPrecios.catSel;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.ldap.ManageReferralControl;
+import corralon.vistas.catalogo.productoAModificar;
+import static corralon.vistas.catalogo.seleccionProveedor.idProveedorSelec;
 
 
 public class productoAModificar extends javax.swing.JPanel {
   private boolean editable;
     private catalogo catalogo;
+    private DAOManager manager;
+    
 
     public productoAModificar() {
         initComponents();
@@ -64,18 +75,28 @@ public class productoAModificar extends javax.swing.JPanel {
     public void saveData()throws ParseException{
        if(catalogo==null) {
            catalogo=new catalogo();        
-       }
-                   java.util.Date date=new java.util.Date();
-            java.sql.Date fechaDeHoy=new java.sql.Date(date.getTime());
-            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            String today = formatter.format(fechaDeHoy);
-       catalogo.setCodProductoCatalogo(catalogo.getCodProductoCatalogo());
-       catalogo.setCuitProveedor(catalogo.getCuitProveedor());
+       }    
+//           catalogo datos = manager.getcatalogoDao().obtener(catSel.getCodProductoCatalogo());
+////          catalogo datos = manager.getcatalogoDao().obtener(actualizarPrecios.catSel.getCodProductoCatalogo());
+//          System.out.println("OBTENER UNOOOOOOooooooooooooooooooooooooooOOOO");
+//          System.out.println(datos);
+       java.util.Date date=new java.util.Date();
+       java.sql.Date fechaDeHoy=new java.sql.Date(date.getTime());
+//       DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+//       String today = formatter.format(fechaDeHoy);
+//       catalogo.setCodProductoCatalogo(catalogo.getCodProductoCatalogo());
+//       catalogo.setCuitProveedor(catalogo.getCuitProveedor());
        catalogo.setFechaVigencia(fechaDeHoy);
        Long pre=Long.valueOf(precio.getText());
        catalogo.setPrecioUnitario(pre);
+//       System.out.println("llega");
+//       System.out.println(catalogo);
+//       System.out.println("llega");
+       //System.out.println("pasa");
 
     }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -159,7 +180,56 @@ public class productoAModificar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        // TODO add your handling code here:
+
+
+
+        try {
+                              Long a=Long.valueOf(1);
+          catalogo datos = manager.getcatalogoDao().obtener(a);
+//          catalogo datos = manager.getcatalogoDao().obtener(actualizarPrecios.catSel.getCodProductoCatalogo());
+          System.out.println("OBTENER UNOOOOOOooooooooooooooooooooooooooOOOO");
+          System.out.println(datos);
+                                           
+          saveData();
+      } catch (ParseException ex) {
+          Logger.getLogger(productoAModificar.class.getName()).log(Level.SEVERE, null, ex);
+      }
+          //System.out.println(manager.getcatalogoDao().obtenerTodos());
+
+          Long b=Long.valueOf(5);
+          float c = 52;
+//          catalogo.setCodProductoCatalogo(a);
+          catalogo.setCuitProveedor(b);
+        java.util.Date date=new java.util.Date();
+       java.sql.Date fechaDeHoy=new java.sql.Date(date.getTime());
+       catalogo.setFechaVigencia(fechaDeHoy);
+       catalogo.setPrecioUnitario(c);
+       
+         manager.getcatalogoDao().insertar(catalogo);
+          //manager.getcatalogoDao().modificarCantidad(catalogo.getCodProductoCatalogo(), idProveedorSelec, catalogo.getFechaVigencia(), catalogo.getPrecioUnitario());
+          System.out.println(manager.getcatalogoDao().ObtenerUnProductoDeUnProveedor(idProveedorSelec,getCat().getCodProductoCatalogo()));
+      
+          
+          
+          
+//  
+//          Long a=Long.valueOf(1);
+//
+//                  System.out.println(datos);
+//          Long b=Long.valueOf(5);
+//          
+//          catalogo.setCodProductoCatalogo(a);
+//          System.out.println(catalogo.getCodProductoCatalogo());
+//          catalogo.setCuitProveedor(b);
+//          java.util.Date date=new java.util.Date();
+//          java.sql.Date fechaDeHoy=new java.sql.Date(date.getTime());
+//          catalogo.setFechaVigencia(fechaDeHoy);
+//          float c = 52;
+//          catalogo.setPrecioUnitario(c);
+//          System.out.println("AQUI ESTA EL CATALOGOGOGASAD");
+//          System.out.println(catalogo);
+//          manager.getcatalogoDao().insertar(catalogo);
+        
     }//GEN-LAST:event_aceptarActionPerformed
 
 

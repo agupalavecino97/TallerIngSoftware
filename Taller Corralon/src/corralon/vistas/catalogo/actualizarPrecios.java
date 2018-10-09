@@ -23,6 +23,8 @@ public class actualizarPrecios extends javax.swing.JFrame {
    private Long cuitProveedorIngresado;
    private productoCatalogoDAO prodCatdao;
    private productoCatalogo produC;
+   private catalogo catalogo;
+   public static catalogo catSel;
    public  static List<catalogoUnProveedor> nueva=new ArrayList();
  //  public  static List<elementosDePedido> pedido=new ArrayList();
    
@@ -32,10 +34,9 @@ public class actualizarPrecios extends javax.swing.JFrame {
       initComponents();
         this.manager = manager;
         List<catalogo> datos;  
-
         catalogoUnProveedor elem;
-        seleccionProveedor sel = new seleccionProveedor(manager);
-        datos = manager.getcatalogoDao().obtenerTodosDeProv(sel.getIdProveedorSelec());
+        //seleccionProveedor sel = new seleccionProveedor(manager);
+        datos = manager.getcatalogoDao().obtenerTodosDeProv(idProveedorSelec);
         System.out.println(datos);
         int i=0;
         while (i<datos.size()){         
@@ -71,12 +72,25 @@ public class actualizarPrecios extends javax.swing.JFrame {
         actualizarPrecios.nueva = nueva;
     }
 
-    
+
        private catalogo getCatalogoSeleccionado(){
-        //Long id=(Long) tabla.getValueAt(tabla.getSelectedRow(),0); 
-           System.out.println("este es el catalogo");
-           System.out.println(idProveedorSelec);
-         return manager.getcatalogoDao().obtener(idProveedorSelec);
+         Long cod=(Long) tabla.getValueAt(tabla.getSelectedRow(),0);
+         return manager.getcatalogoDao().obtener(cod);
+    } 
+
+    public static catalogo getCatSel() {
+        return catSel;
+    }
+
+    public static void setCatSel(catalogo catSel) {
+        actualizarPrecios.catSel = catSel;
+    }
+       
+       
+       
+            private void catSel(){
+         Long cod=(Long) tabla.getValueAt(tabla.getSelectedRow(),0);
+           setCatSel(manager.getcatalogoDao().obtener(cod));
     } 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -90,7 +104,7 @@ public class actualizarPrecios extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         modificar = new javax.swing.JButton();
-        productoAModificar1 = new corralon.vistas.catalogo.productoAModificar();
+        productoAModificar2 = new corralon.vistas.catalogo.productoAModificar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,15 +134,14 @@ public class actualizarPrecios extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(productoAModificar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(productoAModificar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,21 +151,24 @@ public class actualizarPrecios extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addComponent(modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(productoAModificar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(productoAModificar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-                   System.out.println("este es el catalogo");
-           System.out.println(idProveedorSelec);
-        productoAModificar1.setCat(getCatalogoSeleccionado());
-        System.out.println(productoAModificar1.getCat());
-        productoAModificar1.loadData();
-        
+//          catalogo datos = manager.getcatalogoDao().obtener(a);
+////          catalogo datos = manager.getcatalogoDao().obtener(actualizarPrecios.catSel.getCodProductoCatalogo());
+//          System.out.println("OBTENER UNOOOOOOooooooooooooooooooooooooooOOOO");
+//          System.out.println(datos);
+          
+                 productoAModificar2.setCat(getCatalogoSeleccionado());
+                 //System.out.println(productoAModificar1.getCat());
+                 productoAModificar2.loadData();    
+
     }//GEN-LAST:event_modificarActionPerformed
 
     /**
@@ -196,7 +212,7 @@ public class actualizarPrecios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton modificar;
-    private corralon.vistas.catalogo.productoAModificar productoAModificar1;
+    private corralon.vistas.catalogo.productoAModificar productoAModificar2;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }
