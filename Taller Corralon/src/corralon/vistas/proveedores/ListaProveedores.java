@@ -53,6 +53,7 @@ public class ListaProveedores extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
         jToolBar1.setPreferredSize(new java.awt.Dimension(100, 50));
 
+        añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/add.png"))); // NOI18N
         añadir.setText("Añadir");
         añadir.setFocusable(false);
         añadir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -64,6 +65,7 @@ public class ListaProveedores extends javax.swing.JFrame {
         });
         jToolBar1.add(añadir);
 
+        modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/update.png"))); // NOI18N
         modificar.setText("Modificar");
         modificar.setFocusable(false);
         modificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -75,6 +77,7 @@ public class ListaProveedores extends javax.swing.JFrame {
         });
         jToolBar1.add(modificar);
 
+        eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/delete.png"))); // NOI18N
         eliminar.setText("Eliminar");
         eliminar.setFocusable(false);
         eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -86,6 +89,7 @@ public class ListaProveedores extends javax.swing.JFrame {
         });
         jToolBar1.add(eliminar);
 
+        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/save.png"))); // NOI18N
         guardar.setText("Guardar");
         guardar.setFocusable(false);
         guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -97,6 +101,7 @@ public class ListaProveedores extends javax.swing.JFrame {
         });
         jToolBar1.add(guardar);
 
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/cancel.png"))); // NOI18N
         cancelar.setText("Cancelar");
         cancelar.setFocusable(false);
         cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
