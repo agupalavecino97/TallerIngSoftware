@@ -16,7 +16,8 @@ public class verificarExsistenciaPresupuesto extends javax.swing.JFrame {
     private DAOManager manager;
     //private List<cliente> clientes=new ArrayList();
     public static Long codPedido;
-           
+    public static Long cuitDelPedido;       
+    
     public verificarExsistenciaPresupuesto(DAOManager manager) {
         initComponents();
         this.manager=manager;
@@ -24,6 +25,15 @@ public class verificarExsistenciaPresupuesto extends javax.swing.JFrame {
       // clientes=manager.getclienteDao().obtenerTodos();
     }
 
+    public static Long getCuitDelPedido() {
+        return cuitDelPedido;
+    }
+
+    public static void setCuitDelPedido(Long cuitDelPedido) {
+        verificarExsistenciaPresupuesto.cuitDelPedido = cuitDelPedido;
+    }
+
+    
     public static Long getCodPedido() {
         return codPedido;
     }
@@ -128,11 +138,13 @@ public class verificarExsistenciaPresupuesto extends javax.swing.JFrame {
         Long cod=Long.valueOf(codPedidoIngresado.getText());
         setCodPedido(cod);
         pedidoCliente pedido=manager.getpedidoClienteDao().obtener(cod);
-       
+        setCuitDelPedido(cod);
         if(pedido==null){
            //mostrar mensaje de presupuesto no existente y volver al menu principal
         }else{
-           //preguntar si le presupuesto esa vigente
+            //if(pedido.getEstado()=="presupuesto"){
+            
+            //preguntar si le presupuesto esa vigente
            java.util.Date date=new java.util.Date();
            java.sql.Date fechaDeHoy=new java.sql.Date(date.getTime());
           
@@ -151,7 +163,7 @@ public class verificarExsistenciaPresupuesto extends javax.swing.JFrame {
 //               //se rechaza el presupuesto y se pregunta si queire el pedido con nuevos precios
 //               
 //           }
-               
+            
         }
     }//GEN-LAST:event_aceptarActionPerformed
 
@@ -161,36 +173,36 @@ public class verificarExsistenciaPresupuesto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
  
-    public static void main(String args[]) throws SQLException {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(verificarExsistenciaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(verificarExsistenciaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(verificarExsistenciaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(verificarExsistenciaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
-        java.awt.EventQueue.invokeLater(() -> {
-            new verificarExsistenciaPresupuesto(manager).setVisible(true);
-        });
-    }
+//    public static void main(String args[]) throws SQLException {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(verificarExsistenciaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(verificarExsistenciaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(verificarExsistenciaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(verificarExsistenciaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
+//        java.awt.EventQueue.invokeLater(() -> {
+//            new verificarExsistenciaPresupuesto(manager).setVisible(true);
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;

@@ -59,7 +59,7 @@ public class MySQLPedidoClienteDAO implements pedidoClienteDAO{
                 if(rs.next())
                 {
                     int last_inserted_id = rs.getInt(1);
-                     System.out.println(last_inserted_id);
+                     //System.out.println(last_inserted_id);
                      a.setCodigoPedidoClie(Long.valueOf(last_inserted_id));
                 }
                

@@ -6,9 +6,9 @@ public class pedidoMaterialConNombre {
     private Long cantidadMaterial;
     private Long subTotalMat;
     private String Nombre;
-    private float Precio;
+    private Long Precio;
 
-    public pedidoMaterialConNombre(Long codMaterial, Long cantidadMaterial, Long subTotalMat, String Nombre, float Precio) {
+    public pedidoMaterialConNombre(Long codMaterial, Long cantidadMaterial, Long subTotalMat, Long Precio, String Nombre) {
         this.codMaterial = codMaterial;
         this.cantidadMaterial = cantidadMaterial;
         this.subTotalMat = subTotalMat;
@@ -48,11 +48,11 @@ public class pedidoMaterialConNombre {
         this.Nombre = Nombre;
     }
 
-    public float getPrecio() {
+    public Long getPrecio() {
         return Precio;
     }
 
-    public void setPrecio(float Precio) {
+    public void setPrecio(Long Precio) {
         this.Precio = Precio;
     }
 

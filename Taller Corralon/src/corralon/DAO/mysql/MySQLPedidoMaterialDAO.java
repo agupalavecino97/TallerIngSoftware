@@ -43,7 +43,7 @@ private Connection conn;
         PreparedStatement stat=null;
         ResultSet rs=null;
         try {
-            stat=conn.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
+            stat=conn.prepareStatement(INSERT);
             stat.setLong(1, a.getCodigoPedidoClie());
             stat.setLong(2, a.getCodMaterial());
             stat.setLong(3, a.getCantidadMaterial());
@@ -51,13 +51,13 @@ private Connection conn;
             if (stat.executeUpdate()==0) {
                 System.out.println("Puede que no se haya guardado correctamente.");
             }
-            rs = stat.getGeneratedKeys();
-                if(rs.next())
-                {
-                    int last_inserted_id = rs.getInt(1);
-                     System.out.println(last_inserted_id);
-                     a.setCodigoPedidoClie(Long.valueOf(last_inserted_id));
-                }
+//            rs = stat.getGeneratedKeys();
+//                if(rs.next())
+//                {
+//                    int last_inserted_id = rs.getInt(1);
+//                     System.out.println(last_inserted_id);
+//                     a.setCodigoPedidoClie(Long.valueOf(last_inserted_id));
+//                }
                
         
         } catch (SQLException ex) {

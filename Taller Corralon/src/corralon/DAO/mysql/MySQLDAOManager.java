@@ -3,6 +3,7 @@ package corralon.DAO.mysql;
 import corralon.DAO.DAOManager;
 import corralon.DAO.catalogoDAO;
 import corralon.DAO.clienteDAO;
+import corralon.DAO.empleadoDAO;
 import corralon.DAO.facturaDAO;
 import corralon.DAO.materialDAO;
 import corralon.DAO.pedidoClienteDAO;
@@ -38,6 +39,7 @@ public class MySQLDAOManager implements DAOManager{
         private pedidoProveedorDAO pedidoProveedor = null;
 
 
+        private empleadoDAO empleado=null;
 
     
         
@@ -131,6 +133,14 @@ public class MySQLDAOManager implements DAOManager{
                 pedidoProveedor=new MySQLPedidoProveedorDAO(con); 
             }
             return pedidoProveedor;
+    }
+
+    @Override
+    public empleadoDAO getempleadoDao() {
+                                 if(empleado==null){
+                empleado=new MySQLempleadoDAO(con); 
+            }
+            return empleado;
     }
     }
     

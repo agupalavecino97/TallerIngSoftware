@@ -19,9 +19,7 @@ class materialesTalbeModel3 extends AbstractTableModel{
         this.pedido=pedido;
     }
         
-    public void updateModel(){
-        
-    }
+   
     
 
     public String getColumnName(int i){
@@ -29,7 +27,8 @@ class materialesTalbeModel3 extends AbstractTableModel{
             case 0:return "codigo";
             case 1:return "nombre";
             case 2:return "cantidad";
-            case 3:return "subTotal";
+            case 3:return "precio";
+            case 4:return "subTotal";
             default:return "[no]"; 
         }
     }
@@ -41,7 +40,7 @@ class materialesTalbeModel3 extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {    
-        return 4;
+        return 5;
         }
 
     @Override
@@ -51,7 +50,8 @@ class materialesTalbeModel3 extends AbstractTableModel{
             case 0:return consulta.getCodMaterial();
             case 1:return consulta.getNombre();
             case 2:return consulta.getCantidadMaterial();
-            case 3:return consulta.getSubTotalMat();
+            case 3:return consulta.getPrecio();
+            case 4:return consulta.getSubTotalMat();
             default: return "";
         }
     }

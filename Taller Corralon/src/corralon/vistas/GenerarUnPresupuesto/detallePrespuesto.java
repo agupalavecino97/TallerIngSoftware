@@ -218,7 +218,11 @@ public class detallePrespuesto extends javax.swing.JFrame {
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
            
            //mostrar cartelito de presupuesto agregado exitosamente
-           
+           for(pedidoConCantidad material: pedido){
+               pedidoMaterial detallerPedido=new pedidoMaterial(pedidoclientes.getCodigoPedidoClie(),material.getCodMaterial(),material.getCantidad(), (material.getCantidad()*material.getPrecio()));  
+               manager.getpedidoMaterialDao().insertar(detallerPedido);
+               manager.getmaterialDao().modificarCantidad(detallerPedido.getCodMaterial(),detallerPedido.getCantidadMaterial());
+           }
            
 //           java.util.Date date=new java.util.Date();
 //           java.sql.Date fechaDeHoy=new java.sql.Date(date.getTime());

@@ -2,7 +2,10 @@ package corralon.vistas.ventaConPresupuesto;
 
 import corralon.vistas.ventaSinPresupuesto.*;
 import corralon.DAO.DAOManager;
+import corralon.modelos.pedidoMaterial;
 import corralon.modelos.stock;
+import static corralon.vistas.ventaConPresupuesto.SeleccionarMaterialesPresupuesto.datosConNombre;
+import static corralon.vistas.ventaConPresupuesto.SeleccionarMaterialesPresupuesto.index;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,14 +29,23 @@ public class cantidadMaterialesPresupuesto extends javax.swing.JPanel {
     private stock material; 
     private boolean editable;
     private Long cantidadMaterial;
-    private List<pedidoConCantidad> pedido=new ArrayList();
+    private pedidoMaterial pedMat;
+    //private List<pedidoConCantidad> pedido=new ArrayList();
+
+    public pedidoMaterial getPedMat() {
+        return pedMat;
+    }
+
+    public void setPedMat(pedidoMaterial pedMat) {
+        this.pedMat = pedMat;
+    }
     
     
     public stock getMaterial() {
         return material;
     }
     public List getLista(){
-        return pedido;
+        return datosConNombre;
     }
 
     public boolean isEditable() {
@@ -57,15 +69,16 @@ public class cantidadMaterialesPresupuesto extends javax.swing.JPanel {
             nombre.setText(material.getNombreMaterial());
             String pre=String.valueOf(material.getPrecio());
             precio.setText(pre);
-            for(pedidoConCantidad ped:pedido){
-                if(ped.getCodMaterial()==material.getCodMaterial()){
-                    cantidad.setValue(ped.getCantidad());
-                }
+            for(pedidoMaterialConNombre ped:datosConNombre){
+                //if(ped.getCodMaterial()==material.getCodMaterial()){
+                    cantidad.setValue(ped.getCantidadMaterial());
+                //}else cantidad.setValue(0);
             }  
         }
         else{
             nombre.setText("");
             precio.setText("");
+            cantidad.setValue(0);
         }        
     }
      
@@ -79,13 +92,13 @@ public class cantidadMaterialesPresupuesto extends javax.swing.JPanel {
        material.setPrecio(pre);
        String stringToConvert = String.valueOf(cantidad.getValue());
        Long convertedLong = Long.parseLong(stringToConvert);
+        System.out.println("primero");
+        System.out.println(material);
        if(convertedLong<=material.getCantidadExistente()){
            cantidadMaterial=convertedLong; 
            return true;
-           
        }
            return false;
-                
        //System.out.println(cantidadMaterial);
     }
     
@@ -199,36 +212,42 @@ public class cantidadMaterialesPresupuesto extends javax.swing.JPanel {
                 String nombre=material.getNombreMaterial();
                 Long cantidad2=Long.valueOf(cantidadMaterial);
                 Long precio=material.getPrecio();
-                pedidoConCantidad pedidoc=new pedidoConCantidad(codigo,nombre,cantidad2,precio);
-                if(buscarEnLista(codigo)){
+                System.out.println("segundo");
+                System.out.println(material);
+                System.out.println(getPedMat());
+                pedidoMaterialConNombre pedidoc=new pedidoMaterialConNombre(codigo,cantidad2,getPedMat().getCantidadMaterial(),material.getPrecio(),nombre);
+                int posicion=(datosConNombre.lastIndexOf(codigo));
+                datosConNombre.set(index,pedidoc);
+                System.out.println("nueva lista con cantidad cambiada");
+                System.out.println(datosConNombre);
 //                    for(pedidoConCantidad ped:pedido){
 //                        if (ped.getCodMaterial()==codigo){
 //                            
 //                            ped.setCantidad(ped.getCantidad()+cantidad2);
 //                        }
 //                    }
-                    
-                    int posicion=(pedido.lastIndexOf(codigo));
-                    pedidoConCantidad nuevoPedido=pedido.get(posicion);
-                    nuevoPedido.setCantidad(nuevoPedido.getCantidad()+cantidad2);
-                    if(nuevoPedido.getCantidad()<=manager.getmaterialDao().obtenerCantidad(nuevoPedido.getCodMaterial())){
-                         pedido.set(posicion,nuevoPedido);
-                    }else{
-                        setMaterial(null);
-                        loadData();
-                        cantidad.setValue(0);
-                    }
-                }else{
-                     pedido.add(pedidoc);
-                }
+            
+//                    int posicion=(datosConNombre.lastIndexOf(codigo));
+//                    pedidoConCantidad nuevoPedido=datosConNombre.get(posicion);
+//                    nuevoPedido.setCantidad(nuevoPedido.getCantidad()+cantidad2);
+//                    if(nuevoPedido.getCantidad()<=manager.getmaterialDao().obtenerCantidad(nuevoPedido.getCodMaterial())){
+//                         datosConNombre.set(posicion,nuevoPedido);
+//                    }else{
+//                        setMaterial(null);
+//                        loadData();
+//                        cantidad.setValue(0);
+//                    }
+//              
+                //materialesTalbeModel3 model=new materialesTalbeModel3(datosConNombre);
                 setEditable(false);
                 setMaterial(null);
                 loadData();
                 aceptar.setEnabled(false);
                 cancelar.setEnabled(false);
                 this.cantidad.setValue(0);
-            }
-           
+                
+            }else
+            System.out.println("la cantidad ingresada supera el stock disponible");
         } catch (ParseException ex) {
             Logger.getLogger(cantidadMaterialesPresupuesto.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -240,7 +259,7 @@ public class cantidadMaterialesPresupuesto extends javax.swing.JPanel {
 
     
     public boolean buscarEnLista(Long cod){
-        if(pedido.contains(cod)){
+        if(datosConNombre.contains(cod)){
             return true;
         }else return false;               
     }

@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -38,7 +39,7 @@ public class MySQLFacturaDAO implements facturaDAO{
         PreparedStatement stat=null;
         ResultSet rs=null;
         try {
-            stat=conn.prepareStatement(INSERT);
+            stat=conn.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
             stat.setDate(1, a.getFechaFactura());
             stat.setLong(2, a.getCodigoPedidoClie());
             stat.setString(3, a.getEstadoFactura());
@@ -47,7 +48,7 @@ public class MySQLFacturaDAO implements facturaDAO{
             }
             rs = stat.getGeneratedKeys();
                 if(rs.next())
-                { //esto es para guardar el atributo autoincremental en el objeto 
+                { 
                     int last_inserted_id = rs.getInt(1);
                      System.out.println(last_inserted_id);
                      a.setCodigoFactura(Long.valueOf(last_inserted_id));

@@ -232,14 +232,14 @@ public class ListaClientes extends javax.swing.JFrame {
        model.fireTableDataChanged();
     }//GEN-LAST:event_guardarActionPerformed
 
- 
-public static void main(String args[]) throws SQLException {
-
-        DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
-        java.awt.EventQueue.invokeLater(()-> {        
-                new ListaClientes(manager).setVisible(true);
-        });
-    }
+// 
+//public static void main(String args[]) throws SQLException {
+//
+//        DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
+//        java.awt.EventQueue.invokeLater(()-> {        
+//                new ListaClientes(manager).setVisible(true);
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabla;

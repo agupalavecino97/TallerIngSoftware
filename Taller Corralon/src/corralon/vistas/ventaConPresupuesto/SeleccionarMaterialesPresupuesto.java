@@ -17,33 +17,38 @@ public class SeleccionarMaterialesPresupuesto extends javax.swing.JFrame {
    private DAOManager manager;
    private materialesTalbeModel3 model;
    private List<pedidoMaterial> datos=new ArrayList();
-   private List<pedidoMaterial> datos2=new ArrayList();
-   private List<pedidoMaterialConNombre> datosConNombre=new ArrayList();
+   public static List<pedidoMaterialConNombre> datosConNombre=new ArrayList();
+   private Long codigoPedido;
+   public static int index;
    
    public  static List<pedidoConCantidad> pedido=new ArrayList();
    
     public SeleccionarMaterialesPresupuesto(DAOManager manager) {
         initComponents();
         this.manager=manager;
+        System.out.println("el codigo de pedido ingresado:");
+        System.out.println(codPedido);
         datos=manager.getpedidoMaterialDao().obtenerTodosDeUnPedido(codPedido);
         System.out.println(datos);
-        for(pedidoMaterial m:datos){
-            if(m.getCodMaterial()==codPedido)
-                datos2.add(m);
-        }
-        System.out.println(datos2);
-        for(pedidoMaterial mat:datos2){
+        for(pedidoMaterial mat:datos){
             stock nombre=manager.getmaterialDao().obtener(mat.getCodMaterial());
-            
-            pedidoMaterialConNombre matNombre=new pedidoMaterialConNombre(mat.getCodMaterial(),mat.getCantidadMaterial(),mat.getSubTotalMat(),nombre.getNombreMaterial(),nombre.getPrecio());
+            pedidoMaterialConNombre matNombre=new pedidoMaterialConNombre(mat.getCodMaterial(),mat.getCantidadMaterial(),mat.getSubTotalMat(),nombre.getPrecio(),nombre.getNombreMaterial());
             datosConNombre.add(matNombre);
         }  
         System.out.println(datosConNombre);
         this.model=new materialesTalbeModel3(datosConNombre);
-        this.model.updateModel();
         this.tabla.setModel(model); 
     }
 
+    public static int getIndex() {
+        return index;
+    }
+
+    public static void setIndex(int index) {
+        SeleccionarMaterialesPresupuesto.index = index;
+    }
+
+    
     public List<pedidoConCantidad> getPedido() {
         return pedido;
     }
@@ -54,8 +59,15 @@ public class SeleccionarMaterialesPresupuesto extends javax.swing.JFrame {
         return manager.getmaterialDao().obtener(id);
      
     } 
-    
    
+    
+    
+    private pedidoMaterial getMaterialSeleccionado2(){
+        Long id=(Long)tabla.getValueAt(tabla.getSelectedRow(),0);  
+        setIndex(tabla.getSelectedRow());
+        return manager.getpedidoMaterialDao().obtener(codPedido);
+     
+    } 
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -66,7 +78,7 @@ public class SeleccionarMaterialesPresupuesto extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        modificar = new javax.swing.JButton();
         cantidadMaterialesPresupuesto1 = new corralon.vistas.ventaConPresupuesto.cantidadMaterialesPresupuesto();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -100,13 +112,13 @@ public class SeleccionarMaterialesPresupuesto extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
-        jButton1.setText("Agregar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        modificar.setText("Modificar");
+        modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                modificarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, java.awt.BorderLayout.LINE_END);
+        jPanel1.add(modificar, java.awt.BorderLayout.LINE_END);
         jPanel1.add(cantidadMaterialesPresupuesto1, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -114,18 +126,27 @@ public class SeleccionarMaterialesPresupuesto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
         stock material=getMaterialSeleccionado();
+        pedidoMaterial materialSelec=getMaterialSeleccionado2();
+        System.out.println("material seleccionado");
+        System.out.println(materialSelec);
         cantidadMaterialesPresupuesto1.setMaterial(material);
+        cantidadMaterialesPresupuesto1.setPedMat(materialSelec);
         cantidadMaterialesPresupuesto1.setEditable(true);
         cantidadMaterialesPresupuesto1.loadData();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
         
-        System.out.print("lista enviada:");
-        System.out.println(getPedido());
-       validacionVenta vistaSiguiente=new validacionVenta(manager);
+    }//GEN-LAST:event_modificarActionPerformed
+
+    private void actualiarTabla(List<pedidoMaterialConNombre> nuevaLista){
+        this.model=new materialesTalbeModel3(nuevaLista);
+        this.tabla.setModel(model); 
+    }
+            
+            
+    private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
+
+       validacionVentaConPresupuesto vistaSiguiente=new validacionVentaConPresupuesto(manager);
 //       vistaSiguiente.setPedidoRecibido(pedido);
        vistaSiguiente.setVisible(true);
        this.setVisible(false);
@@ -175,10 +196,10 @@ public class SeleccionarMaterialesPresupuesto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Continuar;
     private corralon.vistas.ventaConPresupuesto.cantidadMaterialesPresupuesto cantidadMaterialesPresupuesto1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton modificar;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }
