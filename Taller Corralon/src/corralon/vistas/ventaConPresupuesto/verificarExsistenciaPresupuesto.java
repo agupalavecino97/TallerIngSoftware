@@ -171,6 +171,7 @@ public class verificarExsistenciaPresupuesto extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //debe llevar al menu principal;
+        this.setVisible(false);
         codPedidoIngresado.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
