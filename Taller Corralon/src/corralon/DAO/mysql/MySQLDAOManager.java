@@ -39,14 +39,10 @@ public class MySQLDAOManager implements DAOManager{
     private pedidoProveedorDAO pedidoProveedor = null;
 
 
-<<<<<<< HEAD
         private empleadoDAO empleado=null;
 
     
         
-        
-=======
->>>>>>> master
     private final Connection con;
     
     public MySQLDAOManager(String host, String database, String user, String password) throws SQLException {
