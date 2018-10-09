@@ -62,16 +62,16 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
         System.out.println(datos);
         int i=0;
         while (i<datos.size()){         
-            Long mandar = Long.valueOf(datos.get(i).getCodProductoCatalogo());
+            Long mandar = datos.get(i).getCodProductoCatalogo();
             produC = manager.getproductocatalogoDao().obtener(mandar);
             String nombre = produC.getNombreProductoCatalogo();
-            Long dato = Long.valueOf(datos.get(i).getCodProductoCatalogo());
+            Long dato = datos.get(i).getCodProductoCatalogo();
             elem = new catalogoUnProveedor(dato, nombre , datos.get(i).getPrecioUnitario());
             nueva.add(i, elem);
             i++;
         }
-        System.out.println("listaaaa");
-        System.out.println(nueva);       
+//        System.out.println("listaaaa");
+//        System.out.println(nueva);       
         this.model=new materialesTableModel3(nueva);
        //        this.model.updateModel();
         this.tabla.setModel(model);
@@ -95,6 +95,8 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
         Object nombre = tabla.getValueAt(tabla.getSelectedRow(), 1);
         Object precio= tabla.getValueAt(tabla.getSelectedRow(), 2);
         catalogoUnProveedor cat = new catalogoUnProveedor(id, nombre.toString(), (float) precio);
+        System.out.println("resultado de la consulta");
+        System.out.println(cat);
          return cat;
     } 
     

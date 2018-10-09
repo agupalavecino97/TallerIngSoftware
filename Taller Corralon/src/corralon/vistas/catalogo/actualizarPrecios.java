@@ -1,27 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package corralon.vistas.clientes.catalogo;
+
+package corralon.vistas.catalogo;
 
 import corralon.DAO.DAOManager;
+import corralon.DAO.catalogoDAO;
 import corralon.DAO.mysql.MySQLDAOManager;
 import corralon.DAO.productoCatalogoDAO;
+import corralon.modelos.proveedor;
 import corralon.modelos.catalogo;
 import corralon.modelos.productoCatalogo;
-import static corralon.vistas.clientes.catalogo.seleccionProveedor.getIdProveedorSelec;
 import corralon.vistas.pedidoProveedor.catalogoUnProveedor;
 import corralon.vistas.pedidoProveedor.materialesTableModel3;
-import corralon.vistas.pedidoProveedor.seleccionProveedorPedido;
+import static corralon.vistas.catalogo.seleccionProveedor.idProveedorSelec;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.TableModel;
 
-/**
- *
- * @author ORELLANO
- */
 public class actualizarPrecios extends javax.swing.JFrame {
 
    private DAOManager manager;
@@ -29,24 +23,27 @@ public class actualizarPrecios extends javax.swing.JFrame {
    private Long cuitProveedorIngresado;
    private productoCatalogoDAO prodCatdao;
    private productoCatalogo produC;
+   private catalogo catalogo;
+   public static catalogo catSel;
    public  static List<catalogoUnProveedor> nueva=new ArrayList();
+ //  public  static List<elementosDePedido> pedido=new ArrayList();
    
    
    
     public actualizarPrecios(DAOManager manager) {
-        initComponents();
+      initComponents();
         this.manager = manager;
         List<catalogo> datos;  
         catalogoUnProveedor elem;
-        seleccionProveedor sel = new seleccionProveedor(manager);
-        datos = manager.getcatalogoDao().obtenerTodosDeProv(getIdProveedorSelec());
+        //seleccionProveedor sel = new seleccionProveedor(manager);
+        datos = manager.getcatalogoDao().obtenerTodosDeProv(idProveedorSelec);
         System.out.println(datos);
         int i=0;
         while (i<datos.size()){         
-            Long mandar = Long.valueOf(datos.get(i).getCodProductoCatalogo());
+            Long mandar = datos.get(i).getCodProductoCatalogo();
             produC = manager.getproductocatalogoDao().obtener(mandar);
             String nombre = produC.getNombreProductoCatalogo();
-            Long dato = Long.valueOf(datos.get(i).getCodProductoCatalogo());
+            Long dato = datos.get(i).getCodProductoCatalogo();
             elem = new catalogoUnProveedor(dato, nombre , datos.get(i).getPrecioUnitario());
             nueva.add(i, elem);
             i++;
@@ -56,6 +53,7 @@ public class actualizarPrecios extends javax.swing.JFrame {
         this.model=new materialesTableModel3(nueva);
        //        this.model.updateModel();
         this.tabla.setModel(model);
+        
     }
 
     public Long getCuitProveedorIngresado() {
@@ -74,6 +72,26 @@ public class actualizarPrecios extends javax.swing.JFrame {
         actualizarPrecios.nueva = nueva;
     }
 
+
+       private catalogo getCatalogoSeleccionado(){
+         Long cod=(Long) tabla.getValueAt(tabla.getSelectedRow(),0);
+         return manager.getcatalogoDao().obtener(cod);
+    } 
+
+    public static catalogo getCatSel() {
+        return catSel;
+    }
+
+    public static void setCatSel(catalogo catSel) {
+        actualizarPrecios.catSel = catSel;
+    }
+       
+       
+       
+            private void catSel(){
+         Long cod=(Long) tabla.getValueAt(tabla.getSelectedRow(),0);
+           setCatSel(manager.getcatalogoDao().obtener(cod));
+    } 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -86,6 +104,7 @@ public class actualizarPrecios extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         modificar = new javax.swing.JButton();
+        productoAModificar2 = new corralon.vistas.catalogo.productoAModificar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,25 +138,37 @@ public class actualizarPrecios extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(productoAModificar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 269, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(productoAModificar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-        
-        
-        
+//          catalogo datos = manager.getcatalogoDao().obtener(a);
+////          catalogo datos = manager.getcatalogoDao().obtener(actualizarPrecios.catSel.getCodProductoCatalogo());
+//          System.out.println("OBTENER UNOOOOOOooooooooooooooooooooooooooOOOO");
+//          System.out.println(datos);
+          
+                 productoAModificar2.setCat(getCatalogoSeleccionado());
+                 //System.out.println(productoAModificar1.getCat());
+                 productoAModificar2.loadData();    
+
     }//GEN-LAST:event_modificarActionPerformed
 
     /**
@@ -181,6 +212,7 @@ public class actualizarPrecios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton modificar;
+    private corralon.vistas.catalogo.productoAModificar productoAModificar2;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

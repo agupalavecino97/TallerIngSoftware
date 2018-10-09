@@ -19,15 +19,16 @@ import java.util.logging.Logger;
 
 
 public class MySQLCatalogoDAO implements catalogoDAO{
-    final String INSERT = "INSERT INTO catalogo(cuitProveedor, codProducto, precioUnitario, fechaDeActualizacion) VALUES(?,?,?,?)";
-    final String UPDATE = "UPDATE catalogo SET cuitProveedor=?, codProducto=?, precioUnitario=?, fechaDeActualizacion=? WHERE cuitProveedor=?" ;
+    final String INSERT = "INSERT INTO catalogo(codProducto, cuitProveedor, fechaDeActualizacion, precioUnitario ) VALUES(?,?,?,?)";
+    final String UPDATE = "UPDATE catalogo SET cuitProveedor=?, codProducto=?, fechaDeActualizacion=?, precioUnitario=?  WHERE cuitProveedor=? AND codProducto=?" ;
     final String DELETE = "DELETE FROM catalogo WHERE cuitProveedor=?";
     final String GETALL = "SELECT cuitProveedor, codProducto, fechaDeActualizacion, precioUnitario  FROM catalogo";
     final String GETALLdeprov = "(SELECT cuitProveedor, codProducto, precioUnitario, fechaDeActualizacion  FROM catalogo WHERE cuitProveedor =?)";
 //    final String GETALLdeprov = "SELECT  cat.codProducto as 'id', cat.precioUnitario as 'preP', prodcat.nombreProd as 'nombre' FROM catalogo as cat JOIN "
 //            + "productocatalogo as prodCat ON prodCat.codProducto = cat.id WHERE cuitProveedor =?";
-    final String GETONE = "SELECT cuitProveedor, codProducto, precioUnitario FROM catalogo WHERE cuitProveedor=?";
-
+    final String GETONE = "SELECT cuitProveedor, codProducto, fechaDeActualizacion, precioUnitario FROM catalogo WHERE codProducto=?";
+    final String UPDATECANT="UPDATE catalogo SET fechaDeActualizacion=?,precioUnitario=? WHERE cuitProveedor=? AND codProducto=?";
+    final String GETONEPROV= "SELECT cuitProveedor, codProducto, fechaDeActualizacion, precioUnitario FROM catalogo WHERE cuitProveedor=? AND codProducto=?";  
     
     private final Connection conn;
     
@@ -37,13 +38,11 @@ public class MySQLCatalogoDAO implements catalogoDAO{
     
     private catalogo convertir(ResultSet rs)throws SQLException {
           Long cuit=rs.getLong("cuitProveedor");
-          int cod= rs.getInt("codProducto");
+          Long cod= rs.getLong("codProducto");
           float precio=rs.getFloat("precioUnitario");
-          //SimpleDateFormat fecha= rs.getd("fechaDeActualizacion");
           Date fecha = rs.getDate("fechaDeActualizacion");
-//          String fecha2 = fecha.toString();
-          catalogo cat= new catalogo(cuit, cod, precio,fecha);
-          return cat;
+          catalogo catalogo= new catalogo(cuit, cod, precio,fecha);
+          return catalogo;
     }
     
 //      public static void main(String args[]) throws SQLException {
@@ -66,11 +65,11 @@ public class MySQLCatalogoDAO implements catalogoDAO{
         PreparedStatement stat=null;
         try {
             stat=conn.prepareStatement(INSERT);
-            stat.setLong(1, a.getCuitProveedor());
-            stat.setInt(2, a.getCodProductoCatalogo());
-            stat.setFloat(3, a.getPrecioUnitario());
+            stat.setLong(1, a.getCodProductoCatalogo());
+            stat.setLong(2, a.getCuitProveedor());
             //stat.setDate(4, a.getFechaVigencia());
-            stat.setDate(4, a.getFechaVigencia());
+            stat.setDate(3, a.getFechaVigencia());
+            stat.setFloat(4, a.getPrecioUnitario());
             if (stat.executeUpdate()==0) {
                 System.out.println("Puede que no se haya guardado correctamente.");
             }
@@ -93,9 +92,13 @@ public class MySQLCatalogoDAO implements catalogoDAO{
         try {
             stat=conn.prepareStatement(UPDATE);
             stat.setLong(1, a.getCuitProveedor());
-            stat.setInt(2, a.getCodProductoCatalogo());
-            stat.setFloat(3, a.getPrecioUnitario());
-            stat.setDate(4, a.getFechaVigencia());
+            stat.setLong(2, a.getCodProductoCatalogo());
+            stat.setDate(3, a.getFechaVigencia());
+            stat.setFloat(4, a.getPrecioUnitario());
+            stat.setLong(5, a.getCuitProveedor());
+            stat.setLong(6, a.getCodProductoCatalogo());
+            //final String UPDATE = "UPDATE catalogo SET cuitProveedor=?, codProducto=?, fechaDeActualizacion=?, precioUnitario=?  WHERE cuitProveedor=? AND codProducto=?" ;
+
             if (stat.executeUpdate()==0) {
                 System.out.println("Puede que no se haya guardado correctamente.");
             }
@@ -112,6 +115,31 @@ public class MySQLCatalogoDAO implements catalogoDAO{
         }
     }
 
+       @Override
+        public void modificarCantidad(Long codM, Long cuitP, Date fecha, float precio) {
+          PreparedStatement stat=null;
+        try{
+            stat=conn.prepareStatement(UPDATECANT);
+            stat.setDate(1,fecha);
+            stat.setFloat(2,precio);
+            stat.setLong(3, cuitP);
+            stat.setLong(4, codM);
+            if(stat.executeUpdate()==0){
+                System.out.println("Quizas no se guardo correctamente gg");
+            } 
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally{
+                if (stat != null)
+                    try {
+                        stat.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MySQLMaterialDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+             }    
+    }
+    
+    
     @Override
     public void eliminar(catalogo a) {
         PreparedStatement stat=null;
@@ -238,6 +266,42 @@ public class MySQLCatalogoDAO implements catalogoDAO{
             }
         }
         return catalogos;
+    }
+
+    @Override
+    public catalogo ObtenerUnProductoDeUnProveedor(Long id, Long cod) {
+        PreparedStatement stat=null;
+        ResultSet rs=null;
+        catalogo cat=null;
+        try {
+             stat=conn.prepareStatement(GETONEPROV);
+             stat.setLong(1, id);
+             stat.setLong(2,cod);
+             rs=stat.executeQuery();
+             if (rs.next()) {
+                cat=convertir(rs);
+            } else {
+                 System.out.println("No se ha encontrado el registro.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQLCatalogoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            if (rs!=null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MySQLCatalogoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (stat!=null) {
+                try {
+                    stat.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MySQLCatalogoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return cat;
     }
     
     

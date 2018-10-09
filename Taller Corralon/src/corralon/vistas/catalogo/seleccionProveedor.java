@@ -1,5 +1,5 @@
 
-package corralon.vistas.clientes.catalogo;
+package corralon.vistas.catalogo;
 
 import corralon.DAO.DAOManager;
 import corralon.DAO.mysql.MySQLDAOManager;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class seleccionProveedor extends javax.swing.JFrame {
   private DAOManager manager;
    private ProveedorTableModel model;
-   public static Long idProveedorSelec=null;
+   public static Long idProveedorSelec;
 
     public seleccionProveedor(DAOManager manager) {
         initComponents();
@@ -20,11 +20,11 @@ public class seleccionProveedor extends javax.swing.JFrame {
         this.tabla.setModel(model);
     }
 
-    public static Long getIdProveedorSelec() {
+    public Long getIdProveedorSelec() {
         return idProveedorSelec;
     }
 
-    public static void setIdProveedorSelec(Long idProveedorSelec) {
+    public void setIdProveedorSelec(Long idProveedorSelec) {
         seleccionProveedor.idProveedorSelec = idProveedorSelec;
     }
     
@@ -113,6 +113,7 @@ public class seleccionProveedor extends javax.swing.JFrame {
      */
     public static void main(String args[]) throws SQLException {
          DAOManager manager = new MySQLDAOManager("localhost", "taller", "root", "root");
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
