@@ -6,7 +6,7 @@ import corralon.DAO.DAOManager;
 import corralon.DAO.mysql.MySQLDAOManager;
 import corralon.modelos.pedidoCliente;
 import static corralon.vistas.GenerarUnPresupuesto.SeleccionarMateriales.pedido;
-import static corralon.vistas.GenerarUnPresupuesto.verificarExsistenciaCliente.cuitClienteIngresado;
+import static corralon.vistas.GenerarUnPresupuesto.verificarExsistenciaCliente2.cuitClienteIngresado;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;

@@ -13,14 +13,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class verificarExsistenciaCliente extends javax.swing.JFrame {
+public class verificarExsistenciaCliente2 extends javax.swing.JFrame {
 
    
     private DAOManager manager;
     //private List<cliente> clientes=new ArrayList();
     public static Long cuitClienteIngresado;
            
-    public verificarExsistenciaCliente(DAOManager manager) {
+    public verificarExsistenciaCliente2(DAOManager manager) {
         initComponents();
         this.manager=manager;
         detalleClientes2.setVisible(false);
@@ -33,7 +33,7 @@ public class verificarExsistenciaCliente extends javax.swing.JFrame {
     }
 
     public static void setCuitClienteIngresado(Long cuitClienteIngresado) {
-        verificarExsistenciaCliente.cuitClienteIngresado = cuitClienteIngresado;
+        verificarExsistenciaCliente2.cuitClienteIngresado = cuitClienteIngresado;
     }
 
     @SuppressWarnings("unchecked")
@@ -170,7 +170,7 @@ public class verificarExsistenciaCliente extends javax.swing.JFrame {
         try {
             detalleClientes2.saveData();
         } catch (ParseException ex) {
-            Logger.getLogger(verificarExsistenciaCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(verificarExsistenciaCliente2.class.getName()).log(Level.SEVERE, null, ex);
         }
         cliente c=detalleClientes2.getCliente();
         manager.getclienteDao().insertar(c);
@@ -202,13 +202,13 @@ public class verificarExsistenciaCliente extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(verificarExsistenciaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(verificarExsistenciaCliente2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(verificarExsistenciaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(verificarExsistenciaCliente2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(verificarExsistenciaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(verificarExsistenciaCliente2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(verificarExsistenciaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(verificarExsistenciaCliente2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //        //</editor-fold>
@@ -216,7 +216,7 @@ public class verificarExsistenciaCliente extends javax.swing.JFrame {
 //        /* Create and display the form */
 //        DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
 //        java.awt.EventQueue.invokeLater(() -> {
-//            new verificarExsistenciaCliente(manager).setVisible(true);
+//            new verificarExsistenciaCliente2(manager).setVisible(true);
 //        });
 //    }
 

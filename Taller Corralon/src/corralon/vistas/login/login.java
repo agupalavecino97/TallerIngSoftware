@@ -10,10 +10,7 @@ import corralon.DAO.mysql.MySQLDAOManager;
 import corralon.modelos.empleado;
 import java.sql.SQLException;
 import corralon.*;
-/**
- *
- * @author Agustin
- */
+
 public class login extends javax.swing.JFrame {
 
     private DAOManager manager;
