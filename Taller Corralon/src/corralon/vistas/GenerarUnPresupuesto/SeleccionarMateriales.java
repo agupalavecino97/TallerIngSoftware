@@ -90,6 +90,7 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/add.png"))); // NOI18N
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
