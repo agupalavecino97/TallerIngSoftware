@@ -178,7 +178,7 @@ public class menu1 extends javax.swing.JFrame{
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 696, Short.MAX_VALUE)
+            .addGap(0, 697, Short.MAX_VALUE)
         );
 
         pack();
@@ -188,6 +188,7 @@ public class menu1 extends javax.swing.JFrame{
         
         verificarExsistenciaPresupuesto vista=new verificarExsistenciaPresupuesto(manager);
         vista.setLocationRelativeTo(null);
+        vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vista.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -263,7 +264,7 @@ public class menu1 extends javax.swing.JFrame{
             SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.OfficeSilver2007Skin");
             menu1 vista=new menu1(manager);
              vista.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-            vista.setUndecorated(true);
+            //vista.setUndecorated(true);
             vista.setVisible(true);
         });
     }
