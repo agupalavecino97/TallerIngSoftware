@@ -264,11 +264,11 @@ public class menu1 extends javax.swing.JFrame{
             SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.OfficeSilver2007Skin");
             menu1 vista=new menu1(manager);
              vista.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-<<<<<<< HEAD
+
 //            vista.setUndecorated(true);
-=======
+
             //vista.setUndecorated(true);
->>>>>>> master
+
             vista.setVisible(true);
         });
     }
