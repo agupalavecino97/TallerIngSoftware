@@ -26,7 +26,7 @@ public class MySQLCatalogoDAO implements catalogoDAO{
     final String GETALLdeprov = "(SELECT cuitProveedor, codProducto, precioUnitario, fechaDeActualizacion  FROM catalogo WHERE cuitProveedor =?)";
 //    final String GETALLdeprov = "SELECT  cat.codProducto as 'id', cat.precioUnitario as 'preP', prodcat.nombreProd as 'nombre' FROM catalogo as cat JOIN "
 //            + "productocatalogo as prodCat ON prodCat.codProducto = cat.id WHERE cuitProveedor =?";
-    final String GETONE = "SELECT cuitProveedor, codProducto, precioUnitario FROM catalogo WHERE cuitProveedor=?";
+    final String GETONE = "SELECT cuitProveedor, codProducto, fechaDeActualizacion, precioUnitario FROM catalogo WHERE cuitProveedor=?";
 
     
     private final Connection conn;
@@ -37,7 +37,7 @@ public class MySQLCatalogoDAO implements catalogoDAO{
     
     private catalogo convertir(ResultSet rs)throws SQLException {
           Long cuit=rs.getLong("cuitProveedor");
-          int cod= rs.getInt("codProducto");
+          Long cod= rs.getLong("codProducto");
           float precio=rs.getFloat("precioUnitario");
           //SimpleDateFormat fecha= rs.getd("fechaDeActualizacion");
           Date fecha = rs.getDate("fechaDeActualizacion");
@@ -67,7 +67,7 @@ public class MySQLCatalogoDAO implements catalogoDAO{
         try {
             stat=conn.prepareStatement(INSERT);
             stat.setLong(1, a.getCuitProveedor());
-            stat.setInt(2, a.getCodProductoCatalogo());
+            stat.setLong(2, a.getCodProductoCatalogo());
             stat.setFloat(3, a.getPrecioUnitario());
             //stat.setDate(4, a.getFechaVigencia());
             stat.setDate(4, a.getFechaVigencia());
@@ -93,7 +93,7 @@ public class MySQLCatalogoDAO implements catalogoDAO{
         try {
             stat=conn.prepareStatement(UPDATE);
             stat.setLong(1, a.getCuitProveedor());
-            stat.setInt(2, a.getCodProductoCatalogo());
+            stat.setLong(2, a.getCodProductoCatalogo());
             stat.setFloat(3, a.getPrecioUnitario());
             stat.setDate(4, a.getFechaVigencia());
             if (stat.executeUpdate()==0) {
