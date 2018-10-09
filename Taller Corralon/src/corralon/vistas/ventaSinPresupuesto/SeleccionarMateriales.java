@@ -64,6 +64,7 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
         jLabel1.setText("Materiales disponibles:");
         getContentPane().add(jLabel1, java.awt.BorderLayout.PAGE_START);
 
+        Continuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/accept.png"))); // NOI18N
         Continuar.setText("Continuar");
         Continuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +90,7 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/add.png"))); // NOI18N
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
