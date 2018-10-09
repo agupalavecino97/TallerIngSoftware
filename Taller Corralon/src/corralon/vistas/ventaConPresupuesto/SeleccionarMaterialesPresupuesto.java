@@ -108,6 +108,8 @@ public class SeleccionarMaterialesPresupuesto extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabla.getTableHeader().setResizingAllowed(false);
+        tabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tabla);
 
         jPanel1.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -149,6 +151,7 @@ public class SeleccionarMaterialesPresupuesto extends javax.swing.JFrame {
 
        validacionVentaConPresupuesto vistaSiguiente=new validacionVentaConPresupuesto(manager);
 //       vistaSiguiente.setPedidoRecibido(pedido);
+        vistaSiguiente.setLocationRelativeTo(null);
        vistaSiguiente.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_ContinuarActionPerformed
