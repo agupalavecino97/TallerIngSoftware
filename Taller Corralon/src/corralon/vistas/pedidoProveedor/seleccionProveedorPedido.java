@@ -69,8 +69,10 @@ public class seleccionProveedorPedido extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabla);
 
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/cancel.png"))); // NOI18N
         cancelar.setText("Cancelar");
 
+        aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/accept.png"))); // NOI18N
         aceptar.setText("Aceptar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +105,7 @@ public class seleccionProveedorPedido extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelar)
                     .addComponent(aceptar))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();

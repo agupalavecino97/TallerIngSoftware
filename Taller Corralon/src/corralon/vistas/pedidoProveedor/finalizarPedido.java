@@ -71,6 +71,7 @@ public class finalizarPedido extends javax.swing.JFrame {
 
         jLabel5.setText("Importe total de pedido:");
 
+        finalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/accept.png"))); // NOI18N
         finalizar.setText("Finalizar");
         finalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +124,7 @@ public class finalizarPedido extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 12, Short.MAX_VALUE)
+                        .addGap(0, 2, Short.MAX_VALUE)
                         .addComponent(jLabel3))
                     .addComponent(nombreProv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(47, 47, 47)

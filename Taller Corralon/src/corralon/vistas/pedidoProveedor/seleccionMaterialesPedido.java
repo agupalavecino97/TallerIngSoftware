@@ -130,6 +130,7 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabla);
 
+        agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/add.png"))); // NOI18N
         agregar.setText("Agregar");
         agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,6 +138,7 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
             }
         });
 
+        continuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/accept.png"))); // NOI18N
         continuar.setText("Continuar");
         continuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,7 +177,7 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
                         .addComponent(agregar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cantidadMaterialesPedir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(continuar))
         );
 

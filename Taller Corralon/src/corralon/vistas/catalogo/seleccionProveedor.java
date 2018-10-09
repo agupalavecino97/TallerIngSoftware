@@ -58,6 +58,7 @@ public class seleccionProveedor extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabla);
 
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/cancel.png"))); // NOI18N
         cancelar.setText("Cancelar");
 
         aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/accept.png"))); // NOI18N
