@@ -1,5 +1,5 @@
 
-package corralon.vistas.login;
+package corralon.vistas.menu;
 
 import corralon.DAO.DAOManager;
 import corralon.DAO.mysql.MySQLDAOManager;
@@ -15,11 +15,11 @@ import java.sql.SQLException;
 import javax.swing.JFrame;
 import org.jvnet.substance.SubstanceLookAndFeel;
 
-public class menu1 extends javax.swing.JFrame{
+public class menu3 extends javax.swing.JFrame{
 
     
     private DAOManager manager;
-    public menu1(DAOManager manager) {
+    public menu3(DAOManager manager) {
         initComponents();
         this.manager=manager;
         //this.getContentPane().setBackground(Color.darkGray);
@@ -29,6 +29,7 @@ public class menu1 extends javax.swing.JFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -49,12 +50,17 @@ public class menu1 extends javax.swing.JFrame{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 204, 102));
+        jPanel1.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+
         jMenuBar1.setBackground(new java.awt.Color(102, 255, 255));
         jMenuBar1.setForeground(new java.awt.Color(102, 255, 102));
 
         jMenu2.setBackground(new java.awt.Color(0, 51, 51));
         jMenu2.setBorder(new javax.swing.border.MatteBorder(null));
         jMenu2.setText("Gestionar Ventas");
+        jMenu2.setBorderPainted(true);
         jMenu2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         jMenuItem3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -89,6 +95,7 @@ public class menu1 extends javax.swing.JFrame{
         jMenu3.setBackground(new java.awt.Color(0, 51, 51));
         jMenu3.setBorder(new javax.swing.border.MatteBorder(null));
         jMenu3.setText("Administrar Compras");
+        jMenu3.setBorderPainted(true);
         jMenu3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         jMenuItem6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -118,6 +125,7 @@ public class menu1 extends javax.swing.JFrame{
         jMenu4.setBackground(new java.awt.Color(0, 51, 51));
         jMenu4.setBorder(new javax.swing.border.MatteBorder(null));
         jMenu4.setText("Administrar Datos");
+        jMenu4.setBorderPainted(true);
         jMenu4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         jMenuItem9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -152,6 +160,7 @@ public class menu1 extends javax.swing.JFrame{
         jMenu5.setBackground(new java.awt.Color(0, 51, 51));
         jMenu5.setBorder(new javax.swing.border.MatteBorder(null));
         jMenu5.setText("Estadisticas");
+        jMenu5.setBorderPainted(true);
         jMenu5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         jMenuItem12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -169,17 +178,6 @@ public class menu1 extends javax.swing.JFrame{
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1361, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 697, Short.MAX_VALUE)
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -232,6 +230,7 @@ public class menu1 extends javax.swing.JFrame{
         vista.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
+<<<<<<< Updated upstream:Taller Corralon/src/corralon/vistas/login/menu1.java
     
     public static void main(String args[]) throws SQLException {
         /* Set the Nimbus look and feel */
@@ -272,6 +271,44 @@ public class menu1 extends javax.swing.JFrame{
             vista.setVisible(true);
         });
     }
+=======
+//    
+//    public static void main(String args[]) throws SQLException {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(menu3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(menu3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(menu3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(menu3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//        DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(() -> {
+//            JFrame.setDefaultLookAndFeelDecorated(true);
+//            SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.OfficeSilver2007Skin");
+//            menu3 vista=new menu3(manager);
+//             vista.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+//            //vista.setUndecorated(true);
+//            //vista.setVisible(true);
+//        });
+//    }
+>>>>>>> Stashed changes:Taller Corralon/src/corralon/vistas/menu/menu3.java
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu2;
@@ -291,5 +328,6 @@ public class menu1 extends javax.swing.JFrame{
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

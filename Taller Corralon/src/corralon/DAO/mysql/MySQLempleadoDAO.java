@@ -40,32 +40,32 @@ public class MySQLempleadoDAO implements empleadoDAO {
     }
 
     
-final String GETONE = "SELECT id, usuario,contraseña, nombre, apellido, telefono, prioridad FROM empleado WHERE usuario=?";
+final String GETONE = "SELECT id,contraseña, nombre, apellido, telefono, prioridad FROM empleado WHERE id=?";
 
 
 
     private empleado convertir(ResultSet rs)throws SQLException {
           //((Long id=rs.getLong("id");
-          String usuario=rs.getString("usuario");
+          Long id=rs.getLong("id");
           String contraseña=rs.getString("contraseña");
           String nombre=rs.getString("nombre");
           String apellido=rs.getString("apellido");
           Long telefono=rs.getLong("telefono");
           int prioridad=rs.getInt("prioridad");
-          empleado empleado= new empleado(usuario,contraseña,nombre,apellido,telefono,prioridad);
+          empleado empleado= new empleado(id,contraseña,nombre,apellido,telefono,prioridad);
           return empleado;      
     }
     
  
 
     @Override
-    public empleado obtener2(String c) {
-                PreparedStatement stat=null;
+    public empleado obtener(Long id) {
+         PreparedStatement stat=null;
         ResultSet rs=null;
         empleado a=null;
         try{
             stat=conn.prepareStatement(GETONE);  
-            stat.setString(1,c);
+            stat.setLong(1,id);
             rs=stat.executeQuery();
             if(rs.next()){
                 a=convertir(rs);
@@ -89,11 +89,6 @@ final String GETONE = "SELECT id, usuario,contraseña, nombre, apellido, telefon
                 } 
              }
     return a;
-    }
-
-    @Override
-    public empleado obtener(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -38,6 +38,7 @@ public class SeleccionarMaterialesPresupuesto extends javax.swing.JFrame {
         System.out.println(datosConNombre);
         this.model=new materialesTalbeModel3(datosConNombre);
         this.tabla.setModel(model); 
+        
     }
 
     public static int getIndex() {

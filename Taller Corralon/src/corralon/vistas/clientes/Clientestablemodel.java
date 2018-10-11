@@ -28,7 +28,7 @@ public class Clientestablemodel extends AbstractTableModel{
             case 1:return "razonSocial";
             case 2:return "Direccion";
             case 3:return "Telefono";
-            case 4:return "Estado";
+         //   case 4:return "Estado";
             default:return "[no]";
         }     
     }
@@ -40,7 +40,7 @@ public class Clientestablemodel extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 4;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class Clientestablemodel extends AbstractTableModel{
            case 1: return consulta.getRazonSocial();
            case 2: return consulta.getDireccionCliente();
            case 3: return consulta.getTelefonoCliente();
-           case 4: return consulta.isEstadoClie();
+           //case 4: return consulta.isEstadoClie();
            default: return "";
        }     
     }     

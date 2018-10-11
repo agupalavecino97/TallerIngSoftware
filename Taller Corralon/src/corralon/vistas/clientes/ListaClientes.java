@@ -80,6 +80,7 @@ public class ListaClientes extends javax.swing.JFrame {
 
         toolbar.setRollover(true);
 
+        añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/add.png"))); // NOI18N
         añadir.setText("Añadir");
         añadir.setFocusable(false);
         añadir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -91,9 +92,9 @@ public class ListaClientes extends javax.swing.JFrame {
         });
         toolbar.add(añadir);
 
+        modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/update.png"))); // NOI18N
         modificar.setText("Modificar");
         modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        modificar.setDisabledSelectedIcon(null);
         modificar.setFocusPainted(false);
         modificar.setFocusable(false);
         modificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -105,8 +106,8 @@ public class ListaClientes extends javax.swing.JFrame {
         });
         toolbar.add(modificar);
 
+        eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/delete.png"))); // NOI18N
         eliminar.setText("Eliminar");
-        eliminar.setDisabledSelectedIcon(null);
         eliminar.setFocusable(false);
         eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         eliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -117,9 +118,9 @@ public class ListaClientes extends javax.swing.JFrame {
         });
         toolbar.add(eliminar);
 
+        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/save.png"))); // NOI18N
         guardar.setText("Guardar");
         guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        guardar.setDisabledSelectedIcon(null);
         guardar.setFocusable(false);
         guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         guardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -130,9 +131,9 @@ public class ListaClientes extends javax.swing.JFrame {
         });
         toolbar.add(guardar);
 
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/cancel.png"))); // NOI18N
         cancelar.setText("Cancelar");
         cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cancelar.setDisabledSelectedIcon(null);
         cancelar.setFocusable(false);
         cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -161,7 +162,7 @@ public class ListaClientes extends javax.swing.JFrame {
         jScrollPane2.setViewportView(Tabla);
 
         jPanel2.add(jScrollPane2, java.awt.BorderLayout.CENTER);
-        jPanel2.add(detalle, java.awt.BorderLayout.LINE_END);
+        jPanel2.add(detalle, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 

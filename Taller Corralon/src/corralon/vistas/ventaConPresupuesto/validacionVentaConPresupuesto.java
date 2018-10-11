@@ -162,7 +162,7 @@ public class validacionVentaConPresupuesto extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        //volver al menu principal
        datosConNombre.clear(); //limpiar la lista?? nuse
-       
+       this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed

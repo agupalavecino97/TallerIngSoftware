@@ -194,8 +194,10 @@ public class seleccionMaterialesPedido extends javax.swing.JFrame {
 
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
         confirmarPedido siguientevista = new confirmarPedido(manager);
-        setVisible(false);
+        
+        siguientevista.setLocationRelativeTo(null);
         siguientevista.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_continuarActionPerformed
 
     /**

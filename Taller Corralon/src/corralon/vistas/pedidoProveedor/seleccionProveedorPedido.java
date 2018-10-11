@@ -84,28 +84,27 @@ public class seleccionProveedorPedido extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(208, Short.MAX_VALUE)
+                .addComponent(cancelar)
+                .addGap(94, 94, 94)
+                .addComponent(aceptar)
+                .addGap(196, 196, 196))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(cancelar)
-                        .addGap(45, 45, 45)
-                        .addComponent(aceptar)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelar)
                     .addComponent(aceptar))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -117,6 +116,8 @@ public class seleccionProveedorPedido extends javax.swing.JFrame {
           setIdProveedorSelec(proveedor.getCuitProveedor());
           System.out.println(getIdProveedorSelec());
           seleccionMaterialesPedido siguienteVista = new seleccionMaterialesPedido(manager);
+                          siguienteVista.setLocationRelativeTo(null);
+
            siguienteVista.setVisible(true);
            this.setVisible(false);
     }//GEN-LAST:event_aceptarActionPerformed
