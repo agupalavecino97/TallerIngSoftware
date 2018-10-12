@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class cantidadMateriales extends javax.swing.JPanel {
 
@@ -83,6 +84,7 @@ public class cantidadMateriales extends javax.swing.JPanel {
            return true;
            
        }
+       //JOptionPane.showMessageDialog(rootPane,"La cantidad ingresada supera el stock existente, por favor ingrese una cantidad menor");
            return false;
                 
        //System.out.println(cantidadMaterial);
@@ -99,10 +101,9 @@ public class cantidadMateriales extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         precio = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jToolBar1 = new javax.swing.JToolBar();
-        cancelar = new javax.swing.JButton();
-        aceptar = new javax.swing.JButton();
         cantidad = new javax.swing.JSpinner();
+        aceptar = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
 
         jLabel1.setText("Producto");
 
@@ -116,7 +117,16 @@ public class cantidadMateriales extends javax.swing.JPanel {
 
         jLabel3.setText("Cantidad");
 
-        jToolBar1.setRollover(true);
+        aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/accept.png"))); // NOI18N
+        aceptar.setText("aceptar");
+        aceptar.setFocusable(false);
+        aceptar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        aceptar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarActionPerformed(evt);
+            }
+        });
 
         cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/cancel.png"))); // NOI18N
         cancelar.setText("cancelar");
@@ -128,19 +138,6 @@ public class cantidadMateriales extends javax.swing.JPanel {
                 cancelarActionPerformed(evt);
             }
         });
-        jToolBar1.add(cancelar);
-
-        aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/accept.png"))); // NOI18N
-        aceptar.setText("aceptar");
-        aceptar.setFocusable(false);
-        aceptar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        aceptar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        aceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aceptarActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(aceptar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -156,16 +153,19 @@ public class cantidadMateriales extends javax.swing.JPanel {
                             .addComponent(jLabel3))
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                            .addComponent(nombre)
                             .addComponent(precio)
-                            .addComponent(cantidad)))
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(aceptar)))
                 .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -178,8 +178,9 @@ public class cantidadMateriales extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(aceptar)
+                    .addComponent(cancelar)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -187,6 +188,7 @@ public class cantidadMateriales extends javax.swing.JPanel {
         setEditable(false);
         setMaterial(null);
         loadData();
+        cantidad.setValue(0);
         aceptar.setEnabled(false);
         cancelar.setEnabled(false);
     }//GEN-LAST:event_cancelarActionPerformed
@@ -199,7 +201,7 @@ public class cantidadMateriales extends javax.swing.JPanel {
                 Long cantidad2=Long.valueOf(cantidadMaterial);
                 Long precio=material.getPrecio();
                 pedidoConCantidad pedidoc=new pedidoConCantidad(codigo,nombre,cantidad2,precio);
-                if(buscarEnLista(codigo)){
+                if(buscarEnLista(material)){
 //                    for(pedidoConCantidad ped:pedido){
 //                        if (ped.getCodMaterial()==codigo){
 //                            
@@ -207,16 +209,16 @@ public class cantidadMateriales extends javax.swing.JPanel {
 //                        }
 //                    }
                     
-                    int posicion=(pedido.lastIndexOf(codigo));
+                    int posicion=(pedido.lastIndexOf(material));
                     pedidoConCantidad nuevoPedido=pedido.get(posicion);
                     nuevoPedido.setCantidad(nuevoPedido.getCantidad()+cantidad2);
-                    if(nuevoPedido.getCantidad()<=manager.getmaterialDao().obtenerCantidad(nuevoPedido.getCodMaterial())){
-                         pedido.set(posicion,nuevoPedido);
-                    }else{
-                        setMaterial(null);
-                        loadData();
-                        cantidad.setValue(0);
-                    }
+//                    if(nuevoPedido.getCantidad()<=manager.getmaterialDao().obtenerCantidad(nuevoPedido.getCodMaterial())){
+//                         pedido.set(posicion,nuevoPedido);
+//                    }else{
+//                        setMaterial(null);
+//                        loadData();
+//                        cantidad.setValue(0);
+//                    }
                 }else{
                      pedido.add(pedidoc);
                 }
@@ -238,8 +240,8 @@ public class cantidadMateriales extends javax.swing.JPanel {
     }//GEN-LAST:event_precioActionPerformed
 
     
-    public boolean buscarEnLista(Long cod){
-        if(pedido.contains(cod)){
+    public boolean buscarEnLista(stock material){
+        if(pedido.contains(material)){
             return true;
         }else return false;               
     }
@@ -251,7 +253,6 @@ public class cantidadMateriales extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField precio;
     // End of variables declaration//GEN-END:variables
