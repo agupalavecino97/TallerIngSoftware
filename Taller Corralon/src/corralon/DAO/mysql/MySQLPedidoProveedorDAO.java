@@ -19,20 +19,20 @@ public class MySQLPedidoProveedorDAO implements pedidoProveedorDAO{
     final String INSERT = "INSERT INTO pedidosproveedor( cuitProveedor, fechaPedidoProv, totalPedidoProd, estadoPedidoProd) VALUES(?,?,?,?)";
     final String UPDATE = "UPDATE pedidosproveedor SET codPedidoProv=?, cuitProveedor=?, fechaPedidoProv=?, totalPedidoProd=?, estadoPedidoProd=? WHERE codPedidoProv=?" ;
     final String DELETE = "DELETE FROM pedidosproveedor WHERE codPedidoProv=?";
-    final String GETALL = "SELECT pedidosproveedor, cuitProveedor, fechaPedidoProv, totalPedidoProd, estadoPedidoProd FROM pedidosproveedor";
-    final String GETONE = "SELECT pedidosproveedor, cuitProveedor, fechaPedidoProv, totalPedidoProd, estadoPedidoProd FROM pedidosproveedor WHERE codPedidoProv=?";
+    final String GETALL = "SELECT codPedidoProv, cuitProveedor, fechaPedidoProv, totalPedidoProd, estadoPedidoProd FROM pedidosproveedor";
+    final String GETONE = "SELECT codPedidoProv,cuitProveedor, fechaPedidoProv, totalPedidoProd, estadoPedidoProd FROM pedidosproveedor WHERE codPedidoProv=?";
 
     MySQLPedidoProveedorDAO(Connection con) {
         this.conn=con;
                 }
     
     private pedidoProveedor convertir(ResultSet rs)throws SQLException {
-          Long cod=rs.getLong("codigoPedidoProveedor");
+          Long cod=rs.getLong("codPedidoProv");
           Long cuit= rs.getLong("cuitProveedor");
-          Date fecha= rs.getDate("fechaPedidoProveedor");
-          float total=rs.getFloat("totalPedidoProveedor");
-          boolean estado=rs.getBoolean("estadoPedidoProveedor");
-          pedidoProveedor pedido= new pedidoProveedor( cuit, fecha, total, estado);
+          Date fecha= rs.getDate("fechaPedidoProv");
+          float total=rs.getFloat("totalPedidoProd");
+          String estado=rs.getString("estadoPedidoProd");
+          pedidoProveedor pedido= new pedidoProveedor(cod,cuit, fecha, total, estado);
           return pedido;
     }
 
@@ -45,7 +45,7 @@ public class MySQLPedidoProveedorDAO implements pedidoProveedorDAO{
             stat.setLong(1, a.getCuitProveedor());
             stat.setDate(2, a.getFechaPedidoProveedor());
             stat.setFloat(3, a.getTotalPedidoProveedor());
-            stat.setBoolean(4, a.isEstadoPedidoProveedor());
+            stat.setString(4, a.getEstadoPedidoProveedor());
             if (stat.executeUpdate()==0) {
                 System.out.println("Puede que no se haya guardado correctamente.");
             }
@@ -78,7 +78,8 @@ public class MySQLPedidoProveedorDAO implements pedidoProveedorDAO{
             stat.setLong(2, a.getCuitProveedor());
             stat.setDate(3, a.getFechaPedidoProveedor());
             stat.setFloat(4, a.getTotalPedidoProveedor());
-            stat.setBoolean(5, a.isEstadoPedidoProveedor());
+            stat.setString(5, a.getEstadoPedidoProveedor());
+            stat.setLong(6, a.getCodigoPedidoProveedor());
             if (stat.executeUpdate()==0) {
                 System.out.println("Puede que no se haya guardado correctamente.");
             }

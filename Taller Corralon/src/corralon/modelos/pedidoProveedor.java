@@ -9,14 +9,23 @@ public class pedidoProveedor {
     private Long cuitProveedor;
     private Date fechaPedidoProveedor;
     private float totalPedidoProveedor;
-    private boolean estadoPedidoProveedor;
+    private String estadoPedidoProveedor;
 
-    public pedidoProveedor(Long cuitProveedor, Date fechaPedidoProveedor, float totalPedidoProveedor, boolean estadoPedidoProveedor) {
+    public pedidoProveedor(Long cuitProveedor, Date fechaPedidoProveedor, float totalPedidoProveedor, String estadoPedidoProveedor) {
         this.cuitProveedor = cuitProveedor;
         this.fechaPedidoProveedor = fechaPedidoProveedor;
         this.totalPedidoProveedor = totalPedidoProveedor;
         this.estadoPedidoProveedor = estadoPedidoProveedor;
     }
+
+    public pedidoProveedor(Long codigoPedidoProveedor, Long cuitProveedor, Date fechaPedidoProveedor, float totalPedidoProveedor, String estadoPedidoProveedor) {
+        this.codigoPedidoProveedor = codigoPedidoProveedor;
+        this.cuitProveedor = cuitProveedor;
+        this.fechaPedidoProveedor = fechaPedidoProveedor;
+        this.totalPedidoProveedor = totalPedidoProveedor;
+        this.estadoPedidoProveedor = estadoPedidoProveedor;
+    }
+    
 
     public Long getCodigoPedidoProveedor() {
         return codigoPedidoProveedor;
@@ -34,7 +43,7 @@ public class pedidoProveedor {
         return totalPedidoProveedor;
     }
 
-    public boolean isEstadoPedidoProveedor() {
+    public String getEstadoPedidoProveedor() {
         return estadoPedidoProveedor;
     }
 
@@ -54,7 +63,7 @@ public class pedidoProveedor {
         this.totalPedidoProveedor = totalPedidoProveedor;
     }
 
-    public void setEstadoPedidoProveedor(boolean estadoPedidoProveedor) {
+    public void setEstadoPedidoProveedor(String estadoPedidoProveedor) {
         this.estadoPedidoProveedor = estadoPedidoProveedor;
     }
 

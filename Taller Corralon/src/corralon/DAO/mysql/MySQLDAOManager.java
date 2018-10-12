@@ -3,6 +3,7 @@ package corralon.DAO.mysql;
 import corralon.DAO.DAOManager;
 import corralon.DAO.catalogoDAO;
 import corralon.DAO.clienteDAO;
+import corralon.DAO.detallePedidoProveedorDAO;
 import corralon.DAO.empleadoDAO;
 import corralon.DAO.facturaDAO;
 import corralon.DAO.materialDAO;
@@ -11,6 +12,8 @@ import corralon.DAO.pedidoMaterialDAO;
 import corralon.DAO.pedidoProveedorDAO;
 import corralon.DAO.productoCatalogoDAO;
 import corralon.DAO.proveedorDAO;
+import corralon.DAO.remitoDAO;
+import corralon.modelos.detallePedidoProveedor;
 //import corralon.modelos.catalogo;
 import corralon.modelos.pedidoMaterial;
 import java.sql.DriverManager;
@@ -37,10 +40,12 @@ public class MySQLDAOManager implements DAOManager{
     private productoCatalogoDAO productoCatalogo = null;
         
     private pedidoProveedorDAO pedidoProveedor = null;
-
-
-        private empleadoDAO empleado=null;
-
+    
+    private empleadoDAO empleado=null;
+    
+    private detallePedidoProveedorDAO detallePedidoProveedor=null;
+    
+    private remitoDAO remito=null;
     
         
     private final Connection con;
@@ -141,8 +146,23 @@ public class MySQLDAOManager implements DAOManager{
             }
             return empleado;
     }
+
+    @Override
+    public detallePedidoProveedorDAO getdetallePedidoProveedor() {
+                            if(detallePedidoProveedor==null){
+                detallePedidoProveedor=new MySQLDetallePedidoProvDAO(con); 
+            }
+            return detallePedidoProveedor;
     }
-    
+
+    @Override
+    public remitoDAO getremitoDao() {
+                        if(remito==null){
+                remito=new MySQLRemitoDAO(con); 
+            }
+            return remito;       
+    }
+}
 
 
     

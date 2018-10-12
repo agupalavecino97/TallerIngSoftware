@@ -30,7 +30,7 @@ public class finalizarPedido extends javax.swing.JFrame {
 //        String fechaHoy = dia +"/"+mes+"/"+año;
         proveedor datos = new proveedor();
         datos = manager.getproveedorDao().obtener(idProveedorSelec);
-        pedidoProveedor a = new pedidoProveedor(datos.getCuitProveedor(), fechaHoy, precioTotalCompraActual, false);
+        pedidoProveedor a = new pedidoProveedor(datos.getCuitProveedor(), fechaHoy, precioTotalCompraActual, "pendiente");
         manager.getpedidoProveedorDao().insertar(a);
 //        String cod=String.valueOf();
         numPedido.setText(String.valueOf(a.getCodigoPedidoProveedor()));

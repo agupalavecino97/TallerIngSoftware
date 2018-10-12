@@ -10,6 +10,7 @@ import corralon.vistas.clientes.ListaClientes;
 import corralon.vistas.materiales.ListaMateriales;
 import corralon.vistas.pedidoProveedor.seleccionProveedorPedido;
 import corralon.vistas.proveedores.ListaProveedores;
+import corralon.vistas.recibirPedido.verificacionPedido;
 import java.awt.Color;
 import java.sql.SQLException;
 import javax.swing.JFrame;
@@ -183,15 +184,17 @@ public class menu3 extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        
         verificarExsistenciaPresupuesto vista=new verificarExsistenciaPresupuesto(manager);
         vista.setLocationRelativeTo(null);
         vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vista.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-
+        
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        // TODO add your handling code here:
+        verificacionPedido vista=new verificacionPedido(manager);
+        vista.setLocationRelativeTo(null);
+        vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vista.setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -230,7 +233,6 @@ public class menu3 extends javax.swing.JFrame{
         vista.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
-<<<<<<< Updated upstream:Taller Corralon/src/corralon/vistas/login/menu1.java
     
     public static void main(String args[]) throws SQLException {
         /* Set the Nimbus look and feel */
@@ -271,7 +273,7 @@ public class menu3 extends javax.swing.JFrame{
             vista.setVisible(true);
         });
     }
-=======
+
 //    
 //    public static void main(String args[]) throws SQLException {
 //        /* Set the Nimbus look and feel */
@@ -308,7 +310,7 @@ public class menu3 extends javax.swing.JFrame{
 //            //vista.setVisible(true);
 //        });
 //    }
->>>>>>> Stashed changes:Taller Corralon/src/corralon/vistas/menu/menu3.java
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu2;

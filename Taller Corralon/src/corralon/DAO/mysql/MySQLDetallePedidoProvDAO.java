@@ -16,19 +16,26 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MySQLDetallePedidoProvDAO implements detallePedidoProveedorDAO{
-    private Connection conn;
-    final String INSERT = "INSERT INTO detallePedidoProveedor(codigoPedidoProveedor, codigoMaterial, cantidadSolicitada, precioActual, subtotalPedidoProveedor) VALUES(?,?,?,?,?)";
-    final String UPDATE = "UPDATE detallePedidoProveedor SET codigoPedidoProveedor=?, codigoMaterial=?, cantidadSolicitada=?, precioActual=?, subtotalPedidoProveedor=? WHERE codigoPedidoProveedor=?" ;
-    final String DELETE = "DELETE FROM detallePedidoProveedor WHERE codigoPedidoProveedor=?";
-    final String GETALL = "SELECT codigoPedidoProveedor, codigoMaterial, cantidadSolicitada, precioActual, subtotalPedidoProveedor FROM detallePedidoProveedor";
-    final String GETONE = "SELECT codigoPedidoProveedor, codigoMaterial, cantidadSolicitada, precioActual, subtotalPedidoProveedor FROM detallePedidoProveedor WHERE codigoPedidoProveedor=?";
-
+    final String INSERT = "INSERT INTO detallepedidoproveedor(codPedidoProv, codMaterial, cantSolicitada, precioActual, subTotalPedidoProv) VALUES(?,?,?,?,?)";
+    final String UPDATE = "UPDATE detallepedidoproveedor SET codPedidoProv=?, codMaterial=?, cantSolicitada=?, precioActual=?, subTotalPedidoProv=? WHERE codPedidoProv=?" ;
+    final String DELETE = "DELETE FROM detallepedidoproveedor WHERE codPedidoProv=?";
+    final String GETALL = "SELECT codPedidoProv, codMaterial, cantSolicitada, precioActual, subTotalPedidoProv FROM detallepedidoproveedor";
+    final String GETONE = "SELECT codPedidoProv, codMaterial, cantSolicitada, precioActual, subTotalPedidoProv FROM detallepedidoproveedor WHERE codPedidoProv=?";
+    final String GETALLOFONE = "SELECT codPedidoProv, codMaterial, cantSolicitada, precioActual, subTotalPedidoProv FROM detallepedidoproveedor WHERE codPedidoProv=?";
+    
+    private final Connection conn;
+    
+    public MySQLDetallePedidoProvDAO(Connection con) {
+        this.conn = con;
+     }
+    
+    
     private detallePedidoProveedor convertir(ResultSet rs)throws SQLException {
-          Long id= rs.getLong("codigoPedidoProveedor");
-          int codigo=rs.getInt("codigoMaterial");
-          int cant=rs.getInt("cantidadSolicitada");
+          Long id= rs.getLong("codPedidoProv");
+          int codigo=rs.getInt("codMaterial");
+          int cant=rs.getInt("cantSolicitada");
           float precio=rs.getFloat("precioActual");
-          float subtotal=rs.getFloat("subtotalPedidoProveedor");
+          float subtotal=rs.getFloat("subTotalPedidoProv");
           detallePedidoProveedor detalle = new detallePedidoProveedor(id, codigo, cant, precio, subtotal);
           return detalle;
     }
@@ -152,6 +159,39 @@ public class MySQLDetallePedidoProvDAO implements detallePedidoProveedorDAO{
                 detalle=convertir(rs);
             } else {
                 System.out.println("El registro no se ha encontrado.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MySQLDetallePedidoProvDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            if (rs!=null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MySQLDetallePedidoProvDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (stat!=null) {
+                try {
+                    stat.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MySQLDetallePedidoProvDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return detalle;
+    }
+
+    @Override
+    public List<detallePedidoProveedor> obtenerTodosDeUnPedido(Long cod) {
+        PreparedStatement stat=null;
+        ResultSet rs=null;
+        List<detallePedidoProveedor> detalle = new ArrayList<>();
+        try {
+            stat=conn.prepareStatement(GETALLOFONE);
+            stat.setLong(1,cod);
+            rs=stat.executeQuery();
+            while (rs.next()) {
+                detalle.add(convertir(rs));
             }
         } catch (SQLException ex) {
             Logger.getLogger(MySQLDetallePedidoProvDAO.class.getName()).log(Level.SEVERE, null, ex);

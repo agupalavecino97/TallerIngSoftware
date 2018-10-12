@@ -58,7 +58,9 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         cantidadMateriales1 = new corralon.vistas.ventaSinPresupuesto.cantidadMateriales();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAutoRequestFocus(false);
+        setSize(new java.awt.Dimension(1185, 613));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Materiales disponibles:");
@@ -97,7 +99,7 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, java.awt.BorderLayout.LINE_END);
+        jPanel1.add(jButton1, java.awt.BorderLayout.PAGE_START);
         jPanel1.add(cantidadMateriales1, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -117,7 +119,7 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
         System.out.print("lista enviada:");
         System.out.println(getPedido());
        validacionVenta vistaSiguiente=new validacionVenta(manager);
-//       vistaSiguiente.setPedidoRecibido(pedido);
+       vistaSiguiente.setLocationRelativeTo(null);
        vistaSiguiente.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_ContinuarActionPerformed

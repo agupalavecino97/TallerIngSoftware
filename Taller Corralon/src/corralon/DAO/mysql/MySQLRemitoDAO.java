@@ -4,6 +4,7 @@ package corralon.DAO.mysql;
 import corralon.DAO.remitoDAO;
 import corralon.modelos.remito;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,18 +15,24 @@ import java.util.logging.Logger;
 
 public class MySQLRemitoDAO implements remitoDAO{
     private Connection conn;
-    final String INSERT = "INSERT INTO remito(cuitProveedor, codigoPedidoProveedor, subtotalRemito, totalRemito) VALUES(?,?,?,?)";
-    final String UPDATE = "UPDATE remito SET cuitProveedor=?, codigoPedidoProveedor=?, subtotalRemito=?, totalRemito=? WHERE cuitProveedor=?" ;
+    			
+    final String INSERT = "INSERT INTO remito(cuitProveedor, codPedidoProv, montoRemito, Fecha, estado) VALUES(?,?,?,?,?)";
+    final String UPDATE = "UPDATE remito SET cuitProveedor=?, codPedidoProv=?, montoRemito=?, Fecha=? ,estado=? WHERE cuitProveedor=?" ;
     final String DELETE = "DELETE FROM remito WHERE cuitProveedor=?";
-    final String GETALL = "SELECT cuitProveedor, codigoPedidoProveedor, subtotalRemito, totalRemito FROM remito";
-    final String GETONE = "SELECT cuitProveedor, codigoPedidoProveedor, subtotalRemito, totalRemito FROM remito WHERE cuitProveedor=?";
+    final String GETALL = "SELECT cuitProveedor, codPedidoProv, montoRemito, Fecha,estado FROM remito";
+    final String GETONE = "SELECT cuitProveedor, codPedidoProv, montoRemito, Fecha,estado FROM remito WHERE cuitProveedor=?";
     
+    
+    MySQLRemitoDAO(Connection con) {
+        this.conn = con;
+    }
     private remito convertir(ResultSet rs)throws SQLException {
           Long cuit=rs.getLong("cuitProveedor");
-          int cod= rs.getInt("codigoPedidoProveedor");
-          float subT=rs.getFloat("subtotalRemito");
-          float total=rs.getFloat("totalRemito");
-          remito r=new remito(cuit, cod, subT, total);
+          Long cod= rs.getLong("codPedidoProv");
+          float subT=rs.getFloat("montoRemito");
+          Date total=rs.getDate("Fecha");
+          String estado=rs.getString("estado");
+          remito r=new remito(cuit, cod, subT, total,estado);
           return r;
     }
 
@@ -35,9 +42,10 @@ public class MySQLRemitoDAO implements remitoDAO{
         try {
             stat=conn.prepareStatement(INSERT);
             stat.setLong(1, a.getCuitProveedor());
-            stat.setInt(2, a.getCodigoPedidoProveedor());
-            stat.setFloat(3, a.getSubtotalRemito());
-            stat.setFloat(4, a.getTotalRemito());
+            stat.setLong(2, a.getCodigoPedidoProveedor());
+            stat.setFloat(3, a.getTotalRemito());
+            stat.setDate(4, a.getFecha());
+            stat.setString(5,a.getEstado());
             if (stat.executeUpdate()==0) {
                 System.out.println("Puede que no se haya guardado correctamente.");
             }
@@ -60,9 +68,11 @@ public class MySQLRemitoDAO implements remitoDAO{
         try {
             stat=conn.prepareStatement(UPDATE);
             stat.setLong(1, a.getCuitProveedor());
-            stat.setInt(2, a.getCodigoPedidoProveedor());
-            stat.setFloat(3, a.getSubtotalRemito());
-            stat.setFloat(4, a.getTotalRemito());
+            stat.setLong(2, a.getCodigoPedidoProveedor());
+            stat.setFloat(3, a.getTotalRemito());
+            stat.setDate(4, a.getFecha());
+            stat.setString(5,a.getEstado());
+            stat.setLong(6,a.getCuitProveedor());
             if (stat.executeUpdate()==0) {
                 System.out.println("Puede que no se haya guardado correctamente.");
             }
