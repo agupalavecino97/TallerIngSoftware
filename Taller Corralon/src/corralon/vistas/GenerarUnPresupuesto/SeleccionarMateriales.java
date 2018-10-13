@@ -51,19 +51,15 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         Continuar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         cantidadMateriales2 = new corralon.vistas.GenerarUnPresupuesto.cantidadMateriales();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Materiales disponibles:");
-        getContentPane().add(jLabel1, java.awt.BorderLayout.PAGE_START);
 
         Continuar.setText("Continuar");
         Continuar.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +95,10 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, java.awt.BorderLayout.LINE_END);
         jPanel1.add(cantidadMateriales2, java.awt.BorderLayout.PAGE_END);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("               Materiales Disponibles");
+        jPanel1.add(jLabel1, java.awt.BorderLayout.PAGE_START);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 

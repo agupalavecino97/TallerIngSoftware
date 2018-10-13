@@ -221,28 +221,28 @@ public class MySQLPedidoClienteDAO implements pedidoClienteDAO{
 
     }
     //Esto es para probar 
-// public static void main(String[]args) throws SQLException{
-//    String driver = "com.mysql.jdbc.Driver";
-//    String database = "taller";
-//    String hostname = "localhost";
-//    String port = "3306";
-//    String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database + "?useSSL=false";
-//    Connection con=null;
-//    con=DriverManager.getConnection(url,"root","root");
-//    MySQLPedidoClienteDAO dao=new MySQLPedidoClienteDAO(con);
-//    
-//     Long a=Long.valueOf("45");
-//     Long b=Long.valueOf("45");
-//     //java.util.Date fechaActual = new java.util.Date();
-//     java.util.Date date=new java.util.Date();
-//     java.sql.Date sqlDate=new java.sql.Date(date.getTime());
-//     pedidoCliente tr=new pedidoCliente(a,sqlDate,b,"pendiente");
-//     dao.insertar(tr);
-//     List<pedidoCliente> clientes=dao.obtenerTodos(); 
-//     for(pedidoCliente c :clientes){
-//         System.out.println(c.toString());
-//     }     
-// }    
+ public static void main(String[]args) throws SQLException{
+    String driver = "com.mysql.jdbc.Driver";
+    String database = "taller";
+    String hostname = "localhost";
+    String port = "3306";
+    String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database + "?useSSL=false";
+    Connection con=null;
+    con=DriverManager.getConnection(url,"root","");
+    MySQLPedidoClienteDAO dao=new MySQLPedidoClienteDAO(con);
+    
+     Long a=Long.valueOf("45");
+     Long b=Long.valueOf("45");
+     //java.util.Date fechaActual = new java.util.Date();
+     java.util.Date date=new java.util.Date();
+     java.sql.Date sqlDate=new java.sql.Date(date.getTime());
+     pedidoCliente tr=new pedidoCliente(a,sqlDate,b,"pendiente");
+     dao.insertar(tr);
+     List<pedidoCliente> clientes=dao.obtenerTodos(); 
+     for(pedidoCliente c :clientes){
+         System.out.println(c.toString());
+     }     
+ }    
 
  
 }
