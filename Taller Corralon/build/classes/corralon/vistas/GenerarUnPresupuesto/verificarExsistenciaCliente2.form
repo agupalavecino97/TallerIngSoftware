@@ -33,7 +33,6 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< Updated upstream:Taller Corralon/build/classes/corralon/vistas/GenerarUnPresupuesto/verificarExsistenciaCliente2.form
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -41,8 +40,6 @@
                   <Component id="guardar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               </Group>
-=======
->>>>>>> Stashed changes:Taller Corralon/src/corralon/vistas/GenerarUnPresupuesto/verificarExsistenciaCliente.form
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" max="32767" attributes="0"/>
@@ -65,11 +62,6 @@
                   <Component id="aceptar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="guardar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -85,18 +77,12 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="detalleClientes2" min="-2" max="-2" attributes="0"/>
-<<<<<<< Updated upstream:Taller Corralon/build/classes/corralon/vistas/GenerarUnPresupuesto/verificarExsistenciaCliente2.form
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="guardar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-=======
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="guardar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
->>>>>>> Stashed changes:Taller Corralon/src/corralon/vistas/GenerarUnPresupuesto/verificarExsistenciaCliente.form
               </Group>
           </Group>
         </DimensionLayout>

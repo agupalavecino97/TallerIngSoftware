@@ -6,7 +6,6 @@ import corralon.modelos.pedidoCliente;
 import corralon.modelos.pedidoMaterial;
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -229,31 +228,29 @@ private Connection conn;
  
             
     
-//   // Esto es para probar 
- public static void main(String[]args) throws SQLException{
-    String driver = "com.mysql.jdbc.Driver";
-    String database = "taller";
-    String hostname = "localhost";
-    String port = "3306";
-    String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database + "?useSSL=false";
-    Connection con=null;
-    con=DriverManager.getConnection(url,"root","");
-    MySQLPedidoMaterialDAO dao=new MySQLPedidoMaterialDAO(con);
-    
-     Long a=Long.valueOf(45);
-     Long b=Long.valueOf(456);  
-     Long x=Long.valueOf(456);
-     Long y=Long.valueOf(456);
-     //java.util.Date fechaActual = new java.util.Date();
-     //java.util.Date date=new java.util.Date();
-     //java.sql.Date sqlDate=new java.sql.Date(date.getTime());
-     pedidoMaterial tr= new pedidoMaterial(a,b,x,y);
-     dao.insertar(tr);
-     List<pedidoMaterial> pedidos=dao.obtenerTodos(); 
-     for(pedidoMaterial c :pedidos){
-         System.out.println(c.toString());
-     }     
- }    
+    //Esto es para probar 
+// public static void main(String[]args) throws SQLException{
+//    String driver = "com.mysql.jdbc.Driver";
+//    String database = "taller";
+//    String hostname = "localhost";
+//    String port = "3306";
+//    String url = "jdbc:mysql://" + hostname + ":" + port + "/" + database + "?useSSL=false";
+//    Connection con=null;
+//    con=DriverManager.getConnection(url,"root","root");
+//    MySQLPedidoClienteDAO dao=new MySQLPedidoClienteDAO(con);
+//    
+//     Long a=Long.valueOf("45");
+//     Long b=Long.valueOf("45");
+//     //java.util.Date fechaActual = new java.util.Date();
+//     java.util.Date date=new java.util.Date();
+//     java.sql.Date sqlDate=new java.sql.Date(date.getTime());
+//     pedidoCliente tr=new pedidoCliente(a,sqlDate,b,"pendiente");
+//     dao.insertar(tr);
+//     List<pedidoCliente> clientes=dao.obtenerTodos(); 
+//     for(pedidoCliente c :clientes){
+//         System.out.println(c.toString());
+//     }     
+// }    
 
     
 }

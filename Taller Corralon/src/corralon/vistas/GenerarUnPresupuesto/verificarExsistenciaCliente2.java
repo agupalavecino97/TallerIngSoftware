@@ -95,15 +95,12 @@ public class verificarExsistenciaCliente2 extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< Updated upstream:Taller Corralon/src/corralon/vistas/GenerarUnPresupuesto/verificarExsistenciaCliente2.java
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(guardar)
                 .addGap(57, 57, 57))
-=======
->>>>>>> Stashed changes:Taller Corralon/src/corralon/vistas/GenerarUnPresupuesto/verificarExsistenciaCliente.java
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -121,10 +118,6 @@ public class verificarExsistenciaCliente2 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(aceptar)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(guardar)
-                .addGap(44, 44, 44))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,17 +131,11 @@ public class verificarExsistenciaCliente2 extends javax.swing.JFrame {
                     .addComponent(aceptar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(detalleClientes2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-<<<<<<< Updated upstream:Taller Corralon/src/corralon/vistas/GenerarUnPresupuesto/verificarExsistenciaCliente2.java
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardar)
                     .addComponent(jButton1))
                 .addContainerGap())
-=======
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(guardar)
-                .addGap(18, 18, 18))
->>>>>>> Stashed changes:Taller Corralon/src/corralon/vistas/GenerarUnPresupuesto/verificarExsistenciaCliente.java
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
