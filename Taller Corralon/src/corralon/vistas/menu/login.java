@@ -207,7 +207,7 @@ public class login extends javax.swing.JFrame {
         DAOManager manager=new MySQLDAOManager("localhost","taller","root","root");
         java.awt.EventQueue.invokeLater(() -> {
             JFrame.setDefaultLookAndFeelDecorated(true);
-            SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.officeSilver2007ski");
+            SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.OfficeSilver2007Skin");
             login login=new login(manager);
             login.setLocationRelativeTo(null);
             login.setVisible(true);

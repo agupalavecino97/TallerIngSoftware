@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class confirmarPago extends javax.swing.JFrame {
 
@@ -206,6 +207,7 @@ public class confirmarPago extends javax.swing.JFrame {
         //hay que ir al menu principal
 
         this.setVisible(false);
+        JOptionPane.showMessageDialog(rootPane,"Pedido guardado correctamente");
     }//GEN-LAST:event_continuarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

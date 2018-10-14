@@ -84,7 +84,6 @@ public class cantidadMateriales extends javax.swing.JPanel {
            return true;
            
        }
-       //JOptionPane.showMessageDialog(rootPane,"La cantidad ingresada supera el stock existente, por favor ingrese una cantidad menor");
            return false;
                 
        //System.out.println(cantidadMaterial);
@@ -213,7 +212,7 @@ public class cantidadMateriales extends javax.swing.JPanel {
                     pedidoConCantidad nuevoPedido=pedido.get(posicion);
                     nuevoPedido.setCantidad(nuevoPedido.getCantidad()+cantidad2);
 //                    if(nuevoPedido.getCantidad()<=manager.getmaterialDao().obtenerCantidad(nuevoPedido.getCodMaterial())){
-//                         pedido.set(posicion,nuevoPedido);
+                         pedido.set(posicion,nuevoPedido);
 //                    }else{
 //                        setMaterial(null);
 //                        loadData();
@@ -229,7 +228,8 @@ public class cantidadMateriales extends javax.swing.JPanel {
                 cancelar.setEnabled(false);
                 this.cantidad.setValue(0);
             }
-           
+                   //JOptionPane.showMessageDialog(rootPane,"La cantidad ingresada supera el stock existente, por favor ingrese una cantidad menor");
+
         } catch (ParseException ex) {
             Logger.getLogger(cantidadMateriales.class.getName()).log(Level.SEVERE, null, ex);
         }

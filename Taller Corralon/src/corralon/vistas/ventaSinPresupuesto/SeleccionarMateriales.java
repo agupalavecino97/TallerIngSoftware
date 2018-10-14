@@ -62,6 +62,7 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAutoRequestFocus(false);
         setPreferredSize(new java.awt.Dimension(1188, 616));
+        setResizable(false);
         setSize(new java.awt.Dimension(1185, 613));
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 153));
