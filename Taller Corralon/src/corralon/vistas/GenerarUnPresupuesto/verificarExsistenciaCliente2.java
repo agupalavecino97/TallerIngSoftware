@@ -197,6 +197,7 @@ public class verificarExsistenciaCliente2 extends javax.swing.JFrame {
         manager.getclienteDao().insertar(c);
         setCuitClienteIngresado(c.getCuitCliente());
         SeleccionarMateriales vistaSiguiente=new SeleccionarMateriales(manager);
+        vistaSiguiente.setLocationRelativeTo(null);
         vistaSiguiente.setVisible(true);
         this.setVisible(false);  
     }//GEN-LAST:event_guardarActionPerformed

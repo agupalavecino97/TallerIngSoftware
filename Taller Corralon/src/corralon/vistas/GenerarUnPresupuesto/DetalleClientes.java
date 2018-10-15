@@ -86,15 +86,12 @@ public class DetalleClientes extends javax.swing.JPanel {
         direccion = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         telefono = new javax.swing.JFormattedTextField();
-        jLabel1 = new javax.swing.JLabel();
 
         jLabel2.setText("Razon Social:");
 
         jLabel3.setText("Direccion:");
 
         jLabel4.setText("Telefono:");
-
-        jLabel1.setText("El cliente ingresado no existe en el sistema, proporcione sus datos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -114,11 +111,7 @@ public class DetalleClientes extends javax.swing.JPanel {
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(telefono)
-                            .addComponent(direccion, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(direccion, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -136,16 +129,13 @@ public class DetalleClientes extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addGap(15, 15, 15))
+                .addGap(40, 40, 40))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField direccion;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

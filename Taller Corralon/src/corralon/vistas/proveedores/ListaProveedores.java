@@ -39,20 +39,22 @@ public class ListaProveedores extends javax.swing.JFrame {
 
         jToolBar1 = new javax.swing.JToolBar();
         añadir = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         modificar = new javax.swing.JButton();
         eliminar = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
         guardar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
         detalleProveedores1 = new corralon.vistas.proveedores.detalleProveedores();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jToolBar1.setRollover(true);
-        jToolBar1.setPreferredSize(new java.awt.Dimension(100, 50));
 
+        añadir.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/add.png"))); // NOI18N
         añadir.setText("Añadir");
         añadir.setFocusable(false);
@@ -64,7 +66,9 @@ public class ListaProveedores extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(añadir);
+        jToolBar1.add(jSeparator1);
 
+        modificar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/update.png"))); // NOI18N
         modificar.setText("Modificar");
         modificar.setFocusable(false);
@@ -77,6 +81,7 @@ public class ListaProveedores extends javax.swing.JFrame {
         });
         jToolBar1.add(modificar);
 
+        eliminar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/delete.png"))); // NOI18N
         eliminar.setText("Eliminar");
         eliminar.setFocusable(false);
@@ -88,9 +93,12 @@ public class ListaProveedores extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(eliminar);
+        jToolBar1.add(jSeparator2);
 
+        guardar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/save.png"))); // NOI18N
         guardar.setText("Guardar");
+        guardar.setEnabled(false);
         guardar.setFocusable(false);
         guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         guardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -101,8 +109,10 @@ public class ListaProveedores extends javax.swing.JFrame {
         });
         jToolBar1.add(guardar);
 
-        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/cancel.png"))); // NOI18N
+        cancelar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/delete.png"))); // NOI18N
         cancelar.setText("Cancelar");
+        cancelar.setEnabled(false);
         cancelar.setFocusable(false);
         cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -113,9 +123,8 @@ public class ListaProveedores extends javax.swing.JFrame {
         });
         jToolBar1.add(cancelar);
 
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(252, 402));
+        getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_START);
 
-        Tabla.setAutoCreateRowSorter(true);
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -124,37 +133,35 @@ public class ListaProveedores extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Cuit", "RazonSocial", "Direccion", "Telefono"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        Tabla.setPreferredSize(new java.awt.Dimension(200, 64));
         jScrollPane1.setViewportView(Tabla);
 
-        jPanel2.add(jScrollPane1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(detalleProveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 928, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(detalleProveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(detalleProveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(detalleProveedores1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -167,41 +174,25 @@ public class ListaProveedores extends javax.swing.JFrame {
         cancelar.setEnabled(true);
     }//GEN-LAST:event_añadirActionPerformed
 
-    
-    private proveedor getProveedorSeleccionado(){
-        Long id = (Long) Tabla.getValueAt(Tabla.getSelectedRow(),0);
-        return manager.getproveedorDao().obtener(id);
-    }
-    
-    
-    
-    
-    
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-       proveedor proveedor = getProveedorSeleccionado();
-       detalleProveedores1.setProveedor(proveedor);
+       detalleProveedores1.setProveedor(getProveedorSeleccionado());
        detalleProveedores1.setEditable(true);
        detalleProveedores1.loadData();
        guardar.setEnabled(true);
        cancelar.setEnabled(true);
     }//GEN-LAST:event_modificarActionPerformed
 
-    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-     try {
-         detalleProveedores1.saveData();
-     } catch (ParseException ex) {
-         Logger.getLogger(ListaProveedores.class.getName()).log(Level.SEVERE, null, ex);
-     }
-        detalleProveedores1.setProveedor(null);
-        detalleProveedores1.setEditable(false);
-        detalleProveedores1.loadData();
-        Tabla.clearSelection();
-        guardar.setEnabled(false);
-        cancelar.setEnabled(false);
-    }//GEN-LAST:event_cancelarActionPerformed
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+         if(JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quieres borrar este proveedor?","borrar proveedor", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==JOptionPane.YES_OPTION){
+            manager.getproveedorDao().eliminar(getProveedorSeleccionado());            
+        }
+       //para actualizar la tabla
+       model.updateModel();
+       model.fireTableDataChanged();
+    }//GEN-LAST:event_eliminarActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-     try {
+try {
          detalleProveedores1.saveData();
      } catch (ParseException ex) {
          Logger.getLogger(ListaProveedores.class.getName()).log(Level.SEVERE, null, ex);
@@ -221,40 +212,27 @@ public class ListaProveedores extends javax.swing.JFrame {
        //para actualizar la tabla
        model.updateModel();
        model.fireTableDataChanged();
-        
-        
-//        try {
-//            detalle.saveData();
-//        } catch (ParseException ex) {
-//            Logger.getLogger(ListaProveedores.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        proveedor c=detalle.getProveedor();
-//        proveedor control=manager.getproveedorDao().obtener(c.getCuitProveedor()); //para controlar si el cliente existe ya comparando el cuit con los existentes en la base de datos, si existte se actualizan los datos si no se inserta un nuevo cliente
-//        if(control==null){
-//            manager.getproveedorDao().insertar(c);
-//        }else manager.getproveedorDao().modificar(c);
-//       //para que se limpie todo
-//       detalle.setProveedor(null);
-//       detalle.setEditable(false);
-//       detalle.loadData();
-//       Tabla.clearSelection();
-//       guardar.setEnabled(false);
-//       cancelar.setEnabled(false);
-//       //para actualizar la tabla
-//       model.updateModel();
-//       model.fireTableDataChanged();
     }//GEN-LAST:event_guardarActionPerformed
 
-    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        if(JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quieres borrar este proveedor?","borrar proveedor", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==JOptionPane.YES_OPTION){
-            proveedor c=getProveedorSeleccionado();
-            manager.getproveedorDao().eliminar(c);            
-        }
-       //para actualizar la tabla
-       model.updateModel();
-       model.fireTableDataChanged();
-    }//GEN-LAST:event_eliminarActionPerformed
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        detalleProveedores1.setProveedor(null);
+        detalleProveedores1.setEditable(false);
+        detalleProveedores1.loadData();
+        Tabla.clearSelection();
+        guardar.setEnabled(false);
+        cancelar.setEnabled(false);
+    }//GEN-LAST:event_cancelarActionPerformed
 
+    
+    private proveedor getProveedorSeleccionado(){
+         Long id = (Long) Tabla.getValueAt(Tabla.getSelectedRow(),0);
+        return manager.getproveedorDao().obtener(id);
+    }
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      * @throws java.sql.SQLException
@@ -275,8 +253,10 @@ public class ListaProveedores extends javax.swing.JFrame {
     private corralon.vistas.proveedores.detalleProveedores detalleProveedores1;
     private javax.swing.JButton eliminar;
     private javax.swing.JButton guardar;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JButton modificar;
     // End of variables declaration//GEN-END:variables

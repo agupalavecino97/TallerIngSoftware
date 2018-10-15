@@ -2,13 +2,12 @@ package corralon.modelos;
 
 public class detallePedidoProveedor {
     private Long codigoPedidoProveedor;
-    private int codigoMaterial;    
-    private int cantidadSolicitada;
+    private Long codigoMaterial;    
+    private Long cantidadSolicitada;
     private float precioActual;
     private float subtotalPedidoProveedor;
 
-
-    public detallePedidoProveedor(Long codigoPedidoProveedor, int codigoMaterial, int cantidadSolicitada, float precioActual, float subtotalPedidoProveedor) {
+    public detallePedidoProveedor(Long codigoPedidoProveedor, Long codigoMaterial, Long cantidadSolicitada, float precioActual, float subtotalPedidoProveedor) {
         this.codigoPedidoProveedor = codigoPedidoProveedor;
         this.codigoMaterial = codigoMaterial;
         this.cantidadSolicitada = cantidadSolicitada;
@@ -20,36 +19,36 @@ public class detallePedidoProveedor {
         return codigoPedidoProveedor;
     }
 
-    public int getCodigoMaterial() {
+    public void setCodigoPedidoProveedor(Long codigoPedidoProveedor) {
+        this.codigoPedidoProveedor = codigoPedidoProveedor;
+    }
+
+    public Long getCodigoMaterial() {
         return codigoMaterial;
     }
 
-    public int getCantidadSolicitada() {
+    public void setCodigoMaterial(Long codigoMaterial) {
+        this.codigoMaterial = codigoMaterial;
+    }
+
+    public Long getCantidadSolicitada() {
         return cantidadSolicitada;
+    }
+
+    public void setCantidadSolicitada(Long cantidadSolicitada) {
+        this.cantidadSolicitada = cantidadSolicitada;
     }
 
     public float getPrecioActual() {
         return precioActual;
     }
 
-    public float getSubtotalPedidoProveedor() {
-        return subtotalPedidoProveedor;
-    }
-
-    public void setCodigoPedidoProveedor(Long codigoPedidoProveedor) {
-        this.codigoPedidoProveedor = codigoPedidoProveedor;
-    }
-
-    public void setCodigoMaterial(int codigoMaterial) {
-        this.codigoMaterial = codigoMaterial;
-    }
-
-    public void setCantidadSolicitada(int cantidadSolicitada) {
-        this.cantidadSolicitada = cantidadSolicitada;
-    }
-
     public void setPrecioActual(float precioActual) {
         this.precioActual = precioActual;
+    }
+
+    public float getSubtotalPedidoProveedor() {
+        return subtotalPedidoProveedor;
     }
 
     public void setSubtotalPedidoProveedor(float subtotalPedidoProveedor) {
@@ -60,6 +59,7 @@ public class detallePedidoProveedor {
     public String toString() {
         return "detallePedidoProveedor{" + "codigoPedidoProveedor=" + codigoPedidoProveedor + ", codigoMaterial=" + codigoMaterial + ", cantidadSolicitada=" + cantidadSolicitada + ", precioActual=" + precioActual + ", subtotalPedidoProveedor=" + subtotalPedidoProveedor + '}';
     }
+
 
     
 }

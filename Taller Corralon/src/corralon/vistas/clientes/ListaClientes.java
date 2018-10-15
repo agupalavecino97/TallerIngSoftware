@@ -20,7 +20,7 @@ public class ListaClientes extends javax.swing.JFrame {
         this.manager=manager;
         this.model=new Clientestablemodel(manager.getclienteDao());
         this.model.updateModel();
-        this.Tabla.setModel(model); 
+        this.tabla.setModel(model); 
         //modificar.setEnabled(false);
         //eliminar.setEnabled(false);
         guardar.setEnabled(false);
@@ -39,26 +39,91 @@ public class ListaClientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
-        detalleCliente1 = new corralon.vistas.clientes.DetalleClientes();
-        jPanel1 = new javax.swing.JPanel();
-        toolbar = new javax.swing.JToolBar();
+        jToolBar1 = new javax.swing.JToolBar();
         añadir = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         modificar = new javax.swing.JButton();
         eliminar = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
         guardar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        Tabla = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
         detalle = new corralon.vistas.clientes.DetalleClientes();
 
-        jMenuItem1.setText("jMenuItem1");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jMenu1.setText("jMenu1");
+        jToolBar1.setRollover(true);
+
+        añadir.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/add.png"))); // NOI18N
+        añadir.setText("Añadir");
+        añadir.setFocusable(false);
+        añadir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        añadir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        añadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                añadirActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(añadir);
+        jToolBar1.add(jSeparator1);
+
+        modificar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/update.png"))); // NOI18N
+        modificar.setText("Modificar");
+        modificar.setFocusable(false);
+        modificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        modificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(modificar);
+
+        eliminar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/delete.png"))); // NOI18N
+        eliminar.setText("Eliminar");
+        eliminar.setFocusable(false);
+        eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        eliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(eliminar);
+        jToolBar1.add(jSeparator2);
+
+        guardar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/save.png"))); // NOI18N
+        guardar.setText("Guardar");
+        guardar.setFocusable(false);
+        guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        guardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(guardar);
+
+        cancelar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/delete.png"))); // NOI18N
+        cancelar.setText("Cancelar");
+        cancelar.setFocusable(false);
+        cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(cancelar);
+
+        getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_START);
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -71,136 +136,34 @@ public class ListaClientes extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tabla);
+        jScrollPane2.setViewportView(tabla);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 872, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(detalle, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(detalle, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        jPanel1.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_END);
-
-        toolbar.setRollover(true);
-
-        añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/add.png"))); // NOI18N
-        añadir.setText("Añadir");
-        añadir.setFocusable(false);
-        añadir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        añadir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        añadir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                añadirActionPerformed(evt);
-            }
-        });
-        toolbar.add(añadir);
-
-        modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/update.png"))); // NOI18N
-        modificar.setText("Modificar");
-        modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        modificar.setFocusPainted(false);
-        modificar.setFocusable(false);
-        modificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        modificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarActionPerformed(evt);
-            }
-        });
-        toolbar.add(modificar);
-
-        eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/delete.png"))); // NOI18N
-        eliminar.setText("Eliminar");
-        eliminar.setFocusable(false);
-        eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        eliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eliminarActionPerformed(evt);
-            }
-        });
-        toolbar.add(eliminar);
-
-        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/save.png"))); // NOI18N
-        guardar.setText("Guardar");
-        guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        guardar.setFocusable(false);
-        guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        guardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        guardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guardarActionPerformed(evt);
-            }
-        });
-        toolbar.add(guardar);
-
-        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/cancel.png"))); // NOI18N
-        cancelar.setText("Cancelar");
-        cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cancelar.setFocusable(false);
-        cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        cancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelarActionPerformed(evt);
-            }
-        });
-        toolbar.add(cancelar);
-
-        getContentPane().add(toolbar, java.awt.BorderLayout.PAGE_START);
-
-        jPanel2.setLayout(new java.awt.BorderLayout());
-
-        Tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(Tabla);
-
-        jPanel2.add(jScrollPane2, java.awt.BorderLayout.CENTER);
-        jPanel2.add(detalle, java.awt.BorderLayout.PAGE_END);
-
-        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        if(JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quieres borrar este cliente?","borrar cliente", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==JOptionPane.YES_OPTION){
-            cliente c=getClienteSeleccionado();
-            manager.getclienteDao().eliminar(c);            
-        }
-       //para actualizar la tabla
-       model.updateModel();
-       model.fireTableDataChanged();
-    }//GEN-LAST:event_eliminarActionPerformed
-  
-    private cliente getClienteSeleccionado(){
-        Long id=(Long) Tabla.getValueAt(Tabla.getSelectedRow(), 0);   
-        return manager.getclienteDao().obtener(id);
-    } 
-    
-    private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-        cliente cliente=getClienteSeleccionado();
-        detalle.setCliente(cliente);
-        detalle.setEditable(true);
-        detalle.loadData();
-        guardar.setEnabled(true);
-        cancelar.setEnabled(true);
-    }//GEN-LAST:event_modificarActionPerformed
-
-    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-       detalle.setCliente(null);
-       detalle.setEditable(false);
-       detalle.loadData();
-       tabla.clearSelection();
-       guardar.setEnabled(false);
-       cancelar.setEnabled(false);
-    }//GEN-LAST:event_cancelarActionPerformed
 
     private void añadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirActionPerformed
        detalle.setCliente(null);
@@ -210,8 +173,25 @@ public class ListaClientes extends javax.swing.JFrame {
        cancelar.setEnabled(true);
     }//GEN-LAST:event_añadirActionPerformed
 
+    private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
+        detalle.setCliente(getClienteSeleccionado());
+        detalle.setEditable(true);
+        detalle.loadData();
+        guardar.setEnabled(true);
+        cancelar.setEnabled(true);
+    }//GEN-LAST:event_modificarActionPerformed
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+          if(JOptionPane.showConfirmDialog(rootPane, "¿Seguro que quieres borrar este cliente?","borrar cliente", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)==JOptionPane.YES_OPTION){
+            manager.getclienteDao().eliminar(getClienteSeleccionado());            
+        }
+       //para actualizar la tabla
+       model.updateModel();
+       model.fireTableDataChanged();
+    }//GEN-LAST:event_eliminarActionPerformed
+
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        try {
+                    try {
             detalle.saveData();
         } catch (ParseException ex) {
             Logger.getLogger(ListaClientes.class.getName()).log(Level.SEVERE, null, ex);
@@ -233,6 +213,20 @@ public class ListaClientes extends javax.swing.JFrame {
        model.fireTableDataChanged();
     }//GEN-LAST:event_guardarActionPerformed
 
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+         detalle.setCliente(null);
+       detalle.setEditable(false);
+       detalle.loadData();
+       tabla.clearSelection();
+       guardar.setEnabled(false);
+       cancelar.setEnabled(false);
+    }//GEN-LAST:event_cancelarActionPerformed
+  
+    private cliente getClienteSeleccionado(){
+          Long id=(Long) tabla.getValueAt(tabla.getSelectedRow(), 0);   
+        return manager.getclienteDao().obtener(id);
+    } 
+    
 // 
 //public static void main(String args[]) throws SQLException {
 //
@@ -243,22 +237,18 @@ public class ListaClientes extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Tabla;
     private javax.swing.JButton añadir;
     private javax.swing.JButton cancelar;
     private corralon.vistas.clientes.DetalleClientes detalle;
-    private corralon.vistas.clientes.DetalleClientes detalleCliente1;
     private javax.swing.JButton eliminar;
     private javax.swing.JButton guardar;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator2;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JButton modificar;
     private javax.swing.JTable tabla;
-    private javax.swing.JToolBar toolbar;
     // End of variables declaration//GEN-END:variables
 
     

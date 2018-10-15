@@ -196,6 +196,7 @@ public class SeleccionarMateriales extends javax.swing.JFrame {
         System.out.println(getPedido());
        validacionPresupuesto vistaSiguiente=new validacionPresupuesto(manager);
 //       vistaSiguiente.setPedidoRecibido(pedido);
+        vistaSiguiente.setLocationRelativeTo(null);
        vistaSiguiente.setVisible(true);
        this.setVisible(false);
     }//GEN-LAST:event_continuarActionPerformed

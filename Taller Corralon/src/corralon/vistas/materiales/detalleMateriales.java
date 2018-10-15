@@ -57,7 +57,8 @@ public class detalleMateriales extends javax.swing.JPanel {
             cantidad.setText("");
             stockmax.setText("");
             stockmin.setText("");  
-        }        
+        }    
+        codigo.requestFocus();
     }
      
     public void saveData()throws ParseException{

@@ -47,10 +47,11 @@ public class ListaMateriales extends javax.swing.JFrame {
         tabla = new javax.swing.JTable();
         detalleMateriales1 = new corralon.vistas.materiales.detalleMateriales();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jToolBar1.setRollover(true);
 
+        añadir.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         añadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/add.png"))); // NOI18N
         añadir.setText("Añadir");
         añadir.setFocusable(false);
@@ -64,6 +65,7 @@ public class ListaMateriales extends javax.swing.JFrame {
         jToolBar1.add(añadir);
         jToolBar1.add(jSeparator1);
 
+        modificar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/update.png"))); // NOI18N
         modificar.setText("Modificar");
         modificar.setFocusable(false);
@@ -76,6 +78,7 @@ public class ListaMateriales extends javax.swing.JFrame {
         });
         jToolBar1.add(modificar);
 
+        eliminar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/delete.png"))); // NOI18N
         eliminar.setText("Eliminar");
         eliminar.setFocusable(false);
@@ -89,6 +92,7 @@ public class ListaMateriales extends javax.swing.JFrame {
         jToolBar1.add(eliminar);
         jToolBar1.add(jSeparator2);
 
+        guardar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/save.png"))); // NOI18N
         guardar.setText("Guardar");
         guardar.setFocusable(false);
@@ -101,6 +105,7 @@ public class ListaMateriales extends javax.swing.JFrame {
         });
         jToolBar1.add(guardar);
 
+        cancelar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/corralon/Icons/delete.png"))); // NOI18N
         cancelar.setText("Cancelar");
         cancelar.setFocusable(false);
@@ -134,7 +139,7 @@ public class ListaMateriales extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(detalleMateriales1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -143,7 +148,7 @@ public class ListaMateriales extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)

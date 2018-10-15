@@ -151,7 +151,7 @@ public class cantidadMaterialesPedir extends javax.swing.JPanel {
                         .addComponent(cancelar)
                         .addGap(68, 68, 68)
                         .addComponent(aceptar)
-                        .addGap(0, 182, Short.MAX_VALUE))
+                        .addGap(0, 12, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(64, 64, 64)
@@ -181,7 +181,7 @@ public class cantidadMaterialesPedir extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelar)
                     .addComponent(aceptar))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
