@@ -26,7 +26,7 @@ public class mostrarMateriales extends javax.swing.JFrame {
         List<pedidoProveedorConNombre> detalleConNombre=new ArrayList();
         for(detallePedidoProveedor producto:detalle){
             stock prod=manager.getmaterialDao().obtener(Long.valueOf(producto.getCodigoMaterial()));
-            pedidoProveedorConNombre pedidoNombre=new pedidoProveedorConNombre(producto.getCodigoMaterial(),prod.getNombreMaterial(),producto.getCantidadSolicitada(),producto.getPrecioActual(),producto.getSubtotalPedidoProveedor());
+            pedidoProveedorConNombre pedidoNombre=new pedidoProveedorConNombre(producto.getCodigoMaterial(),prod.getNombreMaterial(),producto.getCantidadSolicitada(),producto.getPrecioActual());
             detalleConNombre.add(pedidoNombre);
         }
         this.model=new pedidoTableModel(detalleConNombre);

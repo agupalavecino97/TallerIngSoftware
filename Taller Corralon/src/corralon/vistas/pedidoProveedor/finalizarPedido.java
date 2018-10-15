@@ -221,9 +221,7 @@ public class finalizarPedido extends javax.swing.JFrame {
         //alta de detalles
 
         for(elementosDePedido detalle: listaPedir){
-            float cantidad=(float)detalle.getCantidad();
-            float subtotal=cantidad*detalle.getPrecio();
-            detallePedidoProveedor detalle2 = new detallePedidoProveedor(getCodPedidoprov(),detalle.getCodProducto(), (Long) detalle.getCantidad(),detalle.getPrecio(),subtotal);
+            detallePedidoProveedor detalle2 = new detallePedidoProveedor(getCodPedidoprov(),detalle.getCodProducto(), (Long) detalle.getCantidad(),detalle.getPrecio());
             manager.getdetallePedidoProveedor().insertar(detalle2);
         }
 

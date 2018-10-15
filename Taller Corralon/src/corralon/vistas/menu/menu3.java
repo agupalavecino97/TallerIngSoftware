@@ -7,6 +7,7 @@ import corralon.vistas.ventaConPresupuesto.verificarExsistenciaPresupuesto;
 import corralon.vistas.ventaSinPresupuesto.verificarExsistenciaCliente;
 import corralon.vistas.GenerarUnPresupuesto.verificarExsistenciaCliente2;
 import corralon.vistas.clientes.ListaClientes;
+import corralon.vistas.incorporarUnCatalogo.verificarExsistenciaProveedor;
 import corralon.vistas.materiales.ListaMateriales;
 import corralon.vistas.pedidoProveedor.seleccionProveedorPedido;
 import corralon.vistas.proveedores.ListaProveedores;
@@ -110,6 +111,11 @@ public class menu3 extends javax.swing.JFrame{
 
         jMenuItem7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem7.setText("Incorporar Catalogo");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem7);
 
         jMenuItem8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -232,6 +238,12 @@ public class menu3 extends javax.swing.JFrame{
         vista.setLocationRelativeTo(null);
         vista.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        verificarExsistenciaProveedor vista=new verificarExsistenciaProveedor(manager);
+        vista.setLocationRelativeTo(null);
+        vista.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     
     public static void main(String args[]) throws SQLException {

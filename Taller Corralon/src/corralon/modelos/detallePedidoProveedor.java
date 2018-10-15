@@ -5,14 +5,13 @@ public class detallePedidoProveedor {
     private Long codigoMaterial;    
     private Long cantidadSolicitada;
     private float precioActual;
-    private float subtotalPedidoProveedor;
+   // private float subtotalPedidoProveedor;
 
-    public detallePedidoProveedor(Long codigoPedidoProveedor, Long codigoMaterial, Long cantidadSolicitada, float precioActual, float subtotalPedidoProveedor) {
+    public detallePedidoProveedor(Long codigoPedidoProveedor, Long codigoMaterial, Long cantidadSolicitada, float precioActual) {
         this.codigoPedidoProveedor = codigoPedidoProveedor;
         this.codigoMaterial = codigoMaterial;
         this.cantidadSolicitada = cantidadSolicitada;
         this.precioActual = precioActual;
-        this.subtotalPedidoProveedor = subtotalPedidoProveedor;
     }
 
     public Long getCodigoPedidoProveedor() {
@@ -47,19 +46,12 @@ public class detallePedidoProveedor {
         this.precioActual = precioActual;
     }
 
-    public float getSubtotalPedidoProveedor() {
-        return subtotalPedidoProveedor;
-    }
-
-    public void setSubtotalPedidoProveedor(float subtotalPedidoProveedor) {
-        this.subtotalPedidoProveedor = subtotalPedidoProveedor;
-    }
-
     @Override
     public String toString() {
-        return "detallePedidoProveedor{" + "codigoPedidoProveedor=" + codigoPedidoProveedor + ", codigoMaterial=" + codigoMaterial + ", cantidadSolicitada=" + cantidadSolicitada + ", precioActual=" + precioActual + ", subtotalPedidoProveedor=" + subtotalPedidoProveedor + '}';
+        return "detallePedidoProveedor{" + "codigoPedidoProveedor=" + codigoPedidoProveedor + ", codigoMaterial=" + codigoMaterial + ", cantidadSolicitada=" + cantidadSolicitada + ", precioActual=" + precioActual + '}';
     }
 
+   
 
     
 }

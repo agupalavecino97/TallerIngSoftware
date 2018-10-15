@@ -6,9 +6,9 @@ public class elementosDePedido {
     private Long codProducto;
     private String nombrePr;
     private float precio;
-    private Object cantidad;
+    private Long cantidad;
 
-    public elementosDePedido(Long codProducto, String nombrePr, float precio, Object cantidad) {
+    public elementosDePedido(Long codProducto, String nombrePr, float precio, Long cantidad) {
         this.codProducto = codProducto;
         this.nombrePr = nombrePr;
         this.precio = precio;
@@ -39,11 +39,11 @@ public class elementosDePedido {
         this.precio = precio;
     }
 
-    public Object getCantidad() {
+    public Long getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(Object cantidad) {
+    public void setCantidad(Long cantidad) {
         this.cantidad = cantidad;
     }
 

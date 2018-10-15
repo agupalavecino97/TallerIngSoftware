@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 public class cantidadMaterialesPedir extends javax.swing.JPanel {
   private boolean editable;
-    private Object cantidadMaterial;
+    private Long cantidadMaterial;
     public static List<elementosDePedido> listaPedir = new ArrayList();
     
     public cantidadMaterialesPedir() {
@@ -73,7 +73,7 @@ public class cantidadMaterialesPedir extends javax.swing.JPanel {
        catalogo.setNombrePr(nombre.getText());
        Long pre=Long.valueOf(precio.getText());
        catalogo.setPrecio(pre);
-       cantidadMaterial=cantidad.getValue(); 
+       cantidadMaterial=(Long) cantidad.getValue(); 
        System.out.println("cantidadMaterialtomadaaa");
        System.out.println(cantidadMaterial);
     }
@@ -186,9 +186,9 @@ public class cantidadMaterialesPedir extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        cantidadMaterial=cantidad.getValue(); 
+       // cantidadMaterial=cantidad.getValue(); 
         System.out.println(listaPedir);
-        elementosDePedido elementos = new elementosDePedido(catalogo.getCodProducto(), catalogo.getNombrePr(), catalogo.getPrecio(), cantidadMaterial);
+        elementosDePedido elementos = new elementosDePedido(catalogo.getCodProducto(), catalogo.getNombrePr(), catalogo.getPrecio(),cantidadMaterial);
         listaPedir.add(elementos);
         setCatalogo(null);
         loadData();

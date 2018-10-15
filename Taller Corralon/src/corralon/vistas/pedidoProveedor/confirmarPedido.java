@@ -34,7 +34,7 @@ public class confirmarPedido extends javax.swing.JFrame {
        public String ObtenerPrecioTotal(List<elementosDePedido> pedido) {
         float precioTotal = 0;
         for(elementosDePedido c: pedido) {
-            int i = (Integer) c.getCantidad();
+            Long i =c.getCantidad();
            float prova2 = ((float) i);
             precioTotal += (c.getPrecio()*prova2);
 

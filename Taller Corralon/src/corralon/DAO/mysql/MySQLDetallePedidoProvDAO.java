@@ -16,12 +16,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MySQLDetallePedidoProvDAO implements detallePedidoProveedorDAO{
-    final String INSERT = "INSERT INTO detallepedidoproveedor(codPedidoProv, codMaterial, cantSolicitada, precioActual, subTotalPedidoProv) VALUES(?,?,?,?,?)";
-    final String UPDATE = "UPDATE detallepedidoproveedor SET codPedidoProv=?, codMaterial=?, cantSolicitada=?, precioActual=?, subTotalPedidoProv=? WHERE codPedidoProv=?" ;
+    final String INSERT = "INSERT INTO detallepedidoproveedor(codPedidoProv, codMaterial, cantSolicitada, precioActual) VALUES(?,?,?,?)";
+    final String UPDATE = "UPDATE detallepedidoproveedor SET codPedidoProv=?, codMaterial=?, cantSolicitada=?, precioActual=? WHERE codPedidoProv=?" ;
     final String DELETE = "DELETE FROM detallepedidoproveedor WHERE codPedidoProv=?";
-    final String GETALL = "SELECT codPedidoProv, codMaterial, cantSolicitada, precioActual, subTotalPedidoProv FROM detallepedidoproveedor";
-    final String GETONE = "SELECT codPedidoProv, codMaterial, cantSolicitada, precioActual, subTotalPedidoProv FROM detallepedidoproveedor WHERE codPedidoProv=?";
-    final String GETALLOFONE = "SELECT codPedidoProv, codMaterial, cantSolicitada, precioActual, subTotalPedidoProv FROM detallepedidoproveedor WHERE codPedidoProv=?";
+    final String GETALL = "SELECT codPedidoProv, codMaterial, cantSolicitada, precioActual FROM detallepedidoproveedor";
+    final String GETONE = "SELECT codPedidoProv, codMaterial, cantSolicitada, precioActual FROM detallepedidoproveedor WHERE codPedidoProv=?";
+    final String GETALLOFONE = "SELECT codPedidoProv, codMaterial, cantSolicitada, precioActual FROM detallepedidoproveedor WHERE codPedidoProv=?";
     
     private final Connection conn;
     
@@ -32,11 +32,11 @@ public class MySQLDetallePedidoProvDAO implements detallePedidoProveedorDAO{
     
     private detallePedidoProveedor convertir(ResultSet rs)throws SQLException {
           Long id= rs.getLong("codPedidoProv");
-          int codigo=rs.getInt("codMaterial");
-          int cant=rs.getInt("cantSolicitada");
+          Long codigo=rs.getLong("codMaterial");
+          Long cant=rs.getLong("cantSolicitada");
           float precio=rs.getFloat("precioActual");
-          float subtotal=rs.getFloat("subTotalPedidoProv");
-          detallePedidoProveedor detalle = new detallePedidoProveedor(id, codigo, cant, precio, subtotal);
+         // float subtotal=rs.getFloat("subTotalPedidoProv");
+          detallePedidoProveedor detalle = new detallePedidoProveedor(id, codigo, cant, precio);
           return detalle;
     }
     
@@ -46,10 +46,10 @@ public class MySQLDetallePedidoProvDAO implements detallePedidoProveedorDAO{
         try {
              stat=conn.prepareStatement(INSERT);
              stat.setLong(1, a.getCodigoPedidoProveedor());
-             stat.setInt(2, a.getCodigoMaterial());
-             stat.setInt(3, a.getCantidadSolicitada());
+             stat.setLong(2, a.getCodigoMaterial());
+             stat.setLong(3, a.getCantidadSolicitada());
              stat.setFloat(4, a.getPrecioActual());
-             stat.setFloat(5, a.getSubtotalPedidoProveedor());
+            // stat.setFloat(5, a.getSubtotalPedidoProveedor());
              if (stat.executeUpdate()==0) {
                  System.out.println("Puede que no se haya guardado correctamente.");
             }
@@ -72,10 +72,10 @@ public class MySQLDetallePedidoProvDAO implements detallePedidoProveedorDAO{
         try {
              stat=conn.prepareStatement(UPDATE);
              stat.setLong(1, a.getCodigoPedidoProveedor());
-             stat.setInt(2, a.getCodigoMaterial());
-             stat.setInt(3, a.getCantidadSolicitada());
+             stat.setLong(2, a.getCodigoMaterial());
+             stat.setLong(3, a.getCantidadSolicitada());
              stat.setFloat(4, a.getPrecioActual());
-             stat.setFloat(5, a.getSubtotalPedidoProveedor());
+             //stat.setFloat(5, a.getSubtotalPedidoProveedor());
              if (stat.executeUpdate()==0) {
                  System.out.println("Puede que no se haya guardado correctamente.");
             }

@@ -3,25 +3,24 @@ package corralon.vistas.recibirPedido;
 
 
 class pedidoProveedorConNombre {
-    private int codigoMaterial;
+    private Long codigoMaterial;
     private String nombre;
-    private int cantidadSolicitada;
+    private Long cantidadSolicitada;
     private float precioActual;
-    private float subtotalPedidoProveedor;
+    //private float subtotalPedidoProveedor;
 
-    public pedidoProveedorConNombre(int codigoMaterial, String nombre, int cantidadSolicitada, float precioActual, float subtotalPedidoProveedor) {
+    public pedidoProveedorConNombre(Long codigoMaterial, String nombre, Long cantidadSolicitada, float precioActual) {
         this.codigoMaterial = codigoMaterial;
         this.nombre = nombre;
         this.cantidadSolicitada = cantidadSolicitada;
         this.precioActual = precioActual;
-        this.subtotalPedidoProveedor = subtotalPedidoProveedor;
     }
 
-    public int getCodigoMaterial() {
+    public Long getCodigoMaterial() {
         return codigoMaterial;
     }
 
-    public void setCodigoMaterial(int codigoMaterial) {
+    public void setCodigoMaterial(Long codigoMaterial) {
         this.codigoMaterial = codigoMaterial;
     }
 
@@ -33,11 +32,11 @@ class pedidoProveedorConNombre {
         this.nombre = nombre;
     }
 
-    public int getCantidadSolicitada() {
+    public Long getCantidadSolicitada() {
         return cantidadSolicitada;
     }
 
-    public void setCantidadSolicitada(int cantidadSolicitada) {
+    public void setCantidadSolicitada(Long cantidadSolicitada) {
         this.cantidadSolicitada = cantidadSolicitada;
     }
 
@@ -49,18 +48,10 @@ class pedidoProveedorConNombre {
         this.precioActual = precioActual;
     }
 
-    public float getSubtotalPedidoProveedor() {
-        return subtotalPedidoProveedor;
-    }
-
-    public void setSubtotalPedidoProveedor(float subtotalPedidoProveedor) {
-        this.subtotalPedidoProveedor = subtotalPedidoProveedor;
-    }
-
     @Override
     public String toString() {
-        return "pedidoProveedorConNombre{" + "codigoMaterial=" + codigoMaterial + ", nombre=" + nombre + ", cantidadSolicitada=" + cantidadSolicitada + ", precioActual=" + precioActual + ", subtotalPedidoProveedor=" + subtotalPedidoProveedor + '}';
+        return "pedidoProveedorConNombre{" + "codigoMaterial=" + codigoMaterial + ", nombre=" + nombre + ", cantidadSolicitada=" + cantidadSolicitada + ", precioActual=" + precioActual + '}';
     }
-    
+
     
 }
